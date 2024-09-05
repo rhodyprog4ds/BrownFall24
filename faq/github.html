@@ -1,0 +1,721 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Git and GitHub &#8212; Programming for Data Science at URI Fall 2023</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course-admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'faq/github';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Code Errors" href="debugging.html" />
+    <link rel="prev" title="Syllabus and Grading FAQ" href="syllabus.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/310_2021.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/310_2021.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/tools.html">Tools and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/achievements.html">Data Science Achievements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Grading Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/style.html">Course  Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_resources.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_statements.html">General URI Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/communication.html">Communications &amp; Office Hours</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notes/2024-09-05.html">1. First class</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../assignments/01-setup.html">1. Assignment 1: Setup, Syllabus, and Review</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/index.html">Portfolio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/formatting.html">Formatting Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/check1ideas.html">Portfolio Check 1 Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/check2ideas.html">Check 2 Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/check3ideas.html">Check 3 Ideas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="index.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">Syllabus and Grading FAQ</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Code Errors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/python.html">References on Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/datasets.html">Data Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/tips.html">General Tips and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/learning.html">How to Study in this class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/gettinghelp.html">Getting Help with Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/terminal.html">Terminals and Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/organization.html">Getting Organized for class</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">Advice from FA2020 Students</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">Advice from FA2021 Students</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall23" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall23/edit/main/faq/github.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall23/issues/new?title=Issue%20on%20page%20%2Ffaq/github.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/faq/github.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Git and GitHub</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-cant-push-to-my-repository-i-get-an-error-that-updates-were-rejected">I can’t push to my repository, I get an error that updates were rejected</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-content-i-added-to-my-portfolio-isnt-in-the-pdf">The content I added to my portfolio isn’t in the pdf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#my-command-line-says-i-cannot-use-a-password">My command line says I cannot use a password</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#my-ipynb-file-isnt-showing-in-the-staging-area-or-didnt-push">My .ipynb file isn’t showing in the staging area or didn’t push</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#my-portfolio-wont-compile">My portfolio won’t compile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#help-i-accidentally-merged-the-feedback-pull-request-before-my-assignment-was-graded">Help! I accidentally merged the Feedback Pull Request before my assignment was graded</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="git-and-github">
+<h1>Git and GitHub<a class="headerlink" href="#git-and-github" title="Permalink to this headline">#</a></h1>
+<!--
+````{toggle}
+
+````
+ -->
+<section id="i-cant-push-to-my-repository-i-get-an-error-that-updates-were-rejected">
+<h2>I can’t push to my repository, I get an error that updates were rejected<a class="headerlink" href="#i-cant-push-to-my-repository-i-get-an-error-that-updates-were-rejected" title="Permalink to this headline">#</a></h2>
+<div class="toggle docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! [rejected] main -&gt; main (fetch first)
+error: failed to push some refs to &lt;repository name&gt;
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., &#39;git pull ...&#39;) before pushing again.
+hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.
+
+</pre></div>
+</div>
+<p>Your local version and github version are out of sync, you need to pull the changes from github to your local computer before you can push new changes there.</p>
+<p>After you run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span>
+</pre></div>
+</div>
+<p>You’ll probably have to <a class="reference external" href="https://docs.github.com/en/github/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-using-the-command-line">resolve a merge conflict</a></p>
+</div>
+</section>
+<section id="the-content-i-added-to-my-portfolio-isnt-in-the-pdf">
+<h2>The content I added to my portfolio isn’t in the pdf<a class="headerlink" href="#the-content-i-added-to-my-portfolio-isnt-in-the-pdf" title="Permalink to this headline">#</a></h2>
+<div class="toggle docutils container">
+<p>There was an error in the original <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code> file, change yours to match the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="p">:</span> <span class="n">jb</span><span class="o">-</span><span class="n">book</span>
+<span class="n">root</span><span class="p">:</span> <span class="n">intro</span>
+<span class="n">parts</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">caption</span><span class="p">:</span> <span class="n">About</span>
+    <span class="n">chapters</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">file</span><span class="p">:</span> <span class="n">about</span><span class="o">/</span><span class="n">index</span>
+    <span class="o">-</span> <span class="n">file</span><span class="p">:</span> <span class="n">about</span><span class="o">/</span><span class="n">grading</span>
+<span class="c1">#  - caption: Check 1</span>
+<span class="c1">#    chapters:</span>
+<span class="c1">#    - file: submission_1_intro</span>
+</pre></div>
+</div>
+<p>uncomment the later lines and add any new files you add.</p>
+</div>
+</section>
+<section id="my-command-line-says-i-cannot-use-a-password">
+<h2>My command line says I cannot use a password<a class="headerlink" href="#my-command-line-says-i-cannot-use-a-password" title="Permalink to this headline">#</a></h2>
+<div class="toggle docutils container">
+<p>GitHub has <a class="reference external" href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/about-authentication-to-github">strong rules</a> about authentication
+You need to use SSH with a public/private key; HTTPS with a <a class="reference external" href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">Personal Access Token</a> or use the <a class="reference external" href="https://cli.github.com/">GitHub CLI</a> <a class="reference external" href="https://cli.github.com/manual/gh_auth_login">auth</a></p>
+</div>
+</section>
+<section id="my-ipynb-file-isnt-showing-in-the-staging-area-or-didnt-push">
+<h2>My .ipynb file isn’t showing in the staging area or didn’t push<a class="headerlink" href="#my-ipynb-file-isnt-showing-in-the-staging-area-or-didnt-push" title="Permalink to this headline">#</a></h2>
+<div class="toggle docutils container">
+<p>.ipynb files are json that include all of the output, including tables as html and plots as svg, so, unlike plain code files, they don’t play well with
+version control.</p>
+<p>Your portfolio has <code class="docutils literal notranslate"><span class="pre">*/*.ipynb</span></code> in the <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file, so that these files do
+not end up in your repository.  Instead, you’ll convert your notebooks to
+<a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/">Myst Markdown</a> with
+<a class="reference external" href="https://jupytext.readthedocs.io/">jupytext</a> via a
+<a class="reference external" href="https://jupytext.readthedocs.io/en/latest/using-pre-commit.html">precommit hook</a>.</p>
+<p>Your portfolio has the code to do this already, what you should do is make sure
+that <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> is installed and then run <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">install</span></code><br />
+(see your portfolio’s <a class="reference external" href="http://README.md">README.md</a> file for more detail)</p>
+<p>If this doesn’t work, you can follow the alterntive in the porfolio readme.</p>
+<p>If that doesn’t work, and you have time before the deadline, create an issue to
+get help.</p>
+<p>As a last resort, use the jupyter interface to download (File &gt; Download as &gt; …)your notebook as <code class="docutils literal notranslate"><span class="pre">.md</span></code>
+if avialable or <code class="docutils literal notranslate"><span class="pre">.py</span></code> if not and then move that file from your Downloads folder
+to your repository.  We’ll set up another workflow for future work</p>
+</div>
+</section>
+<section id="my-portfolio-wont-compile">
+<h2>My portfolio won’t compile<a class="headerlink" href="#my-portfolio-wont-compile" title="Permalink to this headline">#</a></h2>
+<div class="toggle docutils container">
+<p>If there’s an error your notebook it can’t complete running. You can allow it to run if the error is on purpose by changing settings as mentioned on the <span class="xref myst">formatting</span> page.</p>
+</div>
+</section>
+<section id="help-i-accidentally-merged-the-feedback-pull-request-before-my-assignment-was-graded">
+<span id="preemptive-merge"></span><h2>Help! I accidentally merged the Feedback Pull Request before my assignment was graded<a class="headerlink" href="#help-i-accidentally-merged-the-feedback-pull-request-before-my-assignment-was-graded" title="Permalink to this headline">#</a></h2>
+<div class="toggle docutils container">
+<p>That’s ok. You can fix it.</p>
+<p>You’ll have to work offline and use GitHub in your browser together for this fix. The following instuctions will work in terminal on Mac or Linux or in GitBash for Windows. (see <span class="xref myst">Programming Environment section on the tools page</span>).</p>
+<p>First get the url to clone your repository (unless you already have it cloned then skip ahead): on the main page for your repository, click the green “Code” button, then copy the url that’s show
+<img alt="screenshot of copying .git url" src="../_images/get_clone_url.png" /></p>
+<p>Next open a terminal or GitBash and type the following.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span>
+</pre></div>
+</div>
+<p>then past your url that you copied. It will look something like this, but the last part will be the current assignment repo and your username.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">rhodyprog4ds</span><span class="o">/</span><span class="n">portfolio</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>When you merged the Feedback pull request you advanced the <code class="docutils literal notranslate"><span class="pre">feedback</span></code> branch, so we need to hard reset it back to before you did any work. To do this, first check it out, by navigating into the folder for your repository (created when you cloned above) and then checking it out, and making sure it’s up to date with the <code class="docutils literal notranslate"><span class="pre">remote</span></code> (the copy on GitHub)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">portfolio</span><span class="o">-</span><span class="n">brownsarahm</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">feedback</span>
+<span class="n">git</span> <span class="n">pull</span>
+</pre></div>
+</div>
+<p>Now, you have to figure out what commit to revert to, so go back to GitHub in your browser, and swithc to the feedback branch there. Click on where it says <code class="docutils literal notranslate"><span class="pre">main</span></code> on the top right next to the branch icon and choose feedback from the list.</p>
+<p><img alt="screenshot of switching to the feedback branch on github" src="../_images/switch_to_feedback.png" /></p>
+<p>Now view the list of all of the commits to this branch, by clicking on the clock icon with a number of commits</p>
+<p><img alt="screenshot of clicking to view commits" src="../_images/view_commits.png" /></p>
+<p>On the commits page scroll down and find the commit titled “Setting up GitHub Classroom Feedback” and copy its hash, by clicking on the clipboard icon next to the short version.</p>
+<p><img alt="screenshot copying hash" src="../_images/copy_hash.png" /></p>
+<p>Now, back on your terminal, type the following</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span>
+</pre></div>
+</div>
+<p>then paste the commit hash you copied, it will look something like the following, but your hash will be different.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="mi">822</span><span class="n">cfe51a70d356d448bcaede5b15282838a5028</span>
+</pre></div>
+</div>
+<p>If it works, your terminal will say something like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HEAD</span> <span class="ow">is</span> <span class="n">now</span> <span class="n">at</span> <span class="mi">822</span><span class="n">cfe5</span> <span class="n">Setting</span> <span class="n">up</span> <span class="n">GitHub</span> <span class="n">Classroom</span> <span class="n">Feedback</span>
+</pre></div>
+</div>
+<p>but the number on yours will be different.</p>
+<p>Now your local copy of the <code class="docutils literal notranslate"><span class="pre">feedback</span></code> branch is reverted back as if you had not merged the pull request and what’s left to do is to push those changes to GitHub. By default, GitHub won’t let you push changes unless you have all of the changes that have been made on their side, so we have to tell Git to force GitHub to do this.</p>
+<p>Since we’re about to do something with forcing, we should first check that we’re doing the right thing.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<p>and it should show something like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">feedback</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">behind</span> <span class="s1">&#39;origin/feedback&#39;</span> <span class="n">by</span> <span class="mi">12</span> <span class="n">commits</span><span class="p">,</span> <span class="ow">and</span> <span class="n">can</span> <span class="n">be</span> <span class="n">fast</span><span class="o">-</span><span class="n">forwarded</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git pull&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">your</span> <span class="n">local</span> <span class="n">branch</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Your number of commits will probably be different but the important things to see here is that it says <code class="docutils literal notranslate"><span class="pre">On</span> <span class="pre">branch</span> <span class="pre">feedback</span></code> so that you know you’re not deleting the <code class="docutils literal notranslate"><span class="pre">main</span></code> copy of your work and <code class="docutils literal notranslate"><span class="pre">Your</span> <span class="pre">branch</span> <span class="pre">is</span> <span class="pre">behind</span> <span class="pre">origin/feedback</span></code> to know that reverting worked.</p>
+<p>Now to make GitHub match your reverted local copy.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="o">-</span><span class="n">f</span>
+</pre></div>
+</div>
+<p>and you’ll get something like this to know that it worked</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Total</span> <span class="mi">0</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">0</span><span class="p">),</span> <span class="n">reused</span> <span class="mi">0</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">To</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">rhodyprog4ds</span><span class="o">/</span><span class="n">portfolio</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">.</span><span class="n">git</span>
+ <span class="o">+</span> <span class="n">f301d90</span><span class="o">..</span><span class="mf">.822</span><span class="n">cfe5</span> <span class="n">feedback</span> <span class="o">-&gt;</span> <span class="n">feedback</span> <span class="p">(</span><span class="n">forced</span> <span class="n">update</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Again, the numbers will be different and it will be your url, not mine.</p>
+<p>Now back on GitHub, in your browser, click on the code tab. It should look something like this now. Notice that it says, “This branch is 11 commits behind main” your number will be different but it should be 1 less than the number you had when you checked <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>. This is because we reverted the changes you made to main (11 for me) and the 1 commit for merging main into feedback. Also the last commit (at the top, should say “Setting up GitHub Classroom Feedback”).</p>
+<p><img alt="screenshot of feedback branch code tab after revert" src="../_images/code_tab_post_revert.png" /></p>
+<p>Now, you need to recreate your Pull Request, click where it says pull request.</p>
+<p><img alt="screenshot of pull request link highlighted" src="../_images/pr_after_revert.png" /></p>
+<p>It will say there isn’t anything to compare, but this is because it’s trying to use <code class="docutils literal notranslate"><span class="pre">feedback</span></code> to update <code class="docutils literal notranslate"><span class="pre">main</span></code>. We want to use <code class="docutils literal notranslate"><span class="pre">main</span></code> to update <code class="docutils literal notranslate"><span class="pre">feedback</span></code> for this PR. So we have to swap them. Change base from <code class="docutils literal notranslate"><span class="pre">main</span></code> to <code class="docutils literal notranslate"><span class="pre">feedback</span></code> by clicking on it and choosing <code class="docutils literal notranslate"><span class="pre">feedback</span></code> from the list.</p>
+<p><img alt="screenshot of changing pr base to feedback" src="../_images/pr_change_base.png" /></p>
+<p>Then the change the compare <code class="docutils literal notranslate"><span class="pre">feedback</span></code> on the right to <code class="docutils literal notranslate"><span class="pre">main</span></code>. Once you do that the page will change to the “Open a Pull Request” interface.</p>
+<p><img alt="screenshot of making a pr" src="../_images/open_pr.png" /></p>
+<p>Make the title “Feedback” put a note in the body and then click the green “Create Pull Request” button.</p>
+<p>Now you’re done!</p>
+<p>If you have trouble, create an issue and tag <code class="docutils literal notranslate"><span class="pre">&#64;&#64;rhodyprog4ds/fall22instructors</span></code> for help.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./faq"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="syllabus.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Syllabus and Grading FAQ</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="debugging.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Code Errors</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-cant-push-to-my-repository-i-get-an-error-that-updates-were-rejected">I can’t push to my repository, I get an error that updates were rejected</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-content-i-added-to-my-portfolio-isnt-in-the-pdf">The content I added to my portfolio isn’t in the pdf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#my-command-line-says-i-cannot-use-a-password">My command line says I cannot use a password</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#my-ipynb-file-isnt-showing-in-the-staging-area-or-didnt-push">My .ipynb file isn’t showing in the staging area or didn’t push</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#my-portfolio-wont-compile">My portfolio won’t compile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#help-i-accidentally-merged-the-feedback-pull-request-before-my-assignment-was-graded">Help! I accidentally merged the Feedback Pull Request before my assignment was graded</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Professor Sarah M Brown
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

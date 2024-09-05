@@ -1,0 +1,2553 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6. Visualization &#8212; Programming for Data Science at URI Spring 2023</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course-admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. Tidy Data and Reshaping Datasets" href="2023-02-14.html" />
+    <link rel="prev" title="5. Exploratory Data Analysis (EDA)" href="2023-02-07.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/310_2021.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Data Science at URI Spring 2023</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   About
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/achievements.html">
+   Data Science Achievements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Course Communications
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-01-24.html">
+   1. Welcome and Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-01-26.html">
+   2. Syllabus and Python Review
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-01-31.html">
+   3. Grading review, Pandas, and Iterables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-02.html">
+   4. Pandas and Indexing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-07.html">
+   5. Exploratory Data Analysis (EDA)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   6. Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-14.html">
+   7. Tidy Data and Reshaping Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-16.html">
+   8. Reparing values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-21.html">
+   9. Merging  and Databases
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-23.html">
+   10. Web Scraping
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-28.html">
+   11. Evaluating ML Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-03-02.html">
+   12. Auditing with AIF360
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-03-07.html">
+   13. Intro to ML &amp; Naive Bayes
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/01-syllabus-install.html">
+   1. Assignment 1: Portfolio Setup, Data Science, and Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/02-python-access.html">
+   2. Assignment 2: Practicing Python and Accessing Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/03-eda.html">
+   3. Assignment 3: Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/04-prepare.html">
+   4. Assignment 4:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/05-construct.html">
+   5. Assignment 5: Constructing Datasets and Using Databases
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/06-evaluate.html">
+   6. Assignment 6: Auditing Algorithms
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Portfolio
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/index.html">
+   Portfolio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/formatting.html">
+   Formatting Tips
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/check1ideas.html">
+   Portfolio Check 1 Ideas
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/index.html">
+   FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/debugging.html">
+   Code Errors
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/python.html">
+   References on Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/datasets.html">
+   Data Sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/terminal.html">
+   Terminals and Environments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from FA2020 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">
+   Advice from FA2021 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../letters/index.html">
+   Letters to Future students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/rhodyprog4ds/BrownSpring23/main?urlpath=tree/notes/2023-02-09.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownSpring23/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownSpring23//issues/new?title=Issue%20on%20page%20%2Fnotes/2023-02-09.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownSpring23/edit/main/notes/2023-02-09.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notes/2023-02-09.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/notes/2023-02-09.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarizing-review">
+   6.1. Summarizing Review
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-in-python">
+   6.2. Plotting in Python
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anatomy-of-a-figure">
+     6.2.1. Anatomy of a figure
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-function-types-in-seaborn">
+     6.2.2. Plotting Function types in Seaborn
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more">
+     6.2.3. More
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#styling-in-seaborn">
+     6.2.4. Styling in Seaborn
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bags-by-country">
+   6.3. Bags by country
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filtering-a-dataframe">
+   6.4. Filtering a DataFrame
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variable-types-and-data-types">
+   6.5. Variable types and data types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   6.6. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#do-we-earn-level-3s-the-same-way-level-1-and-2-are-or-are-there-more-steps-required">
+     6.6.1. Do we earn  level 3’s  the same way level 1 and 2 are or are there more steps required?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-can-i-check-what-parameters-can-go-into-a-method">
+     6.6.2. How can I check what parameters can go into a method?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-do-you-know-you-can-put-kind-bar-into-the-method">
+     6.6.3. How do you know you can put kind = “bar” into the method?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#do-companies-use-things-like-sns-for-more-in-depth-graphical-plots">
+     6.6.4. Do companies use things like “sns” for more in depth/graphical plots?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#does-component-disciplines-mean-statistics-computer-science-and-domain-expertise-and-does-phases-mean-collect-clean-explore-model-and-deploy">
+     6.6.5. Does “component disciplines” mean statistics, computer science and domain expertise, and does “phases” mean collect, clean, explore, model and deploy?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Visualization</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarizing-review">
+   6.1. Summarizing Review
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-in-python">
+   6.2. Plotting in Python
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anatomy-of-a-figure">
+     6.2.1. Anatomy of a figure
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-function-types-in-seaborn">
+     6.2.2. Plotting Function types in Seaborn
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more">
+     6.2.3. More
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#styling-in-seaborn">
+     6.2.4. Styling in Seaborn
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bags-by-country">
+   6.3. Bags by country
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filtering-a-dataframe">
+   6.4. Filtering a DataFrame
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variable-types-and-data-types">
+   6.5. Variable types and data types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   6.6. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#do-we-earn-level-3s-the-same-way-level-1-and-2-are-or-are-there-more-steps-required">
+     6.6.1. Do we earn  level 3’s  the same way level 1 and 2 are or are there more steps required?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-can-i-check-what-parameters-can-go-into-a-method">
+     6.6.2. How can I check what parameters can go into a method?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-do-you-know-you-can-put-kind-bar-into-the-method">
+     6.6.3. How do you know you can put kind = “bar” into the method?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#do-companies-use-things-like-sns-for-more-in-depth-graphical-plots">
+     6.6.4. Do companies use things like “sns” for more in depth/graphical plots?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#does-component-disciplines-mean-statistics-computer-science-and-domain-expertise-and-does-phases-mean-collect-clean-explore-model-and-deploy">
+     6.6.5. Does “component disciplines” mean statistics, computer science and domain expertise, and does “phases” mean collect, clean, explore, model and deploy?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="visualization">
+<h1><span class="section-number">6. </span>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">#</a></h1>
+<p>If your plots do not show, include this in any cell. The <code class="docutils literal notranslate"><span class="pre">%</span></code> signals that this is an
+ipython <a class="reference external" href="https://ipython.readthedocs.io/en/stable/interactive/magics.html">magic</a>. This one controls <a class="reference external" href="https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-matplotlib">matplotlib</a>. Jupyter uses the <a class="reference external" href="https://ipython.readthedocs.io/en/stable/about/history.html">IPython</a> python kernel.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<p>Today’s imports</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="summarizing-review">
+<h2><span class="section-number">6.1. </span>Summarizing Review<a class="headerlink" href="#summarizing-review" title="Permalink to this headline">#</a></h2>
+<p>We will start with the same dataset we hvae been working with</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robusta_data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/robusta_data_cleaned.csv&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robusta_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">robusta_data_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Is the robust coffee’s <code class="docutils literal notranslate"><span class="pre">Mouthfeel</span></code> or the <code class="docutils literal notranslate"><span class="pre">Aftertaste</span></code> more consistently scored in this dataset?</p>
+<p>Why?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robusta_df</span><span class="p">[[</span><span class="s1">&#39;Mouthfeel&#39;</span><span class="p">,</span><span class="s1">&#39;Aftertaste&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mouthfeel</th>
+      <th>Aftertaste</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>28.000000</td>
+      <td>28.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>7.506786</td>
+      <td>7.559643</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.725152</td>
+      <td>0.342469</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>5.080000</td>
+      <td>6.500000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>7.500000</td>
+      <td>7.397500</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>7.670000</td>
+      <td>7.670000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>7.830000</td>
+      <td>7.770000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>8.250000</td>
+      <td>7.920000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>from the lower <code class="docutils literal notranslate"><span class="pre">std</span></code> we can see that Aftertaste is more consistently rated.</p>
+<p>We can also save this subset into a smaller dataframe to work with it more and plot it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rob_ma_df</span> <span class="o">=</span> <span class="n">robusta_df</span><span class="p">[[</span><span class="s1">&#39;Mouthfeel&#39;</span><span class="p">,</span><span class="s1">&#39;Aftertaste&#39;</span><span class="p">]]</span>
+<span class="n">rob_ma_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mouthfeel</th>
+      <th>Aftertaste</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8.25</td>
+      <td>7.75</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We will use <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.displot.html"><code class="docutils literal notranslate"><span class="pre">sns.displot</span></code></a> to look at how the data is distributed.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> the online documentation is <strong>immensely</strong> valuable.  Every function’s page has basic documentation and lots of examples, so you can see how they use different paramters to modify plots visually. I <strong>strongly recommend reading it often</strong>. I recommend reading <a class="reference external" href="https://seaborn.pydata.org/tutorial/introduction.html">their tutorial too</a></p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">rob_ma_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fa9c0660bb0&gt;
+</pre></div>
+</div>
+<img alt="../_images/2023-02-09_12_1.png" src="../_images/2023-02-09_12_1.png" />
+</div>
+</div>
+<p>We can change the kind, for example to a <a class="reference external" href="https://en.wikipedia.org/wiki/Kernel_density_estimation">Kernel Density Estimate</a>.
+This approximates the distribution of the data, you can think of it rougly like
+a smoothed out histogram.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">rob_ma_df</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fa9b0f59820&gt;
+</pre></div>
+</div>
+<img alt="../_images/2023-02-09_14_1.png" src="../_images/2023-02-09_14_1.png" />
+</div>
+</div>
+<p>This version makess it more visually clear that the the Aftertaste is more consistently, but it also helps us see that that might not be the whole story.  Both have a second smaller bump, so the overall std might not be the best measure.</p>
+<div class="admonition-question-from-class admonition">
+<p class="admonition-title">Question from class</p>
+<p>Why do we need two sets of brackets?</p>
+</div>
+<p>It tries to use them to index in multiple ways instead.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robusta_df</span><span class="p">[</span><span class="s1">&#39;Aftertaste&#39;</span><span class="p">,</span><span class="s1">&#39;Mouthfeel&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pandas/core/indexes/base.py:3802,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3801</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3802</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3803</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pandas/_libs/index.pyx:138,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pandas/_libs/index.pyx:165,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">File pandas/_libs/hashtable_class_helper.pxi:5745,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">File pandas/_libs/hashtable_class_helper.pxi:5753,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: (&#39;Aftertaste&#39;, &#39;Mouthfeel&#39;)
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">robusta_df</span><span class="p">[</span><span class="s1">&#39;Aftertaste&#39;</span><span class="p">,</span><span class="s1">&#39;Mouthfeel&#39;</span><span class="p">]</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pandas/core/frame.py:3807,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3805</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3806</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3807</span> <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3808</span> <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">3809</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pandas/core/indexes/base.py:3804,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3802</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3803</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3804</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+<span class="g g-Whitespace">   </span><span class="mi">3805</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3806</span>     <span class="c1"># If we have a listlike key, _check_indexing_error will raise</span>
+<span class="g g-Whitespace">   </span><span class="mi">3807</span>     <span class="c1">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
+<span class="g g-Whitespace">   </span><span class="mi">3808</span>     <span class="c1">#  the TypeError.</span>
+<span class="g g-Whitespace">   </span><span class="mi">3809</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_check_indexing_error</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: (&#39;Aftertaste&#39;, &#39;Mouthfeel&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>It tries to look for a <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/advanced.html#hierarchical-indexing-multiindex">multiindex</a>, but we do not have one so it fails.  THe second square brackets, makes it a list of names to use and  pandas looks for them sequentially.</p>
+<p>We will use a larger dataset for more interesting plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arabica_data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/arabica_data_cleaned.csv&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">arabica_data_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plotting-in-python">
+<h2><span class="section-number">6.2. </span>Plotting in Python<a class="headerlink" href="#plotting-in-python" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://matplotlib.org/">matplotlib</a>: low level plotting tools</p></li>
+<li><p><a class="reference external" href="https://seaborn.pydata.org/index.html">seaborn</a>: high level plotting with opinionated defaults</p></li>
+<li><p><a class="reference external" href="https://yhat.github.io/ggpy/">ggplot</a>: plotting based on the ggplot library in R.</p></li>
+</ul>
+<p>Pandas and seaborn use matplotlib under the hood.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-think-ahead admonition">
+<p class="admonition-title">Think Ahead</p>
+<p>Learning ggplot is a way to earn level 3 for visualize</p>
+</div>
+</div>
+<p>Seaborn and ggplot both assume the data is set up as a DataFrame.
+Getting started with seaborn is the simplest, so we’ll use that.</p>
+<p>There are lots of type of plots, we saw the basic patterns of how to use them and we’ve used a few types, but we cannot (and do not need to) go through every single type.  There are general patterns that you can use that will help you think about what type of plot you might want and help you understand them to be able to customize plots.</p>
+<p>[Seaborn’s main goal is opinionated defaults and flexible customization](<a class="reference external" href="https://seaborn.pydata.org/tutorial/introduction.html#opinionated-defaults-and-flexible-customization">https://seaborn.pydata.org/tutorial/introduction.html#opinionated-defaults-and-flexible-customization</a></p>
+<div class="section" id="anatomy-of-a-figure">
+<h3><span class="section-number">6.2.1. </span>Anatomy of a figure<a class="headerlink" href="#anatomy-of-a-figure" title="Permalink to this headline">#</a></h3>
+<p>First is the <a class="reference external" href="https://matplotlib.org">matplotlib</a> structure of a figure.  BOth pandas and seaborn and other plotting libraries use matplotlib. Matplotlib was used <a class="reference external" href="https://numfocus.org/case-studies/first-photograph-black-hole">in visualizing the first Black hole</a>.</p>
+<p><img alt="annotated graph" src="https://matplotlib.org/stable/_images/sphx_glr_anatomy_001.png" /></p>
+<p>This is a lot of information, but these are good to know things.  THe most important is the figure and the axes.</p>
+<div class="admonition-try-it-yourself admonition">
+<p class="admonition-title">Try it Yourself</p>
+<p>Make sure you can explain what is a figure and what are axes in your own words and why that distinction matters. Discuss in office hours if you are unsure.</p>
+</div>
+<p><em>that image was <a class="reference external" href="https://matplotlib.org/stable/gallery/showcase/anatomy.html#anatomy-of-a-figure">drawn with code</a></em> and that page explains more.</p>
+</div>
+<div class="section" id="plotting-function-types-in-seaborn">
+<h3><span class="section-number">6.2.2. </span>Plotting Function types in Seaborn<a class="headerlink" href="#plotting-function-types-in-seaborn" title="Permalink to this headline">#</a></h3>
+<p>Seaborn has two <em>levels</em> or groups of plotting functions. Figure and axes.  Figure level fucntions can plot with subplots.</p>
+<p><img alt="summary of plot types" src="https://seaborn.pydata.org/_images/function_overview_8_0.png" /></p>
+<p>This is from thie <span class="xref myst">overivew</span> section of the official seaborn tutorial. It also includes a comparison of
+<a class="reference external" href="https://seaborn.pydata.org/tutorial/function_overview.html#relative-merits-of-figure-level-functions">figure vs axes</a> plotting.</p>
+<p>The <a class="reference external" href="https://seaborn.pydata.org/tutorial/introduction.html">official introduction</a> is also a good read.</p>
+</div>
+<div class="section" id="more">
+<h3><span class="section-number">6.2.3. </span>More<a class="headerlink" href="#more" title="Permalink to this headline">#</a></h3>
+<p>The <a class="reference external" href="https://seaborn.pydata.org/examples/index.html">seaborn gallery</a> and <a class="reference external" href="https://matplotlib.org/2.0.2/gallery.html">matplotlib gallery</a> are nice to look at too.</p>
+</div>
+<div class="section" id="styling-in-seaborn">
+<h3><span class="section-number">6.2.4. </span>Styling in Seaborn<a class="headerlink" href="#styling-in-seaborn" title="Permalink to this headline">#</a></h3>
+<p>Seaborn also lets us set a theme for visual styling
+This by default styles the plots to be more visually appealing</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>the colorblind palette is more distinguishable under a variety fo colorblindness types. <a class="reference external" href="https://gist.github.com/mwaskom/b35f6ebc2d4b340b4f64a4e28e778486">for more</a>.
+Colorblind is a good default, but you can choose others that you like more too.</p>
+<p><a class="reference external" href="https://seaborn.pydata.org/tutorial/color_palettes.html#general-principles-for-using-color-in-plots">more on colors</a></p>
+</div>
+</div>
+<div class="section" id="bags-by-country">
+<h2><span class="section-number">6.3. </span>Bags by country<a class="headerlink" href="#bags-by-country" title="Permalink to this headline">#</a></h2>
+<p>the <code class="docutils literal notranslate"><span class="pre">catplot</span></code> lets us plot vs categorical variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">coffee_df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fa9b1b24d00&gt;
+</pre></div>
+</div>
+<img alt="../_images/2023-02-09_24_1.png" src="../_images/2023-02-09_24_1.png" />
+</div>
+</div>
+<p>This is hard to read, we could try stretching it out to make it better</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">coffee_df</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fa9e29bf880&gt;
+</pre></div>
+</div>
+<img alt="../_images/2023-02-09_26_1.png" src="../_images/2023-02-09_26_1.png" />
+</div>
+</div>
+<p>A better way might be to filter only the top countries. We’ll find those by grouping by country
+then summing each smaller dataframe that groupby creates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tot_per_country</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">)[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">tot_per_country</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country.of.Origin
+Brazil        30534
+Burundi         520
+China            55
+Colombia      41204
+Costa Rica    10354
+Name: Number.of.Bags, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can plot this now this way</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tot_per_country</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Country.of.Origin&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/2023-02-09_30_1.png" src="../_images/2023-02-09_30_1.png" />
+</div>
+</div>
+<p>What if we take out only the top 10 countries? First we have to sort it.  The default
+is to sort ascending so we use <code class="docutils literal notranslate"><span class="pre">ascending=False</span></code> to switch. pandas doesn’thave a plain <code class="docutils literal notranslate"><span class="pre">sort</span></code>
+method, we have to say if we want to sort by the values or the index.  In this Series, the
+total number per for each country are the values and the country names are the index.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tot_per_country</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country.of.Origin
+Colombia       41204
+Guatemala      36868
+Brazil         30534
+Mexico         24140
+Honduras       13167
+Ethiopia       11761
+Costa Rica     10354
+Nicaragua       6406
+El Salvador     4449
+Kenya           3971
+Name: Number.of.Bags, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can alo plot this</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tot_per_country</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Country.of.Origin&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/2023-02-09_34_1.png" src="../_images/2023-02-09_34_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="filtering-a-dataframe">
+<h2><span class="section-number">6.4. </span>Filtering a DataFrame<a class="headerlink" href="#filtering-a-dataframe" title="Permalink to this headline">#</a></h2>
+<p>Now, we’ll take just the country names out</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_countries</span> <span class="o">=</span> <span class="n">tot_per_country</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+<span class="n">top_countries</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Colombia&#39;, &#39;Guatemala&#39;, &#39;Brazil&#39;, &#39;Mexico&#39;, &#39;Honduras&#39;, &#39;Ethiopia&#39;,
+       &#39;Costa Rica&#39;, &#39;Nicaragua&#39;, &#39;El Salvador&#39;, &#39;Kenya&#39;],
+      dtype=&#39;object&#39;, name=&#39;Country.of.Origin&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>and we can use that to filter the original <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. To do this, we use <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.isin.html#pandas.Series.isin"><code class="docutils literal notranslate"><span class="pre">isin</span></code></a> to check each element in the <code class="docutils literal notranslate"><span class="pre">'Country.of.Origin'</span></code> column is in that list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_countries</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        True
+1        True
+2        True
+3        True
+4        True
+        ...  
+1306     True
+1307    False
+1308     True
+1309     True
+1310     True
+Name: Country.of.Origin, Length: 1311, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is roughly equivalent to:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">country</span> <span class="ow">in</span> <span class="n">top_countries</span> <span class="k">for</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">]</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ False,
+ True,
+ False,
+ False,
+ True,
+ False,
+ True,
+ False,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ False,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ False,
+ False,
+ True,
+ True,
+ False,
+ True,
+ True,
+ False,
+ True,
+ True,
+ False,
+ True,
+ False,
+ True,
+ False,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ False,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ False,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ False,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ False,
+ False,
+ True,
+ True,
+ False,
+ True,
+ False,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ False,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ False,
+ True,
+ False,
+ False,
+ True,
+ True,
+ False,
+ False,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ False,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ False,
+ False,
+ True,
+ False,
+ False,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ False,
+ False,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ False,
+ False,
+ False,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ False,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ False,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ False,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ False,
+ True,
+ False,
+ False,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ False,
+ True,
+ False,
+ False,
+ False,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ False,
+ False,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ False,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ False,
+ False,
+ False,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ False,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ False,
+ True,
+ False,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ False,
+ True,
+ False,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ False,
+ False,
+ False,
+ True,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ True,
+ False,
+ False,
+ True,
+ False,
+ True,
+ True,
+ True,
+ True,
+ False,
+ True,
+ True,
+ ...]
+</pre></div>
+</div>
+</div>
+</div>
+<p>except this builds a list and the pandas way makes a <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> object. The Python <a class="reference external" href="https://docs.python.org/3/reference/expressions.html#in"><code class="docutils literal notranslate"><span class="pre">in</span></code> operator</a> is really helpful to know and pandas offers us an <code class="docutils literal notranslate"><span class="pre">isin</span></code> method to get that type of pattern.</p>
+<p>In a more basic programming format this process would be two separate loops worth of work.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c_in</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># iterate over the country of each rating</span>
+<span class="k">for</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">]:</span>
+    <span class="c1"># make a false temp value</span>
+    <span class="n">cur_search</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="c1"># iterate over top countries</span>
+    <span class="k">for</span> <span class="n">tc</span> <span class="ow">in</span> <span class="n">top_countries</span><span class="p">:</span>
+        <span class="c1"># flip the value if the current top &amp; rating cofee match</span>
+        <span class="k">if</span> <span class="n">tc</span><span class="o">==</span><span class="n">country</span><span class="p">:</span>
+            <span class="n">cur_search</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="c1"># save the result of the search</span>
+    <span class="n">c_in</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur_search</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-try-it-yourself admonition">
+<p class="admonition-title">Try it yourself</p>
+<p>Run these versions and confirm for yourself that they are the same.</p>
+</div>
+<p>With that list of booleans, we can then <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/indexing.html#boolean-indexing">mask the original DataFrame</a>. This keeps only the value where the inner quantity is <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_coffee_df</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="p">[</span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_countries</span><span class="p">)]</span>
+<span class="n">top_coffee_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Species</th>
+      <th>Owner</th>
+      <th>Country.of.Origin</th>
+      <th>Farm.Name</th>
+      <th>Lot.Number</th>
+      <th>Mill</th>
+      <th>ICO.Number</th>
+      <th>Company</th>
+      <th>Altitude</th>
+      <th>...</th>
+      <th>Color</th>
+      <th>Category.Two.Defects</th>
+      <th>Expiration</th>
+      <th>Certification.Body</th>
+      <th>Certification.Address</th>
+      <th>Certification.Contact</th>
+      <th>unit_of_measurement</th>
+      <th>altitude_low_meters</th>
+      <th>altitude_high_meters</th>
+      <th>altitude_mean_meters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Arabica</td>
+      <td>metad plc</td>
+      <td>Ethiopia</td>
+      <td>metad plc</td>
+      <td>NaN</td>
+      <td>metad plc</td>
+      <td>2014/2015</td>
+      <td>metad agricultural developmet plc</td>
+      <td>1950-2200</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>0</td>
+      <td>April 3rd, 2016</td>
+      <td>METAD Agricultural Development plc</td>
+      <td>309fcf77415a3661ae83e027f7e5f05dad786e44</td>
+      <td>19fef5a731de2db57d16da10287413f5f99bc2dd</td>
+      <td>m</td>
+      <td>1950.0</td>
+      <td>2200.0</td>
+      <td>2075.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1 rows × 44 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_coffee_df</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((952, 44), (1311, 44))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">top_coffee_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Aftertaste&#39;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span><span class="n">col_wrap</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fa9e29f6f40&gt;
+</pre></div>
+</div>
+<img alt="../_images/2023-02-09_46_1.png" src="../_images/2023-02-09_46_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="variable-types-and-data-types">
+<h2><span class="section-number">6.5. </span>Variable types and data types<a class="headerlink" href="#variable-types-and-data-types" title="Permalink to this headline">#</a></h2>
+<p>Related but not the same.</p>
+<hr class="docutils" />
+<p>Data types are literal, related to the representation in the computer.</p>
+<p>ther can be <code class="docutils literal notranslate"><span class="pre">int16,</span> <span class="pre">int32,</span> <span class="pre">int64</span></code></p>
+<hr class="docutils" />
+<p>We can also have mathematical types of numbers</p>
+<ul class="simple">
+<li><p>Integers can be positive, 0, or negative.</p></li>
+<li><p>Reals are continuous, infinite possibilities.</p></li>
+</ul>
+<hr class="docutils" />
+<p>Variable types are about the meaning in a conceptual sense.</p>
+<ul class="simple">
+<li><p><strong>categorical</strong> (can take a discrete number of values, could be used to group data,
+could be a string or integer; unordered)</p></li>
+<li><p><strong>continuous</strong> (can take on any possible value, always a number)</p></li>
+<li><p><strong>binary</strong> (like data type boolean, but could be represented as yes/no, true/false,
+or 1/0, could be categorical also, but often makes sense to calculate rates)</p></li>
+<li><p><strong>ordinal</strong> (ordered, but appropriately categorical)</p></li>
+</ul>
+<p>we’ll focus on the first two most of the time. Some values that are technically
+only integers range high enough that we treat them more like continuous most of
+the time.</p>
+</div>
+<div class="section" id="questions-after-class">
+<h2><span class="section-number">6.6. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<div class="section" id="do-we-earn-level-3s-the-same-way-level-1-and-2-are-or-are-there-more-steps-required">
+<h3><span class="section-number">6.6.1. </span>Do we earn  level 3’s  the same way level 1 and 2 are or are there more steps required?<a class="headerlink" href="#do-we-earn-level-3s-the-same-way-level-1-and-2-are-or-are-there-more-steps-required" title="Permalink to this headline">#</a></h3>
+<p>You earn level 3s from your portfio.  The portfolio makes more sense after you have completed assignment 3, so we will follow up on it next week after you all get a3 feedback.</p>
+</div>
+<div class="section" id="how-can-i-check-what-parameters-can-go-into-a-method">
+<h3><span class="section-number">6.6.2. </span>How can I check what parameters can go into a method?<a class="headerlink" href="#how-can-i-check-what-parameters-can-go-into-a-method" title="Permalink to this headline">#</a></h3>
+<p>You can use the documentation online, or in jupyter, you can get help from the docstring.  I usually use shift+tab to read the docstring but you can also use the <code class="docutils literal notranslate"><span class="pre">help()</span></code> function or the <code class="docutils literal notranslate"><span class="pre">?</span></code> in jupyter.</p>
+</div>
+<div class="section" id="how-do-you-know-you-can-put-kind-bar-into-the-method">
+<h3><span class="section-number">6.6.3. </span>How do you know you can put kind = “bar” into the method?<a class="headerlink" href="#how-do-you-know-you-can-put-kind-bar-into-the-method" title="Permalink to this headline">#</a></h3>
+<p>I happen to reembmer this now, but to know what values you can read the docstring as above.</p>
+</div>
+<div class="section" id="do-companies-use-things-like-sns-for-more-in-depth-graphical-plots">
+<h3><span class="section-number">6.6.4. </span>Do companies use things like “sns” for more in depth/graphical plots?<a class="headerlink" href="#do-companies-use-things-like-sns-for-more-in-depth-graphical-plots" title="Permalink to this headline">#</a></h3>
+<p>It depends on your role within the company.  If you are a data scientist in a more reasearch role you might use seaborn more, but if you build customer facing visualizations, you might use something else.</p>
+<p>For more interactive visualization, you could use <a class="reference external" href="https://plotly.com/python/">plotly</a> or <a class="reference external" href="https://docs.bokeh.org/en/latest/">bokeh</a> that generate more javascript for you. <a class="reference external" href="https://plotly.com/">Plotly</a> as a company now also has a product called <a class="reference external" href="https://dash.plotly.com/">dash</a> for building data dashboard apps.</p>
+</div>
+<div class="section" id="does-component-disciplines-mean-statistics-computer-science-and-domain-expertise-and-does-phases-mean-collect-clean-explore-model-and-deploy">
+<h3><span class="section-number">6.6.5. </span>Does “component disciplines” mean statistics, computer science and domain expertise, and does “phases” mean collect, clean, explore, model and deploy?<a class="headerlink" href="#does-component-disciplines-mean-statistics-computer-science-and-domain-expertise-and-does-phases-mean-collect-clean-explore-model-and-deploy" title="Permalink to this headline">#</a></h3>
+<p>Yes.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>I updated the assignment text to clarify in response to some questions</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2023-02-07.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Exploratory Data Analysis (EDA)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="2023-02-14.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Tidy Data and Reshaping Datasets</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Professor Sarah M Brown<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

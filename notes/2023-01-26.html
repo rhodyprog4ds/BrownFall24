@@ -1,0 +1,1076 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2. Syllabus and Python Review &#8212; Programming for Data Science at URI Spring 2023</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course-admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Grading review, Pandas, and Iterables" href="2023-01-31.html" />
+    <link rel="prev" title="1. Welcome and Introduction" href="2023-01-24.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/310_2021.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Data Science at URI Spring 2023</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   About
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/achievements.html">
+   Data Science Achievements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Course Communications
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-01-24.html">
+   1. Welcome and Introduction
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. Syllabus and Python Review
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-01-31.html">
+   3. Grading review, Pandas, and Iterables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-02.html">
+   4. Pandas and Indexing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-07.html">
+   5. Exploratory Data Analysis (EDA)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-09.html">
+   6. Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-14.html">
+   7. Tidy Data and Reshaping Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-16.html">
+   8. Reparing values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-21.html">
+   9. Merging  and Databases
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-23.html">
+   10. Web Scraping
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-28.html">
+   11. Evaluating ML Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-03-02.html">
+   12. Auditing with AIF360
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-03-07.html">
+   13. Intro to ML &amp; Naive Bayes
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/01-syllabus-install.html">
+   1. Assignment 1: Portfolio Setup, Data Science, and Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/02-python-access.html">
+   2. Assignment 2: Practicing Python and Accessing Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/03-eda.html">
+   3. Assignment 3: Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/04-prepare.html">
+   4. Assignment 4:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/05-construct.html">
+   5. Assignment 5: Constructing Datasets and Using Databases
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/06-evaluate.html">
+   6. Assignment 6: Auditing Algorithms
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Portfolio
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/index.html">
+   Portfolio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/formatting.html">
+   Formatting Tips
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/check1ideas.html">
+   Portfolio Check 1 Ideas
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/index.html">
+   FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/debugging.html">
+   Code Errors
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/python.html">
+   References on Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/datasets.html">
+   Data Sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/terminal.html">
+   Terminals and Environments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from FA2020 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">
+   Advice from FA2021 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../letters/index.html">
+   Letters to Future students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/rhodyprog4ds/BrownSpring23/main?urlpath=tree/notes/2023-01-26.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownSpring23/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownSpring23//issues/new?title=Issue%20on%20page%20%2Fnotes/2023-01-26.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownSpring23/edit/main/notes/2023-01-26.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notes/2023-01-26.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/notes/2023-01-26.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#course-logistics">
+   2.1. Course Logistics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#check-your-understanding-of-the-syllabus">
+   2.2. Check your understanding of the syllabus
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-review">
+   2.3. Python Review
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     2.3.1. Functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditionals">
+     2.3.2. Conditionals
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   2.4. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-is-indentation-important-in-python-but-not-other-languages-like-c">
+     2.4.1. Why is indentation important in python but not other languages like C++?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-is-python-so-much-slower-as-well">
+     2.4.2. Why is python so much slower as well?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-portfolios-simply-whatever-we-submit-such-as-assignments-to-github-or-are-there-other-things-that-need-to-be-submitted-to-the-portfolios-for-level-3">
+     2.4.3. Are portfolios simply whatever we submit, such as assignments, to Github or are there other things that need to be submitted to the portfolios for level 3?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#will-we-know-the-specific-criteria-to-fulfill-a-level-3-achievement-when-doing-the-portfolio">
+     2.4.4. Will we know the specific criteria to fulfill a level 3 achievement when doing the portfolio?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-is-the-assignment-1-due">
+     2.4.5. when is the Assignment 1 due?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-many-large-scale-programs-are-we-going-to-write-in-jupyter">
+     2.4.6. how many large scale programs are we going to write in jupyter?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Syllabus and Python Review</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#course-logistics">
+   2.1. Course Logistics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#check-your-understanding-of-the-syllabus">
+   2.2. Check your understanding of the syllabus
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-review">
+   2.3. Python Review
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     2.3.1. Functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditionals">
+     2.3.2. Conditionals
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   2.4. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-is-indentation-important-in-python-but-not-other-languages-like-c">
+     2.4.1. Why is indentation important in python but not other languages like C++?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-is-python-so-much-slower-as-well">
+     2.4.2. Why is python so much slower as well?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-portfolios-simply-whatever-we-submit-such-as-assignments-to-github-or-are-there-other-things-that-need-to-be-submitted-to-the-portfolios-for-level-3">
+     2.4.3. Are portfolios simply whatever we submit, such as assignments, to Github or are there other things that need to be submitted to the portfolios for level 3?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#will-we-know-the-specific-criteria-to-fulfill-a-level-3-achievement-when-doing-the-portfolio">
+     2.4.4. Will we know the specific criteria to fulfill a level 3 achievement when doing the portfolio?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-is-the-assignment-1-due">
+     2.4.5. when is the Assignment 1 due?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-many-large-scale-programs-are-we-going-to-write-in-jupyter">
+     2.4.6. how many large scale programs are we going to write in jupyter?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="syllabus-and-python-review">
+<h1><span class="section-number">2. </span>Syllabus and Python Review<a class="headerlink" href="#syllabus-and-python-review" title="Permalink to this headline">#</a></h1>
+<div class="section" id="course-logistics">
+<h2><span class="section-number">2.1. </span>Course Logistics<a class="headerlink" href="#course-logistics" title="Permalink to this headline">#</a></h2>
+<p>Class is designed to avoid this:</p>
+<p><img alt="gif of man throwing computer monitor" src="https://i.gifer.com/5SNC.gif" /></p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">we think about debugging as a technical skill (and it absolutely is!!) but a huge amount of it is managing your feelings so you don&#39;t get discouraged and being self-aware so you can recognize your incorrect assumptions</p>&mdash; 🔎Julia Evans🔍 (@b0rk) <a href="https://twitter.com/b0rk/status/1403405539971842052?ref_src=twsrc%5Etfw">June 11, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Read more about how I’m designing this course to help you learn on the
+<a class="reference internal" href="../resources/learning.html"><span class="doc std std-doc">how to learn</span></a> page.</p>
+</div>
+<div class="section" id="check-your-understanding-of-the-syllabus">
+<h2><span class="section-number">2.2. </span>Check your understanding of the syllabus<a class="headerlink" href="#check-your-understanding-of-the-syllabus" title="Permalink to this headline">#</a></h2>
+<p>It’s easy when reading something long to lose track of it. Your eyes can go over each word, without actually retaining the information, but it’s important to understand the syllabus for the course.</p>
+<p>You can find the answers to the following questions on the syllabus. If you’ve already read it, try answering them to check your understanding. If you haven’t read it yet, use these to guide you to get familiar with finding key facts about the course on the syllabus.</p>
+<ol class="simple">
+<li><p>What do you need to bring to class each day?</p></li>
+<li><p>What is the basis of grading for this course?</p></li>
+<li><p>How do you reference the course text?</p></li>
+<li><p>What is the penalty for missing an assignment?</p></li>
+</ol>
+<p>More information about the course is available throughout the site, the next few questions will help you self-check that you’ve found the important things.  Remember, the goal is not necessarily to memorize all of this, but to be able to find it.</p>
+<ol class="simple">
+<li><p>When &amp; what are you expected to read for this class?</p></li>
+</ol>
+<ul class="simple">
+<li><p>[ ] read the text book before class</p></li>
+<li><p>[ ] review notes &amp; documentation after class</p></li>
+<li><p>[ ] preview the notes  &amp; documentation before class</p></li>
+<li><p>[ ] read documentation and text book after class</p></li>
+</ul>
+<ol class="simple">
+<li><p>Your assignment says to find a dataset that has variables of a specific type, which website can you use?</p></li>
+<li><p>Your assignment says to find a dataset of any type about something you’re interested in, which resource would you use?</p></li>
+</ol>
+</div>
+<div class="section" id="python-review">
+<h2><span class="section-number">2.3. </span>Python Review<a class="headerlink" href="#python-review" title="Permalink to this headline">#</a></h2>
+<p>Official source on python:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://peps.python.org/pep-0008/">pep8 official style</a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/">documentation</a> note that you can change which version you are using</p></li>
+</ul>
+<p>We will go quickly through these focusing on pythonic style, because the prerequisite is a programming course.</p>
+<div class="section" id="functions">
+<h3><span class="section-number">2.3.1. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h3>
+<p>Syntax of a function in python:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    say hi to a person</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name : string</span>
+<span class="sd">        the name of who to greet</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="s2">&quot;hi &quot;</span><span class="o">+</span> <span class="n">name</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A few things to note:</p>
+<ul class="simple">
+<li><p>the <code class="docutils literal notranslate"><span class="pre">def</span></code> keywords starts a function</p></li>
+<li><p>then the name of the function</p></li>
+<li><p>parameters in <code class="docutils literal notranslate"><span class="pre">()</span></code> then <code class="docutils literal notranslate"><span class="pre">:</span></code></p></li>
+<li><p>the body is indented</p></li>
+<li><p>the first thing in the body should be a docstring, denoted in <code class="docutils literal notranslate"><span class="pre">'''</span></code> which is a multiline comment</p></li>
+<li><p>returning is more reliable than printing in a function</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In python, <a class="reference external" href="https://peps.python.org/pep-0257/">PEP 257</a> says how to write a docstring, but it is very broad.</p>
+<p>In Data Science, <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">numpydoc</a> style docstrings are popular.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pandas.pydata.org/">Pandas</a> <a class="reference external" href="https://pandas.pydata.org/docs/development/contributing_docstring.html">follows numpydoc</a></p></li>
+<li><p>[Numpy uses it]</p></li>
+<li><p><a class="reference external" href="https://scipy.org/">Scipy</a> <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard">follows numpydoc</a></p></li>
+</ul>
+</div>
+<p>Once the cell with the function definition is run, we can use the function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">greeting</span><span class="p">(</span><span class="s1">&#39;sarah&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;hi sarah&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>With a return this works to check that it does the right thing</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s1">&#39;sarah&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;hi sarah&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="conditionals">
+<h3><span class="section-number">2.3.2. </span>Conditionals<a class="headerlink" href="#conditionals" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greeting2</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">formal</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    say hi to a person</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name : string</span>
+<span class="sd">        the name of who to greet</span>
+<span class="sd">    formal : bool</span>
+<span class="sd">        if the greeting should be formal (hello) or not (hi)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">formal</span><span class="p">:</span> 
+        <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;hello &#39;</span> <span class="o">+</span> <span class="n">name</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;hi &quot;</span><span class="o">+</span> <span class="n">name</span>
+    <span class="k">return</span>  <span class="n">message</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>key points in this function:</p>
+<ul class="simple">
+<li><p>an <code class="docutils literal notranslate"><span class="pre">if</span></code> also has the conditional part indented</p></li>
+<li><p>for a <code class="docutils literal notranslate"><span class="pre">bool</span></code> variable we can just use the variable</p></li>
+<li><p>we can set a default value</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">greeting2</span><span class="p">(</span><span class="s1">&#39;sarah&#39;</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;hello sarah&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">greeting2</span><span class="p">(</span><span class="s1">&#39;sarah&#39;</span><span class="p">,</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;hi sarah&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>because of the default value we do not have to pass the second variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">greeting2</span><span class="p">(</span><span class="s1">&#39;sarah&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;hi sarah&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function greeting in module __main__:
+
+greeting(name)
+    say hi to a person
+    
+    Parameters
+    ----------
+    name : string
+        the name of who to greet
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="questions-after-class">
+<h2><span class="section-number">2.4. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<div class="section" id="why-is-indentation-important-in-python-but-not-other-languages-like-c">
+<h3><span class="section-number">2.4.1. </span>Why is indentation important in python but not other languages like C++?<a class="headerlink" href="#why-is-indentation-important-in-python-but-not-other-languages-like-c" title="Permalink to this headline">#</a></h3>
+<p>Python is a newer language than C and C++.  Older languages had to contend with the fact that a space character uses the same amount of memory as any other character, so they were not used.  However, whitespace is easy to read.</p>
+<p>Python was started in <a class="reference external" href="https://docs.python.org/3/faq/general.html#why-was-python-created-in-the-first-place">1989</a>, compared to C in <a class="reference external" href="https://ieeexplore.ieee.org/document/6499601">1972</a>, C++ was started in 1985ish, but stuck with a lot of things from C, so tht 1972 is strongly operative.</p>
+<p>Python is designed to be easy. It is designed to make complex tasks easier to do.  C is designed to be efficient and to compeile well, even if it is hard to learn and do.</p>
+</div>
+<div class="section" id="why-is-python-so-much-slower-as-well">
+<h3><span class="section-number">2.4.2. </span>Why is python so much slower as well?<a class="headerlink" href="#why-is-python-so-much-slower-as-well" title="Permalink to this headline">#</a></h3>
+<p>Python is slower because it is an interpreted language. That means another program called the Python interpreter (which mostly are written in C) is actually running on your computer, that program parses the text of your source code and then executes the code. The interpreter cannot look ahead and change things in how you wrote your code while it runs.</p>
+<p>In contrast, C++ (like C) is a compiled language.  This means that a program called a compiler parses your code and translates it into assembly then to machine code. During this process it can optimize your code to make sure that it is fast.</p>
+</div>
+<div class="section" id="are-portfolios-simply-whatever-we-submit-such-as-assignments-to-github-or-are-there-other-things-that-need-to-be-submitted-to-the-portfolios-for-level-3">
+<h3><span class="section-number">2.4.3. </span>Are portfolios simply whatever we submit, such as assignments, to Github or are there other things that need to be submitted to the portfolios for level 3?<a class="headerlink" href="#are-portfolios-simply-whatever-we-submit-such-as-assignments-to-github-or-are-there-other-things-that-need-to-be-submitted-to-the-portfolios-for-level-3" title="Permalink to this headline">#</a></h3>
+<p>Assignments are separate from the portfolio checks.  It will become more clear what to do in your portfolio after you get feedback on assignment 2, and start working on assignment 3.</p>
+</div>
+<div class="section" id="will-we-know-the-specific-criteria-to-fulfill-a-level-3-achievement-when-doing-the-portfolio">
+<h3><span class="section-number">2.4.4. </span>Will we know the specific criteria to fulfill a level 3 achievement when doing the portfolio?<a class="headerlink" href="#will-we-know-the-specific-criteria-to-fulfill-a-level-3-achievement-when-doing-the-portfolio" title="Permalink to this headline">#</a></h3>
+<p>The evaluation criteria are already listed on the <a class="reference internal" href="../syllabus/achievements.html#checklists"><span class="std std-ref">Detailed Checklists</span></a>.</p>
+</div>
+<div class="section" id="when-is-the-assignment-1-due">
+<h3><span class="section-number">2.4.5. </span>when is the Assignment 1 due?<a class="headerlink" href="#when-is-the-assignment-1-due" title="Permalink to this headline">#</a></h3>
+<p>Monday, end of day. See the details: <a class="reference internal" href="../assignments/01-syllabus-install.html"><span class="doc std std-doc">Assignment 1: Portfolio Setup, Data Science, and Python</span></a></p>
+</div>
+<div class="section" id="how-many-large-scale-programs-are-we-going-to-write-in-jupyter">
+<h3><span class="section-number">2.4.6. </span>how many large scale programs are we going to write in jupyter?<a class="headerlink" href="#how-many-large-scale-programs-are-we-going-to-write-in-jupyter" title="Permalink to this headline">#</a></h3>
+<p>We won’t actually write large scale programs, per se, but we will write some long analyses.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2023-01-24.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>Welcome and Introduction</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="2023-01-31.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Grading review, Pandas, and Iterables</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Professor Sarah M Brown<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

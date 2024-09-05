@@ -1,0 +1,1028 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>python-level1 &#8212; Programming for Data Science at URI Fall 2023</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course-admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'syllabus/achmd';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/310_2021.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/310_2021.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="achievements.html">Data Science Achievements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grading.html">Grading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="policies.html">Grading Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="style.html">Course  Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uri_resources.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uri_statements.html">General URI Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication.html">Communications &amp; Office Hours</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notes/2024-09-05.html">1. First class</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../assignments/01-setup.html">1. Assignment 1: Setup, Syllabus, and Review</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/index.html">Portfolio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/formatting.html">Formatting Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/check1ideas.html">Portfolio Check 1 Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/check2ideas.html">Check 2 Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/check3ideas.html">Check 3 Ideas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/syllabus.html">Syllabus and Grading FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/github.html">Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/debugging.html">Code Errors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/python.html">References on Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/datasets.html">Data Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/tips.html">General Tips and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/learning.html">How to Study in this class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/gettinghelp.html">Getting Help with Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/terminal.html">Terminals and Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/organization.html">Getting Organized for class</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">Advice from FA2020 Students</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">Advice from FA2021 Students</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall23" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall23/edit/main/syllabus/achmd.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall23/issues/new?title=Issue%20on%20page%20%2Fsyllabus/achmd.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/syllabus/achmd.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>python-level1</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>python-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python-level2"><strong>python-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python-level3"><strong>python-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#process-level1"><strong>process-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#process-level2"><strong>process-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#process-level3"><strong>process-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#access-level1"><strong>access-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#access-level2"><strong>access-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#access-level3"><strong>access-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-level1"><strong>construct-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-level2"><strong>construct-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-level3"><strong>construct-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summarize-level1"><strong>summarize-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summarize-level2"><strong>summarize-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summarize-level3"><strong>summarize-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-level1"><strong>visualize-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-level2"><strong>visualize-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-level3"><strong>visualize-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-level1"><strong>prepare-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-level2"><strong>prepare-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-level3"><strong>prepare-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-level1"><strong>evaluate-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-level2"><strong>evaluate-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-level3"><strong>evaluate-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-level1"><strong>classification-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-level2"><strong>classification-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-level3"><strong>classification-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-level1"><strong>regression-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-level2"><strong>regression-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-level3"><strong>regression-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-level1"><strong>clustering-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-level2"><strong>clustering-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-level3"><strong>clustering-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#optimize-level1"><strong>optimize-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#optimize-level2"><strong>optimize-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#optimize-level3"><strong>optimize-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-level1"><strong>compare-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-level2"><strong>compare-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-level3"><strong>compare-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#representation-level1"><strong>representation-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#representation-level2"><strong>representation-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#representation-level3"><strong>representation-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-level1"><strong>workflow-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-level2"><strong>workflow-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-level3"><strong>workflow-level3</strong></a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="python-level1">
+<h1><strong>python-level1</strong><a class="headerlink" href="#python-level1" title="Permalink to this headline">#</a></h1>
+<p><em>python code that mostly runs, occasional pep8 adherance</em></p>
+<ul class="simple">
+<li><p>[ ] use of control structures</p></li>
+<li><p>[ ] callable functions</p></li>
+<li><p>[ ] correct calls to functions</p></li>
+<li><p>[ ] correct use of variables</p></li>
+<li><p>[ ] use of logical operators</p></li>
+</ul>
+</section>
+<section id="python-level2">
+<h1><strong>python-level2</strong><a class="headerlink" href="#python-level2" title="Permalink to this headline">#</a></h1>
+<p><em>python code that reliably runs, frequent pep8 adherance</em></p>
+<ul class="simple">
+<li><p>[ ] descriptive variable names</p></li>
+<li><p>[ ] pythonic loops</p></li>
+<li><p>[ ] effective use of return vs side effects in functions</p></li>
+<li><p>[ ] correct, effective use of builtin python iterable types (lists &amp; dictionaries)</p></li>
+</ul>
+</section>
+<section id="python-level3">
+<h1><strong>python-level3</strong><a class="headerlink" href="#python-level3" title="Permalink to this headline">#</a></h1>
+<p><em>reliable, efficient, pythonic code that consistently adheres to pep8</em></p>
+<ul class="simple">
+<li><p>[ ] pep8 adherant variable, file, class, and function names</p></li>
+<li><p>[ ] effective use of multi-paradigm abilities for efficiency gains</p></li>
+<li><p>[ ] easy to read code that adheres to readability over other rules</p></li>
+</ul>
+</section>
+<section id="process-level1">
+<h1><strong>process-level1</strong><a class="headerlink" href="#process-level1" title="Permalink to this headline">#</a></h1>
+<p><em>Identify basic components of data science</em></p>
+<ul class="simple">
+<li><p>[ ] identify component disciplines</p></li>
+<li><p>[ ] idenitfy phases</p></li>
+</ul>
+</section>
+<section id="process-level2">
+<h1><strong>process-level2</strong><a class="headerlink" href="#process-level2" title="Permalink to this headline">#</a></h1>
+<p><em>Describe and define each stage of the data science process</em></p>
+<ul class="simple">
+<li><p>[ ] correctly defines stages</p></li>
+<li><p>[ ] identifies stages in use</p></li>
+<li><p>[ ] describes general goals as well as a specific processes</p></li>
+</ul>
+</section>
+<section id="process-level3">
+<h1><strong>process-level3</strong><a class="headerlink" href="#process-level3" title="Permalink to this headline">#</a></h1>
+<p><em>Compare different ways that data science can facilitate decision making</em></p>
+<ul class="simple">
+<li><p>[ ] describes exceptions to process and iteration in process</p></li>
+<li><p>[ ] connects choices at one phase to impacts in other phases</p></li>
+<li><p>[ ] connects data science steps to real world decisions</p></li>
+</ul>
+</section>
+<section id="access-level1">
+<h1><strong>access-level1</strong><a class="headerlink" href="#access-level1" title="Permalink to this headline">#</a></h1>
+<p><em>load data from at least one format; identify the most common data formats</em></p>
+<ul class="simple">
+<li><p>[ ] use at least one pandas <code class="docutils literal notranslate"><span class="pre">read_</span></code> function correctly</p></li>
+<li><p>[ ] name common types</p></li>
+<li><p>[ ] describe the structure of common types</p></li>
+</ul>
+</section>
+<section id="access-level2">
+<h1><strong>access-level2</strong><a class="headerlink" href="#access-level2" title="Permalink to this headline">#</a></h1>
+<p><em>Load data for processing from the most common formats; Compare and constrast most common formats</em></p>
+<ul class="simple">
+<li><p>[ ] load data from at least two of (.csv, .tsv, .dat, database, .json)</p></li>
+<li><p>[ ] describe advantages and disadvantages of most commone types</p></li>
+<li><p>[ ] descive how most common types are different</p></li>
+</ul>
+</section>
+<section id="access-level3">
+<h1><strong>access-level3</strong><a class="headerlink" href="#access-level3" title="Permalink to this headline">#</a></h1>
+<p><em>access data from both common and uncommon formats and identify best practices for formats in different contexts</em></p>
+<ul class="simple">
+<li><p>[ ] load data from at least 1 uncommon format</p></li>
+<li><p>[ ] describe when one format is better than another</p></li>
+</ul>
+</section>
+<section id="construct-level1">
+<h1><strong>construct-level1</strong><a class="headerlink" href="#construct-level1" title="Permalink to this headline">#</a></h1>
+<p><em>identify what should happen to merge datasets or when they can be merged</em></p>
+<ul class="simple">
+<li><p>[ ] identify what the structure of a merged dataset should be (size, shape, columns)</p></li>
+<li><p>[ ] idenitfy when datasets can or cannot be merged</p></li>
+</ul>
+</section>
+<section id="construct-level2">
+<h1><strong>construct-level2</strong><a class="headerlink" href="#construct-level2" title="Permalink to this headline">#</a></h1>
+<p><em>apply basic merges</em></p>
+<ul class="simple">
+<li><p>[ ] use 3 different types of merges</p></li>
+<li><p>[ ] choose the right type of merge for realistic scenarios</p></li>
+</ul>
+</section>
+<section id="construct-level3">
+<h1><strong>construct-level3</strong><a class="headerlink" href="#construct-level3" title="Permalink to this headline">#</a></h1>
+<p><em>merge data that is not automatically aligned</em></p>
+<ul class="simple">
+<li><p>[ ] manipulate data to make it mergable</p></li>
+<li><p>[ ] identify how to combine data from many sources to answer a question</p></li>
+<li><p>[ ] implement stesp to combine data from multiple sources</p></li>
+</ul>
+</section>
+<section id="summarize-level1">
+<h1><strong>summarize-level1</strong><a class="headerlink" href="#summarize-level1" title="Permalink to this headline">#</a></h1>
+<p><em>Describe the shape and structure of a dataset in basic terms</em></p>
+<ul class="simple">
+<li><p>[ ] use attributes to produce a description of a dataset</p></li>
+<li><p>[ ] display parts of a dataset</p></li>
+</ul>
+</section>
+<section id="summarize-level2">
+<h1><strong>summarize-level2</strong><a class="headerlink" href="#summarize-level2" title="Permalink to this headline">#</a></h1>
+<p><em>compute and interpret summary standard statistics of a whole dataset and grouped data</em></p>
+<ul class="simple">
+<li><p>[ ] compute descriptive statistics on whole datasets</p></li>
+<li><p>[ ] apply individual statistics to datasets</p></li>
+<li><p>[ ] group data by a categorical variable for analysis</p></li>
+<li><p>[ ] apply split-apply-combine paradigm to analyze data</p></li>
+<li><p>[ ] interprete statistics on whole datasets</p></li>
+<li><p>[ ] interpret statistics on subsets of data</p></li>
+</ul>
+</section>
+<section id="summarize-level3">
+<h1><strong>summarize-level3</strong><a class="headerlink" href="#summarize-level3" title="Permalink to this headline">#</a></h1>
+<p><em>Compute and interpret various summary statistics of subsets of data</em></p>
+<ul class="simple">
+<li><p>[ ] produce custom aggregation tables to summarize datasets</p></li>
+<li><p>[ ] compute multivariate summary statistics by grouping</p></li>
+<li><p>[ ] compute custom cacluations on datasets</p></li>
+</ul>
+</section>
+<section id="visualize-level1">
+<h1><strong>visualize-level1</strong><a class="headerlink" href="#visualize-level1" title="Permalink to this headline">#</a></h1>
+<p><em>identify plot types, generate basic plots from pandas</em></p>
+<ul class="simple">
+<li><p>[ ] generate at least two types of plots with pandas</p></li>
+<li><p>[ ] identify plot types by name</p></li>
+<li><p>[ ] interpret basic information from plots</p></li>
+</ul>
+</section>
+<section id="visualize-level2">
+<h1><strong>visualize-level2</strong><a class="headerlink" href="#visualize-level2" title="Permalink to this headline">#</a></h1>
+<p><em>generate multiple plot types with complete labeling with pandas and seaborn</em></p>
+<ul class="simple">
+<li><p>[ ] generate at least 3 types of plots</p></li>
+<li><p>[ ] use correct, complete, legible labeling on plots</p></li>
+<li><p>[ ] plot using both pandas and seaborn</p></li>
+<li><p>[ ] interpret multiple types of plots to draw conclusions</p></li>
+</ul>
+</section>
+<section id="visualize-level3">
+<h1><strong>visualize-level3</strong><a class="headerlink" href="#visualize-level3" title="Permalink to this headline">#</a></h1>
+<p><em>generate complex plots with pandas and plotting libraries and customize with matplotlib or additional parameters</em></p>
+<ul class="simple">
+<li><p>[ ] use at least two libraries to plot</p></li>
+<li><p>[ ] generate figures with subplots</p></li>
+<li><p>[ ] customize the display of a plot to be publication ready</p></li>
+<li><p>[ ] interpret plot types and explain them for novices</p></li>
+<li><p>[ ] choose appopriate plot types to convey information</p></li>
+<li><p>[ ] explain why plotting common best practices are effective</p></li>
+</ul>
+</section>
+<section id="prepare-level1">
+<h1><strong>prepare-level1</strong><a class="headerlink" href="#prepare-level1" title="Permalink to this headline">#</a></h1>
+<p><em>identify if data is or is not ready for analysis, potential problems with data</em></p>
+<ul class="simple">
+<li><p>[ ] identify problems in a dataset</p></li>
+<li><p>[ ] anticipate how potential data setups will interfere with analysis</p></li>
+<li><p>[ ] describe the structure of tidy data</p></li>
+<li><p>[ ] label data as tidy or not</p></li>
+</ul>
+</section>
+<section id="prepare-level2">
+<h1><strong>prepare-level2</strong><a class="headerlink" href="#prepare-level2" title="Permalink to this headline">#</a></h1>
+<p><em>apply data reshaping, cleaning, and filtering as directed</em></p>
+<ul class="simple">
+<li><p>[ ] reshape data to be analyzable as directed</p></li>
+<li><p>[ ] filter data as directed</p></li>
+<li><p>[ ] rename columns as directed</p></li>
+<li><p>[ ] rename values to make data more analyzable</p></li>
+<li><p>[ ] handle missing values in at least two ways</p></li>
+<li><p>[ ] transform data to tidy format</p></li>
+</ul>
+</section>
+<section id="prepare-level3">
+<h1><strong>prepare-level3</strong><a class="headerlink" href="#prepare-level3" title="Permalink to this headline">#</a></h1>
+<p><em>apply data reshaping, cleaning, and filtering manipulations reliably and correctly by assessing data as received</em></p>
+<ul class="simple">
+<li><p>[ ] identify issues in a dataset and correctly implement solutions</p></li>
+<li><p>[ ] convert varialbe representation by changing types</p></li>
+<li><p>[ ] change variable representation using one hot encoding</p></li>
+</ul>
+</section>
+<section id="evaluate-level1">
+<h1><strong>evaluate-level1</strong><a class="headerlink" href="#evaluate-level1" title="Permalink to this headline">#</a></h1>
+<p><em>Explain and compute basic performance metrics for different data science tasks</em></p>
+<ul class="simple">
+<li><p>[ ] apply at least one metric</p></li>
+<li><p>[ ] interpret model performance in context</p></li>
+</ul>
+</section>
+<section id="evaluate-level2">
+<h1><strong>evaluate-level2</strong><a class="headerlink" href="#evaluate-level2" title="Permalink to this headline">#</a></h1>
+<p><em>Apply and interpret basic model evaluation metrics to a held out test set</em></p>
+<ul class="simple">
+<li><p>[ ] apply at least three performance metrics to models</p></li>
+<li><p>[ ] apply metrics to subsets of data</p></li>
+<li><p>[ ] apply disparity metrics</p></li>
+<li><p>[ ] interpret at least three metrics</p></li>
+</ul>
+</section>
+<section id="evaluate-level3">
+<h1><strong>evaluate-level3</strong><a class="headerlink" href="#evaluate-level3" title="Permalink to this headline">#</a></h1>
+<p><em>Evaluate a model with multiple metrics and cross validation</em></p>
+<ul class="simple">
+<li><p>[ ] explain cross validation</p></li>
+<li><p>[ ] explain importance of held out test and validation data</p></li>
+<li><p>[ ] describe why cross vaidation is important</p></li>
+<li><p>[ ] idenitfy appropriate metrics for different types of modeling tasks</p></li>
+<li><p>[ ] use multiple metrics together to create a more complete description of a model’s performance</p></li>
+</ul>
+</section>
+<section id="classification-level1">
+<h1><strong>classification-level1</strong><a class="headerlink" href="#classification-level1" title="Permalink to this headline">#</a></h1>
+<p><em>identify and describe what classification is, apply pre-fit classification models</em></p>
+<ul class="simple">
+<li><p>[ ] describe what classification is</p></li>
+<li><p>[ ] describe what a dataset must look like for classifcation</p></li>
+<li><p>[ ] identify appliations of classifcation in the real world</p></li>
+<li><p>[ ] describe set up for a classification problem (tes,train)</p></li>
+</ul>
+</section>
+<section id="classification-level2">
+<h1><strong>classification-level2</strong><a class="headerlink" href="#classification-level2" title="Permalink to this headline">#</a></h1>
+<p><em>fit, apply, and interpret preselected classification model to a dataset</em></p>
+<ul class="simple">
+<li><p>[ ] split data for training and testing</p></li>
+<li><p>[ ] fit a classification model</p></li>
+<li><p>[ ] apply a classification model to obtain predictions</p></li>
+<li><p>[ ] interpret the predictions of a classification model</p></li>
+<li><p>[ ] examine parameters of at least one fit classifier to explain how the prediction is made</p></li>
+<li><p>[ ] differentiate between model fitting and generating predictions</p></li>
+<li><p>[ ] evaluate how model parameters impact model performance</p></li>
+</ul>
+</section>
+<section id="classification-level3">
+<h1><strong>classification-level3</strong><a class="headerlink" href="#classification-level3" title="Permalink to this headline">#</a></h1>
+<p><em>fit and apply classification models and select appropriate classification models for different contexts</em></p>
+<ul class="simple">
+<li><p>[ ] choose appropriate classifiers based on application context</p></li>
+<li><p>[ ] explain how at least 3 different classifiers make predictions</p></li>
+<li><p>[ ] evaluate how model parameters impact model performance and justify choices when tradeoffs are necessary</p></li>
+</ul>
+</section>
+<section id="regression-level1">
+<h1><strong>regression-level1</strong><a class="headerlink" href="#regression-level1" title="Permalink to this headline">#</a></h1>
+<p><em>identify what data that can be used for regression looks like</em></p>
+<ul class="simple">
+<li><p>[ ] identify data that is/not appropriate for regression</p></li>
+<li><p>[ ] describe univariate linear regression</p></li>
+<li><p>[ ] identify appliations of regression in the real world</p></li>
+</ul>
+</section>
+<section id="regression-level2">
+<h1><strong>regression-level2</strong><a class="headerlink" href="#regression-level2" title="Permalink to this headline">#</a></h1>
+<p><em>fit and interpret linear regression models</em></p>
+<ul class="simple">
+<li><p>[ ] split data for training and testing</p></li>
+<li><p>[ ] fit univariate linear regression models</p></li>
+<li><p>[ ] interpret linear regression models</p></li>
+<li><p>[ ] fit multivariate linear regression models</p></li>
+</ul>
+</section>
+<section id="regression-level3">
+<h1><strong>regression-level3</strong><a class="headerlink" href="#regression-level3" title="Permalink to this headline">#</a></h1>
+<p><em>fit and explain regrularized or nonlinear regression</em></p>
+<ul class="simple">
+<li><p>[ ] fit nonlinear or regrularized regression models</p></li>
+<li><p>[ ] interpret and explain nonlinear or regrularized regresion models</p></li>
+</ul>
+</section>
+<section id="clustering-level1">
+<h1><strong>clustering-level1</strong><a class="headerlink" href="#clustering-level1" title="Permalink to this headline">#</a></h1>
+<p><em>describe what clustering is</em></p>
+<ul class="simple">
+<li><p>[ ] differentiate clustering from classification and regression</p></li>
+<li><p>[ ] identify appliations of clustering in the real world</p></li>
+</ul>
+</section>
+<section id="clustering-level2">
+<h1><strong>clustering-level2</strong><a class="headerlink" href="#clustering-level2" title="Permalink to this headline">#</a></h1>
+<p><em>apply basic clustering</em></p>
+<ul class="simple">
+<li><p>[ ] fit Kmeans</p></li>
+<li><p>[ ] interpret kmeans</p></li>
+<li><p>[ ] evaluate clustering models</p></li>
+</ul>
+</section>
+<section id="clustering-level3">
+<h1><strong>clustering-level3</strong><a class="headerlink" href="#clustering-level3" title="Permalink to this headline">#</a></h1>
+<p><em>apply multiple clustering techniques, and interpret results</em></p>
+<ul class="simple">
+<li><p>[ ] apply at least two clustering techniques</p></li>
+<li><p>[ ] explain the differences between two clustering models</p></li>
+</ul>
+</section>
+<section id="optimize-level1">
+<h1><strong>optimize-level1</strong><a class="headerlink" href="#optimize-level1" title="Permalink to this headline">#</a></h1>
+<p><em>Identify when model parameters need to be optimized</em></p>
+<ul class="simple">
+<li><p>[ ] identify when parameters might impact model performance</p></li>
+</ul>
+</section>
+<section id="optimize-level2">
+<h1><strong>optimize-level2</strong><a class="headerlink" href="#optimize-level2" title="Permalink to this headline">#</a></h1>
+<p><em>Optimize basic model parameters such as model order</em></p>
+<ul class="simple">
+<li><p>[ ] automatically optimize multiple parameters</p></li>
+<li><p>[ ] evaluate potential tradeoffs</p></li>
+<li><p>[ ] interpret optimization results in context</p></li>
+</ul>
+</section>
+<section id="optimize-level3">
+<h1><strong>optimize-level3</strong><a class="headerlink" href="#optimize-level3" title="Permalink to this headline">#</a></h1>
+<p><em>Select optimal parameters based of mutiple quanttiateve criteria and automate parameter tuning</em></p>
+<ul class="simple">
+<li><p>[ ] optimize models based on multiple metrics</p></li>
+<li><p>[ ] describe when one model vs another is most appropriate</p></li>
+</ul>
+</section>
+<section id="compare-level1">
+<h1><strong>compare-level1</strong><a class="headerlink" href="#compare-level1" title="Permalink to this headline">#</a></h1>
+<p><em>Qualitatively compare model classes</em></p>
+<ul class="simple">
+<li><p>[ ] compare models within the same task on complexity</p></li>
+</ul>
+</section>
+<section id="compare-level2">
+<h1><strong>compare-level2</strong><a class="headerlink" href="#compare-level2" title="Permalink to this headline">#</a></h1>
+<p><em>Compare model classes in specific terms and fit models in terms of traditional model performance metrics</em></p>
+<ul class="simple">
+<li><p>[ ] compare models in multiple terms</p></li>
+<li><p>[ ] interpret cross model comparisons in context</p></li>
+</ul>
+</section>
+<section id="compare-level3">
+<h1><strong>compare-level3</strong><a class="headerlink" href="#compare-level3" title="Permalink to this headline">#</a></h1>
+<p><em>Evaluate tradeoffs between different model comparison types</em></p>
+<ul class="simple">
+<li><p>[ ] compare models on multiple criteria</p></li>
+<li><p>[ ] compare optimized models</p></li>
+<li><p>[ ] jointly interpret optimization result and compare models</p></li>
+<li><p>[ ] compare models on quanttiateve and qualitative measures</p></li>
+</ul>
+</section>
+<section id="representation-level1">
+<h1><strong>representation-level1</strong><a class="headerlink" href="#representation-level1" title="Permalink to this headline">#</a></h1>
+<p><em>Identify options for representing text and categorical data in many contexts</em></p>
+<ul class="simple">
+<li><p>[ ] describe the basic goals for changing the representation of data</p></li>
+</ul>
+</section>
+<section id="representation-level2">
+<h1><strong>representation-level2</strong><a class="headerlink" href="#representation-level2" title="Permalink to this headline">#</a></h1>
+<p><em>Apply at least one representation to transform unstructured  or inappropriately data for model fitting or summarizing</em></p>
+<ul class="simple">
+<li><p>[ ] transform text or image data for use with ML</p></li>
+</ul>
+</section>
+<section id="representation-level3">
+<h1><strong>representation-level3</strong><a class="headerlink" href="#representation-level3" title="Permalink to this headline">#</a></h1>
+<p><em>apply transformations in different contexts OR  compare and contrast multiple representations a single type of data in terms of model performance</em></p>
+<ul class="simple">
+<li><p>[ ] transform both text and image data for use in ml</p></li>
+<li><p>[ ] evaluate the impact of representation on model performance</p></li>
+</ul>
+</section>
+<section id="workflow-level1">
+<h1><strong>workflow-level1</strong><a class="headerlink" href="#workflow-level1" title="Permalink to this headline">#</a></h1>
+<p><em>Solve well strucutred fully specified problems with a single tool pipeline</em></p>
+<ul class="simple">
+<li><p>[ ] pseudocode out the steps to answer basic data science questions</p></li>
+</ul>
+</section>
+<section id="workflow-level2">
+<h1><strong>workflow-level2</strong><a class="headerlink" href="#workflow-level2" title="Permalink to this headline">#</a></h1>
+<p><em>Solve well-strucutred, open-ended problems, apply common structure to learn new features of standard tools</em></p>
+<ul class="simple">
+<li><p>[ ] plan and execute answering real questions to an open ended question</p></li>
+<li><p>[ ] describe the necessary steps and tools</p></li>
+</ul>
+</section>
+<section id="workflow-level3">
+<h1><strong>workflow-level3</strong><a class="headerlink" href="#workflow-level3" title="Permalink to this headline">#</a></h1>
+<p><em>Independently scope and solve realistic data science problems OR independently learn releated tools  and describe strengths and weakensses of common tools</em></p>
+<ul class="simple">
+<li><p>[ ] scope and solve realistic data science problems</p></li>
+<li><p>[ ] compare different data science tool stacks</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./syllabus"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>python-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python-level2"><strong>python-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python-level3"><strong>python-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#process-level1"><strong>process-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#process-level2"><strong>process-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#process-level3"><strong>process-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#access-level1"><strong>access-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#access-level2"><strong>access-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#access-level3"><strong>access-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-level1"><strong>construct-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-level2"><strong>construct-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-level3"><strong>construct-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summarize-level1"><strong>summarize-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summarize-level2"><strong>summarize-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summarize-level3"><strong>summarize-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-level1"><strong>visualize-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-level2"><strong>visualize-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-level3"><strong>visualize-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-level1"><strong>prepare-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-level2"><strong>prepare-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-level3"><strong>prepare-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-level1"><strong>evaluate-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-level2"><strong>evaluate-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-level3"><strong>evaluate-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-level1"><strong>classification-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-level2"><strong>classification-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-level3"><strong>classification-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-level1"><strong>regression-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-level2"><strong>regression-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-level3"><strong>regression-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-level1"><strong>clustering-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-level2"><strong>clustering-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-level3"><strong>clustering-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#optimize-level1"><strong>optimize-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#optimize-level2"><strong>optimize-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#optimize-level3"><strong>optimize-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-level1"><strong>compare-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-level2"><strong>compare-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-level3"><strong>compare-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#representation-level1"><strong>representation-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#representation-level2"><strong>representation-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#representation-level3"><strong>representation-level3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-level1"><strong>workflow-level1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-level2"><strong>workflow-level2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-level3"><strong>workflow-level3</strong></a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Professor Sarah M Brown
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
