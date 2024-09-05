@@ -2,7 +2,7 @@
 
 Welcome to the course manual for CSC310 at URI with Professor Brown.
 
-This class meets TTh 5-6:15pm in Engineering 040.
+This class meets TTh 3:30-4:45 in Pastore 259.
 
 This website will contain the syllabus, class notes, and other reference material for the class.
 
