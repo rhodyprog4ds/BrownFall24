@@ -1,0 +1,12 @@
+jupyter-book
+pyppeteer
+lxml
+xlrd
+sphinx-panels
+git+https://github.com/brownsarahm/sphinxcontrib-mermaid@cdnupdate
+matplotlib
+numpy
+pandas
+seaborn
+scikit-learn
+aif360

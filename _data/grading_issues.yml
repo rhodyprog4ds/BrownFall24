@@ -1,0 +1,1008 @@
+on:
+  workflow_dispatch
+
+jobs:
+
+  python-level1:
+    name: Create python-level1 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create python-level1
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "python-level1"
+          body: |
+            python code that mostly runs, occasional pep8 adherance
+
+            Components:
+
+            - [ ] logical use of control structures
+            - [ ] callable functions
+            - [ ] correct calls to functions
+            - [ ] correct use of variables
+            - [ ] use of logical operators
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  python-level2:
+    name: Create python-level2 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create python-level2
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "python-level2"
+          body: |
+            python code that reliably runs, frequent pep8 adherance
+
+            Components:
+
+            - [ ] descriptive variable names
+            - [ ] pythonic loops
+            - [ ] efficient use of return vs side effects in functions
+            - [ ] correct, effective use of builtin python iterable types (lists & dictionaries)
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  python-level3:
+    name: Create python-level3 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create python-level3
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "python-level3"
+          body: |
+            reliable, efficient, pythonic code that consistently adheres to pep8
+
+            Components:
+
+            - [ ] pep8 adherant variable, file, class, and function names
+            - [ ] effective use of multi-paradigm abilities for efficiency gains
+            - [ ] easy to read code that adheres to readability over other rules
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  process-level1:
+    name: Create process-level1 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create process-level1
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "process-level1"
+          body: |
+            Identify basic components of data science
+
+            Components:
+
+            - [ ] identify component disciplines OR
+            - [ ] idenitfy phases
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  process-level2:
+    name: Create process-level2 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create process-level2
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "process-level2"
+          body: |
+            Describe and define each stage of the data science process
+
+            Components:
+
+            - [ ] correctly defines stages
+            - [ ] identifies stages in use
+            - [ ] describes general goals as well as a specific processes
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  process-level3:
+    name: Create process-level3 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create process-level3
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "process-level3"
+          body: |
+            Compare different ways that data science can facilitate decision making
+
+            Components:
+
+            - [ ] describes exceptions to process and iteration in process
+            - [ ] connects choices at one phase to impacts in other phases
+            - [ ] connects data science steps to real world decisions
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  access-level1:
+    name: Create access-level1 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create access-level1
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "access-level1"
+          body: |
+            load data from at least one format; identify the most common data formats
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  access-level2:
+    name: Create access-level2 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create access-level2
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "access-level2"
+          body: |
+            Load data for processing from the most common formats; Compare and constrast most common formats
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  access-level3:
+    name: Create access-level3 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create access-level3
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "access-level3"
+          body: |
+            access data from both common and uncommon formats and identify best practices for formats in different contexts
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  construct-level1:
+    name: Create construct-level1 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create construct-level1
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "construct-level1"
+          body: |
+            identify what should happen to merge datasets or when they can be merged
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  construct-level2:
+    name: Create construct-level2 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create construct-level2
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "construct-level2"
+          body: |
+            apply basic merges
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  construct-level3:
+    name: Create construct-level3 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create construct-level3
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "construct-level3"
+          body: |
+            merge data that is not automatically aligned
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  summarize-level1:
+    name: Create summarize-level1 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create summarize-level1
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "summarize-level1"
+          body: |
+            Describe the shape and structure of a dataset in basic terms
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  summarize-level2:
+    name: Create summarize-level2 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create summarize-level2
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "summarize-level2"
+          body: |
+            compute summary statndard statistics of a whole dataset and grouped data
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  summarize-level3:
+    name: Create summarize-level3 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create summarize-level3
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "summarize-level3"
+          body: |
+            Compute and interpret various summary statistics of subsets of data
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  visualize-level1:
+    name: Create visualize-level1 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create visualize-level1
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "visualize-level1"
+          body: |
+            identify plot types, generate basic plots from pandas
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  visualize-level2:
+    name: Create visualize-level2 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create visualize-level2
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "visualize-level2"
+          body: |
+            generate multiple plot types with complete labeling with pandas and seaborn
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  visualize-level3:
+    name: Create visualize-level3 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create visualize-level3
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "visualize-level3"
+          body: |
+            generate complex plots with pandas and plotting libraries and customize with matplotlib or additional parameters
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  prepare-level1:
+    name: Create prepare-level1 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create prepare-level1
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "prepare-level1"
+          body: |
+            identify if data is or is not ready for analysis, potential problems with data
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  prepare-level2:
+    name: Create prepare-level2 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create prepare-level2
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "prepare-level2"
+          body: |
+            apply data reshaping, cleaning, and filtering as directed
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  prepare-level3:
+    name: Create prepare-level3 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create prepare-level3
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "prepare-level3"
+          body: |
+            apply data reshaping, cleaning, and filtering manipulations reliably and correctly by assessing data as received
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  evaluate-level1:
+    name: Create evaluate-level1 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create evaluate-level1
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "evaluate-level1"
+          body: |
+            Explain basic performance metrics for different data science tasks
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  evaluate-level2:
+    name: Create evaluate-level2 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create evaluate-level2
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "evaluate-level2"
+          body: |
+            Apply and interpret basic model evaluation metrics to a held out test set
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  evaluate-level3:
+    name: Create evaluate-level3 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create evaluate-level3
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "evaluate-level3"
+          body: |
+            Evaluate a model with multiple metrics and cross validation
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  classification-level1:
+    name: Create classification-level1 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create classification-level1
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "classification-level1"
+          body: |
+            identify and describe what classification is, apply pre-fit classification models
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  classification-level2:
+    name: Create classification-level2 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create classification-level2
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "classification-level2"
+          body: |
+            fit, apply, and interpret preselected classification model to a dataset
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  classification-level3:
+    name: Create classification-level3 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create classification-level3
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "classification-level3"
+          body: |
+            fit and apply classification models and select appropriate classification models for different contexts
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  regression-level1:
+    name: Create regression-level1 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create regression-level1
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "regression-level1"
+          body: |
+            identify what data that can be used for regression looks like
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  regression-level2:
+    name: Create regression-level2 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create regression-level2
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "regression-level2"
+          body: |
+            fit and interpret linear regression models
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  regression-level3:
+    name: Create regression-level3 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create regression-level3
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "regression-level3"
+          body: |
+            fit and explain regrularized or nonlinear regression
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  clustering-level1:
+    name: Create clustering-level1 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create clustering-level1
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "clustering-level1"
+          body: |
+            describe what clustering is
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  clustering-level2:
+    name: Create clustering-level2 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create clustering-level2
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "clustering-level2"
+          body: |
+            apply basic clustering
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  clustering-level3:
+    name: Create clustering-level3 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create clustering-level3
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "clustering-level3"
+          body: |
+            apply multiple clustering techniques, and interpret results
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  optimize-level1:
+    name: Create optimize-level1 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create optimize-level1
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "optimize-level1"
+          body: |
+            Identify when model parameters need to be optimized
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  optimize-level2:
+    name: Create optimize-level2 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create optimize-level2
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "optimize-level2"
+          body: |
+            Optimize basic model parameters such as model order
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  optimize-level3:
+    name: Create optimize-level3 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create optimize-level3
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "optimize-level3"
+          body: |
+            Select optimal parameters based of mutiple quanttiateve criteria and automate parameter tuning
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  compare-level1:
+    name: Create compare-level1 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create compare-level1
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "compare-level1"
+          body: |
+            Qualitatively compare model classes
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  compare-level2:
+    name: Create compare-level2 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create compare-level2
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "compare-level2"
+          body: |
+            Compare model classes in specific terms and fit models in terms of traditional model performance metrics
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  compare-level3:
+    name: Create compare-level3 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create compare-level3
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "compare-level3"
+          body: |
+            Evaluate tradeoffs between different model comparison types
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  representation-level1:
+    name: Create representation-level1 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create representation-level1
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "representation-level1"
+          body: |
+            Identify options for representing text and categorical data in many contexts
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  representation-level2:
+    name: Create representation-level2 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create representation-level2
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "representation-level2"
+          body: |
+            Apply at least one representation to transform unstructured  or inappropriately data for model fitting or summarizing
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  representation-level3:
+    name: Create representation-level3 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create representation-level3
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "representation-level3"
+          body: |
+            apply transformations in different contexts OR  compare and contrast multiple representations a single type of data in terms of model performance
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  workflow-level1:
+    name: Create workflow-level1 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create workflow-level1
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "workflow-level1"
+          body: |
+            Solve well strucutred fully specified problems with a single tool pipeline
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  workflow-level2:
+    name: Create workflow-level2 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create workflow-level2
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "workflow-level2"
+          body: |
+            Solve well-strucutred, open-ended problems, apply common structure to learn new features of standard tools
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  workflow-level3:
+    name: Create workflow-level3 Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create workflow-level3
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "workflow-level3"
+          body: |
+            Independently scope and solve realistic data science problems OR independently learn releated tools  and describe strengths and weakensses of common tools
+
+            Components:
+
+            - [ ]
+            ```
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

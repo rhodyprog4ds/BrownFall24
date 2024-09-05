@@ -1,0 +1,270 @@
+- name: python-level1
+  description: python code that mostly runs, occasional pep8 adherance
+  components:
+    - use of control structures
+    - callable functions
+    - correct calls to functions
+    - correct use of variables
+    - use of logical operators
+- name: python-level2
+  description:  python code that reliably runs, frequent pep8 adherance
+  components:
+    - descriptive variable names
+    - pythonic loops
+    - effective use of return vs side effects in functions
+    - correct, effective use of builtin python iterable types (lists & dictionaries)
+- name: python-level3
+  description:  reliable, efficient, pythonic code that consistently adheres to pep8
+  components:
+    - pep8 adherant variable, file, class, and function names
+    - effective use of multi-paradigm abilities for efficiency gains
+    - easy to read code that adheres to readability over other rules
+- name: process-level1
+  description:  Identify basic components of data science
+  components:
+    - identify component disciplines
+    - idenitfy phases
+- name: process-level2
+  description:  Describe and define each stage of the data science process
+  components:
+    - correctly defines stages
+    - identifies stages in use
+    - describes general goals as well as a specific processes
+- name: process-level3
+  description:  Compare different ways that data science can facilitate decision making
+  components:
+    - describes exceptions to process and iteration in process
+    - connects choices at one phase to impacts in other phases
+    - connects data science steps to real world decisions
+- name: access-level1
+  description:  load data from at least one format; identify the most common data formats
+  components:
+    - use at least one pandas `read_` function correctly
+    - name common types
+    - describe the structure of common types
+- name: access-level2
+  description:  Load data for processing from the most common formats; Compare and constrast most common formats
+  components:
+    - load data from at least two of (.csv, .tsv, .dat, database, .json)
+    - describe advantages and disadvantages of most commone types
+    - descive how most common types are different
+- name: access-level3
+  description:  access data from both common and uncommon formats and identify best practices for formats in different contexts
+  components:
+    - load data from at least 1 uncommon format
+    - describe when one format is better than another
+- name: construct-level1
+  description:  identify what should happen to merge datasets or when they can be merged
+  components:
+    - identify what the structure of a merged dataset should be (size, shape, columns)
+    - idenitfy when datasets can or cannot be merged
+- name: construct-level2
+  description:  apply basic merges
+  components:
+    - use 3 different types of merges
+    - choose the right type of merge for realistic scenarios
+- name: construct-level3
+  description:  merge data that is not automatically aligned
+  components:
+    - manipulate data to make it mergable
+    - identify how to combine data from many sources to answer a question
+    - implement stesp to combine data from multiple sources
+- name: summarize-level1
+  description:  Describe the shape and structure of a dataset in basic terms
+  components:
+    - use attributes to produce a description of a dataset
+    - display parts of a dataset
+- name: summarize-level2
+  description:  compute and interpret summary standard statistics of a whole dataset and grouped data
+  components:
+    - compute descriptive statistics on whole datasets
+    - apply individual statistics to datasets
+    - group data by a categorical variable for analysis
+    - apply split-apply-combine paradigm to analyze data
+    - interprete statistics on whole datasets
+    - interpret statistics on subsets of data
+- name: summarize-level3
+  description:  Compute and interpret various summary statistics of subsets of data
+  components:
+    - produce custom aggregation tables to summarize datasets
+    - compute multivariate summary statistics by grouping
+    - compute custom cacluations on datasets
+- name: visualize-level1
+  description:  identify plot types, generate basic plots from pandas
+  components:
+    - generate at least two types of plots with pandas
+    - identify plot types by name
+    - interpret basic information from plots
+- name: visualize-level2
+  description:  generate multiple plot types with complete labeling with pandas and seaborn
+  components:
+    - generate at least 3 types of plots
+    - use correct, complete, legible labeling on plots
+    - plot using both pandas and seaborn
+    - interpret multiple types of plots to draw conclusions
+- name: visualize-level3
+  description:  generate complex plots with pandas and plotting libraries and customize with matplotlib or additional parameters
+  components:
+    - use at least two libraries to plot
+    - generate figures with subplots
+    - customize the display of a plot to be publication ready
+    - interpret plot types and explain them for novices
+    - choose appopriate plot types to convey information
+    - explain why plotting common best practices are effective
+- name: prepare-level1
+  description:  identify if data is or is not ready for analysis, potential problems with data
+  components:
+    - identify problems in a dataset
+    - anticipate how potential data setups will interfere with analysis
+    - describe the structure of tidy data
+    - label data as tidy or not
+- name: prepare-level2
+  description:  apply data reshaping, cleaning, and filtering as directed
+  components:
+    - reshape data to be analyzable as directed
+    - filter data as directed
+    - rename columns as directed
+    - rename values to make data more analyzable
+    - handle missing values in at least two ways
+    - transform data to tidy format
+- name: prepare-level3
+  description:  apply data reshaping, cleaning, and filtering manipulations reliably and correctly by assessing data as received
+  components:
+    - identify issues in a dataset and correctly implement solutions
+    - convert varialbe representation by changing types
+    - change variable representation using one hot encoding
+- name: evaluate-level1
+  description:  Explain and compute basic performance metrics for different data science tasks
+  components:
+    - apply at least one metric  
+    - interpret model performance in context
+- name: evaluate-level2
+  description:  Apply and interpret basic model evaluation metrics to a held out test set
+  components:
+    - apply at least three performance metrics to models
+    - apply metrics to subsets of data
+    - apply disparity metrics 
+    - interpret at least three metrics
+- name: evaluate-level3
+  description:  Evaluate a model with multiple metrics and cross validation
+  components:
+    - explain cross validation
+    - explain importance of held out test and validation data
+    - describe why cross vaidation is important
+    - idenitfy appropriate metrics for different types of modeling tasks
+    - use multiple metrics together to create a more complete description of a model's performance
+- name: classification-level1
+  description:  identify and describe what classification is, apply pre-fit classification models
+  components:
+    - describe what classification is
+    - describe what a dataset must look like for classifcation
+    - identify appliations of classifcation in the real world
+    - describe set up for a classification problem (tes,train)
+- name: classification-level2
+  description:  fit, apply, and interpret preselected classification model to a dataset
+  components:
+    - split data for training and testing
+    - fit a classification model
+    - apply a classification model to obtain predictions
+    - interpret the predictions of a classification model
+    - examine parameters of at least one fit classifier to explain how the prediction is made
+    - differentiate between model fitting and generating predictions
+    - evaluate how model parameters impact model performance
+- name: classification-level3
+  description:  fit and apply classification models and select appropriate classification models for different contexts
+  components:
+    - choose appropriate classifiers based on application context
+    - explain how at least 3 different classifiers make predictions
+    - evaluate how model parameters impact model performance and justify choices when tradeoffs are necessary
+- name: regression-level1
+  description:  identify what data that can be used for regression looks like
+  components:
+    - identify data that is/not appropriate for regression
+    - describe univariate linear regression
+    - identify appliations of regression in the real world
+- name: regression-level2
+  description:  fit and interpret linear regression models
+  components:
+    - split data for training and testing
+    - fit univariate linear regression models
+    - interpret linear regression models
+    - fit multivariate linear regression models
+- name: regression-level3
+  description:  fit and explain regrularized or nonlinear regression
+  components:
+    - fit nonlinear or regrularized regression models
+    - interpret and explain nonlinear or regrularized regresion models
+- name: clustering-level1
+  description:  describe what clustering is
+  components:
+    - differentiate clustering from classification and regression
+    - identify appliations of clustering in the real world
+- name: clustering-level2
+  description:  apply basic clustering
+  components:
+    - fit Kmeans
+    - interpret kmeans
+    - evaluate clustering models
+- name: clustering-level3
+  description:  apply multiple clustering techniques, and interpret results
+  components:
+    - apply at least two clustering techniques
+    - explain the differences between two clustering models
+- name: optimize-level1
+  description:  Identify when model parameters need to be optimized
+  components:
+    - identify when parameters might impact model performance
+- name: optimize-level2
+  description:  Optimize basic model parameters such as model order
+  components:
+    - automatically optimize multiple parameters
+    - evaluate potential tradeoffs
+    - interpret optimization results in context
+- name: optimize-level3
+  description:  Select optimal parameters based of mutiple quanttiateve criteria and automate parameter tuning
+  components:
+    - optimize models based on multiple metrics
+    - describe when one model vs another is most appropriate
+- name: compare-level1
+  description:  Qualitatively compare model classes
+  components:
+    - compare models within the same task on complexity
+- name: compare-level2
+  description:  Compare model classes in specific terms and fit models in terms of traditional model performance metrics
+  components:
+    - compare models in multiple terms
+    - interpret cross model comparisons in context
+- name: compare-level3
+  description:  Evaluate tradeoffs between different model comparison types
+  components:
+    - compare models on multiple criteria
+    - compare optimized models
+    - jointly interpret optimization result and compare models
+    - compare models on quanttiateve and qualitative measures
+- name: representation-level1
+  description:  Identify options for representing text and categorical data in many contexts
+  components:
+    - describe the basic goals for changing the representation of data
+- name: representation-level2
+  description:  Apply at least one representation to transform unstructured  or inappropriately data for model fitting or summarizing
+  components:
+    - transform text or image data for use with ML
+- name: representation-level3
+  description:  apply transformations in different contexts OR  compare and contrast multiple representations a single type of data in terms of model performance
+  components:
+    - transform both text and image data for use in ml
+    - evaluate the impact of representation on model performance
+- name: workflow-level1
+  description:  Solve well strucutred fully specified problems with a single tool pipeline
+  components:
+    - pseudocode out the steps to answer basic data science questions
+- name: workflow-level2
+  description:  Solve well-strucutred, open-ended problems, apply common structure to learn new features of standard tools
+  components:
+    - plan and execute answering real questions to an open ended question
+    - describe the necessary steps and tools
+- name: workflow-level3
+  description:  Independently scope and solve realistic data science problems OR independently learn releated tools  and describe strengths and weakensses of common tools
+  components:
+    - scope and solve realistic data science problems
+    - compare different data science tool stacks

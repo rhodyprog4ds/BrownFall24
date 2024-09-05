@@ -1,0 +1,15 @@
+- outcome: Describe the process of data science, define each phase, and identify standard tools
+  keyword: process
+  skills: 
+- outcome: Access and combine data in multiple formats for analysis
+  keyword: data
+  skills:
+- outcome: Perform exploratory data analyses including descriptive statistics and visualization
+  keyword: exploratory
+  skills:
+- outcome: Select models for data by applying and evaluating mutiple models to a single dataset
+  keyword: modeling
+  skills:
+- outcome: Communicate solutions to problems with data in common industry formats
+  keyword: communicate
+  skills:

@@ -1,0 +1,65 @@
+# Book settings
+title: Programming for Data Science at URI Fall 2021
+author: Professor Sarah M Brown
+logo: ../img/310_2021.png
+
+html:
+  favicon                   : ""  # A path to a favicon image
+  use_edit_page_button      : true  # Whether to add an "edit this page" button to pages. If `true`, repository information in repository: must be filled in
+  use_repository_button     : true  # Whether to add a link to your repository button
+  use_issues_button         : true  # Whether to add an "open an issue" button left navbar.
+  extra_footer              : ""  # Will be displayed underneath the footer.
+  home_page_in_navbar       : true
+  use_multitoc_numbering: false
+  # extra_navbar              : Download complete <a href="">PDF</a> # Will be displayed underneath the
+
+
+repository:
+  url                       : https://github.com/rhodyprog4ds/BrownFall21/  # The URL to your book's repository
+  path_to_book              : ""  # A path to your book's folder, relative to the repository root.
+  branch                    : main  # Which branch of the repository should be used when creating links
+
+
+latex:
+  latex_documents:
+    targetname: book.tex
+
+exclude_patterns            : ['_data/*',  README.md, ignore/*]  # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
+
+#######################################################################################
+# Execution settings
+execute:
+  execute_notebooks         : auto  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+  cache                     : ""  # A path to the jupyter cache that will be used to store execution artifacs. Defaults to `_build/.jupyter_cache/`
+  exclude_patterns          : []  # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
+  allow_errors              : true
+
+
+
+parse:
+  myst_enable_extensions: # default extensions to enable in the myst parser. See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - html_admonition
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - substitution
+  myst_substitutions:
+    time: MWF 3-3:50pm
+    location: Chafee Social Sci Center 235
+    repo_name: BrownFall21
+    repo_commits: |
+      [commit history](https://github.com/rhodyprog4ds/BrownFall21/commits)
+    repo_issue: |
+      [issue](https://github.com/rhodyprog4ds/BrownFall21/issues)
+    bscalendar: |
+      [Course Calendar on BrightSpace](https://brightspace.uri.edu/d2l/le/calendar/158179)
+    ghinstructors: fall21instructors
+    p1due: October 17
+    p2due: November 14
+    p3due: December 5
+    p4due: December 20

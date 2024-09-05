@@ -1,0 +1,112 @@
+- week: 1
+  clo: process
+  topics: [admin, python review]
+  skills: process
+  assignments: [syllabus-install]
+  activities: [brainstormA, process-hunt]
+  completionTime: [1h40m class time; 2hours install; 2 hours programming]
+  gradingTime: 5h
+- week: 2
+  clo: data, exploratory
+  topics: Loading data, Python review
+  skills: [access, prepare, summarize]
+  assignments: [python-access]
+  activities: [live coding, exercises]
+  completionTime: [2.5h class time; 5 hours programming]
+  gradingTime: 10h
+- week: 3
+  clo: exploratory
+  topics: Exploratory Data Analysis
+  skills: [summarize, visualize]
+  assignments: [summarize-viz]
+  activities: [live coding, exercises]
+  completionTime: [2.5h class time;  5 hours programming; 2 hours portfolio work]
+  gradingTime:
+- week: 4
+  clo: data, exploratory
+  topics: Data Cleaning
+  skills: [prepare, summarize, visualize]
+  assignments: [prepare]
+  activities: [live coding, exercises]
+  completionTime: [2.5h class time; 5 hours programming; 2 hours portfolio work]
+  gradingTime: 10h
+- week: 5
+  clo: data
+  topics: Databases, Merging DataFrames
+  skills: [access, construct, summarize]
+  assignments: [construct]
+  activities: [live coding, exercises]
+  completionTime: [2.5h class time; 5 hours programming; 2 hours portfolio work]
+  gradingTime: 10h
+- week: 6
+  clo: modeling
+  topics: Modeling,  classification performance metrics, cross validation
+  skills: [ evaluate]
+  assignments: [naive-bayes]
+  activities: [live coding, exercises]
+  completionTime: [2.5h class time;  5 hours programming; 2 hours portfolio work]
+  gradingTime:
+- week: 7
+  clo: modeling
+  topics: Naive Bayes, decision trees
+  skills: [classification, evaluate]
+  assignments: [decision-tree]
+  activities: [live coding, exercises]
+  completionTime: [2.5h class time;  5 hours programming; 2 hours portfolio work]
+  gradingTime:
+- week: 8
+  clo: modeling
+  topics: Regression
+  skills: [regression, evaluate]
+  assignments:
+  activities: [live coding, exercises]
+  completionTime: [2.5h class time;  5 hours programming; 2 hours portfolio work]
+  gradingTime:
+- week: 9
+  clo: modeling
+  topics: Clustering
+  skills: [clustering, evaluate]
+  assignments: [clustering]
+  activities: [live coding, exercises]
+  completionTime: [2.5h class time;  5 hours programming; 2 hours portfolio work]
+  gradingTime:
+- week: 10
+  clo: modeling
+  topics: SVM, parameter tuning
+  skills: [optimize, tools]
+  assignments: [svm]
+  activities: [live coding, exercises]
+  completionTime: [2.5h class time;  5 hours programming; 2 hours portfolio work]
+  gradingTime:
+- week: 11
+  clo: modeling
+  topics: KNN, Model comparison
+  skills: [compare, tools]
+  assignments: [model-comparison]
+  activities: [live coding, exercises]
+  completionTime: [2.5h class time;  5 hours programming; 2 hours portfolio work]
+  gradingTime:
+- week: 12
+  clo: modeling
+  topics: Text Analysis
+  skills: [unstructured]
+  assignments:
+  activities: [live coding, exercises]
+  completionTime: [2.5h class time;  5 hours programming; 2 hours portfolio work]
+  gradingTime:
+- week: 13
+  clo: communicate
+  topics: Images Analysis
+  skills: [unstructured, tools]
+  assignments:
+  activities: [live coding, exercises]
+  completionTime: [2.5h class time;  5 hours programming; 2 hours portfolio work]
+  gradingTime:
+- week: 14
+  clo: communicate
+  topics: Deep Learning
+  skills: [tools, compare]
+  assignments:
+  activities: [live coding, exercises]
+  completionTime: [2.5h class time;  5 hours programming; 2 hours portfolio work ]
+  gradingTime:

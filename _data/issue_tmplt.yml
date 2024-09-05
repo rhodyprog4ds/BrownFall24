@@ -1,0 +1,19 @@
+  {name}:
+    name: Create {name} Issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create {name}
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          title: "{name}"
+          body: |
+            {description}
+
+            Components:
+            {components_checklist}
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: $\{\{ secrets.GITHUB_TOKEN \}\}
