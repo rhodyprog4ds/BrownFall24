@@ -1,8 +1,13 @@
 
 # Assignment 1: Setup, Syllabus, and Review
 
-__Due: 2024-09-10__
+__Due: 2024-09-10 2:00pm__ 
 
+```{warning}
+This is a draft, and will get updated and you will get a notification. 
+
+Mainly submission details will be added
+```
 
 ## Evaluation 
 Eligible skills: (links to checklists)
@@ -38,9 +43,10 @@ Your task is to:
 4. Follow instructions in the README to make your portfolio your own with information about yourself(completeness only) and your own definition of data science (graded for **level 1 process**)
 5. complete the `success.md` file as per the instructions in the comments in that file (it is a syllabus quiz)
 6. Create a Jupyter notebook called `grading.ipynb` and write a function that computes a grade for this course, with the  docstring below. Your notebook will need to be organized and readable in a data science style, following style from other courses will not earn credit. 
+7. (additional programming step to assess prerequisite knowledge, tba)
 <!-- 
-7. [Upload the notebook to your repo](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository) directly on the main branch. 
-8. Add the line `  - file: grading` in your `_toc.yml` file. 
+1. [Upload the notebook to your repo](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository) directly on the main branch. 
+2. Add the line `  - file: grading` in your `_toc.yml` file. 
 
 
 the syntax of the line added to your `_toc.yml` has to be exact
