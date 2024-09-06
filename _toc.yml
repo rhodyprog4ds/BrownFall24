@@ -35,9 +35,9 @@ parts:
     chapters:
       - file: portfolio/index
       - file: portfolio/formatting
-      - file: portfolio/check1ideas
-      - file: portfolio/check2ideas
-      - file: portfolio/check3ideas
+      - file: portfolio/extensions
+      - file: portfolio/altforms
+      - file: portfolio/process
   - caption: FAQ
     chapters:
     - file: faq/index
