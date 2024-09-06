@@ -76,7 +76,7 @@ We will not directly add these to your grade, but you can always visit office ho
 
 ### Assignments
 
-For your learning to progress and earn level 2 achievements, you must practice with the skills outside of class time.
+For your learning to progress and earn level 2 achievements, you must practice with the skills outside of class time. You wil submit all of your assignments in your portfolio repository.  Sometimes you will need to sync your repo to get templates for the assignment and some will be open.  All will be posted on this site. 
 <!-- 
 ````{margin}
 ```{warning}
@@ -85,27 +85,24 @@ If you will skip an assignment, please accept the GitHub assignment and then clo
 ```` 
 -->
 
-Assignments will each evaluate certain skills. After your assignment is reviewed, you will get qualitative feedback on your work, and an assessment of your demonstration of the targeted skills.
+Assignments will each evaluate certain skills. After your assignment is reviewed, you will get qualitative feedback on your work, and an assessment of your demonstration of the targeted skills. Your feedback will recap all of your earned achievements to that point, not only what was earned in that assignment. 
 
+You *can* revise assignments if you do not earn achievements by also adding reflections to them while you edit, but since each skill is available in multiple assignments you do not have to. 
+
+You can revise what you submitted and resubmit it, with reflections and explanation of what you were confused about, what you tried initially, how you eventually figured it out, and explains the correct answer. 
 
 ### Extensions
 
 ```{warning}
 the logistics of this are changing, but tbd, will update soon
 ```
-To earn level 3 achievements, you will build a portfolio consisting of reflections, challenge problems, and longer analyses over the course of the semester.
-You will submit your portfolio for review 4 times.
-The first two will cover the skills taught up until 1 week before the submission deadline.
-<!-- The first portfolio check will cover skills FIXME.
-The second portfolio check will cover skills FIXME. -->
-The third and fourth portfolio checks will cover all of the skills.
-The fourth will be due during finals. This means that, if you have earned all achievements by the 3rd portfolio check, you do not need to submit the fourth one.
+To earn level 3 achievements, you will extend your prior work.  Starting with assignment 2, there will be extension ideas in the assignment. 
 
-**The easiest way to succeed at your portfolio is to extend your assignments**
+
 
 ### TLDR
 
-You *could* earn a C through oral exams in office hours alone. To earn a B, you must complete assignments. To earn an A you must complete assignments and extend them in your portfolio.
+You *could* earn a C through oral exams in office hours alone. To earn a B, you must complete assignments. To earn an A you must complete assignments and add extensions that demonstrate deeper understanding (tips will be provided).
 
 +++
 
@@ -159,12 +156,12 @@ this will be revealed after assignment 1
 ### Grading Examples
 
 
-If you always attend and get everything correct, you will earn and A and you won't need to submit the 4th portfolio check.
+
 
 #### Getting  an A Without Perfection
 
 ```{warning}
-acheivements are no longer awarded in class in fall 24; images to be updated
+acheivements are no longer awarded in class in fall 24; images to be updated and porfolio is rolling instead of discrete check points. 
 ```
 
 ![exampleA](../img/example_A.png)

@@ -87,7 +87,7 @@ schedule_df[['topics','skills']]
 ## Achievement Definitions
 
 
-The table below describes how your participation, assignments, and portfolios will be assessed to earn each achievement. The keyword for each skill is a short name that will be used to refer to skills throughout the course materials; the full description of the skill is in this table.
+The table below describes how your work will be assessed to earn each achievement. The keyword for each skill is a short name that will be used to refer to skills throughout the course materials; the full description of the skill is in this table.
 
 ```{code-cell} ipython3
 :tags: [remove-input]
@@ -135,24 +135,23 @@ rubric_df[assignment_cols]
 ```
 
 ```{warning}
-**process** achievements are accumulated a little slower. Prior to portfolio check 1, only level 1 can be earned.  Portfolio check 1 is the first chance to earn level 2 for process, then level 3 can be earned on portfolio check 2 or later.
+**process** achievements are accumulated a little slower; details will follow. 
 ```
 
 (portfolioskills)=
-### Portfolios and Skills
+### Extensions
 
 ```{warning}
-the deadline structure for portfolios will be different in fall 24, but exact dates are tbd; it does not apply until after a2 is graded though, so this will be updated by then
+this rolling deadline is new for Fall 2024 and aims to let students distribute work in a better way for yourself.  After A2 feedback is posted, I will give more explanation about how to do this, in concrete terms. 
 ```
 
-The objective of your portfolio submissions is to earn Level 3 achievements. The following table shows what Level 3 looks like for each skill and identifies which portfolio submissions you can earn that Level 3 in that skill.
+There are no extensions applicable to assignment 1, but starting after assignment 2's feedback you can start workign on level 3 achievements. You can add on and extend each analysis, once you have earned level 2 for a skill to earn level 3.  You can also add new analyses that instead combine different sets of skills. 
+
+Extensions will all be graded by Dr. Brown (and most assignments will be graded by the TA Surbhi). You will make separate PRs for your attempts at level 3 from level 2.  
+
+While assignments have fixed grades, you can submit extensions as you complete them.  I recommend planning to work on them consistently throughout the semester.  
 
 
-```{code-cell} ipython3
-:tags: [remove-input]
-
-rubric_df[portfolio_cols]
-```
 
 (checklists)=
 
