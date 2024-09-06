@@ -12,13 +12,12 @@ Your portfolio is a [jupyter book](https://jupyterbook.org/intro.html). This mea
 
 This page will cover a few basic tips.
 
-## Managing Files and version
-You can either convert your ipynb files to earier to read locally or on GitHub.
+## Managing Files and versions
 
-The GitHub version means installing less locally, but means that after you push
-changes, you'll need to pull the changes that GitHub makes.
-
-
+```{important}
+This will be updated; new githut features change how it works
+```
+<!-- 
 ### To manage with a precommit hook jupytext conversion
 change your `.pre-commit-config.yaml` file to match the following:
 ```
@@ -123,7 +122,8 @@ jobs:
       env:
         # This is necessary in order to push a commit to the repo
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
-```
+``` 
+-->
 
 ## Organization
 
@@ -154,15 +154,15 @@ You can also make text *italic* or **bold** with either `*asterics*` or `__under
 
 ## File Naming
 
-It is best practice to name files without spaces.
+It is best practice to name files *without* spaces, underscores `_` or hyphens `-` are both good.
 Each `chapter` or file should have a descriptive file name (`with_no_spaces`) and descriptive title for it.
-
+<!-- 
 
 ## Syncing markdown and ipynb files
 
 If you have the precommit hook working, git will call a script and convert your notebook files from the ipynb format (which is json like) to Myst Markdown, which is more plain text with some header information.  The markdown format works better with version control, largely because it doesn't contain the outputs.
 
-If you don't get the precommit hook working, but you do get jupytext installed, you can set each file to sync.  
+If you don't get the precommit hook working, but you do get jupytext installed, you can set each file to sync.   -->
 
 
 

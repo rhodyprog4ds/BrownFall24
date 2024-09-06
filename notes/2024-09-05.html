@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1. First class &#8212; Programming for Data Science at URI Fall 2023</title>
+    <title>1. Welcome &amp; What is Data Science &#8212; Programming for Data Science at URI Fall 2023</title>
   
   
   
@@ -172,7 +172,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. First class</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Welcome &amp; What is Data Science</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -180,11 +180,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../portfolio/index.html">Portfolio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/index.html">Earning Level 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../portfolio/formatting.html">Formatting Tips</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../portfolio/check1ideas.html">Portfolio Check 1 Ideas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../portfolio/check2ideas.html">Check 2 Ideas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../portfolio/check3ideas.html">Check 3 Ideas</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
 <ul class="nav bd-sidenav">
@@ -393,7 +390,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -404,11 +403,39 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>First class</h1>
+    <h1>Welcome & What is Data Science</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prismia-chat">1.1. Prismia Chat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-data-science">1.2. What is Data Science?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-this-class">1.2.1. In this class,</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-data-science-happen">1.2.2. How does data science happen?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-well-cover-data-science-in-depth">1.2.3. how we’ll cover Data Science, in depth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-well-cover-it-in-time">1.2.4. how we’ll cover it in, time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-class-will-work">1.3. How this class will work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-to-jupyter-notebooks">1.4. Intro to Jupyter Notebooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-for-data-science-vs-other-programming">1.5. Programming for Data Science vs other Programming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-lab-and-jupyter-notebooks">1.6. Jupyter Lab and Jupyter notebooks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-just-happened">1.6.1. What just happened?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-jupyter-notebook-tour">1.6.2. A jupyter notebook tour</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-help-in-jupyter">1.7. Getting Help in Jupyter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-review">1.8. Python Review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">1.9. Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditionals">1.10. Conditionals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-reading">1.11. More Reading</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -418,12 +445,418 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="first-class">
-<h1><span class="section-number">1. </span>First class<a class="headerlink" href="#first-class" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="welcome-what-is-data-science">
+<h1><span class="section-number">1. </span>Welcome &amp; What is Data Science<a class="headerlink" href="#welcome-what-is-data-science" title="Permalink to this headline">#</a></h1>
+<section id="prismia-chat">
+<h2><span class="section-number">1.1. </span>Prismia Chat<a class="headerlink" href="#prismia-chat" title="Permalink to this headline">#</a></h2>
+<p>We will use these to monitor your participation in class and to gather information.
+Features:</p>
+<ul class="simple">
+<li><p>instructor only</p></li>
+<li><p>reply to you directly</p></li>
+<li><p>share responses for all</p></li>
+</ul>
+</section>
+<section id="what-is-data-science">
+<h2><span class="section-number">1.2. </span>What is Data Science?<a class="headerlink" href="#what-is-data-science" title="Permalink to this headline">#</a></h2>
+<p>Data Science is the combination of
+<img alt="venn diagram of CS, Stats, &amp; domain expertise with DS at the center" src="https://raw.githubusercontent.com/rhodyprog4ds/rhodyds/main/img/ds_venn.png" /></p>
+<p><strong>statistics</strong> is the type of math we use to make sense of data.
+Formally, a statistic is just a function of data.</p>
+<p><strong>computer science</strong> is so that we can manipulate visualize and automate the inferences we make.</p>
+<p><strong>domain expertise</strong> helps us have the intuition to know if what we did worked
+right. A statistic must be interpreted in context; the relevant context determines
+what they mean and which are valid.  The context will say whether automating something
+is safe or not, it can help us tell whether our code actually worked right or not.</p>
+<section id="in-this-class">
+<h3><span class="section-number">1.2.1. </span>In this class,<a class="headerlink" href="#in-this-class" title="Permalink to this headline">#</a></h3>
+<p><img alt="venn diagram of CS, Stats, &amp; domain expertise with DS at the center, w/310 location marked" src="https://raw.githubusercontent.com/rhodyprog4ds/rhodyds/main/img/310_venn.png" /></p>
+<p>We’ll focus on the programming as our main means of studying data science, but we will
+use bits of the other parts.  In particular, you’re encouraged to choose datasets that you
+have domain expertise about, or that you want to learn about.</p>
+<p>But there are many definitions.  We’ll use this one, but you may come across others.</p>
+</section>
+<section id="how-does-data-science-happen">
+<h3><span class="section-number">1.2.2. </span>How does data science happen?<a class="headerlink" href="#how-does-data-science-happen" title="Permalink to this headline">#</a></h3>
+<p>The most common way to think about what doing data science means is to think of this pipeline.  It is in the perspective of the data, these are all of the things that happen to the data.</p>
+<p><img alt="DS pipeline: collect, clean, explore, model, deploy" src="https://raw.githubusercontent.com/rhodyprog4ds/rhodyds/main/img/process.png" /></p>
+<p>Another way to think about it</p>
+<p><img alt="DS process: 3 major phases (prepare,build,finish) with many sub-phases. Prepare:set goals, explore, wrangle, assess; Build: Plan, analyze, engineer, optimize, execute; Finish: Deliver, revise, wrap up" src="https://drek4537l1klr.cloudfront.net/godsey/Figures/01fig02_alt.jpg" /></p>
+</section>
+<section id="how-well-cover-data-science-in-depth">
+<h3><span class="section-number">1.2.3. </span>how we’ll cover Data Science, in depth<a class="headerlink" href="#how-well-cover-data-science-in-depth" title="Permalink to this headline">#</a></h3>
+<p><img alt="DS pipeline: collect, clean, explore, model, deploy" src="https://raw.githubusercontent.com/rhodyprog4ds/rhodyds/main/img/process_course.png" /></p>
+<ul class="simple">
+<li><p><em>collect</em>: Discuss only a little; Minimal programming involved</p></li>
+<li><p><em>clean</em>: Cover the main programming techniques; Some requires domain knowledge beyond scope of course</p></li>
+<li><p><em>explore</em>: Cover the main programming techniques; Some requires domain knowledge beyond scope of course</p></li>
+<li><p><em>model</em>:Cover the main programming, basic idea of models; How to use models, not how learning algorithms work</p></li>
+<li><p><em>deploy</em>: A little bit at the end, but a lot of preparation for decision making around deployment</p></li>
+</ul>
+</section>
+<section id="how-well-cover-it-in-time">
+<h3><span class="section-number">1.2.4. </span>how we’ll cover it in, time<a class="headerlink" href="#how-well-cover-it-in-time" title="Permalink to this headline">#</a></h3>
+<p><img alt="DS pipeline: collect, clean, explore, model, deploy" src="https://raw.githubusercontent.com/rhodyprog4ds/rhodyds/main/img/process_course_time.png" /></p>
+<p>We’ll cover exploratory data analysis before cleaning because those tools will help us check how we’ve cleaned the data.</p>
+</section>
+</section>
+<section id="how-this-class-will-work">
+<h2><span class="section-number">1.3. </span>How this class will work<a class="headerlink" href="#how-this-class-will-work" title="Permalink to this headline">#</a></h2>
+<p><strong>Participatory Live Coding</strong></p>
+<p>What is a topic you want to use data to learn about?</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here I changed this title from the title of the notebook, to a subsection but the rest of this is what was actually done in class, with explanation.</p>
+</div>
+</section>
+<section id="intro-to-jupyter-notebooks">
+<h2><span class="section-number">1.4. </span>Intro to Jupyter Notebooks<a class="headerlink" href="#intro-to-jupyter-notebooks" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="programming-for-data-science-vs-other-programming">
+<h2><span class="section-number">1.5. </span>Programming for Data Science vs other Programming<a class="headerlink" href="#programming-for-data-science-vs-other-programming" title="Permalink to this headline">#</a></h2>
+<p>The audience is different, so the form is different.</p>
+<p>In Data Science our product is more often a report than a program.</p>
+<p>Sometimes there will be points in the notes that were not made in class due to time or in response questions that came at the end of class.</p>
+<p>Also, in data science we are <em>using code</em> to interact with data, instead of having a plan in advance</p>
+<p>So programming for data science is more like <em>writing</em> it has a narrative flow and is made to be seen more than some other programming thaat you may have done.</p>
+</section>
+<section id="jupyter-lab-and-jupyter-notebooks">
+<h2><span class="section-number">1.6. </span>Jupyter Lab and Jupyter notebooks<a class="headerlink" href="#jupyter-lab-and-jupyter-notebooks" title="Permalink to this headline">#</a></h2>
+<p>Launch a <a class="reference external" href="https://jupyterlab.readthedocs.io/en/latest/"><code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code> server</a>:</p>
+<ul class="simple">
+<li><p>on Windows, use anaconda terminal</p></li>
+<li><p>on Mac/Linux, use terminal</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">path/to/where/you/save/notes</span></code></p></li>
+<li><p>enter <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code></p></li>
+</ul>
+<section id="what-just-happened">
+<h3><span class="section-number">1.6.1. </span>What just happened?<a class="headerlink" href="#what-just-happened" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>launched a local web server</p></li>
+<li><p>opened a new browser tab pointed to it</p></li>
+</ul>
+<p><img alt="a diagram depicting a terminal window launching a local web server that reports back to the terminal and serves jupyter in the browser" src="https://raw.githubusercontent.com/rhodyprog4ds/rhodyds/main/img/jupyter_notebook_running.svg" /></p>
+</section>
+<section id="a-jupyter-notebook-tour">
+<h3><span class="section-number">1.6.2. </span>A jupyter notebook tour<a class="headerlink" href="#a-jupyter-notebook-tour" title="Permalink to this headline">#</a></h3>
+<p>A Jupyter notebook has two modes. When you first open, it is in command mode. It says the mode in the bottom right of the screen. Each bos is a cell, the highlighted cell is gray when in command mode.</p>
+<p>When you press a key in command mode it works like a shortcut. For example <code class="docutils literal notranslate"><span class="pre">p</span></code> shows the command search menu.</p>
+<p>If you press <code class="docutils literal notranslate"><span class="pre">enter</span></code> (or <code class="docutils literal notranslate"><span class="pre">return</span></code>)  or click on the highlighted cell, which is the boxes we can type in,  it changes to edit mode.</p>
+<p>There are two type of cells that we will used: code and markdown. You can change that in command mode with <code class="docutils literal notranslate"><span class="pre">y</span></code> for code and <code class="docutils literal notranslate"><span class="pre">m</span></code> for markdown or on the cell type menu at the top of the notebook.</p>
+<p>This is a markdown cell</p>
+<ul class="simple">
+<li><p>we can make</p></li>
+<li><p>itemized lists of</p></li>
+<li><p>bullet points</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>and we can make nubmered</p></li>
+<li><p>lists, and not have to worry</p></li>
+<li><p>about renumbering them</p></li>
+<li><p>if we add a step in the middle later</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="o">+</span><span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
+</div>
+</div>
+<p>the output here is the value returned by the python interpretter for the last line of the cell</p>
+<p>We can set variables</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Sarah&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The notebook displays nothing when we do an assignment, bcause it returns nothing</p>
+<p>we can put a variable there to see it</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Sarah&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Sarah&#39;</span><span class="p">,</span> <span class="s1">&#39;Adam&#39;</span><span class="p">,</span> <span class="s1">&#39;Alex&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Sarah&#39;, &#39;Adam&#39;, &#39;Alex&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>built in functions turn green in jupyter</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">name_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Sarah&#39;, &#39;Adam&#39;, &#39;Alex&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Common command mode actions:</p>
+<ul class="simple">
+<li><p>m: switch cell to markdown</p></li>
+<li><p>y: switch cell to code</p></li>
+<li><p>a: add a cell above</p></li>
+<li><p>b: add a cell below</p></li>
+<li><p>c: copy cell</p></li>
+<li><p>v: paste the cell</p></li>
+<li><p>0 + 0: restart kernel</p></li>
+<li><p>p: command menu</p></li>
+</ul>
+<p>use enter/return to get to edit mode</p>
+</section>
+</section>
+<section id="getting-help-in-jupyter">
+<h2><span class="section-number">1.7. </span>Getting Help in Jupyter<a class="headerlink" href="#getting-help-in-jupyter" title="Permalink to this headline">#</a></h2>
+<p>Getting help is important in programming</p>
+<p>When your cursor is inside the <code class="docutils literal notranslate"><span class="pre">()</span></code> of a function if you hold the shift key and press tab it will open a popup with information. If you press tab twice, it gets bigger and three times will make a popup window.</p>
+<p>Python has a <code class="docutils literal notranslate"><span class="pre">print</span></code> function and we can use the help in jupyter to learn about
+how to use it in different ways.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="s1">&#39;2020&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">year</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sarah 2020
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>This is an added tip for the notes that I did not show in class, it’s less useful while working, but is helpful for the notes</p>
+</div>
+<p>We can also use the <code class="docutils literal notranslate"><span class="pre">help</span></code> function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on built-in function print in module builtins:
+
+print(...)
+    print(value, ..., sep=&#39; &#39;, end=&#39;\n&#39;, file=sys.stdout, flush=False)
+    
+    Prints the values to a stream, or to sys.stdout by default.
+    Optional keyword arguments:
+    file:  a file-like object (stream); defaults to the current sys.stdout.
+    sep:   string inserted between values, default a space.
+    end:   string appended after the last value, default a newline.
+    flush: whether to forcibly flush the stream.
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first line says that it can take multiple values, because it says <code class="docutils literal notranslate"><span class="pre">args*</span></code>. The <code class="docutils literal notranslate"><span class="pre">*</span></code> means multiple.</p>
+<p>It also has a
+keyword argument (must be used like <code class="docutils literal notranslate"><span class="pre">argument=value</span></code> and has a default) described as  <code class="docutils literal notranslate"><span class="pre">sep='</span> <span class="pre">'</span></code>.
+This means that by default it adds a space as above.</p>
+<p>The help also tells us about other parameters, like the <code class="docutils literal notranslate"><span class="pre">sep</span></code> one</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span><span class="s1">&#39;sdkjfdsk&#39;</span><span class="p">,</span> <span class="s1">&#39;ksdjfosidj&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sarah
+2020
+sdkjfdsk
+ksdjfosidj
+</pre></div>
+</div>
+</div>
+</div>
+<p>Basic programming is a prereq and we will go faster soon, but the goal of this review was to understand notebooks, getting help, and reading docstrings</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Notes will be posted this evening, but this needs to be here to make the website work</p>
+<p>More extra tips to help you review/refresh your Python that we did not cover in class.  In general, I will not require things that we do not at least get very close to in assignments, but since this is supposed to be in the prerequisite, I am providing resources.</p>
 </div>
+</section>
+<section id="python-review">
+<h2><span class="section-number">1.8. </span>Python Review<a class="headerlink" href="#python-review" title="Permalink to this headline">#</a></h2>
+<p>Official source on python:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://peps.python.org/pep-0008/">pep8 official style</a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/">documentation</a> note that you can change which version you are using</p></li>
+</ul>
+<p>We will go quickly through these focusing on pythonic style, because the prerequisite is a programming course.</p>
+</section>
+<section id="functions">
+<h2><span class="section-number">1.9. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    say hi to a person</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name : string</span>
+<span class="sd">        the name of the person to greet</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="s1">&#39;hi &#39;</span> <span class="o">+</span> <span class="n">name</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A few things to note:</p>
+<ul class="simple">
+<li><p>the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword starts a function</p></li>
+<li><p>then the name of the function</p></li>
+<li><p>parameters in <code class="docutils literal notranslate"><span class="pre">()</span></code> then <code class="docutils literal notranslate"><span class="pre">:</span></code></p></li>
+<li><p>the body is indented</p></li>
+<li><p>the first thing in the body should be a docstring, denoted in <code class="docutils literal notranslate"><span class="pre">'''</span></code> which is a multiline comment</p></li>
+<li><p>returning is more reliable than printing in a function</p></li>
+</ul>
+<p>In python, <a class="reference external" href="https://peps.python.org/pep-0257/">PEP 257</a> says how to write a docstring, but it is very broad.</p>
+<p>In Data Science, <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">numpydoc</a> style docstrings are popular.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pandas.pydata.org/">Pandas</a> <a class="reference external" href="https://pandas.pydata.org/docs/development/contributing_docstring.html">follows numpydoc</a></p></li>
+<li><p>[Numpy uses it]</p></li>
+<li><p><a class="reference external" href="https://scipy.org/">Scipy</a> <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard">follows numpydoc</a></p></li>
+</ul>
+<p>Once the cell with the function definition is run, we can use the function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">greeting</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;hi Sarah&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">(</span><span class="s1">&#39;surbhi&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hi surbhi
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s1">&#39;sarah&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;hi sarah&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With a return this works to check that it does the right thing.</p>
+<p>when assert is true, it returns nothing, it throws an error on failure</p>
+</section>
+<section id="conditionals">
+<h2><span class="section-number">1.10. </span>Conditionals<a class="headerlink" href="#conditionals" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greeting2</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">formal</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    say hi to a person</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    +++++++++-</span>
+<span class="sd">    name : string</span>
+<span class="sd">        the name of the person to greet</span>
+<span class="sd">    formal: bool</span>
+<span class="sd">        if the greeting should formal (hello) or not (hi)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">formal</span><span class="p">:</span> 
+        <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;hello  &#39;</span> <span class="o">+</span> <span class="n">name</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;hi &#39;</span> <span class="o">+</span> <span class="n">name</span>
+    <span class="k">return</span> <span class="n">message</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>key points in this function:</p>
+<ul class="simple">
+<li><p>an <code class="docutils literal notranslate"><span class="pre">if</span></code> also has the conditional part indented</p></li>
+<li><p>for a <code class="docutils literal notranslate"><span class="pre">bool</span></code> variable we can just use the variable</p></li>
+<li><p>we can set a default value</p></li>
+</ul>
+<p>because of the default value we do not have to pass the second variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">greeting2</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;hi Sarah&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">greeting2</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;hello  Sarah&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="more-reading">
+<h2><span class="section-number">1.11. </span>More Reading<a class="headerlink" href="#more-reading" title="Permalink to this headline">#</a></h2>
+<p>Reading <a class="reference external" href="https://www.manning.com/books/think-like-a-data-scientist#toc">chapter 1 of think like a data scientist</a> will help you with the data science definition part of the assignment.</p>
+<p>Think like a data scientist is written for practitioners; not as a text book for a class. It does not have a lot of prerequisite background, but the sections of it that I assign will help you build a better mental picture of what doing Data Science about.</p>
+<p>Only the first assignment will be due this fast, it’s a short review and setup assignment.  It’s due quickly so that we know that you have everything set up and the prerequisite material before we start new material next week.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -484,6 +917,40 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prismia-chat">1.1. Prismia Chat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-data-science">1.2. What is Data Science?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-this-class">1.2.1. In this class,</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-data-science-happen">1.2.2. How does data science happen?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-well-cover-data-science-in-depth">1.2.3. how we’ll cover Data Science, in depth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-well-cover-it-in-time">1.2.4. how we’ll cover it in, time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-class-will-work">1.3. How this class will work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-to-jupyter-notebooks">1.4. Intro to Jupyter Notebooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-for-data-science-vs-other-programming">1.5. Programming for Data Science vs other Programming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-lab-and-jupyter-notebooks">1.6. Jupyter Lab and Jupyter notebooks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-just-happened">1.6.1. What just happened?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-jupyter-notebook-tour">1.6.2. A jupyter notebook tour</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-help-in-jupyter">1.7. Getting Help in Jupyter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-review">1.8. Python Review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">1.9. Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditionals">1.10. Conditionals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-reading">1.11. More Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
