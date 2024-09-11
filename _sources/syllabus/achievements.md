@@ -145,7 +145,7 @@ rubric_df[assignment_cols]
 this rolling deadline is new for Fall 2024 and aims to let students distribute work in a better way for yourself.  After A2 feedback is posted, I will give more explanation about how to do this, in concrete terms. 
 ```
 
-There are no extensions applicable to assignment 1, but starting after assignment 2's feedback you can start workign on level 3 achievements. You can add on and extend each analysis, once you have earned level 2 for a skill to earn level 3.  You can also add new analyses that instead combine different sets of skills. 
+There are no extensions applicable to assignment 1, but starting after assignment 2's feedback you can start working on level 3 achievements. You can add on and extend each analysis, once you have earned level 2 for a skill to earn level 3.  You can also add new analyses that instead combine different sets of skills. 
 
 Extensions will all be graded by Dr. Brown (and most assignments will be graded by the TA Surbhi). You will make separate PRs for your attempts at level 3 from level 2.  
 

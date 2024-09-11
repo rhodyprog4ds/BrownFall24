@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2024-09-05';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Assignment 1: Setup, Syllabus, and Review" href="../assignments/01-setup.html" />
+    <link rel="next" title="2. Iterables and Pandas Data Frames" href="2024-09-10.html" />
     <link rel="prev" title="Communications &amp; Office Hours" href="../syllabus/communication.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Welcome &amp; What is Data Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-10.html">2. Iterables and Pandas Data Frames</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -260,7 +261,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/rhodyprog4ds/BrownFall23" target="_blank"
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -277,7 +278,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/rhodyprog4ds/BrownFall23/edit/main/notes/2024-09-05.md" target="_blank"
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24/edit/main/notes/2024-09-05.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -294,7 +295,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/rhodyprog4ds/BrownFall23/issues/new?title=Issue%20on%20page%20%2Fnotes/2024-09-05.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24/issues/new?title=Issue%20on%20page%20%2Fnotes/2024-09-05.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -437,6 +438,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">1.9. Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditionals">1.10. Conditionals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-reading">1.11. More Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">1.12. Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#do-i-need-anaconda-or-can-i-just-install-each-packagae-ie-i-just-installed-jupyter-labs-using-an-external-terminal-command-can-i-do-that-for-each-package-we-use">1.12.1. Do I need anaconda, or can I just install each packagae? Ie. I just installed jupyter labs using an external terminal command, can I do that for each package we use?”</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -860,6 +865,13 @@ ksdjfosidj
 <p>Think like a data scientist is written for practitioners; not as a text book for a class. It does not have a lot of prerequisite background, but the sections of it that I assign will help you build a better mental picture of what doing Data Science about.</p>
 <p>Only the first assignment will be due this fast, it’s a short review and setup assignment.  It’s due quickly so that we know that you have everything set up and the prerequisite material before we start new material next week.</p>
 </section>
+<section id="questions">
+<h2><span class="section-number">1.12. </span>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">#</a></h2>
+<section id="do-i-need-anaconda-or-can-i-just-install-each-packagae-ie-i-just-installed-jupyter-labs-using-an-external-terminal-command-can-i-do-that-for-each-package-we-use">
+<h3><span class="section-number">1.12.1. </span>Do I need anaconda, or can I just install each packagae? Ie. I just installed jupyter labs using an external terminal command, can I do that for each package we use?”<a class="headerlink" href="#do-i-need-anaconda-or-can-i-just-install-each-packagae-ie-i-just-installed-jupyter-labs-using-an-external-terminal-command-can-i-do-that-for-each-package-we-use" title="Permalink to this headline">#</a></h3>
+<p>Yes, and even better, I made a <a class="reference external" href="https://github.com/rhodyprog4ds/inclass-data/blob/main/requirements.txt">requirements.txt</a> file with all of what you should need.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -903,11 +915,11 @@ ksdjfosidj
       </div>
     </a>
     <a class="right-next"
-       href="../assignments/01-setup.html"
+       href="2024-09-10.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Assignment 1: Setup, Syllabus, and Review</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Iterables and Pandas Data Frames</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -950,6 +962,10 @@ ksdjfosidj
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">1.9. Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditionals">1.10. Conditionals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-reading">1.11. More Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">1.12. Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#do-i-need-anaconda-or-can-i-just-install-each-packagae-ie-i-just-installed-jupyter-labs-using-an-external-terminal-command-can-i-do-that-for-each-package-we-use">1.12.1. Do I need anaconda, or can I just install each packagae? Ie. I just installed jupyter labs using an external terminal command, can I do that for each package we use?”</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
