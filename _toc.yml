@@ -21,7 +21,7 @@ parts:
     numbered: True
     chapters:
     - file: assignments/01-setup
-    # - file: assignments/02-python-access
+    - file: assignments/02-python-access
     # - file: assignments/03-eda
     # - file: assignments/04-prepare
     # - file: assignments/05-construct
