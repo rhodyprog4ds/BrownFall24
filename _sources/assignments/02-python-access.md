@@ -6,6 +6,14 @@ Quick Facts
 <!-- - [accept assignment](https://classroom.github.com/a/BOG3E7Ch) -->
 - **after** you finish/revise/get feedback on a1, get template files by syncing your portfolio 
 
+You can sync by clicking on the 1 commit behind
+
+![screenshot of a fork ahead and behind](../img/ahead_behind.png)
+
+Then the green create pull request on the next page.
+
+Then create again and merge once it is created. 
+
 ## Objective & Evaluation
 This assignment is an opportunity to earn level 1 and 2 achievements in `python` and `access` and begin working toward level 1 for `summarize`. You can also earn level 1 for `process`.
 
