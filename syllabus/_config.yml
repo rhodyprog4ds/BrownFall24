@@ -1,5 +1,5 @@
 # Book settings
-title: Programming for Data Science at URI Fall 2021
+title: Programming for Data Science at URI Fall 2024
 author: Professor Sarah M Brown
 logo: ../img/310_2021.png
 
@@ -48,18 +48,4 @@ parse:
     - replacements
     - smartquotes
     - substitution
-  myst_substitutions:
-    time: MWF 3-3:50pm
-    location: Chafee Social Sci Center 235
-    repo_name: BrownFall21
-    repo_commits: |
-      [commit history](https://github.com/rhodyprog4ds/BrownFall21/commits)
-    repo_issue: |
-      [issue](https://github.com/rhodyprog4ds/BrownFall21/issues)
-    bscalendar: |
-      [Course Calendar on BrightSpace](https://brightspace.uri.edu/d2l/le/calendar/158179)
-    ghinstructors: fall21instructors
-    p1due: October 17
-    p2due: November 14
-    p3due: December 5
-    p4due: December 20
+  
