@@ -1,18 +1,23 @@
 
 # Assignment 2: Practicing Python and Accessing Data
 
-Quick Facts
-- due : 2024-09-19 end of day (unless you go to office hours on 9/20)
+## Deadline 
+
+**2024-09-19 end of day**
+
+However, if you  upload an attempt and specific questions on time and then attend office hours on 9/20 then any revisions made based on our conversation will count as on time
 <!-- - [accept assignment](https://classroom.github.com/a/BOG3E7Ch) -->
-- **after** you finish/revise/get feedback on a1, get template files by syncing your portfolio 
+## Submission and Template
 
-You can sync by clicking on the 1 commit behind
+Complete your work on the `assignment2` branch in your portfolio, a template file for `datasets.py` is located there, as well as the `data` folder with two files. 
 
-![screenshot of a fork ahead and behind](../img/ahead_behind.png)
+In your repo you can see a menu on the left hand side of the page, select `assignment2` from the list and work from there. 
 
-Then the green create pull request on the next page.
+![screenshot of gh swithcing branch on the code tab](../img/switch_branch.png)
 
-Then create again and merge once it is created. 
+
+
+
 
 ## Objective & Evaluation
 This assignment is an opportunity to earn level 1 and 2 achievements in `python` and `access` and begin working toward level 1 for `summarize`. You can also earn level 1 for `process`.
@@ -171,9 +176,9 @@ For the csv file in the template's data folder, in Jupyter Lab, it will not let 
 ```
 
 
-## Submission
+<!-- ## Submission
 
-You will add the files to your portfolio, but a couple of steps need to be checked and tested first. 
+You will add the files to your portfolio, but a couple of steps need to be checked and tested first.  -->
 
 <!-- This time you have to separately submit from posting your code to make grading easier.  
 
