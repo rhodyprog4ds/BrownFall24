@@ -525,72 +525,7 @@ them without the <code class="docutils literal notranslate"><span class="pre">.<
 <p>Then we can use the variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">robusta_data_file</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">robusta_data_file</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:912,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
-<span class="g g-Whitespace">    </span><span class="mi">899</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">900</span>     <span class="n">dialect</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">901</span>     <span class="n">delimiter</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">908</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">909</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">910</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">912</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:577,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">574</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">576</span> <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">577</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">579</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">580</span>     <span class="k">return</span> <span class="n">parser</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1407,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1404</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1406</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">-&gt; </span><span class="mi">1407</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1661,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1659</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1660</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1661</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1662</span>     <span class="n">f</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1663</span>     <span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1664</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1665</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1666</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1667</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1668</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1669</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1670</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1671</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1672</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/io/common.py:859,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">854</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">855</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
-<span class="g g-Whitespace">    </span><span class="mi">856</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
-<span class="g g-Whitespace">    </span><span class="mi">857</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">858</span>         <span class="c1"># Encoding</span>
-<span class="ne">--&gt; </span><span class="mi">859</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">860</span>             <span class="n">handle</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">861</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">862</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">863</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">864</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">865</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">866</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">867</span>         <span class="c1"># Binary mode</span>
-<span class="g g-Whitespace">    </span><span class="mi">868</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;robusta_data_cleaned.csv&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">robusta_data_url</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -605,12 +540,7 @@ them without the <code class="docutils literal notranslate"><span class="pre">.<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">type</span><span class="p">(</span><span class="n">coffee_df</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;coffee_df&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.frame.DataFrame
 </pre></div>
 </div>
 </div>
@@ -623,15 +553,172 @@ them without the <code class="docutils literal notranslate"><span class="pre">.<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;coffee_df&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Species</th>
+      <th>Owner</th>
+      <th>Country.of.Origin</th>
+      <th>Farm.Name</th>
+      <th>Lot.Number</th>
+      <th>Mill</th>
+      <th>ICO.Number</th>
+      <th>Company</th>
+      <th>Altitude</th>
+      <th>...</th>
+      <th>Color</th>
+      <th>Category.Two.Defects</th>
+      <th>Expiration</th>
+      <th>Certification.Body</th>
+      <th>Certification.Address</th>
+      <th>Certification.Contact</th>
+      <th>unit_of_measurement</th>
+      <th>altitude_low_meters</th>
+      <th>altitude_high_meters</th>
+      <th>altitude_mean_meters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Robusta</td>
+      <td>ankole coffee producers coop</td>
+      <td>Uganda</td>
+      <td>kyangundu cooperative society</td>
+      <td>NaN</td>
+      <td>ankole coffee producers</td>
+      <td>0</td>
+      <td>ankole coffee producers coop</td>
+      <td>1488</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>2</td>
+      <td>June 26th, 2015</td>
+      <td>Uganda Coffee Development Authority</td>
+      <td>e36d0270932c3b657e96b7b0278dfd85dc0fe743</td>
+      <td>03077a1c6bac60e6f514691634a7f6eb5c85aae8</td>
+      <td>m</td>
+      <td>1488.0</td>
+      <td>1488.0</td>
+      <td>1488.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Robusta</td>
+      <td>nishant gurjer</td>
+      <td>India</td>
+      <td>sethuraman estate kaapi royale</td>
+      <td>25</td>
+      <td>sethuraman estate</td>
+      <td>14/1148/2017/21</td>
+      <td>kaapi royale</td>
+      <td>3170</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>2</td>
+      <td>October 31st, 2018</td>
+      <td>Specialty Coffee Association</td>
+      <td>ff7c18ad303d4b603ac3f8cff7e611ffc735e720</td>
+      <td>352d0cf7f3e9be14dad7df644ad65efc27605ae2</td>
+      <td>m</td>
+      <td>3170.0</td>
+      <td>3170.0</td>
+      <td>3170.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Robusta</td>
+      <td>andrew hetzel</td>
+      <td>India</td>
+      <td>sethuraman estate</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0000</td>
+      <td>sethuraman estate</td>
+      <td>1000m</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>0</td>
+      <td>April 29th, 2016</td>
+      <td>Specialty Coffee Association</td>
+      <td>ff7c18ad303d4b603ac3f8cff7e611ffc735e720</td>
+      <td>352d0cf7f3e9be14dad7df644ad65efc27605ae2</td>
+      <td>m</td>
+      <td>1000.0</td>
+      <td>1000.0</td>
+      <td>1000.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Robusta</td>
+      <td>ugacof</td>
+      <td>Uganda</td>
+      <td>ugacof project area</td>
+      <td>NaN</td>
+      <td>ugacof</td>
+      <td>0</td>
+      <td>ugacof ltd</td>
+      <td>1212</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>7</td>
+      <td>July 14th, 2015</td>
+      <td>Uganda Coffee Development Authority</td>
+      <td>e36d0270932c3b657e96b7b0278dfd85dc0fe743</td>
+      <td>03077a1c6bac60e6f514691634a7f6eb5c85aae8</td>
+      <td>m</td>
+      <td>1212.0</td>
+      <td>1212.0</td>
+      <td>1212.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Robusta</td>
+      <td>katuka development trust ltd</td>
+      <td>Uganda</td>
+      <td>katikamu capca farmers association</td>
+      <td>NaN</td>
+      <td>katuka development trust</td>
+      <td>0</td>
+      <td>katuka development trust ltd</td>
+      <td>1200-1300</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>3</td>
+      <td>June 26th, 2015</td>
+      <td>Uganda Coffee Development Authority</td>
+      <td>e36d0270932c3b657e96b7b0278dfd85dc0fe743</td>
+      <td>03077a1c6bac60e6f514691634a7f6eb5c85aae8</td>
+      <td>m</td>
+      <td>1200.0</td>
+      <td>1300.0</td>
+      <td>1250.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 44 columns</p>
+</div></div></div>
 </div>
 <p>and <code class="docutils literal notranslate"><span class="pre">tail</span></code> to see the last ones.</p>
 <div class="cell docutils container">
@@ -641,91 +728,205 @@ them without the <code class="docutils literal notranslate"><span class="pre">.<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;coffee_df&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Species</th>
+      <th>Owner</th>
+      <th>Country.of.Origin</th>
+      <th>Farm.Name</th>
+      <th>Lot.Number</th>
+      <th>Mill</th>
+      <th>ICO.Number</th>
+      <th>Company</th>
+      <th>Altitude</th>
+      <th>...</th>
+      <th>Color</th>
+      <th>Category.Two.Defects</th>
+      <th>Expiration</th>
+      <th>Certification.Body</th>
+      <th>Certification.Address</th>
+      <th>Certification.Contact</th>
+      <th>unit_of_measurement</th>
+      <th>altitude_low_meters</th>
+      <th>altitude_high_meters</th>
+      <th>altitude_mean_meters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>25</th>
+      <td>26</td>
+      <td>Robusta</td>
+      <td>james moore</td>
+      <td>United States</td>
+      <td>fazenda cazengo</td>
+      <td>NaN</td>
+      <td>cafe cazengo</td>
+      <td>NaN</td>
+      <td>global opportunity fund</td>
+      <td>795 meters</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>6</td>
+      <td>December 23rd, 2015</td>
+      <td>Specialty Coffee Association</td>
+      <td>ff7c18ad303d4b603ac3f8cff7e611ffc735e720</td>
+      <td>352d0cf7f3e9be14dad7df644ad65efc27605ae2</td>
+      <td>m</td>
+      <td>795.0</td>
+      <td>795.0</td>
+      <td>795.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>27</td>
+      <td>Robusta</td>
+      <td>cafe politico</td>
+      <td>India</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>14-1118-2014-0087</td>
+      <td>cafe politico</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>1</td>
+      <td>August 25th, 2015</td>
+      <td>Specialty Coffee Association</td>
+      <td>ff7c18ad303d4b603ac3f8cff7e611ffc735e720</td>
+      <td>352d0cf7f3e9be14dad7df644ad65efc27605ae2</td>
+      <td>m</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>28</td>
+      <td>Robusta</td>
+      <td>cafe politico</td>
+      <td>Vietnam</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>cafe politico</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>9</td>
+      <td>August 25th, 2015</td>
+      <td>Specialty Coffee Association</td>
+      <td>ff7c18ad303d4b603ac3f8cff7e611ffc735e720</td>
+      <td>352d0cf7f3e9be14dad7df644ad65efc27605ae2</td>
+      <td>m</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 44 columns</p>
+</div></div></div>
 </div>
 <p>We note that one of the columns is named <code class="docutils literal notranslate"><span class="pre">Unnamed</span> <span class="pre">0:</span></code> because it does not have a name in the file, for that column.</p>
 <p>We can use <kbd class="kbd docutils literal notranslate">shift</kbd> + <kbd class="kbd docutils literal notranslate">tab</kbd> to see help.  We see that the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html#:~:text=are%20not%20allowed.-,index_col,-Hashable%2C%20Sequence%20of"><code class="docutils literal notranslate"><span class="pre">index_col</span></code> parameter</a> to treat that column as the index.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">robusta_data_file</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">robusta_data_url</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">coffee_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">robusta_data_file</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:912,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
-<span class="g g-Whitespace">    </span><span class="mi">899</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">900</span>     <span class="n">dialect</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">901</span>     <span class="n">delimiter</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">908</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">909</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">910</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">912</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:577,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">574</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">576</span> <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">577</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">579</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">580</span>     <span class="k">return</span> <span class="n">parser</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1407,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1404</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1406</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">-&gt; </span><span class="mi">1407</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1661,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1659</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1660</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1661</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1662</span>     <span class="n">f</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1663</span>     <span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1664</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1665</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1666</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1667</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1668</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1669</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1670</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1671</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1672</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/io/common.py:859,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">854</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">855</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
-<span class="g g-Whitespace">    </span><span class="mi">856</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
-<span class="g g-Whitespace">    </span><span class="mi">857</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">858</span>         <span class="c1"># Encoding</span>
-<span class="ne">--&gt; </span><span class="mi">859</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">860</span>             <span class="n">handle</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">861</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">862</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">863</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">864</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">865</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">866</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">867</span>         <span class="c1"># Binary mode</span>
-<span class="g g-Whitespace">    </span><span class="mi">868</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;robusta_data_cleaned.csv&#39;
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Species</th>
+      <th>Owner</th>
+      <th>Country.of.Origin</th>
+      <th>Farm.Name</th>
+      <th>Lot.Number</th>
+      <th>Mill</th>
+      <th>ICO.Number</th>
+      <th>Company</th>
+      <th>Altitude</th>
+      <th>Region</th>
+      <th>...</th>
+      <th>Color</th>
+      <th>Category.Two.Defects</th>
+      <th>Expiration</th>
+      <th>Certification.Body</th>
+      <th>Certification.Address</th>
+      <th>Certification.Contact</th>
+      <th>unit_of_measurement</th>
+      <th>altitude_low_meters</th>
+      <th>altitude_high_meters</th>
+      <th>altitude_mean_meters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Robusta</td>
+      <td>ankole coffee producers coop</td>
+      <td>Uganda</td>
+      <td>kyangundu cooperative society</td>
+      <td>NaN</td>
+      <td>ankole coffee producers</td>
+      <td>0</td>
+      <td>ankole coffee producers coop</td>
+      <td>1488</td>
+      <td>sheema south western</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>2</td>
+      <td>June 26th, 2015</td>
+      <td>Uganda Coffee Development Authority</td>
+      <td>e36d0270932c3b657e96b7b0278dfd85dc0fe743</td>
+      <td>03077a1c6bac60e6f514691634a7f6eb5c85aae8</td>
+      <td>m</td>
+      <td>1488.0</td>
+      <td>1488.0</td>
+      <td>1488.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1 rows × 43 columns</p>
+</div></div></div>
 </div>
 <section id="data-frame-parts">
 <h3><span class="section-number">3.1.1. </span>Data Frame parts<a class="headerlink" href="#data-frame-parts" title="Permalink to this headline">#</a></h3>
@@ -738,12 +939,18 @@ them without the <code class="docutils literal notranslate"><span class="pre">.<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">columns</span>
-
-<span class="ne">NameError</span>: name &#39;coffee_df&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Species&#39;, &#39;Owner&#39;, &#39;Country.of.Origin&#39;, &#39;Farm.Name&#39;, &#39;Lot.Number&#39;,
+       &#39;Mill&#39;, &#39;ICO.Number&#39;, &#39;Company&#39;, &#39;Altitude&#39;, &#39;Region&#39;, &#39;Producer&#39;,
+       &#39;Number.of.Bags&#39;, &#39;Bag.Weight&#39;, &#39;In.Country.Partner&#39;, &#39;Harvest.Year&#39;,
+       &#39;Grading.Date&#39;, &#39;Owner.1&#39;, &#39;Variety&#39;, &#39;Processing.Method&#39;,
+       &#39;Fragrance...Aroma&#39;, &#39;Flavor&#39;, &#39;Aftertaste&#39;, &#39;Salt...Acid&#39;,
+       &#39;Bitter...Sweet&#39;, &#39;Mouthfeel&#39;, &#39;Uniform.Cup&#39;, &#39;Clean.Cup&#39;, &#39;Balance&#39;,
+       &#39;Cupper.Points&#39;, &#39;Total.Cup.Points&#39;, &#39;Moisture&#39;, &#39;Category.One.Defects&#39;,
+       &#39;Quakers&#39;, &#39;Color&#39;, &#39;Category.Two.Defects&#39;, &#39;Expiration&#39;,
+       &#39;Certification.Body&#39;, &#39;Certification.Address&#39;, &#39;Certification.Contact&#39;,
+       &#39;unit_of_measurement&#39;, &#39;altitude_low_meters&#39;, &#39;altitude_high_meters&#39;,
+       &#39;altitude_mean_meters&#39;],
+      dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
@@ -756,12 +963,9 @@ them without the <code class="docutils literal notranslate"><span class="pre">.<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">index</span>
-
-<span class="ne">NameError</span>: name &#39;coffee_df&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+       19, 20, 21, 22, 23, 24, 25, 26, 27, 28],
+      dtype=&#39;int64&#39;)
 </pre></div>
 </div>
 </div>
@@ -775,12 +979,17 @@ them without the <code class="docutils literal notranslate"><span class="pre">.<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">values</span>
-
-<span class="ne">NameError</span>: name &#39;coffee_df&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&#39;Robusta&#39;, &#39;ankole coffee producers coop&#39;, &#39;Uganda&#39;, ..., 1488.0,
+        1488.0, 1488.0],
+       [&#39;Robusta&#39;, &#39;nishant gurjer&#39;, &#39;India&#39;, ..., 3170.0, 3170.0,
+        3170.0],
+       [&#39;Robusta&#39;, &#39;andrew hetzel&#39;, &#39;India&#39;, ..., 1000.0, 1000.0, 1000.0],
+       ...,
+       [&#39;Robusta&#39;, &#39;james moore&#39;, &#39;United States&#39;, ..., 795.0, 795.0,
+        795.0],
+       [&#39;Robusta&#39;, &#39;cafe politico&#39;, &#39;India&#39;, ..., nan, nan, nan],
+       [&#39;Robusta&#39;, &#39;cafe politico&#39;, &#39;Vietnam&#39;, ..., nan, nan, nan]],
+      dtype=object)
 </pre></div>
 </div>
 </div>
@@ -796,12 +1005,35 @@ them without the <code class="docutils literal notranslate"><span class="pre">.<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Flavor&#39;</span><span class="p">]</span>
-
-<span class="ne">NameError</span>: name &#39;coffee_df&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1     8.08
+2     7.75
+3     7.83
+4     7.92
+5     7.83
+6     7.92
+7     7.75
+8     7.75
+9     7.75
+10    7.83
+11    7.92
+12    7.83
+13    7.58
+14    7.75
+15    7.67
+16    7.75
+17    7.50
+18    7.58
+19    7.58
+20    7.42
+21    7.67
+22    7.42
+23    7.50
+24    7.58
+25    7.67
+26    7.33
+27    6.83
+28    6.67
+Name: Flavor, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -814,12 +1046,7 @@ them without the <code class="docutils literal notranslate"><span class="pre">.<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">type</span><span class="p">(</span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Flavor&#39;</span><span class="p">])</span>
-
-<span class="ne">NameError</span>: name &#39;coffee_df&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
 </pre></div>
 </div>
 </div>
@@ -832,12 +1059,50 @@ them without the <code class="docutils literal notranslate"><span class="pre">.<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
-
-<span class="ne">NameError</span>: name &#39;coffee_df&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Species                                                   Robusta
+Owner                                               andrew hetzel
+Country.of.Origin                                           India
+Farm.Name                                      sethuraman estates
+Lot.Number                                                    NaN
+Mill                                                          NaN
+ICO.Number                                                    NaN
+Company                                                cafemakers
+Altitude                                                     750m
+Region                                                chikmagalur
+Producer                                           Nishant Gurjer
+Number.of.Bags                                                320
+Bag.Weight                                                   2 kg
+In.Country.Partner                   Specialty Coffee Association
+Harvest.Year                                                 2014
+Grading.Date                                       May 15th, 2014
+Owner.1                                             Andrew Hetzel
+Variety                                                       NaN
+Processing.Method                                             NaN
+Fragrance...Aroma                                            7.67
+Flavor                                                       7.75
+Aftertaste                                                   7.83
+Salt...Acid                                                  7.83
+Bitter...Sweet                                                8.0
+Mouthfeel                                                    7.92
+Uniform.Cup                                                  10.0
+Clean.Cup                                                    10.0
+Balance                                                      7.75
+Cupper.Points                                                7.83
+Total.Cup.Points                                            82.58
+Moisture                                                      0.0
+Category.One.Defects                                            0
+Quakers                                                         0
+Color                                                       Green
+Category.Two.Defects                                            0
+Expiration                                         May 15th, 2015
+Certification.Body                   Specialty Coffee Association
+Certification.Address    ff7c18ad303d4b603ac3f8cff7e611ffc735e720
+Certification.Contact    352d0cf7f3e9be14dad7df644ad65efc27605ae2
+unit_of_measurement                                             m
+altitude_low_meters                                         750.0
+altitude_high_meters                                        750.0
+altitude_mean_meters                                        750.0
+Name: 7, dtype: object
 </pre></div>
 </div>
 </div>
@@ -855,12 +1120,35 @@ them without the <code class="docutils literal notranslate"><span class="pre">.<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Flavor&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mf">7.8</span>
-
-<span class="ne">NameError</span>: name &#39;coffee_df&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1      True
+2     False
+3      True
+4      True
+5      True
+6      True
+7     False
+8     False
+9     False
+10     True
+11     True
+12     True
+13    False
+14    False
+15    False
+16    False
+17    False
+18    False
+19    False
+20    False
+21    False
+22    False
+23    False
+24    False
+25    False
+26    False
+27    False
+28    False
+Name: Flavor, dtype: bool
 </pre></div>
 </div>
 </div>
@@ -874,32 +1162,250 @@ them without the <code class="docutils literal notranslate"><span class="pre">.<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">high_flavor</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Flavor&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mf">7.8</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">coffee_df</span><span class="p">[</span><span class="n">high_flavor</span><span class="p">]</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;coffee_df&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Species</th>
+      <th>Owner</th>
+      <th>Country.of.Origin</th>
+      <th>Farm.Name</th>
+      <th>Lot.Number</th>
+      <th>Mill</th>
+      <th>ICO.Number</th>
+      <th>Company</th>
+      <th>Altitude</th>
+      <th>Region</th>
+      <th>...</th>
+      <th>Color</th>
+      <th>Category.Two.Defects</th>
+      <th>Expiration</th>
+      <th>Certification.Body</th>
+      <th>Certification.Address</th>
+      <th>Certification.Contact</th>
+      <th>unit_of_measurement</th>
+      <th>altitude_low_meters</th>
+      <th>altitude_high_meters</th>
+      <th>altitude_mean_meters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Robusta</td>
+      <td>ankole coffee producers coop</td>
+      <td>Uganda</td>
+      <td>kyangundu cooperative society</td>
+      <td>NaN</td>
+      <td>ankole coffee producers</td>
+      <td>0</td>
+      <td>ankole coffee producers coop</td>
+      <td>1488</td>
+      <td>sheema south western</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>2</td>
+      <td>June 26th, 2015</td>
+      <td>Uganda Coffee Development Authority</td>
+      <td>e36d0270932c3b657e96b7b0278dfd85dc0fe743</td>
+      <td>03077a1c6bac60e6f514691634a7f6eb5c85aae8</td>
+      <td>m</td>
+      <td>1488.0</td>
+      <td>1488.0</td>
+      <td>1488.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Robusta</td>
+      <td>andrew hetzel</td>
+      <td>India</td>
+      <td>sethuraman estate</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0000</td>
+      <td>sethuraman estate</td>
+      <td>1000m</td>
+      <td>chikmagalur</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>0</td>
+      <td>April 29th, 2016</td>
+      <td>Specialty Coffee Association</td>
+      <td>ff7c18ad303d4b603ac3f8cff7e611ffc735e720</td>
+      <td>352d0cf7f3e9be14dad7df644ad65efc27605ae2</td>
+      <td>m</td>
+      <td>1000.0</td>
+      <td>1000.0</td>
+      <td>1000.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Robusta</td>
+      <td>ugacof</td>
+      <td>Uganda</td>
+      <td>ugacof project area</td>
+      <td>NaN</td>
+      <td>ugacof</td>
+      <td>0</td>
+      <td>ugacof ltd</td>
+      <td>1212</td>
+      <td>central</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>7</td>
+      <td>July 14th, 2015</td>
+      <td>Uganda Coffee Development Authority</td>
+      <td>e36d0270932c3b657e96b7b0278dfd85dc0fe743</td>
+      <td>03077a1c6bac60e6f514691634a7f6eb5c85aae8</td>
+      <td>m</td>
+      <td>1212.0</td>
+      <td>1212.0</td>
+      <td>1212.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Robusta</td>
+      <td>katuka development trust ltd</td>
+      <td>Uganda</td>
+      <td>katikamu capca farmers association</td>
+      <td>NaN</td>
+      <td>katuka development trust</td>
+      <td>0</td>
+      <td>katuka development trust ltd</td>
+      <td>1200-1300</td>
+      <td>luwero central region</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>3</td>
+      <td>June 26th, 2015</td>
+      <td>Uganda Coffee Development Authority</td>
+      <td>e36d0270932c3b657e96b7b0278dfd85dc0fe743</td>
+      <td>03077a1c6bac60e6f514691634a7f6eb5c85aae8</td>
+      <td>m</td>
+      <td>1200.0</td>
+      <td>1300.0</td>
+      <td>1250.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Robusta</td>
+      <td>andrew hetzel</td>
+      <td>India</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>(self)</td>
+      <td>NaN</td>
+      <td>cafemakers, llc</td>
+      <td>3000'</td>
+      <td>chikmagalur</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>0</td>
+      <td>February 28th, 2013</td>
+      <td>Specialty Coffee Association</td>
+      <td>ff7c18ad303d4b603ac3f8cff7e611ffc735e720</td>
+      <td>352d0cf7f3e9be14dad7df644ad65efc27605ae2</td>
+      <td>m</td>
+      <td>3000.0</td>
+      <td>3000.0</td>
+      <td>3000.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Robusta</td>
+      <td>ugacof</td>
+      <td>Uganda</td>
+      <td>ishaka</td>
+      <td>NaN</td>
+      <td>nsubuga umar</td>
+      <td>0</td>
+      <td>ugacof ltd</td>
+      <td>900-1300</td>
+      <td>western</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>6</td>
+      <td>August 5th, 2015</td>
+      <td>Uganda Coffee Development Authority</td>
+      <td>e36d0270932c3b657e96b7b0278dfd85dc0fe743</td>
+      <td>03077a1c6bac60e6f514691634a7f6eb5c85aae8</td>
+      <td>m</td>
+      <td>900.0</td>
+      <td>1300.0</td>
+      <td>1100.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Robusta</td>
+      <td>ugacof</td>
+      <td>Uganda</td>
+      <td>ugacof project area</td>
+      <td>NaN</td>
+      <td>ugacof</td>
+      <td>0</td>
+      <td>ugacof ltd</td>
+      <td>1095</td>
+      <td>iganga namadrope eastern</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>1</td>
+      <td>June 26th, 2015</td>
+      <td>Uganda Coffee Development Authority</td>
+      <td>e36d0270932c3b657e96b7b0278dfd85dc0fe743</td>
+      <td>03077a1c6bac60e6f514691634a7f6eb5c85aae8</td>
+      <td>m</td>
+      <td>1095.0</td>
+      <td>1095.0</td>
+      <td>1095.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Robusta</td>
+      <td>nishant gurjer</td>
+      <td>India</td>
+      <td>sethuraman estate kaapi royale</td>
+      <td>RC AB</td>
+      <td>sethuraman estate</td>
+      <td>14/1148/2016/12</td>
+      <td>kaapi royale</td>
+      <td>1000</td>
+      <td>chikmagalur karnataka</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>0</td>
+      <td>August 23rd, 2017</td>
+      <td>Specialty Coffee Association</td>
+      <td>ff7c18ad303d4b603ac3f8cff7e611ffc735e720</td>
+      <td>352d0cf7f3e9be14dad7df644ad65efc27605ae2</td>
+      <td>m</td>
+      <td>1000.0</td>
+      <td>1000.0</td>
+      <td>1000.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>8 rows × 43 columns</p>
+</div></div></div>
 </div>
 <p>this segments out only the selected rows.</p>
 <p>The values are a numpy array which also has the same shape as the datafram, but it does not incude the index or the column headers (which do not count as rows or columns anyway)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_vals</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">values</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_vals</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">values</span>
-
-<span class="ne">NameError</span>: name &#39;coffee_df&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -912,12 +1418,7 @@ them without the <code class="docutils literal notranslate"><span class="pre">.<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_vals</span><span class="o">.</span><span class="n">shape</span>
-
-<span class="ne">NameError</span>: name &#39;coffee_vals&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(28, 43)
 </pre></div>
 </div>
 </div>
@@ -929,12 +1430,7 @@ them without the <code class="docutils literal notranslate"><span class="pre">.<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">shape</span>
-
-<span class="ne">NameError</span>: name &#39;coffee_df&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(28, 43)
 </pre></div>
 </div>
 </div>
@@ -1363,17 +1859,6 @@ char c is linked to number 3
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">40</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">small_batch_mask</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">100</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">small_batch</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="p">[</span><span class="n">small_batch_mask</span><span class="p">]</span>
-
-<span class="ne">NameError</span>: name &#39;coffee_df&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <p>After we make the mask, then subset the data, we see its a dataframe</p>
 <div class="cell docutils container">
@@ -1383,12 +1868,7 @@ char c is linked to number 3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">41</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">type</span><span class="p">(</span><span class="n">small_batch</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;small_batch&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.frame.DataFrame
 </pre></div>
 </div>
 </div>
@@ -1397,16 +1877,6 @@ char c is linked to number 3
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">small_batch</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;robusta_small_batch.csv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">42</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">small_batch</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;robusta_small_batch.csv&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;small_batch&#39; is not defined
 </pre></div>
 </div>
 </div>
