@@ -18,6 +18,7 @@ parts:
     - file: notes/2024-09-05
     - file: notes/2024-09-10
     - file: notes/2024-09-12
+    - file: notes/2024-09-17
   - caption: Assignments
     numbered: True
     chapters:
