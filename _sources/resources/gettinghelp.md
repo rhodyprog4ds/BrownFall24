@@ -1,6 +1,19 @@
 # Getting Help with Programming
 
 
+## Screenshots
+
+Sending me a screenshot is almost guaranteed to *not* get you help.  Not because I do not want to, but because I literally do not have the information to get you an answer. 
+
+Typically when someone does not know how to fix something from the error message, it is because they are reading the wrong part of the error message or looking at the wrong part of the code trying to find the problem. 
+
+This means they end up screenshotting that wrong thing, so I literally **cannot** tell what is wrong from the screenshot. 
+
+I am not being stubborn, but I do need the right information to be able to tell what is wrong.  Debugging code requires context, if you deprive me that, then I cannot help. 
+
+To get asynchronous help: 
+- upload your whole notebook, errors and all
+- create an issue on that repo
 
 ## Asking Questions
 

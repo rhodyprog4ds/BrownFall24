@@ -192,6 +192,20 @@ see the [github docs](https://docs.github.com/en/actions/using-workflows/manuall
 ``` 
 -->
 
+## Tips and hints
+
+### the goal 
+- I am not looking for "an answer"
+- You should not be either
+- I am looking for evidence that  you **understand** the material (thus far including prereqs)
+- You should be trying to **understand** material 
+
+This means that in office hours, I am going to:
+- ask you questions to help you think about the problem and the material 
+- help direct your attention to the right part of the error message to figure out what is wrong
+- `dtype` shows you the type of each column [read more](https://pandas.pydata.org/docs/user_guide/basics.html#dtypes)
+- there is also a [select dtypes method](https://pandas.pydata.org/docs/user_guide/basics.html#selecting-columns-based-on-dtype)
+
 ## Thinking ahead
 
 ```{important}

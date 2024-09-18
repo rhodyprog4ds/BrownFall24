@@ -1,0 +1,1654 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>4. Exploratory Data Analysis &#8212; Programming for Data Science at URI Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course-admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2024-09-17';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Assignment 1: Setup, Syllabus, and Review" href="../assignments/01-setup.html" />
+    <link rel="prev" title="3. Pandas Data Frames and More Iterable Types" href="2024-09-12.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/310_2021.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/310_2021.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/tools.html">Tools and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/achievements.html">Data Science Achievements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Grading Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/style.html">Course  Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_resources.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_statements.html">General URI Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/communication.html">Communications &amp; Office Hours</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2024-09-05.html">1. Welcome &amp; What is Data Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-10.html">2. Iterables and Pandas Data Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-12.html">3. Pandas Data Frames and More Iterable Types</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Exploratory Data Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../assignments/01-setup.html">1. Assignment 1: Setup, Syllabus, and Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/02-python-access.html">2. Assignment 2: Practicing Python and Accessing Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/index.html">Earning Level 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/formatting.html">Formatting Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/extensions.html">Generic Extension Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/altforms.html">Alternatives to Extending Assignments for Level 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/process.html">Process Level 3</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/syllabus.html">Syllabus and Grading FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/github.html">Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/debugging.html">Code Errors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/python.html">References on Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/datasets.html">Data Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/tips.html">General Tips and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/learning.html">How to Study in this class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/gettinghelp.html">Getting Help with Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/terminal.html">Terminals and Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/organization.html">Getting Organized for class</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">Advice from FA2020 Students</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">Advice from FA2021 Students</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24/edit/main/notes/2024-09-17.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24/issues/new?title=Issue%20on%20page%20%2Fnotes/2024-09-17.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notes/2024-09-17.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exploratory Data Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-week-exploratory-data-analysis">4.1. This week: Exploratory Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-and-visualizing-data-are-very-important">4.1.1. Summarizing and Visualizing Data are <strong>very</strong> important</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describing-a-dataset">4.2. Describing a Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-statistics">4.2.1. Individual statistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-quantiles">4.2.2. Understanding Quantiles</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-variable">4.3. Individual variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-average-total-emissions-in-this-dataset">4.4. What is the average total emissions in this dataset?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-categorical-data">4.5. Working with categorical data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-most-common-parent-type">4.5.1. What is the most common parent type?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-it-reasonable-to-compare-and-use-all-of-the-the-commodity-types-in-the-data">4.5.2. Is it reasonable to compare and use all of the the <code class="docutils literal notranslate"><span class="pre">commodity</span></code> types in the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-lambda-functions">4.5.3. understanding lambda functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-a-column-is-added">4.5.4. How a column is added</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#split-apply-combine">4.6. Split-Apply-Combine</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-commodity-type-has-the-highest-average-emissions">4.6.1. Which commodity type has the highest average emissions?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-apply-works">4.6.2. How apply works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-multiple-times">4.6.3. Grouping Multiple times</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">4.7. Prepare for next class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-class">4.8. Questions After Class</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-putting-the-two-column-names-commodity-simple-parent-type-in-the-square-brackets-what-did-that-do">4.8.1. when putting the two column names <code class="docutils literal notranslate"><span class="pre">["commodity_simple",</span> <span class="pre">"parent_type"]</span></code> in the square brackets, what did that do?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-the-apply-function-work">4.8.2. How does the  apply function work?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-should-we-be-practicing-this-material-its-hard-to-tell-whats-the-specific-take-away-from-this-class-vs-memorizing-methods">4.8.3. How should we be practicing this material. Its hard to tell whats the specific take away from this class vs memorizing methods.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-the-lambda-do-inside-of-the-function-we-created-to-group-the-coal-commodity">4.8.4. what does the lambda do inside of the function we created to group the coal commodity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-there-a-way-to-scrape-data-from-a-website-and-make-it-a-csv-file-if-the-website-does-not-allow-for-exporting">4.8.5. Is there a way to scrape data from a website and make it a csv file if the website does not allow for exporting?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#will-be-working-on-forms-of-data-visualization">4.8.6. Will be working on forms of data visualization?</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="exploratory-data-analysis">
+<h1><span class="section-number">4. </span>Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Permalink to this headline">#</a></h1>
+<p>Now we get to start actual data science!</p>
+<section id="this-week-exploratory-data-analysis">
+<h2><span class="section-number">4.1. </span>This week: Exploratory Data Analysis<a class="headerlink" href="#this-week-exploratory-data-analysis" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>How to summarize data</p></li>
+<li><p>Interpretting summaries</p></li>
+<li><p>Visualizing data</p></li>
+<li><p>interpretting summaries</p></li>
+</ul>
+<section id="summarizing-and-visualizing-data-are-very-important">
+<h3><span class="section-number">4.1.1. </span>Summarizing and Visualizing Data are <strong>very</strong> important<a class="headerlink" href="#summarizing-and-visualizing-data-are-very-important" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>People cannot interpret high dimensional or large samples quickly</p></li>
+<li><p>Important in EDA to help you make decisions about the rest of your analysis</p></li>
+<li><p>Important in how you report your results</p></li>
+<li><p>Summaries are similar calculations to performance metrics we will see later</p></li>
+<li><p>visualizations are often essential in debugging models</p></li>
+</ul>
+<p><strong>THEREFORE</strong></p>
+<ul class="simple">
+<li><p>You have  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall22/syllabus/achievements.html#assignments-and-skills">a lot of chances</a> to earn summarize and visualize</p></li>
+<li><p>we will be picky when we assess if you earned them or not</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_data_url</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/rfordatascience/tidytuesday/raw/master/data/2024/2024-05-21/emissions.csv&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">carbon_data_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-05-21/readme.md">data readme</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>parent_entity</th>
+      <th>parent_type</th>
+      <th>commodity</th>
+      <th>production_value</th>
+      <th>production_unit</th>
+      <th>total_emissions_MtCO2e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1962</td>
+      <td>Abu Dhabi National Oil Company</td>
+      <td>State-owned Entity</td>
+      <td>Oil &amp; NGL</td>
+      <td>0.91250</td>
+      <td>Million bbl/yr</td>
+      <td>0.363885</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1962</td>
+      <td>Abu Dhabi National Oil Company</td>
+      <td>State-owned Entity</td>
+      <td>Natural Gas</td>
+      <td>1.84325</td>
+      <td>Bcf/yr</td>
+      <td>0.134355</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1963</td>
+      <td>Abu Dhabi National Oil Company</td>
+      <td>State-owned Entity</td>
+      <td>Oil &amp; NGL</td>
+      <td>1.82500</td>
+      <td>Million bbl/yr</td>
+      <td>0.727770</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1963</td>
+      <td>Abu Dhabi National Oil Company</td>
+      <td>State-owned Entity</td>
+      <td>Natural Gas</td>
+      <td>4.42380</td>
+      <td>Bcf/yr</td>
+      <td>0.322453</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1964</td>
+      <td>Abu Dhabi National Oil Company</td>
+      <td>State-owned Entity</td>
+      <td>Oil &amp; NGL</td>
+      <td>7.30000</td>
+      <td>Million bbl/yr</td>
+      <td>2.911079</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In this case, <code class="docutils literal notranslate"><span class="pre">head</span></code>  shows that these rows are very similar because it is sorted.  Tail would probably be similar, so we will try <code class="docutils literal notranslate"><span class="pre">sample</span></code> to get a random subset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>parent_entity</th>
+      <th>parent_type</th>
+      <th>commodity</th>
+      <th>production_value</th>
+      <th>production_unit</th>
+      <th>total_emissions_MtCO2e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>4670</th>
+      <td>1930</td>
+      <td>Former Soviet Union</td>
+      <td>Nation State</td>
+      <td>Anthracite Coal</td>
+      <td>3.443649</td>
+      <td>Million tonnes/yr</td>
+      <td>10.047491</td>
+    </tr>
+    <tr>
+      <th>11906</th>
+      <td>1872</td>
+      <td>Westmoreland Mining</td>
+      <td>Investor-owned Company</td>
+      <td>Bituminous Coal</td>
+      <td>0.057875</td>
+      <td>Million tonnes/yr</td>
+      <td>0.157080</td>
+    </tr>
+    <tr>
+      <th>11577</th>
+      <td>1992</td>
+      <td>TurkmenGaz</td>
+      <td>State-owned Entity</td>
+      <td>Natural Gas</td>
+      <td>1616.008000</td>
+      <td>Bcf/yr</td>
+      <td>117.791454</td>
+    </tr>
+    <tr>
+      <th>4610</th>
+      <td>1915</td>
+      <td>Former Soviet Union</td>
+      <td>Nation State</td>
+      <td>Anthracite Coal</td>
+      <td>0.732655</td>
+      <td>Million tonnes/yr</td>
+      <td>2.137657</td>
+    </tr>
+    <tr>
+      <th>4256</th>
+      <td>1887</td>
+      <td>ExxonMobil</td>
+      <td>Investor-owned Company</td>
+      <td>Oil &amp; NGL</td>
+      <td>0.425813</td>
+      <td>Million bbl/yr</td>
+      <td>0.169805</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="describing-a-dataset">
+<h2><span class="section-number">4.2. </span>Describing a Dataset<a class="headerlink" href="#describing-a-dataset" title="Permalink to this headline">#</a></h2>
+<p>So far, we’ve loaded data in a few different ways and then we’ve examined
+DataFrames as a data structure, looking at what different attributes they have
+and what some of the methods are, and how to get data into them.</p>
+<p>The <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.describe.html"><code class="docutils literal notranslate"><span class="pre">describe</span></code></a> method provides us with a set of summary statistics that broadly</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-further-reading admonition">
+<p class="admonition-title">further reading</p>
+<p>On the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.describe.html">documentation page for describe</a> the “<i class="fas fa-info-circle"></i>
+See Also” shows the links to the documentation of most of the individual functions.  This is a good way to learn about other things, or find something when you are not quite sure what it would be named.  Go to a function thats similar to what you want and then look at the related functions.</p>
+</div>
+</aside>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>production_value</th>
+      <th>total_emissions_MtCO2e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>12551.000000</td>
+      <td>12551.000000</td>
+      <td>12551.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1987.148116</td>
+      <td>412.712258</td>
+      <td>113.219734</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>29.202455</td>
+      <td>1357.569683</td>
+      <td>329.812666</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1854.000000</td>
+      <td>0.004398</td>
+      <td>0.000321</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>1973.000000</td>
+      <td>10.601353</td>
+      <td>8.785294</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1994.000000</td>
+      <td>63.203536</td>
+      <td>33.058688</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2009.000000</td>
+      <td>320.664764</td>
+      <td>102.154596</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2022.000000</td>
+      <td>27192.000000</td>
+      <td>8646.905949</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<!-- From this, we can draw several conclusions. For example:
+-   -->
+<p>And these all give us a sense of the values and the distribution or spread fo the data in each column.</p>
+<section id="individual-statistics">
+<h3><span class="section-number">4.2.1. </span>Individual statistics<a class="headerlink" href="#individual-statistics" title="Permalink to this headline">#</a></h3>
+<p>We can also extract each of the statistics that the <code class="docutils literal notranslate"><span class="pre">describe</span></code> method calculates individually, by name.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>year                                    2022
+parent_entity                            YPF
+parent_type               State-owned Entity
+commodity                       Thermal Coal
+production_value                     27192.0
+production_unit            Million tonnes/yr
+total_emissions_MtCO2e           8646.905949
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="understanding-quantiles">
+<h3><span class="section-number">4.2.2. </span>Understanding Quantiles<a class="headerlink" href="#understanding-quantiles" title="Permalink to this headline">#</a></h3>
+<p>The 50% has another more common name: the median.  It means 50% of the data are lower (and higher) than this value.</p>
+<p>The quantiles
+are tricky, we cannot just <code class="docutils literal notranslate"><span class="pre">.25%()</span></code> to get the 25% percentile, we have to use the
+<code class="docutils literal notranslate"><span class="pre">quantile</span></code> method and pass it a value between 0 and 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="p">[</span><span class="s1">&#39;production_value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.6013534253315
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="p">[</span><span class="s1">&#39;production_value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>448.5
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="individual-variable">
+<h2><span class="section-number">4.3. </span>Individual variable<a class="headerlink" href="#individual-variable" title="Permalink to this headline">#</a></h2>
+<p>We can use the descriptive statistics on individual columns as well</p>
+</section>
+<section id="what-is-the-average-total-emissions-in-this-dataset">
+<h2><span class="section-number">4.4. </span>What is the average total emissions in this dataset?<a class="headerlink" href="#what-is-the-average-total-emissions-in-this-dataset" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="p">[</span><span class="s1">&#39;total_emissions_MtCO2e&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>113.21973391166483
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="working-with-categorical-data">
+<h2><span class="section-number">4.5. </span>Working with categorical data<a class="headerlink" href="#working-with-categorical-data" title="Permalink to this headline">#</a></h2>
+<p>There are different columns in the describe than the the whole dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;year&#39;, &#39;parent_entity&#39;, &#39;parent_type&#39;, &#39;commodity&#39;, &#39;production_value&#39;,
+       &#39;production_unit&#39;, &#39;total_emissions_MtCO2e&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>So far, the stats above are only for numerical features.</p>
+<p>We can get the prevalence of each one with <code class="docutils literal notranslate"><span class="pre">value_counts</span></code>, this can also allow us to answer certain questions. Let’s try a few.</p>
+<section id="what-is-the-most-common-parent-type">
+<h3><span class="section-number">4.5.1. </span>What is the most common parent type?<a class="headerlink" href="#what-is-the-most-common-parent-type" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="p">[</span><span class="s1">&#39;parent_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>parent_type
+Investor-owned Company    6583
+State-owned Entity        3914
+Nation State              2054
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This file works as a notebook, that gets run when the HTML is built for the site.
+Here, I used the <a class="reference external" href="https://jupyterbook.org/en/stable/content/executable/output-insert.html#glue-gluing">glue feature</a> to use a value from the code cell in the markdown</p>
+</div>
+</aside>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">most_common_ptype</span> <span class="o">=</span> <span class="n">carbon_df</span><span class="p">[</span><span class="s1">&#39;parent_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+<span class="n">glue</span><span class="p">(</span><span class="s1">&#39;max_parent&#39;</span><span class="p">,</span><span class="n">most_common_ptype</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Investor-owned Company&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>This shows us that the most common one is <span class="output text_plain">‘Investor-owned Company’</span></p>
+<p>We also notice that the data is relatively balanced enough that we can make good comparisons from the overall output.</p>
+<p>For the specific question, we could instead use the <code class="docutils literal notranslate"><span class="pre">mode</span></code> method (the most frequent value).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="p">[</span><span class="s1">&#39;parent_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    Investor-owned Company
+Name: parent_type, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="is-it-reasonable-to-compare-and-use-all-of-the-the-commodity-types-in-the-data">
+<h3><span class="section-number">4.5.2. </span>Is it reasonable to compare and use all of the the <code class="docutils literal notranslate"><span class="pre">commodity</span></code> types in the data<a class="headerlink" href="#is-it-reasonable-to-compare-and-use-all-of-the-the-commodity-types-in-the-data" title="Permalink to this headline">#</a></h3>
+<p>To do this, we again look at the value counts:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="p">[</span><span class="s1">&#39;commodity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>commodity
+Oil &amp; NGL              3733
+Natural Gas            3452
+Bituminous Coal        1370
+Metallurgical Coal     1073
+Lignite Coal           1008
+Sub-Bituminous Coal     673
+Thermal Coal            611
+Anthracite Coal         368
+Cement                  263
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, we note that the top few are a lot more similar and the smallest one is a lot lower.  Here we might drop only the bottom couple or keep them call becaus for a lot of things 200 measurements is enough.</p>
+<p>Another choice is that we could combine the different types of coals together.  We can do this by adding a column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="p">[</span><span class="s1">&#39;commodity_simple&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">carbon_df</span><span class="p">[</span><span class="s1">&#39;commodity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span> <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="s1">&#39;Coal&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;Coal&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The way this works is:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">carbon_df['commodity']</span></code> picks out the column of interest</p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.apply.html">the <code class="docutils literal notranslate"><span class="pre">.apply</span></code> method</a> applies a function (that we pass to it) to all of the elements of a series (or to the rows or columns of a <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.apply.html">DataFrame</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">s:</span> <span class="pre">s</span> <span class="pre">if</span> <span class="pre">not('Coal'</span> <span class="pre">in</span> <span class="pre">s)</span> <span class="pre">else</span> <span class="pre">'Coal'</span></code> is a lambda function that returns the same value if Col is not in it or only <code class="docutils literal notranslate"><span class="pre">Coal</span></code> if it is</p></li>
+<li><p>assigns values to a column <code class="docutils literal notranslate"><span class="pre">'commodity_simple'</span></code> <code class="docutils literal notranslate"><span class="pre">carbon_df['commodity_simple']</span> <span class="pre">=</span></code>. It also creates that column since it did not exist</p></li>
+</ul>
+</section>
+<section id="understanding-lambda-functions">
+<h3><span class="section-number">4.5.3. </span>understanding lambda functions<a class="headerlink" href="#understanding-lambda-functions" title="Permalink to this headline">#</a></h3>
+<p>To better understand the lambda function that we  used above, let’s assign it to a variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coal_strip</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span> <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="s1">&#39;Coal&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;Coal&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First we will inspect it a little:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">coal_strip</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>function
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see it is a function here</p>
+<p>Now we can make calls to it, like any other functions</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coal_strip</span><span class="p">(</span><span class="s1">&#39;Metallurgical Coal&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Coal&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>this works and now we test the other case:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coal_strip</span><span class="p">(</span><span class="s1">&#39;naything else&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;naything else&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="how-a-column-is-added">
+<h3><span class="section-number">4.5.4. </span>How a column is added<a class="headerlink" href="#how-a-column-is-added" title="Permalink to this headline">#</a></h3>
+<p>Now we can see a sample of the DataFrame again to see how the <code class="docutils literal notranslate"><span class="pre">apply</span></code> method works.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>parent_entity</th>
+      <th>parent_type</th>
+      <th>commodity</th>
+      <th>production_value</th>
+      <th>production_unit</th>
+      <th>total_emissions_MtCO2e</th>
+      <th>commodity_simple</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>11445</th>
+      <td>1994</td>
+      <td>TotalEnergies</td>
+      <td>Investor-owned Company</td>
+      <td>Oil &amp; NGL</td>
+      <td>541.639622</td>
+      <td>Million bbl/yr</td>
+      <td>215.993909</td>
+      <td>Oil &amp; NGL</td>
+    </tr>
+    <tr>
+      <th>5792</th>
+      <td>1964</td>
+      <td>Kuwait Petroleum Corp.</td>
+      <td>State-owned Entity</td>
+      <td>Natural Gas</td>
+      <td>0.750000</td>
+      <td>Bcf/yr</td>
+      <td>0.054668</td>
+      <td>Natural Gas</td>
+    </tr>
+    <tr>
+      <th>6143</th>
+      <td>1976</td>
+      <td>Marathon Oil</td>
+      <td>Investor-owned Company</td>
+      <td>Natural Gas</td>
+      <td>155.053825</td>
+      <td>Bcf/yr</td>
+      <td>11.301934</td>
+      <td>Natural Gas</td>
+    </tr>
+    <tr>
+      <th>9463</th>
+      <td>2012</td>
+      <td>Rio Tinto</td>
+      <td>Investor-owned Company</td>
+      <td>Bituminous Coal</td>
+      <td>20.648000</td>
+      <td>Million tonnes/yr</td>
+      <td>56.041543</td>
+      <td>Coal</td>
+    </tr>
+    <tr>
+      <th>2640</th>
+      <td>1987</td>
+      <td>Coal India</td>
+      <td>State-owned Entity</td>
+      <td>Metallurgical Coal</td>
+      <td>1.941327</td>
+      <td>Million tonnes/yr</td>
+      <td>5.759173</td>
+      <td>Coal</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can further examine this column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="p">[</span><span class="s1">&#39;commodity_simple&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>commodity_simple
+Coal           5103
+Oil &amp; NGL      3733
+Natural Gas    3452
+Cement          263
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now the numbers are more similar, we might want to drop the cement, we can do that using a mask that we saw last week.</p>
+</section>
+</section>
+<section id="split-apply-combine">
+<h2><span class="section-number">4.6. </span>Split-Apply-Combine<a class="headerlink" href="#split-apply-combine" title="Permalink to this headline">#</a></h2>
+<p><img alt="split-apply-combine" src="https://jakevdp.github.io/PythonDataScienceHandbook/figures/03.08-split-apply-combine.png" /></p>
+<p>see it in action on <a class="reference external" href="https://pandastutor.com/vis.html#code=import%20pandas%20as%20pd%0Aimport%20io%0A%0Acsv%20%3D%20'''%0Abreed,type,longevity,size%0ALabrador,sporting,12.04,medium%0AGerman,herding,9.73,large%0ABeagle,hound,12.3,small%0AGolden,sporting,12.04,medium%0AYorkshire,toy,12.6,small%0ABulldog,non-sporting,6.29,medium%0ABoxer,working,8.81,medium%0APoodle,non-sporting,11.95,medium%0A'''%0A%0Adogs%20%3D%20pd.read_csv%28io.StringIO%28csv%29%29%0Adogs%20%3D%20dogs%5B%5B'breed',%20'size',%20'longevity'%5D%5D.sort_values%28'size'%29%0A%0Adogs.groupby%28'size'%29.mean%28%29&amp;d=2024-09-17&amp;lang=py&amp;v=v1">pandas tutor</a></p>
+<section id="which-commodity-type-has-the-highest-average-emissions">
+<h3><span class="section-number">4.6.1. </span>Which commodity type has the highest average emissions?<a class="headerlink" href="#which-commodity-type-has-the-highest-average-emissions" title="Permalink to this headline">#</a></h3>
+<p>To do this we group by the categorical value, the new simplified commodity column we created, then we pick out thee emissions column, and take the average.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;commodity_simple&#39;</span><span class="p">)[</span><span class="s1">&#39;total_emissions_MtCO2e&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>commodity_simple
+Cement         112.859242
+Coal           118.369779
+Natural Gas     75.073875
+Oil &amp; NGL      141.479481
+Name: total_emissions_MtCO2e, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="how-apply-works">
+<h3><span class="section-number">4.6.2. </span>How apply works<a class="headerlink" href="#how-apply-works" title="Permalink to this headline">#</a></h3>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">apply</span></code> with any function, that we write in advance, that comes from a library, or is built in.  Above, we used a lambda we defined on the fly, but here we can make it first.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">first_chars</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">s</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="n">carbon_df</span><span class="p">[</span><span class="s1">&#39;commodity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">first_chars</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        Oil &amp;
+1        Natur
+2        Oil &amp;
+3        Natur
+4        Oil &amp;
+         ...  
+12546    Natur
+12547    Oil &amp;
+12548    Natur
+12549    Oil &amp;
+12550    Natur
+Name: commodity, Length: 12551, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="grouping-multiple-times">
+<h3><span class="section-number">4.6.3. </span>Grouping Multiple times<a class="headerlink" href="#grouping-multiple-times" title="Permalink to this headline">#</a></h3>
+<p>we can pass a list to group by two values</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;commodity_simple&#39;</span><span class="p">,</span><span class="s1">&#39;parent_type&#39;</span><span class="p">])[</span><span class="s1">&#39;total_emissions_MtCO2e&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>commodity_simple  parent_type           
+Cement            Investor-owned Company     38.813769
+                  Nation State              243.802816
+Coal              Investor-owned Company     45.397065
+                  Nation State              228.621342
+                  State-owned Entity         94.977580
+Natural Gas       Investor-owned Company     58.313678
+                  Nation State              741.445688
+                  State-owned Entity         80.152170
+Oil &amp; NGL         Investor-owned Company    106.583580
+                  Nation State              885.428265
+                  State-owned Entity        162.042650
+Name: total_emissions_MtCO2e, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is one Series, but is has a <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/advanced.html">multi-index</a>. We can check the type</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">em_by_comm_parent</span> <span class="o">=</span> <span class="n">carbon_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;commodity_simple&#39;</span><span class="p">,</span><span class="s1">&#39;parent_type&#39;</span><span class="p">])[</span><span class="s1">&#39;total_emissions_MtCO2e&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">em_by_comm_parent</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
+</pre></div>
+</div>
+</div>
+</div>
+<p>and look at the index to confirm</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">em_by_comm_parent</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MultiIndex([(     &#39;Cement&#39;, &#39;Investor-owned Company&#39;),
+            (     &#39;Cement&#39;,           &#39;Nation State&#39;),
+            (       &#39;Coal&#39;, &#39;Investor-owned Company&#39;),
+            (       &#39;Coal&#39;,           &#39;Nation State&#39;),
+            (       &#39;Coal&#39;,     &#39;State-owned Entity&#39;),
+            (&#39;Natural Gas&#39;, &#39;Investor-owned Company&#39;),
+            (&#39;Natural Gas&#39;,           &#39;Nation State&#39;),
+            (&#39;Natural Gas&#39;,     &#39;State-owned Entity&#39;),
+            (  &#39;Oil &amp; NGL&#39;, &#39;Investor-owned Company&#39;),
+            (  &#39;Oil &amp; NGL&#39;,           &#39;Nation State&#39;),
+            (  &#39;Oil &amp; NGL&#39;,     &#39;State-owned Entity&#39;)],
+           names=[&#39;commodity_simple&#39;, &#39;parent_type&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">reset_index</span></code> to change from the multi-index into a new count from 0 index (and make it a DataFrame in the process)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;commodity_simple&#39;</span><span class="p">,</span><span class="s1">&#39;parent_type&#39;</span><span class="p">])[</span><span class="s1">&#39;total_emissions_MtCO2e&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>commodity_simple</th>
+      <th>parent_type</th>
+      <th>total_emissions_MtCO2e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Cement</td>
+      <td>Investor-owned Company</td>
+      <td>38.813769</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cement</td>
+      <td>Nation State</td>
+      <td>243.802816</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Coal</td>
+      <td>Investor-owned Company</td>
+      <td>45.397065</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Coal</td>
+      <td>Nation State</td>
+      <td>228.621342</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Coal</td>
+      <td>State-owned Entity</td>
+      <td>94.977580</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Natural Gas</td>
+      <td>Investor-owned Company</td>
+      <td>58.313678</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Natural Gas</td>
+      <td>Nation State</td>
+      <td>741.445688</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Natural Gas</td>
+      <td>State-owned Entity</td>
+      <td>80.152170</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Oil &amp; NGL</td>
+      <td>Investor-owned Company</td>
+      <td>106.583580</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Oil &amp; NGL</td>
+      <td>Nation State</td>
+      <td>885.428265</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Oil &amp; NGL</td>
+      <td>State-owned Entity</td>
+      <td>162.042650</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="prepare-for-next-class">
+<h2><span class="section-number">4.7. </span>Prepare for next class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
+<p>Seaborn is a plotting library that gives us <a class="reference external" href="https://seaborn.pydata.org/tutorial/introduction.html#opinionated-defaults-and-flexible-customization"><em>opinionated defaults</em></a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Run this line one time before class on Thursday</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you get <code class="docutils literal notranslate"><span class="pre">ModuleNotFound</span></code> error, open a terminal tab and run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">seaborn</span></code> .</p>
+<p>seaborn’s alias is <code class="docutils literal notranslate"><span class="pre">sns</span></code> as an inside joke among the developers to the character, <a class="reference external" href="https://en.wikipedia.org/wiki/Sam_Seaborn">Samual Norman Seaborn</a> from West Wing they named the library after <a class="reference external" href="https://seaborn.pydata.org/faq.html#why-is-seaborn-imported-as-sns">per their FAQ</a></p>
+</section>
+<section id="questions-after-class">
+<h2><span class="section-number">4.8. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Questions about the assignment have been addreessed by adding hints and tips to the end of the <a class="reference internal" href="../assignments/02-python-access.html"><span class="doc std std-doc">instructions</span></a></p>
+</div>
+<section id="when-putting-the-two-column-names-commodity-simple-parent-type-in-the-square-brackets-what-did-that-do">
+<h3><span class="section-number">4.8.1. </span>when putting the two column names <code class="docutils literal notranslate"><span class="pre">[&quot;commodity_simple&quot;,</span> <span class="pre">&quot;parent_type&quot;]</span></code> in the square brackets, what did that do?<a class="headerlink" href="#when-putting-the-two-column-names-commodity-simple-parent-type-in-the-square-brackets-what-did-that-do" title="Permalink to this headline">#</a></h3>
+<p>We cann answer a question like this by inspecting the code further</p>
+<p>First we can look directly at it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s2">&quot;commodity_simple&quot;</span><span class="p">,</span> <span class="s2">&quot;parent_type&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;commodity_simple&#39;, &#39;parent_type&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we can check its type:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">([</span><span class="s2">&quot;commodity_simple&quot;</span><span class="p">,</span> <span class="s2">&quot;parent_type&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
+</div>
+<p>It makes a <code class="docutils literal notranslate"><span class="pre">list</span></code> which is then compatible with the   <code class="docutils literal notranslate"><span class="pre">groupby</span></code> method.</p>
+<p>We can look a its help to remember what it can be passed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the __doc__ attribute is a property of all functions</span>
+<span class="c1"># it is a string so I used split to break it into lines, </span>
+<span class="c1"># looked to see how many i needed then joined them back together</span>
+<span class="c1"># and printed them (to have the newkines render)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">carbon_df</span><span class="o">.</span><span class="n">groupby</span><span class="o">.</span><span class="vm">__doc__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[:</span><span class="mi">18</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Group DataFrame using a mapper or by a Series of columns.
+
+A groupby operation involves some combination of splitting the
+object, applying a function, and combining the results. This can be
+used to group large amounts of data and compute operations on these
+groups.
+
+Parameters
+----------
+by : mapping, function, label, pd.Grouper or list of such
+    Used to determine the groups for the groupby.
+    If ``by`` is a function, it&#39;s called on each value of the object&#39;s
+    index. If a dict or Series is passed, the Series or dict VALUES
+    will be used to determine the groups (the Series&#39; values are first
+    aligned; see ``.align()`` method). If a list or ndarray of length
+    equal to the selected axis is passed (see the `groupby user guide
+    &lt;https://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#splitting-an-object-into-groups&gt;`_),
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="how-does-the-apply-function-work">
+<h3><span class="section-number">4.8.2. </span>How does the  apply function work?<a class="headerlink" href="#how-does-the-apply-function-work" title="Permalink to this headline">#</a></h3>
+<p>I have explained it and linked resources above, plus the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> docs
+have a <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/groupby.html#flexible-apply">section on it in their user guide</a></p>
+</section>
+<section id="how-should-we-be-practicing-this-material-its-hard-to-tell-whats-the-specific-take-away-from-this-class-vs-memorizing-methods">
+<h3><span class="section-number">4.8.3. </span>How should we be practicing this material. Its hard to tell whats the specific take away from this class vs memorizing methods.<a class="headerlink" href="#how-should-we-be-practicing-this-material-its-hard-to-tell-whats-the-specific-take-away-from-this-class-vs-memorizing-methods" title="Permalink to this headline">#</a></h3>
+<p>Review the notes and see the analysis.</p>
+<p>What we did is ann example data anlysis. We asked and answered several questions.  This serves as example questions and types of questions. How to interpret the statistics.</p>
+</section>
+<section id="what-does-the-lambda-do-inside-of-the-function-we-created-to-group-the-coal-commodity">
+<h3><span class="section-number">4.8.4. </span>what does the lambda do inside of the function we created to group the coal commodity<a class="headerlink" href="#what-does-the-lambda-do-inside-of-the-function-we-created-to-group-the-coal-commodity" title="Permalink to this headline">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">lambda</span></code> is the keyword to define a function in line, like <code class="docutils literal notranslate"><span class="pre">def</span></code> is in a full length definition.</p>
+</section>
+<section id="is-there-a-way-to-scrape-data-from-a-website-and-make-it-a-csv-file-if-the-website-does-not-allow-for-exporting">
+<h3><span class="section-number">4.8.5. </span>Is there a way to scrape data from a website and make it a csv file if the website does not allow for exporting?<a class="headerlink" href="#is-there-a-way-to-scrape-data-from-a-website-and-make-it-a-csv-file-if-the-website-does-not-allow-for-exporting" title="Permalink to this headline">#</a></h3>
+<p>Sometimes, we will learn webscraping in a few weeks. For now, download locally, or try a different dataset.</p>
+</section>
+<section id="will-be-working-on-forms-of-data-visualization">
+<h3><span class="section-number">4.8.6. </span>Will be working on forms of data visualization?<a class="headerlink" href="#will-be-working-on-forms-of-data-visualization" title="Permalink to this headline">#</a></h3>
+<p>Yes</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2024-09-12.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Pandas Data Frames and More Iterable Types</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../assignments/01-setup.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Assignment 1: Setup, Syllabus, and Review</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-week-exploratory-data-analysis">4.1. This week: Exploratory Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-and-visualizing-data-are-very-important">4.1.1. Summarizing and Visualizing Data are <strong>very</strong> important</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#describing-a-dataset">4.2. Describing a Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-statistics">4.2.1. Individual statistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-quantiles">4.2.2. Understanding Quantiles</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-variable">4.3. Individual variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-average-total-emissions-in-this-dataset">4.4. What is the average total emissions in this dataset?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-categorical-data">4.5. Working with categorical data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-most-common-parent-type">4.5.1. What is the most common parent type?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-it-reasonable-to-compare-and-use-all-of-the-the-commodity-types-in-the-data">4.5.2. Is it reasonable to compare and use all of the the <code class="docutils literal notranslate"><span class="pre">commodity</span></code> types in the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-lambda-functions">4.5.3. understanding lambda functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-a-column-is-added">4.5.4. How a column is added</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#split-apply-combine">4.6. Split-Apply-Combine</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-commodity-type-has-the-highest-average-emissions">4.6.1. Which commodity type has the highest average emissions?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-apply-works">4.6.2. How apply works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-multiple-times">4.6.3. Grouping Multiple times</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">4.7. Prepare for next class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-class">4.8. Questions After Class</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-putting-the-two-column-names-commodity-simple-parent-type-in-the-square-brackets-what-did-that-do">4.8.1. when putting the two column names <code class="docutils literal notranslate"><span class="pre">["commodity_simple",</span> <span class="pre">"parent_type"]</span></code> in the square brackets, what did that do?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-the-apply-function-work">4.8.2. How does the  apply function work?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-should-we-be-practicing-this-material-its-hard-to-tell-whats-the-specific-take-away-from-this-class-vs-memorizing-methods">4.8.3. How should we be practicing this material. Its hard to tell whats the specific take away from this class vs memorizing methods.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-the-lambda-do-inside-of-the-function-we-created-to-group-the-coal-commodity">4.8.4. what does the lambda do inside of the function we created to group the coal commodity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-there-a-way-to-scrape-data-from-a-website-and-make-it-a-csv-file-if-the-website-does-not-allow-for-exporting">4.8.5. Is there a way to scrape data from a website and make it a csv file if the website does not allow for exporting?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#will-be-working-on-forms-of-data-visualization">4.8.6. Will be working on forms of data visualization?</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Professor Sarah M Brown
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
