@@ -1,35 +1,46 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3. Assignment 3: Exploratory Data Analysis &#8212; Programming for Data Science at URI Spring 2023</title>
-    
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    <title>Assignment 3: Exploratory Data Analysis &#8212; Programming for Data Science at URI Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/course-admonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -37,12 +48,12 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,63 +61,93 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'assignments/03-eda';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. Assignment 4:" href="04-prepare.html" />
-    <link rel="prev" title="2. Assignment 2: Practicing Python and Accessing Data" href="02-python-access.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/310_2021.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Programming for Data Science at URI Spring 2023</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/310_2021.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/310_2021.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -115,665 +156,359 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Syllabus
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus/about.html">
-   About
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus/tools.html">
-   Tools and Resources
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus/achievements.html">
-   Data Science Achievements
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus/grading.html">
-   Grading
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus/policies.html">
-   Grading Policies
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus/uri_resources.html">
-   Support
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus/uri_statements.html">
-   General URI Policies
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus/communication.html">
-   Course Communications
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/tools.html">Tools and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/achievements.html">Data Science Achievements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Grading Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/style.html">Course  Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_resources.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_statements.html">General URI Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/communication.html">Communications &amp; Office Hours</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Notes
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../notes/2023-01-24.html">
-   1. Welcome and Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notes/2023-01-26.html">
-   2. Syllabus and Python Review
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notes/2023-01-31.html">
-   3. Grading review, Pandas, and Iterables
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notes/2023-02-02.html">
-   4. Pandas and Indexing
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notes/2023-02-07.html">
-   5. Exploratory Data Analysis (EDA)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notes/2023-02-09.html">
-   6. Visualization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notes/2023-02-14.html">
-   7. Tidy Data and Reshaping Datasets
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notes/2023-02-16.html">
-   8. Reparing values
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notes/2023-02-21.html">
-   9. Merging  and Databases
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notes/2023-02-23.html">
-   10. Web Scraping
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notes/2023-02-28.html">
-   11. Evaluating ML Algorithms
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notes/2023-03-02.html">
-   12. Auditing with AIF360
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notes/2023-03-07.html">
-   13. Intro to ML &amp; Naive Bayes
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/2024-09-05.html">1. Welcome &amp; What is Data Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/2024-09-10.html">2. Iterables and Pandas Data Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/2024-09-12.html">3. Pandas Data Frames and More Iterable Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/2024-09-17.html">4. Exploratory Data Analysis</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Assignments
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01-syllabus-install.html">
-   1. Assignment 1: Portfolio Setup, Data Science, and Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02-python-access.html">
-   2. Assignment 2: Practicing Python and Accessing Data
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   3. Assignment 3: Exploratory Data Analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04-prepare.html">
-   4. Assignment 4:
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05-construct.html">
-   5. Assignment 5: Constructing Datasets and Using Databases
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06-evaluate.html">
-   6. Assignment 6: Auditing Algorithms
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Portfolio
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../portfolio/index.html">
-   Portfolio
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../portfolio/formatting.html">
-   Formatting Tips
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../portfolio/check1ideas.html">
-   Portfolio Check 1 Ideas
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01-setup.html">1. Assignment 1: Setup, Syllabus, and Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-python-access.html">2. Assignment 2: Practicing Python and Accessing Data</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  FAQ
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../faq/index.html">
-   FAQ
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../faq/syllabus.html">
-   Syllabus and Grading FAQ
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../faq/github.html">
-   Git and GitHub
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../faq/debugging.html">
-   Code Errors
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/index.html">Earning Level 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/formatting.html">Formatting Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/extensions.html">Generic Extension Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/altforms.html">Alternatives to Extending Assignments for Level 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/process.html">Process Level 3</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Resources
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../resources/glossary.html">
-   Glossary
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../resources/python.html">
-   References on Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../resources/cheatsheet.html">
-   Cheatsheet
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../resources/datasets.html">
-   Data Sources
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../resources/tips.html">
-   General Tips and Resources
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../resources/learning.html">
-   How to Study in this class
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../resources/gettinghelp.html">
-   Getting Help with Programming
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../resources/terminal.html">
-   Terminals and Environments
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../resources/organization.html">
-   Getting Organized for class
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
-   Advice from FA2020 Students
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">
-   Advice from FA2021 Students
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../letters/index.html">
-   Letters to Future students
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/syllabus.html">Syllabus and Grading FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/github.html">Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/debugging.html">Code Errors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/python.html">References on Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/datasets.html">Data Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/tips.html">General Tips and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/learning.html">How to Study in this class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/gettinghelp.html">Getting Help with Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/terminal.html">Terminals and Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/organization.html">Getting Organized for class</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">Advice from FA2020 Students</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">Advice from FA2021 Students</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24/edit/main/assignments/03-eda.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24/issues/new?title=Issue%20on%20page%20%2Fassignments/03-eda.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
 
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
 
 
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/assignments/03-eda.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
   </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/rhodyprog4ds/BrownSpring23/"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/rhodyprog4ds/BrownSpring23//issues/new?title=Issue%20on%20page%20%2Fassignments/03-eda.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/rhodyprog4ds/BrownSpring23/edit/main/assignments/03-eda.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/assignments/03-eda.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#objective-evaluation">
-   3.1. Objective &amp; Evaluation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#related-notes">
-   3.2. Related notes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#choose-datasets">
-   3.3. Choose Datasets
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataset-1-d1">
-     3.3.1. Dataset 1 (d1)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataset-2-d2">
-     3.3.2. Dataset 2 (d2)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#eda">
-   3.4. EDA
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#question-checklist">
-     3.4.1. Question checklist
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataset-1-checklist">
-     3.4.2. Dataset 1 Checklist
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataset-2-checklist">
-     3.4.3. Dataset 2 Checklist
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#peer-review">
-   3.5. Peer Review
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#review-questions">
-     3.5.1. Review Questions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#response">
-     3.5.2. Response
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Assignment 3: Exploratory Data Analysis</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#objective-evaluation">
-   3.1. Objective &amp; Evaluation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#related-notes">
-   3.2. Related notes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#choose-datasets">
-   3.3. Choose Datasets
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataset-1-d1">
-     3.3.1. Dataset 1 (d1)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataset-2-d2">
-     3.3.2. Dataset 2 (d2)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#eda">
-   3.4. EDA
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#question-checklist">
-     3.4.1. Question checklist
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataset-1-checklist">
-     3.4.2. Dataset 1 Checklist
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataset-2-checklist">
-     3.4.3. Dataset 2 Checklist
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#peer-review">
-   3.5. Peer Review
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#review-questions">
-     3.5.1. Review Questions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#response">
-     3.5.2. Response
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Assignment 3: Exploratory Data Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solo">Solo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group">Group</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective-evaluation">Objective &amp; Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-notes">Related notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-datasets">Choose Datasets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-1-d1">Dataset 1 (d1)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-2-d2">Dataset 2 (d2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-3-d3">Dataset 3 (d3)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda">EDA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-question-checklist">(overall) Question checklist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-1-checklist">Dataset 1 Checklist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-2-checklist">Dataset 2 Checklist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-3-checklist">Dataset 3 Checklist</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peer-review">Peer Review</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-questions">Review Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#template">Template</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#response">Response</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-and-hints">Tips and Hints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#think-ahead">Think Ahead</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <div class="tex2jax_ignore mathjax_ignore section" id="assignment-3-exploratory-data-analysis">
-<h1><span class="section-number">3. </span>Assignment 3: Exploratory Data Analysis<a class="headerlink" href="#assignment-3-exploratory-data-analysis" title="Permalink to this headline">#</a></h1>
-<p>__Due:2023-02-14 __</p>
-<p><a class="reference external" href="https://classroom.github.com/a/ttGG2ZCa">Template repo for submission</a></p>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="assignment-3-exploratory-data-analysis">
+<h1>Assignment 3: Exploratory Data Analysis<a class="headerlink" href="#assignment-3-exploratory-data-analysis" title="Permalink to this headline">#</a></h1>
+<p><strong>Due:2023-09-26 end of day</strong></p>
+<p>However, if you  upload an attempt and specific questions on time and then attend office hours on 9/20 then any revisions made based on our conversation will count as on time</p>
+<!-- - [accept assignment](https://classroom.github.com/a/BOG3E7Ch) -->
+<section id="submission">
+<h2>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">#</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>You have the option to work with a partner. You must plan this in advance so that you have access to collaborate. If you did not find a partner in class and you would like one, try to find one <a class="reference external" href="https://github.com/rhodyprog4ds/sp23-discuss-sp23community/discussions">on the class discussion</a>. &#64;brownsarahm if you do not get a reply.</p>
+<p>You have the option to work with a partner. You must plan this in advance so that you have access to collaborate.</p>
 </div>
-<div class="section" id="objective-evaluation">
-<h2><span class="section-number">3.1. </span>Objective &amp; Evaluation<a class="headerlink" href="#objective-evaluation" title="Permalink to this headline">#</a></h2>
-<p>This week your goal is to do a small exploratory data analysis for two datasets of your choice.</p>
+<section id="solo">
+<h3>Solo<a class="headerlink" href="#solo" title="Permalink to this headline">#</a></h3>
+<p>Add your work to the assignment3 branch in your portfolio and you do not need to edit the <code class="docutils literal notranslate"><span class="pre">a3_location</span></code> file</p>
+</section>
+<section id="group">
+<h3>Group<a class="headerlink" href="#group" title="Permalink to this headline">#</a></h3>
+<ol class="arabic simple">
+<li><p>coordinate so that the first person makes the team when they <a class="reference external" href="https://classroom.github.com/a/caIgkvaR">accept the assigment</a></p></li>
+<li><p>the second (and third) joins the same team when they <a class="reference external" href="https://classroom.github.com/a/caIgkvaR">accept the assigment</a>.</p></li>
+<li><p>Each person should <a class="reference external" href="https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository#:~:text=Below%20the%20commit%20message%20fields%2C%20decide%20whether%20to%20add%20your%20commit%20to%20the%20current%20branch%20or%20to%20a%20new%20branch.%20If%20your%20current%20branch%20is%20the%20default%20branch%2C%20you%20should%20choose%20to%20create%20a%20new%20branch%20for%20your%20commit%20and%20then%20create%20a%20pull%20request.">upload their work to a branch </a> named <code class="docutils literal notranslate"><span class="pre">d1</span></code>, <code class="docutils literal notranslate"><span class="pre">d2</span></code> or <code class="docutils literal notranslate"><span class="pre">d3</span></code> for which dataset checklist you followed from below and open a PR. (each one should do a different one)</p></li>
+<li><p>In your portfolio, replace the contents of  the <code class="docutils literal notranslate"><span class="pre">a3_location.md</span></code> file on the assignment3 branch with your team name. We will use that to create a PR to give you your individualized achievements update.</p></li>
+</ol>
+</section>
+</section>
+<section id="objective-evaluation">
+<h2>Objective &amp; Evaluation<a class="headerlink" href="#objective-evaluation" title="Permalink to this headline">#</a></h2>
+<p>This week your goal is to do a small exploratory data analysis for two datasets (or one if in a group) of your choice.</p>
 <p>Eligible skills: (links to checklists)</p>
 <ul class="simple">
-<li><p>process <a class="reference external" href="https://rhodyprog4ds.github.io/BrownSpring23/syllabus/achievements.html#process-level1">1</a></p></li>
-<li><p>access <a class="reference external" href="https://rhodyprog4ds.github.io/BrownSpring23/syllabus/achievements.html#access-level1">1</a> and <a class="reference external" href="https://rhodyprog4ds.github.io/BrownSpring23/syllabus/achievements.html#access-level2">2</a></p></li>
-<li><p><strong>first chance</strong> summarize <a class="reference external" href="https://rhodyprog4ds.github.io/BrownSpring23/syllabus/achievements.html#summarize-level1">1</a> and <a class="reference external" href="https://rhodyprog4ds.github.io/BrownSpring23/syllabus/achievements.html#summarize-level2">2</a></p></li>
-<li><p><strong>first chance</strong> visualize <a class="reference external" href="https://rhodyprog4ds.github.io/BrownSpring23/syllabus/achievements.html#visualize-level1">1</a> and <a class="reference external" href="https://rhodyprog4ds.github.io/BrownSpring23/syllabus/achievements.html#visualize-level2">2</a></p></li>
+<li><p>process 1</p></li>
+<li><p>access 1 and 2</p></li>
+<li><p>summarize 1 and 2</p></li>
+<li><p>visualize 1</p></li>
 </ul>
-</div>
-<div class="section" id="related-notes">
-<h2><span class="section-number">3.2. </span>Related notes<a class="headerlink" href="#related-notes" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="related-notes">
+<h2>Related notes<a class="headerlink" href="#related-notes" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="../notes/2023-02-07.html"><span class="doc std std-doc">Exploratory Data Analysis (EDA)</span></a></p></li>
-<li><p><a class="reference internal" href="../notes/2023-02-09.html"><span class="doc std std-doc">Visualization</span></a></p></li>
+<li><p><a class="reference internal" href="../notes/2024-09-17.html"><span class="doc std std-doc">Exploratory Data Analysis</span></a></p></li>
+<li><p><a class="reference internal" href="../notes/2024-09-19.html"><span class="doc std std-doc">Visualization</span></a></p></li>
 </ul>
-</div>
-<div class="section" id="choose-datasets">
-<h2><span class="section-number">3.3. </span>Choose Datasets<a class="headerlink" href="#choose-datasets" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="choose-datasets">
+<h2>Choose Datasets<a class="headerlink" href="#choose-datasets" title="Permalink to this headline">#</a></h2>
 <p>Each Dataset must have at least three variables, but can have more. Both datasets
-must have multiple types of variables. These can be datasets you used last week,
-if they meet the criteria below.</p>
-<div class="section" id="dataset-1-d1">
-<h3><span class="section-number">3.3.1. </span>Dataset 1 (d1)<a class="headerlink" href="#dataset-1-d1" title="Permalink to this headline">#</a></h3>
+must have multiple types of variables. These <strong>can</strong> be datasets you used for Assignment 2,
+if they meet the criteria below. All datasets must be different datasets even in a group</p>
+<section id="dataset-1-d1">
+<h3>Dataset 1 (d1)<a class="headerlink" href="#dataset-1-d1" title="Permalink to this headline">#</a></h3>
 <p>must include at least:</p>
 <ul class="simple">
 <li><p>two continuous valued variables <strong>and</strong></p></li>
@@ -783,23 +518,32 @@ if they meet the criteria below.</p>
 <p class="admonition-title">Hint</p>
 <p>a dataset from the UCI data repository that’s for classification and has continuous features would work for this</p>
 </div>
-</div>
-<div class="section" id="dataset-2-d2">
-<h3><span class="section-number">3.3.2. </span>Dataset 2 (d2)<a class="headerlink" href="#dataset-2-d2" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="dataset-2-d2">
+<h3>Dataset 2 (d2)<a class="headerlink" href="#dataset-2-d2" title="Permalink to this headline">#</a></h3>
 <p>must include at least:</p>
 <ul class="simple">
 <li><p>two categorical variables <strong>and</strong></p></li>
 <li><p>one continuous valued variable</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="eda">
-<h2><span class="section-number">3.4. </span>EDA<a class="headerlink" href="#eda" title="Permalink to this headline">#</a></h2>
-<p>Use a separate notebook for each dataset, name them <code class="docutils literal notranslate"><span class="pre">dataset_01.ipynb</span></code> and <code class="docutils literal notranslate"><span class="pre">dataset_02.ipynb</span></code>.</p>
+</section>
+<section id="dataset-3-d3">
+<h3>Dataset 3 (d3)<a class="headerlink" href="#dataset-3-d3" title="Permalink to this headline">#</a></h3>
+<p>must include at least:</p>
+<ul class="simple">
+<li><p>two continuous valued variables <strong>and</strong></p></li>
+<li><p>one categorical variable.</p></li>
+</ul>
+</section>
+</section>
+<section id="eda">
+<h2>EDA<a class="headerlink" href="#eda" title="Permalink to this headline">#</a></h2>
+<p>Use a separate notebook for each dataset, name them <code class="docutils literal notranslate"><span class="pre">dataset_0x.ipynb</span></code> where <code class="docutils literal notranslate"><span class="pre">x</span></code> is the number checklist you are following.</p>
 <p>For <strong>each</strong> dataset, in the corresponding notebook complete the following:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Load the data to a notebook as a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> from url or local path, if local, include the data file in your repository.</p></li>
-<li><p>Explore the dataset in a notebook enough to describe its structure use the heading <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Description</span></code></p>
+<li><p>Write a short description of what the data contains and what it could be used for</p></li>
+<li><p>Explore the dataset in a notebook enough to describe its structure. Use the heading <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Description</span></code> and include at least the following with interpretation. <em>What does the strucutre imply about the conclusions you can draw from this data?  Are there limitations in how to safely interpret the data that the summary helps you see? are the variables what you expect?</em></p>
 <ul class="simple">
 <li><p>shape</p></li>
 <li><p>columns</p></li>
@@ -807,22 +551,29 @@ if they meet the criteria below.</p>
 <li><p>overall summary statisics</p></li>
 </ul>
 </li>
-<li><p>Write a short description of what the data contains and what it could be used for</p></li>
-<li><p>Include overall summary for the data and interpret what that means. This should include code that generates the statistical summary and sentences in English in a markdown cell with your conclusions and explanation of the statistical summary. Are there limitations in how to safely interpre the data that the summary helps you see? are the variables what you expect?</p></li>
-<li><p>Ask and answer 3 questions by using and interpreting statistics and visualizations as appropriate. Include a heading for each question using a markdown cell and H2:<code class="docutils literal notranslate"><span class="pre">##</span></code>. Make sure your analyses meet the criteria in the check lists below. Use the checklists to think of what kinds of questions would use those type of analyses and help shape your questions.</p></li>
+<li><p>Ask and answer <strong>at least</strong> 3 questions by using and interpreting statistics and visualizations as appropriate. Include a heading for each question using a markdown cell and H2:<code class="docutils literal notranslate"><span class="pre">##</span></code>. <strong>Make sure your analyses meet the criteria in the check lists below.</strong> Use the checklists to think of what kinds of questions would use those type of analyses and help shape your questions. Your questions can be related or different levels of detail or views on a big picture question as long as the analysis addresses the checklist.</p></li>
 <li><p>Describe what, if anything might need to be done to clean or prepare this data for further analysis in a finale <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Future</span> <span class="pre">analysis</span></code> markdown cell in your notebook.</p></li>
 </ol>
-<div class="section" id="question-checklist">
-<h3><span class="section-number">3.4.1. </span>Question checklist<a class="headerlink" href="#question-checklist" title="Permalink to this headline">#</a></h3>
+<section id="overall-question-checklist">
+<h3>(overall) Question checklist<a class="headerlink" href="#overall-question-checklist" title="Permalink to this headline">#</a></h3>
 <p>be sure that every question (all six, 3 per dataset) has:</p>
 <ul class="simple">
 <li><p>a heading</p></li>
 <li><p>at least 1 statistic or plot</p></li>
 <li><p>interpretation that answers the question</p></li>
+<li><p>the question does not include the name of the statistic or plot in it</p></li>
 </ul>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Try to think about what each of these requirements translates into,
+as in what methods or constructs is it looking for and use an issue to get early feedback on this (by Monday)</p>
 </div>
-<div class="section" id="dataset-1-checklist">
-<h3><span class="section-number">3.4.2. </span>Dataset 1 Checklist<a class="headerlink" href="#dataset-1-checklist" title="Permalink to this headline">#</a></h3>
+</aside>
+</section>
+<section id="dataset-1-checklist">
+<h3>Dataset 1 Checklist<a class="headerlink" href="#dataset-1-checklist" title="Permalink to this headline">#</a></h3>
 <p>make sure that your <code class="docutils literal notranslate"><span class="pre">dataset_01.ipynb</span></code> has:</p>
 <ul class="simple">
 <li><p>Overall summary statistics grouped by a categorical variable</p></li>
@@ -830,9 +581,9 @@ if they meet the criteria below.</p>
 <li><p>at least one plot that uses 3 total variables</p></li>
 <li><p>a plot and summary table that convey the same information. This can be one statistic or many.</p></li>
 </ul>
-</div>
-<div class="section" id="dataset-2-checklist">
-<h3><span class="section-number">3.4.3. </span>Dataset 2 Checklist<a class="headerlink" href="#dataset-2-checklist" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="dataset-2-checklist">
+<h3>Dataset 2 Checklist<a class="headerlink" href="#dataset-2-checklist" title="Permalink to this headline">#</a></h3>
 <p>make sure that your <code class="docutils literal notranslate"><span class="pre">dataset_02.ipynb</span></code> has:</p>
 <ul class="simple">
 <li><p>overall summary statistics</p></li>
@@ -840,65 +591,90 @@ if they meet the criteria below.</p>
 <li><p>one summary statistic grouped by two categorical variables</p></li>
 <li><p>a figure with a grid of subplots that correspond to two categorical variables</p></li>
 </ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Be sure to start early and use help hours to make sure you have a plan for all of these.</p>
+</section>
+<section id="dataset-3-checklist">
+<h3>Dataset 3 Checklist<a class="headerlink" href="#dataset-3-checklist" title="Permalink to this headline">#</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is only for groups of 3</p>
 </div>
-</div>
-</div>
-<div class="section" id="peer-review">
-<h2><span class="section-number">3.5. </span>Peer Review<a class="headerlink" href="#peer-review" title="Permalink to this headline">#</a></h2>
+<p>make sure that your <code class="docutils literal notranslate"><span class="pre">dataset_03.ipynb</span></code> has:</p>
+<ul class="simple">
+<li><p>overall summary statistics</p></li>
+<li><p>two individual summary statistics for one variable</p></li>
+<li><p>at least one plot that uses 3 total variables</p></li>
+<li><p>a plot and summary table that convey the same information. This can be one statistic or many.</p></li>
+</ul>
+</section>
+</section>
+<section id="peer-review">
+<h2>Peer Review<a class="headerlink" href="#peer-review" title="Permalink to this headline">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This is optional, but if you do a review, you only need to do one analysis each.</p>
+<p>If you work alone and complete 2 analyses you do not need to do this, but you might review these
+questions because they are similar to how we will grade.</p>
 </div>
 <p>With a partner (or group of 3 where person 1 review’s 2 work, 2 reviews 3, and 3 reviews 1) read
 your partner’s notebook and complete a peer review on their pull request.  You can do peer review
 when you have done most of your analysis, and explanation, even if some parts of the code do not
 work.</p>
-<p>In your review:</p>
+<p>You will complete your review on a PR, by reviewing it.  If you want a big picture overview on that, the <a class="reference external" href="https://github.com/skills/review-pull-requests">github PR review “course”</a> is a good place to go, it is designed to take &lt;30 minutes.</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request#starting-a-review">start a review</a></p></li>
+</ol>
 <ul class="simple">
-<li><p>Use inline comments to denote places that are confusing or if you see solutions to problems your classmate could not solve</p></li>
-<li><p>Use the template below for your summary review</p></li>
+<li><p>Use <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-comments-to-a-pull-request">PR comments</a> to denote places that are confusing or if you see solutions to problems your classmate could not solve</p></li>
+<li><p>Prepare to <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review">submit your review</a></p></li>
+<li><p>Use the list of questions below for your summary review (copy the template into the box and fill in )</p></li>
 </ul>
-<div class="section" id="review-questions">
-<h3><span class="section-number">3.5.1. </span>Review Questions<a class="headerlink" href="#review-questions" title="Permalink to this headline">#</a></h3>
-<ol class="simple">
-<li><p>How was the analysis overall to read? easy? hard? cohesive? jumpy?</p></li>
-<li><p>Did the data summaries tell you enough about the data to understand the analysis and anticipate what kinds of questions could be answered? If not, what questions do you still have about the data?</p></li>
-<li><p>Do the questions make sense based on the data? Are they interesting questions? What could improve the questions</p></li>
-<li><p>Are the statistics and plots appropriate for the questions?</p></li>
+<section id="review-questions">
+<h3>Review Questions<a class="headerlink" href="#review-questions" title="Permalink to this headline">#</a></h3>
+<ol class="arabic simple">
+<li><p>Describe overall how it was to read the analysis overall to read. Was it easy? hard? cohesive? jumpy?</p></li>
+<li><p>How did the data summaries help prepare you to read the rest of the analysis? What do you think might be missing?</p></li>
+<li><p>For each question, consider the following and write any tips for improvement</p>
+<ol class="arabic simple">
+<li><p>Does the question make sense based on the data? How does it relate to the real world is there a reasonable audience? How could the question be improved</p></li>
+<li><p>How well do the statistics and plots match the question?</p></li>
 <li><p>Are the interpretations complete, clear, and consistent with the statistics and plots?</p></li>
 <li><p>What could be done to make the explanations more clear and complete?</p></li>
 <li><p>What additional analysis might make the analysis more compelling and clear?</p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!-- delete sections that are not needed --&gt;
-## Overall  
+</li>
+</ol>
+<section id="template">
+<h4>Template<a class="headerlink" href="#template" title="Permalink to this headline">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## Overall 
+ &lt;!-- Describe overall how it was to read the analysis overall to read. Was it easy? hard? cohesive? jumpy? --&gt;
 
-This analysis was ...
 
-## Data Summaries
+## Intro
 
-- [ ] complete
+## Question 1 
 
-To understand this analysis I still need to know ...
+## Question 2
 
-## Checklist
-
-- [ ] questions fit the data
-- [ ] questions are in natural language
-- [ ] chosen statistics and plots match questions
-- [ ] all statistics and plots have an interpretation in English
-
-## Areas of improvement
-
+## Question 3 
 </pre></div>
 </div>
-</div>
-<div class="section" id="response">
-<h3><span class="section-number">3.5.2. </span>Response<a class="headerlink" href="#response" title="Permalink to this headline">#</a></h3>
-<p>Respond to your review either inline comments, replies, or by updating your analysis accordingly.</p>
-<div class="margin sidebar">
+</section>
+</section>
+<section id="response">
+<h3>Response<a class="headerlink" href="#response" title="Permalink to this headline">#</a></h3>
+<p>Respond to the review on your notebook either with inline comments, replies, or by updating your analysis accordingly.</p>
+</section>
+</section>
+<section id="tips-and-hints">
+<h2>Tips and Hints<a class="headerlink" href="#tips-and-hints" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Remember you can also use <a class="reference internal" href="../notes/2024-09-12.html#masking"><span class="std std-ref">masking</span></a> in your EDA even though we did not do any in class</p></li>
+<li><p>To ensure you understand the checklist you can <strong>optionally</strong> make an issue using the appropriate issue type from your repo   and fill in what it should be to get early feedback that you are on track</p></li>
+<li><p>variable types are in the notes</p></li>
+</ul>
+</section>
+<section id="think-ahead">
+<h2>Think Ahead<a class="headerlink" href="#think-ahead" title="Permalink to this headline">#</a></h2>
+<aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -907,17 +683,17 @@ about ideas for your portfolio.  If you complete it, we’ll give your feedback 
 help shape your ideas to get to level 3 achievements.  If you want to focus only
 on level 2 at this moment in time, feel free to skip this part.</p>
 </div>
+</aside>
+<p>This can be addded to any or all of the datasets</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gu">## Thinking Ahead </span>
+<span class="k">1.</span> How could you make more customized summary tables?
+<span class="k">1.</span> Could you use any of the variables in this dataset to add more variables that would make interesting ways to apply split-apply-combine? (eg thresholding a continuous value to make a categorical value or like what we did with <span class="sb">`commodity`</span> in class)
+<span class="k">1.</span> Are there multiple ways to answer your big picture question (like different thresholding or subsets of the data)
+<span class="k">1.</span> Could any cleaning improve your analyis? 
+</pre></div>
 </div>
-<div class="admonition-think-ahead admonition">
-<p class="admonition-title">Think Ahead</p>
-<ol class="simple">
-<li><p>How could you make more customized summary tables?</p></li>
-<li><p>Could you use any of the variables in this dataset to add more variables that would make interesting ways to apply split-apply-combine? (eg thresholding a continuous value to make a categorical value)</p></li>
-</ol>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -931,7 +707,7 @@ on level 2 at this moment in time, feel free to skip this part.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./assignments"
         },
         predefinedOutput: true
@@ -939,50 +715,116 @@ on level 2 at this moment in time, feel free to skip this part.</p>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="02-python-access.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2. </span>Assignment 2: Practicing Python and Accessing Data</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="04-prepare.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Assignment 4:</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solo">Solo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group">Group</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective-evaluation">Objective &amp; Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-notes">Related notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-datasets">Choose Datasets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-1-d1">Dataset 1 (d1)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-2-d2">Dataset 2 (d2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-3-d3">Dataset 3 (d3)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda">EDA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-question-checklist">(overall) Question checklist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-1-checklist">Dataset 1 Checklist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-2-checklist">Dataset 2 Checklist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-3-checklist">Dataset 3 Checklist</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peer-review">Peer Review</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-questions">Review Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#template">Template</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#response">Response</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-and-hints">Tips and Hints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#think-ahead">Think Ahead</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Professor Sarah M Brown<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Professor Sarah M Brown
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

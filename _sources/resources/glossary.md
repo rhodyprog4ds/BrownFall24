@@ -59,6 +59,9 @@ kernel
 [lambda](https://docs.python.org/3.9/reference/expressions.html#lambda)
   they keyword used to define an anonymous function; lambda functions are defined with a compact syntax `<name> = lambda <parameters>: <body> `
 
+numpy array 
+  a type provided by [numpy]() to represent matrices, used by `pd.DataFrame.values` [doc](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.values.html) and accessed by `pd.DataFrame.to_numpy` [doc](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_numpy.html#pandas.DataFrame.to_numpy)
+
 [PEP 8](https://www.python.org/dev/peps/pep-0008/pep-0008/)
   [Python Enhancement Proposal](https://www.python.org/dev/peps/) 8, the Style Guide for Python Code.
 
