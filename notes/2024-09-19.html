@@ -421,6 +421,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-in-python">Plotting in Python</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-and-axis-level-plots">Figure and axis level plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-figure">Anatomy of a figure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-are-the-samples-distributed-in-time">How are the samples distributed in time?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-plot">Anatomy of a plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Figure and axis level plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-colors">Changing colors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emissions-by-type">Emissions by type</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emissions-over-time">Emissions over time?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-types-and-data-types">Variable types and data types</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-class">Questions After Class</a><ul class="nav section-nav flex-column">
@@ -478,6 +483,7 @@ Getting started with seaborn is the simplest, so we’ll use that.</p>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://seaborn.pydata.org/tutorial/function_overview.html#relative-merits-of-figure-level-functions">figure vs axes</a></p>
+<p>we will load pandas and seaborn</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -486,6 +492,7 @@ Getting started with seaborn is the simplest, so we’ll use that.</p>
 </div>
 </div>
 </div>
+<p>and continue with the same data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_data_url</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/rfordatascience/tidytuesday/raw/master/data/2024/2024-05-21/emissions.csv&#39;</span>
@@ -493,6 +500,7 @@ Getting started with seaborn is the simplest, so we’ll use that.</p>
 </div>
 </div>
 </div>
+<p>and the added column we made last class</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">carbon_data_url</span><span class="p">)</span>
@@ -596,6 +604,12 @@ Getting started with seaborn is the simplest, so we’ll use that.</p>
 </table>
 </div></div></div>
 </div>
+</section>
+<section id="how-are-the-samples-distributed-in-time">
+<h2>How are the samples distributed in time?<a class="headerlink" href="#how-are-the-samples-distributed-in-time" title="Permalink to this headline">#</a></h2>
+<p>We have not yet worked with  th <code class="docutils literal notranslate"><span class="pre">year</span></code> column. An important first step we might want to know
+is how the measurements are distributed in time.</p>
+<p>From last class, wemight try <code class="docutils literal notranslate"><span class="pre">value_counts</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -620,6 +634,7 @@ Name: count, Length: 169, dtype: int64
 </div>
 </div>
 </div>
+<p>but it’s a little hard to read. A histogram might better</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">carbon_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">)</span>
@@ -633,8 +648,28 @@ Name: count, Length: 169, dtype: int64
 <img alt="../_images/5ca74e4cd58dc9d398208919508d0a80c21da3ed30dbea696d3e010e821fc5f5.png" src="../_images/5ca74e4cd58dc9d398208919508d0a80c21da3ed30dbea696d3e010e821fc5f5.png" />
 </div>
 </div>
+<p>Here we see that thare are a lot more samples in more recent years.</p>
+</section>
+<section id="anatomy-of-a-plot">
+<h2>Anatomy of a plot<a class="headerlink" href="#anatomy-of-a-plot" title="Permalink to this headline">#</a></h2>
 <p><img alt="annotated graph" src="https://matplotlib.org/stable/_images/sphx_glr_anatomy_001.png" /></p>
+</section>
+<section id="id1">
+<h2>Figure and axis level plots<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p><img alt="summary of plot types" src="https://seaborn.pydata.org/_images/function_overview_8_0.png" /></p>
+</section>
+<section id="changing-colors">
+<h2>Changing colors<a class="headerlink" href="#changing-colors" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="emissions-by-type">
+<h2>Emissions by type<a class="headerlink" href="#emissions-by-type" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">carbon_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;commodity_simple&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;total_emissions_MtCO2e&#39;</span><span class="p">)</span>
@@ -642,10 +677,10 @@ Name: count, Length: 169, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f154db481f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f72ad653e80&gt;
 </pre></div>
 </div>
-<img alt="../_images/035b5b85997d36fe16188f68206aaa6227530fd03a6fc7b9a84d3fea1e04a340.png" src="../_images/035b5b85997d36fe16188f68206aaa6227530fd03a6fc7b9a84d3fea1e04a340.png" />
+<img alt="../_images/ff103ef87db3c07c9c7b6cd7ca56df845ba70008ea472280eda5d64e2d2b2880.png" src="../_images/ff103ef87db3c07c9c7b6cd7ca56df845ba70008ea472280eda5d64e2d2b2880.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -655,10 +690,10 @@ Name: count, Length: 169, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f1508926ee0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f72ada95ca0&gt;
 </pre></div>
 </div>
-<img alt="../_images/b575c2b196cb96eb7718028d6f1556e6dd999665925638bee1defdb88bef6ea9.png" src="../_images/b575c2b196cb96eb7718028d6f1556e6dd999665925638bee1defdb88bef6ea9.png" />
+<img alt="../_images/6096344ce4c757f3196f071985c1cfe8948050fde36df708f1a0e2a072ee1574.png" src="../_images/6096344ce4c757f3196f071985c1cfe8948050fde36df708f1a0e2a072ee1574.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -669,17 +704,10 @@ Name: count, Length: 169, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f1508ccbbe0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f72ad4e9a60&gt;
 </pre></div>
 </div>
-<img alt="../_images/4663e40f69275ea9e7e593243375b7de32856117c091ecc628e7836125fb93b7.png" src="../_images/4663e40f69275ea9e7e593243375b7de32856117c091ecc628e7836125fb93b7.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
+<img alt="../_images/8130a723d34514801951f8b56ce9226371ac7651e9d203855f9135df82c89734.png" src="../_images/8130a723d34514801951f8b56ce9226371ac7651e9d203855f9135df82c89734.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -690,17 +718,20 @@ Name: count, Length: 169, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f15087292b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f72ad59c0d0&gt;
 </pre></div>
 </div>
-<img alt="../_images/a26324475a882f6a6731cc73f2cb7062bfe72e29f364d0bd9d4eb39d4c4c0264.png" src="../_images/a26324475a882f6a6731cc73f2cb7062bfe72e29f364d0bd9d4eb39d4c4c0264.png" />
+<img alt="../_images/0cf04e4e88f011d613a489607775bd79c651efb64fe0f5a974d23329c7acc580.png" src="../_images/0cf04e4e88f011d613a489607775bd79c651efb64fe0f5a974d23329c7acc580.png" />
 </div>
 </div>
-<p>Example q:</p>
+<p>Example okay questions:</p>
 <ul class="simple">
-<li><p>which parent type has te most constent emissins across commodity type?</p></li>
+<li><p>which parent type has the most constent emissions across commodity type?</p></li>
 <li><p>which parent type has highest emission?</p></li>
-<li><p>which is highest?</p></li>
+</ul>
+<p>Example good questions</p>
+<ul class="simple">
+<li><p>which type of emissions should be targeted for interventions (the highest)?</p></li>
 </ul>
 </section>
 <section id="emissions-over-time">
@@ -713,7 +744,7 @@ Name: count, Length: 169, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f15089727c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f72aac5ea90&gt;
 </pre></div>
 </div>
 <img alt="../_images/ec4bdfdbb84e45f3ba73c0394aa651e29c627e83aa50e02df833dab1767490c9.png" src="../_images/ec4bdfdbb84e45f3ba73c0394aa651e29c627e83aa50e02df833dab1767490c9.png" />
@@ -848,6 +879,11 @@ and the <span class="xref myst">intro to DataFrames</span></p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-in-python">Plotting in Python</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-and-axis-level-plots">Figure and axis level plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-figure">Anatomy of a figure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-are-the-samples-distributed-in-time">How are the samples distributed in time?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-plot">Anatomy of a plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Figure and axis level plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-colors">Changing colors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emissions-by-type">Emissions by type</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emissions-over-time">Emissions over time?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-types-and-data-types">Variable types and data types</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-class">Questions After Class</a><ul class="nav section-nav flex-column">
