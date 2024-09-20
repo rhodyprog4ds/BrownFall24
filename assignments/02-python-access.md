@@ -199,6 +199,7 @@ see the [github docs](https://docs.github.com/en/actions/using-workflows/manuall
 - You should not be either
 - I am looking for evidence that  you **understand** the material (thus far including prereqs)
 - You should be trying to **understand** material 
+- Review all of the methods the [DataFrame](https://pandas.pydata.org/docs/reference/frame.html) has
 
 This means that in office hours, I am going to:
 - ask you questions to help you think about the problem and the material 
