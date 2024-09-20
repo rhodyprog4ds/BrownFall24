@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Visualization &#8212; Programming for Data Science at URI Fall 2024</title>
+    <title>5. Visualization &#8212; Programming for Data Science at URI Fall 2024</title>
   
   
   
@@ -66,6 +66,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2024-09-19';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Assignment 1: Setup, Syllabus, and Review" href="../assignments/01-setup.html" />
+    <link rel="prev" title="4. Exploratory Data Analysis" href="2024-09-17.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -169,16 +171,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../syllabus/communication.html">Communications &amp; Office Hours</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2024-09-05.html">1. Welcome &amp; What is Data Science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-09-10.html">2. Iterables and Pandas Data Frames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-09-12.html">3. Pandas Data Frames and More Iterable Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-09-17.html">4. Exploratory Data Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Visualization</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../assignments/01-setup.html">1. Assignment 1: Setup, Syllabus, and Review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/02-python-access.html">2. Assignment 2: Practicing Python and Accessing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/03-eda.html">3. Assignment 3: Exploratory Data Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
 <ul class="nav bd-sidenav">
@@ -418,25 +422,25 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-in-python">Plotting in Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-and-axis-level-plots">Figure and axis level plots</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-figure">Anatomy of a figure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-are-the-samples-distributed-in-time">How are the samples distributed in time?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-plot">Anatomy of a plot</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Figure and axis level plots</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-colors">Changing colors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emissions-by-type">Emissions by type</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emissions-over-time">Emissions over time?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-types-and-data-types">Variable types and data types</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-class">Questions After Class</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-what-degree-should-we-be-familiarizing-ourselves-with-these-different-kinds-of-graphs">To what degree should we be familiarizing ourselves with these different kinds of graphs?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#should-i-upload-all-parts-of-a2-today-if-i-plan-to-go-to-office-hours-tomorrow-or-just-the-finished-parts">Should I upload all parts of A2 today if I plan to go to office hours tomorrow? Or just the finished parts?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-there-ways-to-overlap-the-different-parent-types-into-the-same-graph">is there ways to overlap the different parent types into the same graph?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-the-ggplot-option-just-the-same-method-names-as-the-version-in-r-or-is-the-syntax-updated-to-be-similar-also">is the ggplot option just the same method names as the version in R? or is the syntax updated to be similar also?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-the-peer-review-just-for-assignment-3-or-will-we-have-the-option-to-do-it-for-future-assignments">Is the peer review just for assignment 3 or will we have the option to do it for future assignments?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-typical-range-of-sizes-for-a-good-dataset-for-this-assignment">What is the typical range of sizes for a good dataset for this assignment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-we-dont-get-any-achievements-on-an-assignment-are-we-able-to-revise-them-to-get-an-achievement">if we don’t get any achievements on an assignment are we able to revise them to get an achievement?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-numpy-array">What is a numpy array?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-in-python">5.1. Plotting in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-and-axis-level-plots">5.2. Figure and axis level plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-figure">5.3. Anatomy of a figure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-are-the-samples-distributed-in-time">5.4. How are the samples distributed in time?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-plot">5.5. Anatomy of a plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.6. Figure and axis level plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-colors">5.7. Changing colors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emissions-by-type">5.8. Emissions by type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emissions-over-time">5.9. Emissions over time?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-types-and-data-types">5.10. Variable types and data types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-class">5.11. Questions After Class</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-what-degree-should-we-be-familiarizing-ourselves-with-these-different-kinds-of-graphs">5.11.1. To what degree should we be familiarizing ourselves with these different kinds of graphs?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#should-i-upload-all-parts-of-a2-today-if-i-plan-to-go-to-office-hours-tomorrow-or-just-the-finished-parts">5.11.2. Should I upload all parts of A2 today if I plan to go to office hours tomorrow? Or just the finished parts?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-there-ways-to-overlap-the-different-parent-types-into-the-same-graph">5.11.3. is there ways to overlap the different parent types into the same graph?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-the-ggplot-option-just-the-same-method-names-as-the-version-in-r-or-is-the-syntax-updated-to-be-similar-also">5.11.4. is the ggplot option just the same method names as the version in R? or is the syntax updated to be similar also?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-the-peer-review-just-for-assignment-3-or-will-we-have-the-option-to-do-it-for-future-assignments">5.11.5. Is the peer review just for assignment 3 or will we have the option to do it for future assignments?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-typical-range-of-sizes-for-a-good-dataset-for-this-assignment">5.11.6. What is the typical range of sizes for a good dataset for this assignment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-we-dont-get-any-achievements-on-an-assignment-are-we-able-to-revise-them-to-get-an-achievement">5.11.7. if we don’t get any achievements on an assignment are we able to revise them to get an achievement?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-numpy-array">5.11.8. What is a numpy array?</a></li>
 </ul>
 </li>
 </ul>
@@ -451,10 +455,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="visualization">
-<h1>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">5. </span>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">#</a></h1>
 <p>Data Visualization is about using plots, to convey informaiton and get a better understanding of the data.</p>
 <section id="plotting-in-python">
-<h2>Plotting in Python<a class="headerlink" href="#plotting-in-python" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.1. </span>Plotting in Python<a class="headerlink" href="#plotting-in-python" title="Permalink to this headline">#</a></h2>
 <p>There are several popular plotting libaries:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://matplotlib.org/">matplotlib</a>: low level plotting tools</p></li>
@@ -467,7 +471,7 @@ document.write(`
 Getting started with seaborn is the simplest, so we’ll use that.</p>
 </section>
 <section id="figure-and-axis-level-plots">
-<h2>Figure and axis level plots<a class="headerlink" href="#figure-and-axis-level-plots" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.2. </span>Figure and axis level plots<a class="headerlink" href="#figure-and-axis-level-plots" title="Permalink to this headline">#</a></h2>
 <p><img alt="summary of plot types" src="https://seaborn.pydata.org/_images/function_overview_8_0.png" /></p>
 <p>add the image to your notebook with the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>![summary of plot types](https://seaborn.pydata.org/_images/function_overview_8_0.png)
@@ -475,7 +479,7 @@ Getting started with seaborn is the simplest, so we’ll use that.</p>
 </div>
 </section>
 <section id="anatomy-of-a-figure">
-<h2>Anatomy of a figure<a class="headerlink" href="#anatomy-of-a-figure" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.3. </span>Anatomy of a figure<a class="headerlink" href="#anatomy-of-a-figure" title="Permalink to this headline">#</a></h2>
 <p><img alt="annotated graph" src="https://matplotlib.org/stable/_images/sphx_glr_anatomy_001.png" /></p>
 <p>*this was <a class="reference external" href="https://matplotlib.org/stable/gallery/showcase/anatomy.html#anatomy-of-a-figure">drawn with code</a></p>
 <p>add the image to your notebook with the following:</p>
@@ -606,7 +610,7 @@ Getting started with seaborn is the simplest, so we’ll use that.</p>
 </div>
 </section>
 <section id="how-are-the-samples-distributed-in-time">
-<h2>How are the samples distributed in time?<a class="headerlink" href="#how-are-the-samples-distributed-in-time" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.4. </span>How are the samples distributed in time?<a class="headerlink" href="#how-are-the-samples-distributed-in-time" title="Permalink to this headline">#</a></h2>
 <p>We have not yet worked with  th <code class="docutils literal notranslate"><span class="pre">year</span></code> column. An important first step we might want to know
 is how the measurements are distributed in time.</p>
 <p>From last class, wemight try <code class="docutils literal notranslate"><span class="pre">value_counts</span></code></p>
@@ -651,15 +655,15 @@ Name: count, Length: 169, dtype: int64
 <p>Here we see that thare are a lot more samples in more recent years.</p>
 </section>
 <section id="anatomy-of-a-plot">
-<h2>Anatomy of a plot<a class="headerlink" href="#anatomy-of-a-plot" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.5. </span>Anatomy of a plot<a class="headerlink" href="#anatomy-of-a-plot" title="Permalink to this headline">#</a></h2>
 <p><img alt="annotated graph" src="https://matplotlib.org/stable/_images/sphx_glr_anatomy_001.png" /></p>
 </section>
 <section id="id1">
-<h2>Figure and axis level plots<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.6. </span>Figure and axis level plots<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p><img alt="summary of plot types" src="https://seaborn.pydata.org/_images/function_overview_8_0.png" /></p>
 </section>
 <section id="changing-colors">
-<h2>Changing colors<a class="headerlink" href="#changing-colors" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.7. </span>Changing colors<a class="headerlink" href="#changing-colors" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span>
@@ -669,7 +673,7 @@ Name: count, Length: 169, dtype: int64
 </div>
 </section>
 <section id="emissions-by-type">
-<h2>Emissions by type<a class="headerlink" href="#emissions-by-type" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.8. </span>Emissions by type<a class="headerlink" href="#emissions-by-type" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">carbon_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;commodity_simple&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;total_emissions_MtCO2e&#39;</span><span class="p">)</span>
@@ -677,10 +681,10 @@ Name: count, Length: 169, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f72ad653e80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f07517cf490&gt;
 </pre></div>
 </div>
-<img alt="../_images/ff103ef87db3c07c9c7b6cd7ca56df845ba70008ea472280eda5d64e2d2b2880.png" src="../_images/ff103ef87db3c07c9c7b6cd7ca56df845ba70008ea472280eda5d64e2d2b2880.png" />
+<img alt="../_images/cfa7903a4c3b74d05087fe8712274f4b60d85002dfdd71c828db87a7f0da1e68.png" src="../_images/cfa7903a4c3b74d05087fe8712274f4b60d85002dfdd71c828db87a7f0da1e68.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -690,10 +694,10 @@ Name: count, Length: 169, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f72ada95ca0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f0796938fd0&gt;
 </pre></div>
 </div>
-<img alt="../_images/6096344ce4c757f3196f071985c1cfe8948050fde36df708f1a0e2a072ee1574.png" src="../_images/6096344ce4c757f3196f071985c1cfe8948050fde36df708f1a0e2a072ee1574.png" />
+<img alt="../_images/6943807d37031fe7ed317b207d5607ae031efddd7ccd65a628bd27cd514d6d73.png" src="../_images/6943807d37031fe7ed317b207d5607ae031efddd7ccd65a628bd27cd514d6d73.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -704,10 +708,10 @@ Name: count, Length: 169, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f72ad4e9a60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f0796938d00&gt;
 </pre></div>
 </div>
-<img alt="../_images/8130a723d34514801951f8b56ce9226371ac7651e9d203855f9135df82c89734.png" src="../_images/8130a723d34514801951f8b56ce9226371ac7651e9d203855f9135df82c89734.png" />
+<img alt="../_images/e830a2b90a5f9eaa941c299500d912903f262668dc34a1b8defea977f2042131.png" src="../_images/e830a2b90a5f9eaa941c299500d912903f262668dc34a1b8defea977f2042131.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -718,10 +722,10 @@ Name: count, Length: 169, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f72ad59c0d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f0751b054f0&gt;
 </pre></div>
 </div>
-<img alt="../_images/0cf04e4e88f011d613a489607775bd79c651efb64fe0f5a974d23329c7acc580.png" src="../_images/0cf04e4e88f011d613a489607775bd79c651efb64fe0f5a974d23329c7acc580.png" />
+<img alt="../_images/09101340b88d9cecea9b23cb41070802acf5253ca1783e110207d793496ebef0.png" src="../_images/09101340b88d9cecea9b23cb41070802acf5253ca1783e110207d793496ebef0.png" />
 </div>
 </div>
 <p>Example okay questions:</p>
@@ -735,7 +739,7 @@ Name: count, Length: 169, dtype: int64
 </ul>
 </section>
 <section id="emissions-over-time">
-<h2>Emissions over time?<a class="headerlink" href="#emissions-over-time" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.9. </span>Emissions over time?<a class="headerlink" href="#emissions-over-time" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">carbon_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;total_emissions_MtCO2e&#39;</span><span class="p">,</span>
@@ -744,7 +748,7 @@ Name: count, Length: 169, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f72aac5ea90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f07514eacd0&gt;
 </pre></div>
 </div>
 <img alt="../_images/ec4bdfdbb84e45f3ba73c0394aa651e29c627e83aa50e02df833dab1767490c9.png" src="../_images/ec4bdfdbb84e45f3ba73c0394aa651e29c627e83aa50e02df833dab1767490c9.png" />
@@ -752,7 +756,7 @@ Name: count, Length: 169, dtype: int64
 </div>
 </section>
 <section id="variable-types-and-data-types">
-<h2>Variable types and data types<a class="headerlink" href="#variable-types-and-data-types" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.10. </span>Variable types and data types<a class="headerlink" href="#variable-types-and-data-types" title="Permalink to this headline">#</a></h2>
 <p>Related but not the same.</p>
 <p>Data types are literal, related to the representation in the computer.</p>
 <p>ther can be <code class="docutils literal notranslate"><span class="pre">int16,</span> <span class="pre">int32,</span> <span class="pre">int64</span></code></p>
@@ -789,38 +793,38 @@ the time.</p>
 </div>
 </section>
 <section id="questions-after-class">
-<h2>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.11. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
 <p>Class Response Summary:</p>
 <section id="to-what-degree-should-we-be-familiarizing-ourselves-with-these-different-kinds-of-graphs">
-<h3>To what degree should we be familiarizing ourselves with these different kinds of graphs?<a class="headerlink" href="#to-what-degree-should-we-be-familiarizing-ourselves-with-these-different-kinds-of-graphs" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.11.1. </span>To what degree should we be familiarizing ourselves with these different kinds of graphs?<a class="headerlink" href="#to-what-degree-should-we-be-familiarizing-ourselves-with-these-different-kinds-of-graphs" title="Permalink to this headline">#</a></h3>
 <p>There is also a full semester data visualization class, so we will not cover <em>everything</em> it is useful to know a few basic ones and we will look to see that you can create and correctly interpret at least 3 different kinds.</p>
 </section>
 <section id="should-i-upload-all-parts-of-a2-today-if-i-plan-to-go-to-office-hours-tomorrow-or-just-the-finished-parts">
-<h3>Should I upload all parts of A2 today if I plan to go to office hours tomorrow? Or just the finished parts?<a class="headerlink" href="#should-i-upload-all-parts-of-a2-today-if-i-plan-to-go-to-office-hours-tomorrow-or-just-the-finished-parts" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.11.2. </span>Should I upload all parts of A2 today if I plan to go to office hours tomorrow? Or just the finished parts?<a class="headerlink" href="#should-i-upload-all-parts-of-a2-today-if-i-plan-to-go-to-office-hours-tomorrow-or-just-the-finished-parts" title="Permalink to this headline">#</a></h3>
 <p>All of it with your questions written in the file(s).</p>
 </section>
 <section id="is-there-ways-to-overlap-the-different-parent-types-into-the-same-graph">
-<h3>is there ways to overlap the different parent types into the same graph?<a class="headerlink" href="#is-there-ways-to-overlap-the-different-parent-types-into-the-same-graph" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.11.3. </span>is there ways to overlap the different parent types into the same graph?<a class="headerlink" href="#is-there-ways-to-overlap-the-different-parent-types-into-the-same-graph" title="Permalink to this headline">#</a></h3>
 <p>This is called a stacked bar graph, there are examples in the seaborn tutorials for <a class="reference external" href="https://seaborn.pydata.org/tutorial/distributions.html#:~:text=Alternatively%2C%20instead%20of%20layering%20each%20bar%2C%20they%20can%20be%20%E2%80%9Cstacked%E2%80%9D%2C%20or%20moved%20vertically.%20In%20this%20plot%2C%20the%20outline%20of%20the%20full%20histogram%20will%20match%20the%20plot%20with%20only%20a%20single%20variable%3A">displot</a> but with an important caveat that that can make some things hard to see and you can also <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.objects.Stack.html">stack with the low level features</a></p>
 </section>
 <section id="is-the-ggplot-option-just-the-same-method-names-as-the-version-in-r-or-is-the-syntax-updated-to-be-similar-also">
-<h3>is the ggplot option just the same method names as the version in R? or is the syntax updated to be similar also?<a class="headerlink" href="#is-the-ggplot-option-just-the-same-method-names-as-the-version-in-r-or-is-the-syntax-updated-to-be-similar-also" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.11.4. </span>is the ggplot option just the same method names as the version in R? or is the syntax updated to be similar also?<a class="headerlink" href="#is-the-ggplot-option-just-the-same-method-names-as-the-version-in-r-or-is-the-syntax-updated-to-be-similar-also" title="Permalink to this headline">#</a></h3>
 <p>I think its mostly matching method names, attribute names,  and conceptual ideas. Python libraries all have to use Python syntax.</p>
 </section>
 <section id="is-the-peer-review-just-for-assignment-3-or-will-we-have-the-option-to-do-it-for-future-assignments">
-<h3>Is the peer review just for assignment 3 or will we have the option to do it for future assignments?<a class="headerlink" href="#is-the-peer-review-just-for-assignment-3-or-will-we-have-the-option-to-do-it-for-future-assignments" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.11.5. </span>Is the peer review just for assignment 3 or will we have the option to do it for future assignments?<a class="headerlink" href="#is-the-peer-review-just-for-assignment-3-or-will-we-have-the-option-to-do-it-for-future-assignments" title="Permalink to this headline">#</a></h3>
 <p>Probably only 3, but possibly a couple more.</p>
 </section>
 <section id="what-is-the-typical-range-of-sizes-for-a-good-dataset-for-this-assignment">
-<h3>What is the typical range of sizes for a good dataset for this assignment<a class="headerlink" href="#what-is-the-typical-range-of-sizes-for-a-good-dataset-for-this-assignment" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.11.6. </span>What is the typical range of sizes for a good dataset for this assignment<a class="headerlink" href="#what-is-the-typical-range-of-sizes-for-a-good-dataset-for-this-assignment" title="Permalink to this headline">#</a></h3>
 <p>hundred to maybe 2000, you do not need more than that and too many can make it slow</p>
 </section>
 <section id="if-we-dont-get-any-achievements-on-an-assignment-are-we-able-to-revise-them-to-get-an-achievement">
-<h3>if we don’t get any achievements on an assignment are we able to revise them to get an achievement?<a class="headerlink" href="#if-we-dont-get-any-achievements-on-an-assignment-are-we-able-to-revise-them-to-get-an-achievement" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.11.7. </span>if we don’t get any achievements on an assignment are we able to revise them to get an achievement?<a class="headerlink" href="#if-we-dont-get-any-achievements-on-an-assignment-are-we-able-to-revise-them-to-get-an-achievement" title="Permalink to this headline">#</a></h3>
 <p>If you are very close, yes, if you are not very close, you will get advice that we recommend you apply on future assignments.</p>
 </section>
 <section id="what-is-a-numpy-array">
-<h3>What is a numpy array?<a class="headerlink" href="#what-is-a-numpy-array" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.11.8. </span>What is a numpy array?<a class="headerlink" href="#what-is-a-numpy-array" title="Permalink to this headline">#</a></h3>
 <p>A DataType that one of the attributes of a DataFrame takes. See the glossary entry for <span class="xref std std-term">numpy array</span>
 and the <span class="xref myst">intro to DataFrames</span></p>
 </section>
@@ -858,6 +862,24 @@ and the <span class="xref myst">intro to DataFrames</span></p>
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="2024-09-17.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Exploratory Data Analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../assignments/01-setup.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Assignment 1: Setup, Syllabus, and Review</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -876,25 +898,25 @@ and the <span class="xref myst">intro to DataFrames</span></p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-in-python">Plotting in Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-and-axis-level-plots">Figure and axis level plots</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-figure">Anatomy of a figure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-are-the-samples-distributed-in-time">How are the samples distributed in time?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-plot">Anatomy of a plot</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Figure and axis level plots</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-colors">Changing colors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emissions-by-type">Emissions by type</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emissions-over-time">Emissions over time?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-types-and-data-types">Variable types and data types</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-class">Questions After Class</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-what-degree-should-we-be-familiarizing-ourselves-with-these-different-kinds-of-graphs">To what degree should we be familiarizing ourselves with these different kinds of graphs?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#should-i-upload-all-parts-of-a2-today-if-i-plan-to-go-to-office-hours-tomorrow-or-just-the-finished-parts">Should I upload all parts of A2 today if I plan to go to office hours tomorrow? Or just the finished parts?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-there-ways-to-overlap-the-different-parent-types-into-the-same-graph">is there ways to overlap the different parent types into the same graph?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-the-ggplot-option-just-the-same-method-names-as-the-version-in-r-or-is-the-syntax-updated-to-be-similar-also">is the ggplot option just the same method names as the version in R? or is the syntax updated to be similar also?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-the-peer-review-just-for-assignment-3-or-will-we-have-the-option-to-do-it-for-future-assignments">Is the peer review just for assignment 3 or will we have the option to do it for future assignments?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-typical-range-of-sizes-for-a-good-dataset-for-this-assignment">What is the typical range of sizes for a good dataset for this assignment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-we-dont-get-any-achievements-on-an-assignment-are-we-able-to-revise-them-to-get-an-achievement">if we don’t get any achievements on an assignment are we able to revise them to get an achievement?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-numpy-array">What is a numpy array?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-in-python">5.1. Plotting in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-and-axis-level-plots">5.2. Figure and axis level plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-figure">5.3. Anatomy of a figure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-are-the-samples-distributed-in-time">5.4. How are the samples distributed in time?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-plot">5.5. Anatomy of a plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.6. Figure and axis level plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-colors">5.7. Changing colors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emissions-by-type">5.8. Emissions by type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emissions-over-time">5.9. Emissions over time?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-types-and-data-types">5.10. Variable types and data types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-class">5.11. Questions After Class</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-what-degree-should-we-be-familiarizing-ourselves-with-these-different-kinds-of-graphs">5.11.1. To what degree should we be familiarizing ourselves with these different kinds of graphs?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#should-i-upload-all-parts-of-a2-today-if-i-plan-to-go-to-office-hours-tomorrow-or-just-the-finished-parts">5.11.2. Should I upload all parts of A2 today if I plan to go to office hours tomorrow? Or just the finished parts?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-there-ways-to-overlap-the-different-parent-types-into-the-same-graph">5.11.3. is there ways to overlap the different parent types into the same graph?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-the-ggplot-option-just-the-same-method-names-as-the-version-in-r-or-is-the-syntax-updated-to-be-similar-also">5.11.4. is the ggplot option just the same method names as the version in R? or is the syntax updated to be similar also?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-the-peer-review-just-for-assignment-3-or-will-we-have-the-option-to-do-it-for-future-assignments">5.11.5. Is the peer review just for assignment 3 or will we have the option to do it for future assignments?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-typical-range-of-sizes-for-a-good-dataset-for-this-assignment">5.11.6. What is the typical range of sizes for a good dataset for this assignment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-we-dont-get-any-achievements-on-an-assignment-are-we-able-to-revise-them-to-get-an-achievement">5.11.7. if we don’t get any achievements on an assignment are we able to revise them to get an achievement?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-numpy-array">5.11.8. What is a numpy array?</a></li>
 </ul>
 </li>
 </ul>

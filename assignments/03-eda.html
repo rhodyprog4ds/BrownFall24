@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Assignment 3: Exploratory Data Analysis &#8212; Programming for Data Science at URI Fall 2024</title>
+    <title>3. Assignment 3: Exploratory Data Analysis &#8212; Programming for Data Science at URI Fall 2024</title>
   
   
   
@@ -66,6 +66,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'assignments/03-eda';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Earning Level 3" href="../portfolio/index.html" />
+    <link rel="prev" title="2. Assignment 2: Practicing Python and Accessing Data" href="02-python-access.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -174,11 +176,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../notes/2024-09-10.html">2. Iterables and Pandas Data Frames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notes/2024-09-12.html">3. Pandas Data Frames and More Iterable Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notes/2024-09-17.html">4. Exploratory Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/2024-09-19.html">5. Visualization</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01-setup.html">1. Assignment 1: Setup, Syllabus, and Review</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02-python-access.html">2. Assignment 2: Practicing Python and Accessing Data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Assignment 3: Exploratory Data Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
 <ul class="nav bd-sidenav">
@@ -418,36 +422,36 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solo">Solo</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group">Group</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">3.1. Submission</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solo">3.1.1. Solo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group">3.1.2. Group</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective-evaluation">Objective &amp; Evaluation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-notes">Related notes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-datasets">Choose Datasets</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-1-d1">Dataset 1 (d1)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-2-d2">Dataset 2 (d2)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-3-d3">Dataset 3 (d3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective-evaluation">3.2. Objective &amp; Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-notes">3.3. Related notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-datasets">3.4. Choose Datasets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-1-d1">3.4.1. Dataset 1 (d1)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-2-d2">3.4.2. Dataset 2 (d2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-3-d3">3.4.3. Dataset 3 (d3)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda">EDA</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-question-checklist">(overall) Question checklist</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-1-checklist">Dataset 1 Checklist</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-2-checklist">Dataset 2 Checklist</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-3-checklist">Dataset 3 Checklist</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda">3.5. EDA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-question-checklist">3.5.1. (overall) Question checklist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-1-checklist">3.5.2. Dataset 1 Checklist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-2-checklist">3.5.3. Dataset 2 Checklist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-3-checklist">3.5.4. Dataset 3 Checklist</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peer-review">Peer Review</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-questions">Review Questions</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#template">Template</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peer-review">3.6. Peer Review</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-questions">3.6.1. Review Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#template">3.6.1.1. Template</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#response">Response</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#response">3.6.2. Response</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-and-hints">Tips and Hints</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#think-ahead">Think Ahead</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-and-hints">3.7. Tips and Hints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#think-ahead">3.8. Think Ahead</a></li>
 </ul>
             </nav>
         </div>
@@ -460,22 +464,22 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="assignment-3-exploratory-data-analysis">
-<h1>Assignment 3: Exploratory Data Analysis<a class="headerlink" href="#assignment-3-exploratory-data-analysis" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3. </span>Assignment 3: Exploratory Data Analysis<a class="headerlink" href="#assignment-3-exploratory-data-analysis" title="Permalink to this headline">#</a></h1>
 <p><strong>Due:2023-09-26 end of day</strong></p>
 <p>However, if you  upload an attempt and specific questions on time and then attend office hours on 9/20 then any revisions made based on our conversation will count as on time</p>
 <!-- - [accept assignment](https://classroom.github.com/a/BOG3E7Ch) -->
 <section id="submission">
-<h2>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1. </span>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">#</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>You have the option to work with a partner. You must plan this in advance so that you have access to collaborate.</p>
 </div>
 <section id="solo">
-<h3>Solo<a class="headerlink" href="#solo" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.1.1. </span>Solo<a class="headerlink" href="#solo" title="Permalink to this headline">#</a></h3>
 <p>Add your work to the assignment3 branch in your portfolio and you do not need to edit the <code class="docutils literal notranslate"><span class="pre">a3_location</span></code> file</p>
 </section>
 <section id="group">
-<h3>Group<a class="headerlink" href="#group" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.1.2. </span>Group<a class="headerlink" href="#group" title="Permalink to this headline">#</a></h3>
 <ol class="arabic simple">
 <li><p>coordinate so that the first person makes the team when they <a class="reference external" href="https://classroom.github.com/a/caIgkvaR">accept the assigment</a></p></li>
 <li><p>the second (and third) joins the same team when they <a class="reference external" href="https://classroom.github.com/a/caIgkvaR">accept the assigment</a>.</p></li>
@@ -485,7 +489,7 @@ document.write(`
 </section>
 </section>
 <section id="objective-evaluation">
-<h2>Objective &amp; Evaluation<a class="headerlink" href="#objective-evaluation" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.2. </span>Objective &amp; Evaluation<a class="headerlink" href="#objective-evaluation" title="Permalink to this headline">#</a></h2>
 <p>This week your goal is to do a small exploratory data analysis for two datasets (or one if in a group) of your choice.</p>
 <p>Eligible skills: (links to checklists)</p>
 <ul class="simple">
@@ -496,19 +500,19 @@ document.write(`
 </ul>
 </section>
 <section id="related-notes">
-<h2>Related notes<a class="headerlink" href="#related-notes" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.3. </span>Related notes<a class="headerlink" href="#related-notes" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="../notes/2024-09-17.html"><span class="doc std std-doc">Exploratory Data Analysis</span></a></p></li>
 <li><p><a class="reference internal" href="../notes/2024-09-19.html"><span class="doc std std-doc">Visualization</span></a></p></li>
 </ul>
 </section>
 <section id="choose-datasets">
-<h2>Choose Datasets<a class="headerlink" href="#choose-datasets" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.4. </span>Choose Datasets<a class="headerlink" href="#choose-datasets" title="Permalink to this headline">#</a></h2>
 <p>Each Dataset must have at least three variables, but can have more. Both datasets
 must have multiple types of variables. These <strong>can</strong> be datasets you used for Assignment 2,
 if they meet the criteria below. All datasets must be different datasets even in a group</p>
 <section id="dataset-1-d1">
-<h3>Dataset 1 (d1)<a class="headerlink" href="#dataset-1-d1" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.4.1. </span>Dataset 1 (d1)<a class="headerlink" href="#dataset-1-d1" title="Permalink to this headline">#</a></h3>
 <p>must include at least:</p>
 <ul class="simple">
 <li><p>two continuous valued variables <strong>and</strong></p></li>
@@ -520,7 +524,7 @@ if they meet the criteria below. All datasets must be different datasets even in
 </div>
 </section>
 <section id="dataset-2-d2">
-<h3>Dataset 2 (d2)<a class="headerlink" href="#dataset-2-d2" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.4.2. </span>Dataset 2 (d2)<a class="headerlink" href="#dataset-2-d2" title="Permalink to this headline">#</a></h3>
 <p>must include at least:</p>
 <ul class="simple">
 <li><p>two categorical variables <strong>and</strong></p></li>
@@ -528,7 +532,7 @@ if they meet the criteria below. All datasets must be different datasets even in
 </ul>
 </section>
 <section id="dataset-3-d3">
-<h3>Dataset 3 (d3)<a class="headerlink" href="#dataset-3-d3" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.4.3. </span>Dataset 3 (d3)<a class="headerlink" href="#dataset-3-d3" title="Permalink to this headline">#</a></h3>
 <p>must include at least:</p>
 <ul class="simple">
 <li><p>two continuous valued variables <strong>and</strong></p></li>
@@ -537,7 +541,7 @@ if they meet the criteria below. All datasets must be different datasets even in
 </section>
 </section>
 <section id="eda">
-<h2>EDA<a class="headerlink" href="#eda" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.5. </span>EDA<a class="headerlink" href="#eda" title="Permalink to this headline">#</a></h2>
 <p>Use a separate notebook for each dataset, name them <code class="docutils literal notranslate"><span class="pre">dataset_0x.ipynb</span></code> where <code class="docutils literal notranslate"><span class="pre">x</span></code> is the number checklist you are following.</p>
 <p>For <strong>each</strong> dataset, in the corresponding notebook complete the following:</p>
 <ol class="arabic simple">
@@ -555,7 +559,7 @@ if they meet the criteria below. All datasets must be different datasets even in
 <li><p>Describe what, if anything might need to be done to clean or prepare this data for further analysis in a finale <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Future</span> <span class="pre">analysis</span></code> markdown cell in your notebook.</p></li>
 </ol>
 <section id="overall-question-checklist">
-<h3>(overall) Question checklist<a class="headerlink" href="#overall-question-checklist" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.5.1. </span>(overall) Question checklist<a class="headerlink" href="#overall-question-checklist" title="Permalink to this headline">#</a></h3>
 <p>be sure that every question (all six, 3 per dataset) has:</p>
 <ul class="simple">
 <li><p>a heading</p></li>
@@ -573,7 +577,7 @@ as in what methods or constructs is it looking for and use an issue to get early
 </aside>
 </section>
 <section id="dataset-1-checklist">
-<h3>Dataset 1 Checklist<a class="headerlink" href="#dataset-1-checklist" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.5.2. </span>Dataset 1 Checklist<a class="headerlink" href="#dataset-1-checklist" title="Permalink to this headline">#</a></h3>
 <p>make sure that your <code class="docutils literal notranslate"><span class="pre">dataset_01.ipynb</span></code> has:</p>
 <ul class="simple">
 <li><p>Overall summary statistics grouped by a categorical variable</p></li>
@@ -583,7 +587,7 @@ as in what methods or constructs is it looking for and use an issue to get early
 </ul>
 </section>
 <section id="dataset-2-checklist">
-<h3>Dataset 2 Checklist<a class="headerlink" href="#dataset-2-checklist" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.5.3. </span>Dataset 2 Checklist<a class="headerlink" href="#dataset-2-checklist" title="Permalink to this headline">#</a></h3>
 <p>make sure that your <code class="docutils literal notranslate"><span class="pre">dataset_02.ipynb</span></code> has:</p>
 <ul class="simple">
 <li><p>overall summary statistics</p></li>
@@ -593,7 +597,7 @@ as in what methods or constructs is it looking for and use an issue to get early
 </ul>
 </section>
 <section id="dataset-3-checklist">
-<h3>Dataset 3 Checklist<a class="headerlink" href="#dataset-3-checklist" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.5.4. </span>Dataset 3 Checklist<a class="headerlink" href="#dataset-3-checklist" title="Permalink to this headline">#</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This is only for groups of 3</p>
@@ -608,7 +612,7 @@ as in what methods or constructs is it looking for and use an issue to get early
 </section>
 </section>
 <section id="peer-review">
-<h2>Peer Review<a class="headerlink" href="#peer-review" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.6. </span>Peer Review<a class="headerlink" href="#peer-review" title="Permalink to this headline">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you work alone and complete 2 analyses you do not need to do this, but you might review these
@@ -628,7 +632,7 @@ work.</p>
 <li><p>Use the list of questions below for your summary review (copy the template into the box and fill in )</p></li>
 </ul>
 <section id="review-questions">
-<h3>Review Questions<a class="headerlink" href="#review-questions" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.6.1. </span>Review Questions<a class="headerlink" href="#review-questions" title="Permalink to this headline">#</a></h3>
 <ol class="arabic simple">
 <li><p>Describe overall how it was to read the analysis overall to read. Was it easy? hard? cohesive? jumpy?</p></li>
 <li><p>How did the data summaries help prepare you to read the rest of the analysis? What do you think might be missing?</p></li>
@@ -643,7 +647,7 @@ work.</p>
 </li>
 </ol>
 <section id="template">
-<h4>Template<a class="headerlink" href="#template" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">3.6.1.1. </span>Template<a class="headerlink" href="#template" title="Permalink to this headline">#</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## Overall 
  &lt;!-- Describe overall how it was to read the analysis overall to read. Was it easy? hard? cohesive? jumpy? --&gt;
 
@@ -660,12 +664,12 @@ work.</p>
 </section>
 </section>
 <section id="response">
-<h3>Response<a class="headerlink" href="#response" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.6.2. </span>Response<a class="headerlink" href="#response" title="Permalink to this headline">#</a></h3>
 <p>Respond to the review on your notebook either with inline comments, replies, or by updating your analysis accordingly.</p>
 </section>
 </section>
 <section id="tips-and-hints">
-<h2>Tips and Hints<a class="headerlink" href="#tips-and-hints" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.7. </span>Tips and Hints<a class="headerlink" href="#tips-and-hints" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Remember you can also use <a class="reference internal" href="../notes/2024-09-12.html#masking"><span class="std std-ref">masking</span></a> in your EDA even though we did not do any in class</p></li>
 <li><p>To ensure you understand the checklist you can <strong>optionally</strong> make an issue using the appropriate issue type from your repo   and fill in what it should be to get early feedback that you are on track</p></li>
@@ -673,7 +677,7 @@ work.</p>
 </ul>
 </section>
 <section id="think-ahead">
-<h2>Think Ahead<a class="headerlink" href="#think-ahead" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.8. </span>Think Ahead<a class="headerlink" href="#think-ahead" title="Permalink to this headline">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition warning">
@@ -726,6 +730,24 @@ on level 2 at this moment in time, feel free to skip this part.</p>
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="02-python-access.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Assignment 2: Practicing Python and Accessing Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../portfolio/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Earning Level 3</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -744,36 +766,36 @@ on level 2 at this moment in time, feel free to skip this part.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">Submission</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solo">Solo</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group">Group</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission">3.1. Submission</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solo">3.1.1. Solo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group">3.1.2. Group</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective-evaluation">Objective &amp; Evaluation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-notes">Related notes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-datasets">Choose Datasets</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-1-d1">Dataset 1 (d1)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-2-d2">Dataset 2 (d2)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-3-d3">Dataset 3 (d3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective-evaluation">3.2. Objective &amp; Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-notes">3.3. Related notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-datasets">3.4. Choose Datasets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-1-d1">3.4.1. Dataset 1 (d1)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-2-d2">3.4.2. Dataset 2 (d2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-3-d3">3.4.3. Dataset 3 (d3)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda">EDA</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-question-checklist">(overall) Question checklist</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-1-checklist">Dataset 1 Checklist</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-2-checklist">Dataset 2 Checklist</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-3-checklist">Dataset 3 Checklist</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda">3.5. EDA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-question-checklist">3.5.1. (overall) Question checklist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-1-checklist">3.5.2. Dataset 1 Checklist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-2-checklist">3.5.3. Dataset 2 Checklist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-3-checklist">3.5.4. Dataset 3 Checklist</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peer-review">Peer Review</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-questions">Review Questions</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#template">Template</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peer-review">3.6. Peer Review</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-questions">3.6.1. Review Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#template">3.6.1.1. Template</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#response">Response</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#response">3.6.2. Response</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-and-hints">Tips and Hints</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#think-ahead">Think Ahead</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-and-hints">3.7. Tips and Hints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#think-ahead">3.8. Think Ahead</a></li>
 </ul>
   </nav></div>
 
