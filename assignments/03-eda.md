@@ -65,7 +65,7 @@ must include at least:
 - one continuous valued variable
 
 ### Dataset 3 (d3)
-
+**team only**
 must include at least:
 - two continuous valued variables **and**
 - one categorical variable.
