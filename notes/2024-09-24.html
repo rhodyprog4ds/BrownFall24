@@ -1,0 +1,1796 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>6. Cleaning Data - Structure &#8212; Programming for Data Science at URI Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course-admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2024-09-24';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Assignment 1: Setup, Syllabus, and Review" href="../assignments/01-setup.html" />
+    <link rel="prev" title="5. Visualization" href="2024-09-19.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/310_2021.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/310_2021.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/tools.html">Tools and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/achievements.html">Data Science Achievements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Grading Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/style.html">Course  Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_resources.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_statements.html">General URI Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/communication.html">Communications &amp; Office Hours</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2024-09-05.html">1. Welcome &amp; What is Data Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-10.html">2. Iterables and Pandas Data Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-12.html">3. Pandas Data Frames and More Iterable Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-17.html">4. Exploratory Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-19.html">5. Visualization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Cleaning Data - Structure</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../assignments/01-setup.html">1. Assignment 1: Setup, Syllabus, and Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/02-python-access.html">2. Assignment 2: Practicing Python and Accessing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/03-eda.html">3. Assignment 3: Exploratory Data Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/index.html">Earning Level 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/formatting.html">Formatting Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/extensions.html">Generic Extension Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/altforms.html">Alternatives to Extending Assignments for Level 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/process.html">Process Level 3</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/syllabus.html">Syllabus and Grading FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/github.html">Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/debugging.html">Code Errors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/python.html">References on Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/datasets.html">Data Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/tips.html">General Tips and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/learning.html">How to Study in this class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/gettinghelp.html">Getting Help with Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/terminal.html">Terminals and Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/organization.html">Getting Organized for class</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">Advice from FA2020 Students</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">Advice from FA2021 Students</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24/edit/main/notes/2024-09-24.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24/issues/new?title=Issue%20on%20page%20%2Fnotes/2024-09-24.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notes/2024-09-24.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Cleaning Data - Structure</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">6. Cleaning Data - Structure</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro">6.1. Intro</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-tidy-data">6.2. What is Tidy Data?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#breakign-down-that-comprehension">6.2.1. Breakign down that comprehension</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-same-data-3-ways">6.2.2. the same data 3 ways</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-missing-values">6.3. Encoding Missing values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-on-tidy-data">6.4. Computing on Tidy Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidying-data">6.5. Tidying Data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#transforming-the-coffee-data">7. Transforming the Coffee data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-class">7.1. Questions After Class</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-change-the-locations-of-the-names-next-to-a-plot">7.1.1. Can you change the locations of the names next to a plot?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="cleaning-data-structure">
+<h1><span class="section-number">6. </span>Cleaning Data - Structure<a class="headerlink" href="#cleaning-data-structure" title="Permalink to this headline">#</a></h1>
+<section id="intro">
+<h2><span class="section-number">6.1. </span>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">#</a></h2>
+<p>This week, we’ll be cleaning data.</p>
+<p>Cleaning data is <strong>labor intensive</strong> and requires making <em>subjective</em> choices.<br />
+We’ll focus on, and assess you on, manipulating data correctly, making reasonable
+choices, and documenting the choices you make carefully.</p>
+<p>We’ll focus on the programming tools that get used in cleaning data in class
+this week:</p>
+<ul class="simple">
+<li><p>reshaping data</p></li>
+<li><p>handling missing or incorrect values</p></li>
+<li><p>renaming columns</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># make plots look nicer and increase font size</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note here we set the <code class="docutils literal notranslate"><span class="pre">theme</span></code> and pass the palette and font size as paramters.
+To learn more about this and the various options, see the <a class="reference external" href="https://seaborn.pydata.org/tutorial/aesthetics.html">seaborn aesthetics tutorial</a></p>
+</section>
+<section id="what-is-tidy-data">
+<h2><span class="section-number">6.2. </span>What is Tidy Data?<a class="headerlink" href="#what-is-tidy-data" title="Permalink to this headline">#</a></h2>
+<p>Read in the three csv files described below and store them in a dictionary</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_base</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/rhodyprog4ds/rhodyds/main/data/&#39;</span>
+
+<span class="n">data_filename_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;study_a.csv&#39;</span><span class="p">,</span><span class="s1">&#39;study_b.csv&#39;</span><span class="p">,</span><span class="s1">&#39;study_c.csv&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we can use a dictionary comprehension</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_data</span> <span class="o">=</span> <span class="p">{</span><span class="n">datafile</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]:</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url_base</span><span class="o">+</span><span class="n">datafile</span><span class="p">)</span> <span class="k">for</span> <span class="n">datafile</span> <span class="ow">in</span> <span class="n">data_filename_list</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>this is a <em>dictionary comprehension</em> which is like a list comprehension, but builds a
+dictionary instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">split</span></code> is a string method that splits the string at the given character and returns a list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code> then takes the first item out</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:</span></code> makes the part to the left a key and rigt the value</p></li>
+<li><p>we can add strings to combine them</p></li>
+</ul>
+<section id="breakign-down-that-comprehension">
+<h3><span class="section-number">6.2.1. </span>Breakign down that comprehension<a class="headerlink" href="#breakign-down-that-comprehension" title="Permalink to this headline">#</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>This section also illustrates a way you can work to understand <strong>any</strong> piece of code:
+<em>take small sections and run them one at a time</em></p>
+</div>
+<p>We can do smaller examples of each step.</p>
+<p>First a tiny dictionary comprehension</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">char</span><span class="p">:</span><span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;a&#39;: 97, &#39;b&#39;: 98, &#39;c&#39;: 99, &#39;d&#39;: 100, &#39;e&#39;: 101, &#39;f&#39;: 102}
+</pre></div>
+</div>
+</div>
+</div>
+<p>this gives us the ascii number for each character in that string with the <code class="docutils literal notranslate"><span class="pre">char</span></code> as key and <code class="docutils literal notranslate"><span class="pre">ord(char)</span></code>’s <em>output</em> as the value. Note that it <em>runs</em> the code assigned in the value because of the <code class="docutils literal notranslate"><span class="pre">()</span></code> doing the function call.</p>
+<p>Next the split method, we will use this sentence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence</span> <span class="o">=</span> <span class="s1">&#39;Next the split method, we will use this sentence.&#39;</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">sentence</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(str, 49)
+</pre></div>
+</div>
+</div>
+</div>
+<p>this is type <code class="docutils literal notranslate"><span class="pre">str</span></code> so we can use the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#string-methods">string class methods</a> in Python, such as <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.split"><code class="docutils literal notranslate"><span class="pre">split</span></code></a>.
+As a <code class="docutils literal notranslate"><span class="pre">str</span></code> the <code class="docutils literal notranslate"><span class="pre">len</span></code> function tells us how many <em>characters</em> because a string is iterable over characters.
+We used this fact in the tiny dictionary above.</p>
+<p>By default it splits at spaces</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Next&#39;, &#39;the&#39;, &#39;split&#39;, &#39;method,&#39;, &#39;we&#39;, &#39;will&#39;, &#39;use&#39;, &#39;this&#39;, &#39;sentence.&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>we can instead tell it on what string to split</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clauses</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">clauses</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">split</span></code> always returns a list, so we can pick the first item with <code class="docutils literal notranslate"><span class="pre">[0]</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clauses</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Next the split method&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can concatenate <code class="docutils literal notranslate"><span class="pre">str</span></code> objects with <code class="docutils literal notranslate"><span class="pre">+</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Dr.&#39;</span>
+<span class="n">last</span> <span class="o">=</span> <span class="s1">&#39;Brown&#39;</span>
+<span class="n">title</span> <span class="o">+</span> <span class="n">last</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Dr.Brown&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-same-data-3-ways">
+<h3><span class="section-number">6.2.2. </span>the same data 3 ways<a class="headerlink" href="#the-same-data-3-ways" title="Permalink to this headline">#</a></h3>
+<p>We can pick a single on out this way</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_data</span><span class="p">[</span><span class="s1">&#39;study_a&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>treatmenta</th>
+      <th>treatmentb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>John Smith</td>
+      <td>-</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jane Doe</td>
+      <td>16</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mary Johnson</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>or with an additional import,</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://ipython.org/">Ipython</a>
+is the python <em>interpreter</em> that we are using, provides the fancy formatting that the <code class="docutils literal notranslate"><span class="pre">print</span></code> function does
+not do with its <a class="reference external" href="https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#IPython.display.display"><code class="docutils literal notranslate"><span class="pre">display</span></code></a></p>
+</div>
+</aside>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>THen we can iterate over the values in the dictionary ( the three dataframes) and see them all:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">example_data</span><span class="o">.</span><span class="n">values</span><span class="p">()];</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>treatmenta</th>
+      <th>treatmentb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>John Smith</td>
+      <td>-</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jane Doe</td>
+      <td>16</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mary Johnson</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>intervention</th>
+      <th>John Smith</th>
+      <th>Jane Doe</th>
+      <th>Mary Johnson</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>treatmenta</td>
+      <td>-</td>
+      <td>16</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>treatmentb</td>
+      <td>2</td>
+      <td>11</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>person</th>
+      <th>treatment</th>
+      <th>result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>John Smith</td>
+      <td>a</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jane Doe</td>
+      <td>a</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mary Johnson</td>
+      <td>a</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>John Smith</td>
+      <td>b</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Jane Doe</td>
+      <td>b</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Mary Johnson</td>
+      <td>b</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>These three all show the same data, but let’s say we have two goals:</p>
+<ul class="simple">
+<li><p>find the average  effect per person across treatments</p></li>
+<li><p>find the average effect per treatment across people</p></li>
+</ul>
+<p>This works differently for these three versions.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">study_a</span></code> we can easilty get the average per treatment, but to get the
+average per person, we have to go across rows, which we can do here, but doesn’t work as well with plotting</p>
+<p>we can work across rows with the <code class="docutils literal notranslate"><span class="pre">axis</span></code> parameter if needed</p>
+<p>For B,  we get the average per person, but what about per treatment? again we have to go across rows instead.</p>
+<p>For the third one, however, we can use groupby, because this one is tidy.</p>
+</section>
+</section>
+<section id="encoding-missing-values">
+<h2><span class="section-number">6.3. </span>Encoding Missing values<a class="headerlink" href="#encoding-missing-values" title="Permalink to this headline">#</a></h2>
+<p>We can see the impact of a bad choice to represent a missing value with <code class="docutils literal notranslate"><span class="pre">-</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_data</span><span class="p">[</span><span class="s1">&#39;study_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>person       object
+treatment    object
+result       object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>one non numerical value changed the whole column!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_data</span><span class="p">[</span><span class="s1">&#39;study_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>person</th>
+      <th>treatment</th>
+      <th>result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>3</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>John Smith</td>
+      <td>a</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>2</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>so <code class="docutils literal notranslate"><span class="pre">describe</span></code> treats it all like categorical data</p>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">na_values</span></code> parameter to fix this. Pandas recognizes a lot of different
+values to mean missing and store as <code class="docutils literal notranslate"><span class="pre">NaN</span></code> but his is not one. Find the full list
+in the <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html#:~:text=of%20large%20files.-,na_values,-Hashable%2C%20Iterable%20of"><code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code> documentation of the <code class="docutils literal notranslate"><span class="pre">na_values</span></code> parameter</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_data</span> <span class="o">=</span> <span class="p">{</span><span class="n">datafile</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]:</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url_base</span><span class="o">+</span><span class="n">datafile</span><span class="p">,</span><span class="n">na_values</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span> 
+                <span class="k">for</span> <span class="n">datafile</span> <span class="ow">in</span> <span class="n">data_filename_list</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>now we can checka gain</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_data</span><span class="p">[</span><span class="s1">&#39;study_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>person        object
+treatment     object
+result       float64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>and we see that it is <code class="docutils literal notranslate"><span class="pre">float</span></code> this is because <code class="docutils literal notranslate"><span class="pre">NaN</span></code> is a float.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_data</span><span class="p">[</span><span class="s1">&#39;study_c&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>person</th>
+      <th>treatment</th>
+      <th>result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>John Smith</td>
+      <td>a</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jane Doe</td>
+      <td>a</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mary Johnson</td>
+      <td>a</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>John Smith</td>
+      <td>b</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Jane Doe</td>
+      <td>b</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Mary Johnson</td>
+      <td>b</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now it shows as Nan here</p>
+</section>
+<section id="computing-on-tidy-data">
+<h2><span class="section-number">6.4. </span>Computing on Tidy Data<a class="headerlink" href="#computing-on-tidy-data" title="Permalink to this headline">#</a></h2>
+<p>So we can see how to compute on this data to compute both ways.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_data</span><span class="p">[</span><span class="s1">&#39;study_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;person&#39;</span><span class="p">)[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>person
+Jane Doe        13.5
+John Smith       2.0
+Mary Johnson     2.0
+Name: result, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_data</span><span class="p">[</span><span class="s1">&#39;study_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;treatment&#39;</span><span class="p">)[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>treatment
+a    9.500000
+b    4.666667
+Name: result, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The original <a class="reference external" href="https://www.jstatsoft.org/article/view/v059i10">Tidy Data</a> paper is worth reading to build a deeper understanding of these ideas.</p>
+</section>
+<section id="tidying-data">
+<h2><span class="section-number">6.5. </span>Tidying Data<a class="headerlink" href="#tidying-data" title="Permalink to this headline">#</a></h2>
+<p>Let’s reshape the first one to match the tidy one. First, we
+will save it to a DataFrame, this makes things easier to read
+and enables us to use the built in help in jupyter, because it can’t check types too many levels into a data structure.</p>
+<p>Before</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_data</span><span class="p">[</span><span class="s1">&#39;study_a&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>treatmenta</th>
+      <th>treatmentb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>John Smith</td>
+      <td>NaN</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jane Doe</td>
+      <td>16.0</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mary Johnson</td>
+      <td>3.0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>After</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_a</span> <span class="o">=</span> <span class="n">example_data</span><span class="p">[</span><span class="s1">&#39;study_a&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>When we melt a dataset:</p>
+<ul class="simple">
+<li><p>the <code class="docutils literal notranslate"><span class="pre">id_vars</span></code> stay as columns</p></li>
+<li><p>the data from the <code class="docutils literal notranslate"><span class="pre">value_vars</span></code> columns become the values in the <code class="docutils literal notranslate"><span class="pre">value</span></code> column</p></li>
+<li><p>the column names from the <code class="docutils literal notranslate"><span class="pre">value_vars</span></code> become the values in the <code class="docutils literal notranslate"><span class="pre">variable</span></code> column</p></li>
+<li><p>we can rename the value and the variable columns.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tall_a</span> <span class="o">=</span> <span class="n">df_a</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;treatment&#39;</span><span class="p">,</span><span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;result&#39;</span><span class="p">)</span>
+<span class="n">tall_a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>treatment</th>
+      <th>result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>John Smith</td>
+      <td>treatmenta</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jane Doe</td>
+      <td>treatmenta</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mary Johnson</td>
+      <td>treatmenta</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>John Smith</td>
+      <td>treatmentb</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Jane Doe</td>
+      <td>treatmentb</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Mary Johnson</td>
+      <td>treatmentb</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><a class="reference external" href="https://pandastutor.com/vis.html#code=import%20pandas%20as%20pd%0Aimport%20io%0A%0Acsv%20%3D%20'''%0Aname,treatmenta,treatmentb%0AJohn%20Smith,,2%0AJane%20Doe,16,11%0AMary%20Johnson,3,1%0A'''%0A%0Astudy_a%20%3D%20pd.read_csv%28io.StringIO%28csv%29%29%0A%0Astudy_a.melt%28id_vars%3D'name',var_name%3D'treatment',value_name%3D'result'%29&amp;d=2024-09-25&amp;lang=py&amp;v=v1">see visualized on pandas tutor</a></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="transforming-the-coffee-data">
+<h1><span class="section-number">7. </span>Transforming the Coffee data<a class="headerlink" href="#transforming-the-coffee-data" title="Permalink to this headline">#</a></h1>
+<p>First we see another way to filter data. We can use statistics of the data to filter and remove some. .</p>
+<p>For exmaple, lets only keep the data from the top 10 countries in terms of number of bags.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arabica_data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/arabica_data_cleaned.csv&#39;</span>
+<span class="c1"># load the data</span>
+<span class="n">coffee_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">arabica_data_url</span><span class="p">)</span>
+<span class="n">coffee_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Species</th>
+      <th>Owner</th>
+      <th>Country.of.Origin</th>
+      <th>Farm.Name</th>
+      <th>Lot.Number</th>
+      <th>Mill</th>
+      <th>ICO.Number</th>
+      <th>Company</th>
+      <th>Altitude</th>
+      <th>...</th>
+      <th>Color</th>
+      <th>Category.Two.Defects</th>
+      <th>Expiration</th>
+      <th>Certification.Body</th>
+      <th>Certification.Address</th>
+      <th>Certification.Contact</th>
+      <th>unit_of_measurement</th>
+      <th>altitude_low_meters</th>
+      <th>altitude_high_meters</th>
+      <th>altitude_mean_meters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Arabica</td>
+      <td>metad plc</td>
+      <td>Ethiopia</td>
+      <td>metad plc</td>
+      <td>NaN</td>
+      <td>metad plc</td>
+      <td>2014/2015</td>
+      <td>metad agricultural developmet plc</td>
+      <td>1950-2200</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>0</td>
+      <td>April 3rd, 2016</td>
+      <td>METAD Agricultural Development plc</td>
+      <td>309fcf77415a3661ae83e027f7e5f05dad786e44</td>
+      <td>19fef5a731de2db57d16da10287413f5f99bc2dd</td>
+      <td>m</td>
+      <td>1950.0</td>
+      <td>2200.0</td>
+      <td>2075.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Arabica</td>
+      <td>metad plc</td>
+      <td>Ethiopia</td>
+      <td>metad plc</td>
+      <td>NaN</td>
+      <td>metad plc</td>
+      <td>2014/2015</td>
+      <td>metad agricultural developmet plc</td>
+      <td>1950-2200</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>1</td>
+      <td>April 3rd, 2016</td>
+      <td>METAD Agricultural Development plc</td>
+      <td>309fcf77415a3661ae83e027f7e5f05dad786e44</td>
+      <td>19fef5a731de2db57d16da10287413f5f99bc2dd</td>
+      <td>m</td>
+      <td>1950.0</td>
+      <td>2200.0</td>
+      <td>2075.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Arabica</td>
+      <td>grounds for health admin</td>
+      <td>Guatemala</td>
+      <td>san marcos barrancas "san cristobal cuch</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1600 - 1800 m</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>May 31st, 2011</td>
+      <td>Specialty Coffee Association</td>
+      <td>36d0d00a3724338ba7937c52a378d085f2172daa</td>
+      <td>0878a7d4b9d35ddbf0fe2ce69a2062cceb45a660</td>
+      <td>m</td>
+      <td>1600.0</td>
+      <td>1800.0</td>
+      <td>1700.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Arabica</td>
+      <td>yidnekachew dabessa</td>
+      <td>Ethiopia</td>
+      <td>yidnekachew dabessa coffee plantation</td>
+      <td>NaN</td>
+      <td>wolensu</td>
+      <td>NaN</td>
+      <td>yidnekachew debessa coffee plantation</td>
+      <td>1800-2200</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>2</td>
+      <td>March 25th, 2016</td>
+      <td>METAD Agricultural Development plc</td>
+      <td>309fcf77415a3661ae83e027f7e5f05dad786e44</td>
+      <td>19fef5a731de2db57d16da10287413f5f99bc2dd</td>
+      <td>m</td>
+      <td>1800.0</td>
+      <td>2200.0</td>
+      <td>2000.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Arabica</td>
+      <td>metad plc</td>
+      <td>Ethiopia</td>
+      <td>metad plc</td>
+      <td>NaN</td>
+      <td>metad plc</td>
+      <td>2014/2015</td>
+      <td>metad agricultural developmet plc</td>
+      <td>1950-2200</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>2</td>
+      <td>April 3rd, 2016</td>
+      <td>METAD Agricultural Development plc</td>
+      <td>309fcf77415a3661ae83e027f7e5f05dad786e44</td>
+      <td>19fef5a731de2db57d16da10287413f5f99bc2dd</td>
+      <td>m</td>
+      <td>1950.0</td>
+      <td>2200.0</td>
+      <td>2075.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 44 columns</p>
+</div></div></div>
+</div>
+<p>We have separate countries for the country and number of bags</p>
+<p>So we  make a table the totals how many bags per country</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bags_per_country</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">)[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">bags_per_country</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country.of.Origin
+Brazil           30534
+Burundi            520
+China               55
+Colombia         41204
+Costa Rica       10354
+Cote d?Ivoire        2
+Ecuador              1
+El Salvador       4449
+Ethiopia         11761
+Guatemala        36868
+Haiti              390
+Honduras         13167
+India               20
+Indonesia         1658
+Japan               20
+Name: Number.of.Bags, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we can take only the highest 10, and keep only the index</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sort descending, keep only the top 10 and pick out only the country names</span>
+<span class="n">top_bags_country_list</span> <span class="o">=</span> <span class="n">bags_per_country</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+
+<span class="c1"># filter the original data for only the countries in the top list</span>
+<span class="n">top_coffee_df</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="p">[</span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_bags_country_list</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>we can see which countries are in the list</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_bags_country_list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Colombia&#39;, &#39;Guatemala&#39;, &#39;Brazil&#39;, &#39;Mexico&#39;, &#39;Honduras&#39;, &#39;Ethiopia&#39;,
+       &#39;Costa Rica&#39;, &#39;Nicaragua&#39;, &#39;El Salvador&#39;, &#39;Kenya&#39;],
+      dtype=&#39;object&#39;, name=&#39;Country.of.Origin&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>and confirm that is all that is in our new dataframe</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_coffee_df</span><span class="p">[</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country.of.Origin
+Mexico         236
+Colombia       183
+Guatemala      181
+Brazil         132
+Honduras        53
+Costa Rica      51
+Ethiopia        44
+Nicaragua       26
+Kenya           25
+El Salvador     21
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>compared to the original, it is far fewer</p>
+<div class="cell tag_scroll-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Country.of.Origin
+Mexico                          236
+Colombia                        183
+Guatemala                       181
+Brazil                          132
+Taiwan                           75
+United States (Hawaii)           73
+Honduras                         53
+Costa Rica                       51
+Ethiopia                         44
+Tanzania, United Republic Of     40
+Thailand                         32
+Uganda                           26
+Nicaragua                        26
+Kenya                            25
+El Salvador                      21
+Indonesia                        20
+China                            16
+Malawi                           11
+Peru                             10
+United States                     8
+Myanmar                           8
+Vietnam                           7
+Haiti                             6
+Philippines                       5
+Panama                            4
+United States (Puerto Rico)       4
+Laos                              3
+Burundi                           2
+Ecuador                           1
+Rwanda                            1
+Japan                             1
+Zambia                            1
+Papua New Guinea                  1
+Mauritius                         1
+Cote d?Ivoire                     1
+India                             1
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This section is changed slightly from in class to be easier to read.</p>
+</div>
+<p>This limits the rows, but keeps all of the columns</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_coffee_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Unnamed: 0&#39;, &#39;Species&#39;, &#39;Owner&#39;, &#39;Country.of.Origin&#39;, &#39;Farm.Name&#39;,
+       &#39;Lot.Number&#39;, &#39;Mill&#39;, &#39;ICO.Number&#39;, &#39;Company&#39;, &#39;Altitude&#39;, &#39;Region&#39;,
+       &#39;Producer&#39;, &#39;Number.of.Bags&#39;, &#39;Bag.Weight&#39;, &#39;In.Country.Partner&#39;,
+       &#39;Harvest.Year&#39;, &#39;Grading.Date&#39;, &#39;Owner.1&#39;, &#39;Variety&#39;,
+       &#39;Processing.Method&#39;, &#39;Aroma&#39;, &#39;Flavor&#39;, &#39;Aftertaste&#39;, &#39;Acidity&#39;, &#39;Body&#39;,
+       &#39;Balance&#39;, &#39;Uniformity&#39;, &#39;Clean.Cup&#39;, &#39;Sweetness&#39;, &#39;Cupper.Points&#39;,
+       &#39;Total.Cup.Points&#39;, &#39;Moisture&#39;, &#39;Category.One.Defects&#39;, &#39;Quakers&#39;,
+       &#39;Color&#39;, &#39;Category.Two.Defects&#39;, &#39;Expiration&#39;, &#39;Certification.Body&#39;,
+       &#39;Certification.Address&#39;, &#39;Certification.Contact&#39;, &#39;unit_of_measurement&#39;,
+       &#39;altitude_low_meters&#39;, &#39;altitude_high_meters&#39;, &#39;altitude_mean_meters&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since this has a lot of variables, we will make lists of how we want to use different columns
+in variables before using.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Aroma&#39;</span><span class="p">,</span> <span class="s1">&#39;Flavor&#39;</span><span class="p">,</span> <span class="s1">&#39;Aftertaste&#39;</span><span class="p">,</span> <span class="s1">&#39;Acidity&#39;</span><span class="p">,</span> <span class="s1">&#39;Body&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Balance&#39;</span><span class="p">,</span> <span class="s1">&#39;Uniformity&#39;</span><span class="p">,</span> <span class="s1">&#39;Clean.Cup&#39;</span><span class="p">,</span> <span class="s1">&#39;Sweetness&#39;</span><span class="p">,</span> <span class="p">]</span>
+<span class="n">id_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Species&#39;</span><span class="p">,</span> <span class="s1">&#39;Owner&#39;</span><span class="p">,</span> <span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">]</span>
+<span class="n">coffee_tall</span> <span class="o">=</span> <span class="n">top_coffee_df</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="n">id_vars</span><span class="p">,</span> <span class="n">value_vars</span><span class="o">=</span><span class="n">value_vars</span><span class="p">,</span>
+              <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;rating&#39;</span><span class="p">)</span>
+<span class="n">coffee_tall</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Species</th>
+      <th>Owner</th>
+      <th>Country.of.Origin</th>
+      <th>rating</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Arabica</td>
+      <td>metad plc</td>
+      <td>Ethiopia</td>
+      <td>Aroma</td>
+      <td>8.67</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This data is “tidy” all of the different measurements (ratings) are different rows and we have a few
+columsn that identify each sample</p>
+<p>This version plays much better with plots where we want to compare the ratings.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Copy this cell and run it, then cut out one parameter at a time to get before/after to see more visually what each one does</p>
+</div>
+</aside>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">coffee_tall</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span>
+            <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">col_wrap</span> <span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;violin&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f76bc71f040&gt;
+</pre></div>
+</div>
+<img alt="../_images/676006e745ab971e76123035435acc4fbdf1dc410f310127d29f6d6b7e4efb05.png" src="../_images/676006e745ab971e76123035435acc4fbdf1dc410f310127d29f6d6b7e4efb05.png" />
+</div>
+</div>
+<p>This now we can use the <code class="docutils literal notranslate"><span class="pre">rating</span></code> as a variable to break the data by in our subplots.
+I did a few new things in this:</p>
+<ul class="simple">
+<li><p>a <a class="reference external" href="https://seaborn.pydata.org/tutorial/categorical.html#violinplots">violin plot</a> allows us to compare how different data is distributed.</p></li>
+<li><p>I used both <code class="docutils literal notranslate"><span class="pre">col</span></code> and <code class="docutils literal notranslate"><span class="pre">col_wrap</span></code>, <code class="docutils literal notranslate"><span class="pre">col</span></code> alone would have made nine columns, and without <code class="docutils literal notranslate"><span class="pre">row</span></code> all in one row. <code class="docutils literal notranslate"><span class="pre">col_wrap</span></code> says to line wrap after a certain number of columns (here 3)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aspect</span></code> is an attribute of the <a class="reference external" href="https://seaborn.pydata.org/tutorial/function_overview.html#figure-level-vs-axes-level-functions">figure level plots</a> that controls the ratio of width to height (the aspect ratio). so <code class="docutils literal notranslate"><span class="pre">aspect=3</span></code> makes it 3 times as wide as tall in each subplot, this spreads out the x tick labels so can read them</p></li>
+</ul>
+<section id="questions-after-class">
+<h2><span class="section-number">7.1. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<p>Most  of the questions today were about assignment 3 or asking to explain specific things
+that are above. Feel free to post an issue if a question comes up later.</p>
+<section id="can-you-change-the-locations-of-the-names-next-to-a-plot">
+<h3><span class="section-number">7.1.1. </span>Can you change the locations of the names next to a plot?<a class="headerlink" href="#can-you-change-the-locations-of-the-names-next-to-a-plot" title="Permalink to this headline">#</a></h3>
+<p>First, see the annotated graph and learn the technical name of the element you want to move.</p>
+<p><img alt="annotated graph" src="https://matplotlib.org/stable/_images/sphx_glr_anatomy_001.png" /></p>
+<p>the above figure come from <a class="reference external" href="https://matplotlib.org/stable/gallery/showcase/anatomy.html">matplotlib’s Anatomy of a Figure</a> page which includes the <em>code</em> to generate that figure</p>
+<p>You can control each of these but you may need to use <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p>
+<p>If this means the legend, seaborn can control that location. If it refers to fixing overlappign tick labels, I demonstrated that above, with <code class="docutils literal notranslate"><span class="pre">aspect</span></code>.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2024-09-19.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Visualization</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../assignments/01-setup.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Assignment 1: Setup, Syllabus, and Review</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">6. Cleaning Data - Structure</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro">6.1. Intro</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-tidy-data">6.2. What is Tidy Data?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#breakign-down-that-comprehension">6.2.1. Breakign down that comprehension</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-same-data-3-ways">6.2.2. the same data 3 ways</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-missing-values">6.3. Encoding Missing values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-on-tidy-data">6.4. Computing on Tidy Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidying-data">6.5. Tidying Data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#transforming-the-coffee-data">7. Transforming the Coffee data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-class">7.1. Questions After Class</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-change-the-locations-of-the-names-next-to-a-plot">7.1.1. Can you change the locations of the names next to a plot?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Professor Sarah M Brown
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

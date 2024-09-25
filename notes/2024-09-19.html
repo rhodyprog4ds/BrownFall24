@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2024-09-19';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Assignment 1: Setup, Syllabus, and Review" href="../assignments/01-setup.html" />
+    <link rel="next" title="6. Cleaning Data - Structure" href="2024-09-24.html" />
     <link rel="prev" title="4. Exploratory Data Analysis" href="2024-09-17.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -177,6 +177,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2024-09-12.html">3. Pandas Data Frames and More Iterable Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-09-17.html">4. Exploratory Data Analysis</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-24.html">6. Cleaning Data - Structure</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -656,7 +658,8 @@ Name: count, Length: 169, dtype: int64
 </section>
 <section id="anatomy-of-a-plot">
 <h2><span class="section-number">5.5. </span>Anatomy of a plot<a class="headerlink" href="#anatomy-of-a-plot" title="Permalink to this headline">#</a></h2>
-<p><img alt="annotated graph" src="https://matplotlib.org/stable/_images/sphx_glr_anatomy_001.png" /></p>
+<p><img alt="annotated graph" src="https://matplotlib.org/stable/_images/sphx_glr_anatomy_001.png" />
+the above figure come from <a class="reference external" href="https://matplotlib.org/stable/gallery/showcase/anatomy.html">matplotlib’s Anatomy of a Figure</a> page which includes the <em>code</em> to generate that figure</p>
 </section>
 <section id="id1">
 <h2><span class="section-number">5.6. </span>Figure and axis level plots<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
@@ -681,10 +684,10 @@ Name: count, Length: 169, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2aa7f75580&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fb461428d30&gt;
 </pre></div>
 </div>
-<img alt="../_images/a3e9879c373190c5a513c4047cafede725fbc7620ba6104d03ec3691b4917045.png" src="../_images/a3e9879c373190c5a513c4047cafede725fbc7620ba6104d03ec3691b4917045.png" />
+<img alt="../_images/c4cbc56fccb175085617044a35239764c056376f642051e9ddc119ed57a6d5d9.png" src="../_images/c4cbc56fccb175085617044a35239764c056376f642051e9ddc119ed57a6d5d9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -694,10 +697,10 @@ Name: count, Length: 169, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2aa7ac5cd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fb4614c9bb0&gt;
 </pre></div>
 </div>
-<img alt="../_images/50d3fdaa50bc16456344f47665fe44f54518282c45a9b3c685a905396694a041.png" src="../_images/50d3fdaa50bc16456344f47665fe44f54518282c45a9b3c685a905396694a041.png" />
+<img alt="../_images/7db32b12e3a95f06a56e82310fd5fe92ac023f472cabca61507e1a80b877eb1e.png" src="../_images/7db32b12e3a95f06a56e82310fd5fe92ac023f472cabca61507e1a80b877eb1e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -708,10 +711,10 @@ Name: count, Length: 169, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2aa7f7d400&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fb4612bf0a0&gt;
 </pre></div>
 </div>
-<img alt="../_images/4e78784dcad9c9707e8e7fb5bb9da05f2ece7986c6d15453458cabcbdbe9038d.png" src="../_images/4e78784dcad9c9707e8e7fb5bb9da05f2ece7986c6d15453458cabcbdbe9038d.png" />
+<img alt="../_images/ade361938eb51d99578703903f081af2b17c529efc73bd37d2651525ae52a999.png" src="../_images/ade361938eb51d99578703903f081af2b17c529efc73bd37d2651525ae52a999.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -722,10 +725,10 @@ Name: count, Length: 169, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2aa7a49430&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fb4a6398160&gt;
 </pre></div>
 </div>
-<img alt="../_images/b489faaf740a246c6d38eaff33179dc38749806eb807839cd10b62186541c0c2.png" src="../_images/b489faaf740a246c6d38eaff33179dc38749806eb807839cd10b62186541c0c2.png" />
+<img alt="../_images/e325be7d70c06c5d1c113b3c297ece2a50cde07f2a97535d14a772f546ad3691.png" src="../_images/e325be7d70c06c5d1c113b3c297ece2a50cde07f2a97535d14a772f546ad3691.png" />
 </div>
 </div>
 <p>Example okay questions:</p>
@@ -748,7 +751,7 @@ Name: count, Length: 169, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2aa7ad5610&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fb45e853b80&gt;
 </pre></div>
 </div>
 <img alt="../_images/ec4bdfdbb84e45f3ba73c0394aa651e29c627e83aa50e02df833dab1767490c9.png" src="../_images/ec4bdfdbb84e45f3ba73c0394aa651e29c627e83aa50e02df833dab1767490c9.png" />
@@ -872,11 +875,11 @@ and the <span class="xref myst">intro to DataFrames</span></p>
       </div>
     </a>
     <a class="right-next"
-       href="../assignments/01-setup.html"
+       href="2024-09-24.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Assignment 1: Setup, Syllabus, and Review</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Cleaning Data - Structure</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

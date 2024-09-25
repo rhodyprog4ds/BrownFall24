@@ -177,6 +177,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2024-09-12.html">3. Pandas Data Frames and More Iterable Types</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Exploratory Data Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-09-19.html">5. Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-24.html">6. Cleaning Data - Structure</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -641,54 +643,54 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th>3722</th>
-      <td>2018</td>
-      <td>Ecopetrol</td>
+      <th>2620</th>
+      <td>1982</td>
+      <td>Coal India</td>
       <td>State-owned Entity</td>
-      <td>Oil &amp; NGL</td>
-      <td>216.262500</td>
-      <td>Million bbl/yr</td>
-      <td>86.240705</td>
-    </tr>
-    <tr>
-      <th>12124</th>
-      <td>1945</td>
-      <td>Westmoreland Mining</td>
-      <td>Investor-owned Company</td>
-      <td>Sub-Bituminous Coal</td>
-      <td>3.072167</td>
+      <td>Metallurgical Coal</td>
+      <td>1.389344</td>
       <td>Million tonnes/yr</td>
-      <td>6.202983</td>
+      <td>4.121652</td>
     </tr>
     <tr>
-      <th>11782</th>
-      <td>2012</td>
-      <td>Vale</td>
-      <td>Investor-owned Company</td>
-      <td>Thermal Coal</td>
-      <td>1.999000</td>
-      <td>Million tonnes/yr</td>
-      <td>4.736487</td>
-    </tr>
-    <tr>
-      <th>5042</th>
-      <td>2008</td>
-      <td>Gazprom</td>
+      <th>10852</th>
+      <td>2015</td>
+      <td>Sonangol</td>
       <td>State-owned Entity</td>
-      <td>Oil &amp; NGL</td>
-      <td>314.457000</td>
-      <td>Million bbl/yr</td>
-      <td>125.398501</td>
+      <td>Natural Gas</td>
+      <td>13.922232</td>
+      <td>Bcf/yr</td>
+      <td>1.014797</td>
     </tr>
     <tr>
-      <th>11472</th>
-      <td>2007</td>
-      <td>TotalEnergies</td>
+      <th>6707</th>
+      <td>1994</td>
+      <td>North American Coal</td>
+      <td>Investor-owned Company</td>
+      <td>Lignite Coal</td>
+      <td>24.630318</td>
+      <td>Million tonnes/yr</td>
+      <td>32.985172</td>
+    </tr>
+    <tr>
+      <th>6467</th>
+      <td>1992</td>
+      <td>National Iranian Oil Co.</td>
+      <td>State-owned Entity</td>
+      <td>Natural Gas</td>
+      <td>882.875000</td>
+      <td>Bcf/yr</td>
+      <td>64.353103</td>
+    </tr>
+    <tr>
+      <th>3207</th>
+      <td>2015</td>
+      <td>CONSOL Energy</td>
       <td>Investor-owned Company</td>
       <td>Natural Gas</td>
-      <td>2152.508036</td>
+      <td>287.287000</td>
       <td>Bcf/yr</td>
-      <td>156.897151</td>
+      <td>20.940462</td>
     </tr>
   </tbody>
 </table>
@@ -1085,59 +1087,59 @@ Name: count, dtype: int64
   </thead>
   <tbody>
     <tr>
-      <th>5423</th>
-      <td>1989</td>
-      <td>Iraq National Oil Company</td>
-      <td>State-owned Entity</td>
+      <th>11159</th>
+      <td>2013</td>
+      <td>Surgutneftegas</td>
+      <td>Investor-owned Company</td>
       <td>Oil &amp; NGL</td>
-      <td>845.967200</td>
+      <td>450.450490</td>
       <td>Million bbl/yr</td>
-      <td>337.353021</td>
+      <td>179.629699</td>
       <td>Oil &amp; NGL</td>
     </tr>
     <tr>
-      <th>6306</th>
-      <td>2018</td>
-      <td>Murphy Oil</td>
-      <td>Investor-owned Company</td>
-      <td>Oil &amp; NGL</td>
-      <td>37.121960</td>
-      <td>Million bbl/yr</td>
-      <td>14.803417</td>
-      <td>Oil &amp; NGL</td>
-    </tr>
-    <tr>
-      <th>9834</th>
-      <td>1970</td>
-      <td>Sasol</td>
-      <td>Investor-owned Company</td>
-      <td>Bituminous Coal</td>
-      <td>4.092630</td>
-      <td>Million tonnes/yr</td>
-      <td>11.107967</td>
-      <td>Coal</td>
-    </tr>
-    <tr>
-      <th>7432</th>
-      <td>2003</td>
-      <td>Orlen</td>
-      <td>Investor-owned Company</td>
-      <td>Natural Gas</td>
-      <td>145.033333</td>
-      <td>Bcf/yr</td>
-      <td>10.571536</td>
-      <td>Natural Gas</td>
-    </tr>
-    <tr>
-      <th>8783</th>
-      <td>1965</td>
-      <td>Poland</td>
+      <th>3506</th>
+      <td>1957</td>
+      <td>Czechoslovakia</td>
       <td>Nation State</td>
-      <td>Lignite Coal</td>
-      <td>65.527243</td>
+      <td>Bituminous Coal</td>
+      <td>19.201960</td>
       <td>Million tonnes/yr</td>
-      <td>87.754747</td>
+      <td>52.116788</td>
       <td>Coal</td>
+    </tr>
+    <tr>
+      <th>6725</th>
+      <td>2012</td>
+      <td>North American Coal</td>
+      <td>Investor-owned Company</td>
+      <td>Lignite Coal</td>
+      <td>25.764311</td>
+      <td>Million tonnes/yr</td>
+      <td>34.503826</td>
+      <td>Coal</td>
+    </tr>
+    <tr>
+      <th>475</th>
+      <td>2015</td>
+      <td>Anglo American</td>
+      <td>Investor-owned Company</td>
+      <td>Metallurgical Coal</td>
+      <td>21.208200</td>
+      <td>Million tonnes/yr</td>
+      <td>62.916608</td>
+      <td>Coal</td>
+    </tr>
+    <tr>
+      <th>7481</th>
+      <td>1992</td>
+      <td>Ovintiv</td>
+      <td>Investor-owned Company</td>
+      <td>Oil &amp; NGL</td>
+      <td>46.900000</td>
+      <td>Million bbl/yr</td>
+      <td>18.702683</td>
+      <td>Oil &amp; NGL</td>
     </tr>
   </tbody>
 </table>
@@ -1398,6 +1400,11 @@ Name: total_emissions_MtCO2e, dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
 </pre></div>
 </div>
 </div>
