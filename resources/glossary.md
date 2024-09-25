@@ -1,8 +1,5 @@
 # Glossary
 
-```{admonition} Ram Token Opportunity
-Contribute glossary items and  links for further reading using the suggest an edit button behind the GitHub menu at the top of the page.
-```
 
 
 ```{glossary}
@@ -68,18 +65,20 @@ numpy array
 repository
   a project folder with tracking information in it in the form of a .git file
 
-suffix
-  additional part of the name that gets added to end of a name in a merge operation
-
-
 [Series](https://pandas.pydata.org/docs/reference/api/pandas.Series.html)
   a data structure provided by pandas for single columnar data with an index.  Subsetting a Dataframe or applying a function to one will often produce a Series
+
+shape
+  of a dataframe, or matrix is the number of rows and columns. 
 
 [Split Apply Combine](https://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#group-by-split-apply-combine)
   a paradigm for splitting data into groups using a column, applying some function(aggregation, transformation, or filtration) to each piece and combinging in the individual pieces back together to a single table
 
 stop words
   Words that do not convey important meaning, we don’t need them (like a, the, an,). Note that this is context dependent. These words are removed when transforming text to numerical representation
+
+suffix
+  additional part of the name that gets added to end of a name in a merge operation
 
 test accuracy
   percentage of predictions that the model predict correctly, based on held-out (previously unseen) test data
