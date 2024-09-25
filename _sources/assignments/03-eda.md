@@ -3,7 +3,12 @@
 
 **Due:2023-09-26 end of day**
 
-However, if you  upload an attempt and specific questions on time and then attend office hours on 9/20 then any revisions made based on our conversation will count as on time
+```{warning}
+This will be extended to ~48 hours after assignment 2 feedback is done so that you can apply that feedback
+and update your assignment 3
+```
+
+
 <!-- - [accept assignment](https://classroom.github.com/a/BOG3E7Ch) -->
 
 
@@ -18,7 +23,7 @@ Add your work to the assignment3 branch in your portfolio and you do not need to
 ### Group
 1. coordinate so that the first person makes the team when they [accept the assigment](https://classroom.github.com/a/caIgkvaR)
 2. the second (and third) joins the same team when they [accept the assigment](https://classroom.github.com/a/caIgkvaR). 
-3. Each person should [upload their work to a branch ](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository#:~:text=Below%20the%20commit%20message%20fields%2C%20decide%20whether%20to%20add%20your%20commit%20to%20the%20current%20branch%20or%20to%20a%20new%20branch.%20If%20your%20current%20branch%20is%20the%20default%20branch%2C%20you%20should%20choose%20to%20create%20a%20new%20branch%20for%20your%20commit%20and%20then%20create%20a%20pull%20request.) named `d1`, `d2` or `d3` for which dataset checklist you followed from below and open a PR. (each one should do a different one)
+3. Each person should [upload their work to a branch ](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository#:~:text=Below%20the%20commit%20message%20fields%2C%20decide%20whether%20to%20add%20your%20commit%20to%20the%20current%20branch%20or%20to%20a%20new%20branch.%20If%20your%20current%20branch%20is%20the%20default%20branch%2C%20you%20should%20choose%20to%20create%20a%20new%20branch%20for%20your%20commit%20and%20then%20create%20a%20pull%20request.) named `d1`, `d2` or `d3` for which dataset checklist you followed from below and open a PR. (each person should do a different dataset)
 4. In your portfolio, replace the contents of  the `a3_location.md` file on the assignment3 branch with your team name. We will use that to create a PR to give you your individualized achievements update. 
 
 
@@ -65,7 +70,9 @@ must include at least:
 - one continuous valued variable
 
 ### Dataset 3 (d3)
-**team only**
+```{warning}
+This is only for groups of 3
+```
 must include at least:
 - two continuous valued variables **and**
 - one categorical variable.
@@ -154,9 +161,14 @@ work.
 You will complete your review on a PR, by reviewing it.  If you want a big picture overview on that, the [github PR review "course"](https://github.com/skills/review-pull-requests) is a good place to go, it is designed to take <30 minutes. 
 
 1. [start a review](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request#starting-a-review)
-- Use [PR comments](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-comments-to-a-pull-request) to denote places that are confusing or if you see solutions to problems your classmate could not solve
-- Prepare to [submit your review](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review)
-- Use the list of questions below for your summary review (copy the template into the box and fill in )
+2. (optional) Use [PR comments](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-comments-to-a-pull-request) to denote places that are confusing or if you see solutions to problems your classmate could not solve *this is hard on notebook files, so it is okay to skip*
+1. Prepare to [submit your review](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request#submitting-your-review)
+1.  Use the list of questions below for your summary review (copy the template into the box and fill in )
+
+````{important}
+Your review should use the **template** for organization, but the **questions** guide what sorts of 
+aspects to consider across the sections.  
+````
 
 ### Review Questions
 
@@ -196,6 +208,8 @@ Respond to the review on your notebook either with inline comments, replies, or 
 - Remember you can also use [masking](masking) in your EDA even though we did not do any in class
 - To ensure you understand the checklist you can **optionally** make an issue using the appropriate issue type from your repo   and fill in what it should be to get early feedback that you are on track 
 - variable types are in the notes
+- the [DataFrame](https://pandas.pydata.org/docs/reference/frame.html) API reference shows all the methods (and more) grouped by high level concepts. 
+
 
 
 ## Think Ahead
