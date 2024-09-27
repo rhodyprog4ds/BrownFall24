@@ -21,13 +21,14 @@ parts:
     - file: notes/2024-09-17
     - file: notes/2024-09-19
     - file: notes/2024-09-24
+    - file: notes/2024-09-26
   - caption: Assignments
     numbered: True
     chapters:
     - file: assignments/01-setup
     - file: assignments/02-python-access
     - file: assignments/03-eda
-    # - file: assignments/04-prepare
+    - file: assignments/04-prepare
     # - file: assignments/05-construct
     # - file: assignments/06-evaluate
     # - file: assignments/07-classification
