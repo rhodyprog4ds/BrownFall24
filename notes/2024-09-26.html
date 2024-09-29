@@ -403,7 +403,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -419,6 +421,35 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-data-review">8.1. Cleaning Data review</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-cleaning-data-recipe">8.1.1. A Cleaning Data Recipe</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-clean-enough">8.2. What is clean enough?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values">8.3. Missing values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filling-missing-values">8.3.1. Filling missing values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dropping">8.4. Dropping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inconsistent-values">8.5. Inconsistent values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-values-in-a-single-column">8.6. Multiple values in a single column</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string-methods">8.6.1. String methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casting-review">8.6.2. Casting Review</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-parts-of-dataframes">8.7. Combining parts of dataframes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">8.8. Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-can-i-rename-without-a-dicionary">8.8.1. How can I rename without a dicionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-strings-object">8.8.2. Why are strings <code class="docutils literal notranslate"><span class="pre">object</span></code>?</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -430,12 +461,73 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="fixing-values">
 <h1><span class="section-number">8. </span>Fixing Values<a class="headerlink" href="#fixing-values" title="Permalink to this headline">#</a></h1>
+<p>o far, we’ve dealt with structural issues in data. but there’s a lot more to
+cleaning.</p>
+<p>Today,  we’ll deal with how to fix the values within  the data.</p>
+<section id="cleaning-data-review">
+<h2><span class="section-number">8.1. </span>Cleaning Data review<a class="headerlink" href="#cleaning-data-review" title="Permalink to this headline">#</a></h2>
+<p>Instead of more practice with these manipulations, below are more
+examples of cleaning data to see how these types of manipulations get used.<br />
+Your goal here is not to memorize every possible thing, but to build a general
+idea of what good data looks like and good habits for cleaning data and keeping
+it reproducible.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ryanwingate.com/projects/machine-learning-data-prep/adult/adult-cleaning/">Cleaning the Adult Dataset</a></p></li>
+<li><p><a class="reference external" href="https://github.com/the-pudding/data/tree/master/foundation-names#allshadescsv--allshadesr">All Shades</a>
+Also here are some tips on general data management and organization.</p></li>
+</ul>
+<p>This article is a comprehensive <a class="reference external" href="https://towardsdatascience.com/the-ultimate-guide-to-data-cleaning-3969843991d4">discussion of data cleaning</a>.</p>
+<section id="a-cleaning-data-recipe">
+<h3><span class="section-number">8.1.1. </span>A Cleaning Data Recipe<a class="headerlink" href="#a-cleaning-data-recipe" title="Permalink to this headline">#</a></h3>
+<p><strong>not everything possible, but good enough for this course</strong></p>
+<ol class="arabic simple">
+<li><p>Can you use parameters to read the data in better?</p></li>
+<li><p>Fix the index and column headers (making these easier to use makes the rest easier)</p></li>
+<li><p>Is the data strucutred well?</p></li>
+<li><p>Are there missing values?</p></li>
+<li><p>Do the datatypes match what you expect by looking at the head or a sample?</p></li>
+<li><p>Are categorical variables represented in usable way?</p></li>
+<li><p>Does your analysis require filtering or augmenting the data?</p></li>
+</ol>
+</section>
+</section>
+<section id="what-is-clean-enough">
+<h2><span class="section-number">8.2. </span>What is clean enough?<a class="headerlink" href="#what-is-clean-enough" title="Permalink to this headline">#</a></h2>
+<p>This is a great question, without an easy answer.</p>
+<p>It depends on what you want to do.  This is why it’s important to have potential
+questions in mind if you are cleaning data for others <em>and</em> why we often have to
+do a little bit more preparation after a dataset has been “cleaned”</p>
+<p>Dealing with missing data is a whole research area. There isn’t one solution.</p>
+<p><a class="reference external" href="https://artemiss-workshop.github.io/">in 2020 there was a whole workshop on missing</a></p>
+<p>one organizer is the main developer of <a class="reference external" href="https://scikit-learn.org/stable/">sci-kit learn</a> the ML package we will use soon.  In a <a class="reference external" href="https://static.sched.com/hosted_files/ray2020/08/Keynote-%20Easier%20Machine%20Learning%20Thoughts%20From%20Scikit-Learn%20-%20Ga%C3%ABl%20Varoquaux%2C%20Research%20Director%2C%20Inria.pdf">2020 invited talk</a> he listed more automatic handling as an active area of research  and a development goal for sklearn.</p>
+<p>There are also many classic approaches both when training and when <a class="reference external" href="https://www.jmlr.org/papers/volume8/saar-tsechansky07a/saar-tsechansky07a.pdf">applying models</a>.</p>
+<p><a class="reference external" href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.701.4234&amp;rep=rep1&amp;type=pdf">example application in breast cancer detection</a></p>
+<p>Even in pandas, dealing with <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html">missing values</a> is under <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html#missing-data-na">experimentation</a>
+as to how to represent it symbolically</p>
+<p>Missing values even causes the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html#missing-data-casting-rules-and-indexing">datatypes to change</a></p>
+<p>That said, there are are om
+Pandas gives a few basic tools:</p>
+<ul class="simple">
+<li><p>dropna</p></li>
+<li><p>fillna</p></li>
+</ul>
+<p>Filling can be good if you know how to fill reasonably, but don’t have data to
+spare by dropping.  For example</p>
+<ul class="simple">
+<li><p>you can approximate with another column</p></li>
+<li><p>you can approximate with that column from other rows</p></li>
+</ul>
+<p>Special case, what if we’re filling a summary table?</p>
+<ul class="simple">
+<li><p>filling with a symbol for printing can be a good choice, but not for analysis.</p></li>
+</ul>
+<p><strong>whatever you do, document it</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
-<span class="n">na_toy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">2</span> <span class="p">,</span><span class="mi">6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]])</span>
+<span class="n">na_toy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">2</span> <span class="p">,</span><span class="mi">6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span><span class="p">,[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">])</span>
 
 <span class="c1"># make plots look nicer and increase font size</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -448,18 +540,56 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
+<section id="missing-values">
+<h2><span class="section-number">8.3. </span>Missing values<a class="headerlink" href="#missing-values" title="Permalink to this headline">#</a></h2>
+<p>We tend to store missing values as <code class="docutils literal notranslate"><span class="pre">NaN</span></code> or use the constants:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">NA</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NA&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;NA&gt;, nan)
 </pre></div>
 </div>
 </div>
 </div>
+<p>Pandas makes that a special typed object, but converts the whole <em>column</em> to float</p>
+<p>Numpy uses <em>float</em> value for <code class="docutils literal notranslate"><span class="pre">NaN</span></code> that is defined by <a class="reference external" href="https://en.wikipedia.org/wiki/IEEE_754">IEEE floating point standard</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">),</span><span class="nb">type</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pandas._libs.missing.NAType, float)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-floats-are-weird admonition">
+<p class="admonition-title">Floats are weird</p>
+<p><img alt="float comic for jvns.ca" src="https://wizardzines.com/zines/integers-floats/samples/2-floating-point.png" /></p>
+<p>there are values that cannot be represented.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://float.exposed/0x7ff0000000000000">see float.exposed for infinity </a></p></li>
+<li><p><a class="reference external" href="https://float.exposed/0xfff0000000000000">negative infinity</a></p></li>
+<li><p><a class="reference external" href="https://float.exposed/0x7ff8000000000000">see a nan</a> (which bits can be changd without making it <em>not</em> nan)</p></li>
+<li><p>from <a class="reference external" href="https://float.exposed/0x4340000000000000">9007199254740992.0</a>  the next closest value is <a class="reference external" href="https://float.exposed/0x4340000000000001">9007199254740994.0</a>… no values in between can be stores in double precision float</p></li>
+</ul>
+</div>
+<p>We can see a few in this toy dataset</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>I simplified here relative to class, by using the bigger table I made on the fly above.</p>
+</div>
+</aside>
+<p>This data has some missing values</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">na_toy_df</span>
@@ -485,31 +615,46 @@ document.write(`
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>3</td>
+      <td>1.0</td>
+      <td>3.0</td>
       <td>4.0</td>
       <td>5.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2</td>
-      <td>6</td>
+      <td>2.0</td>
+      <td>6.0</td>
       <td>NaN</td>
       <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+<p>Let’s try the default behavior of <code class="docutils literal notranslate"><span class="pre">dropna</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">na_toy_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
@@ -535,17 +680,17 @@ document.write(`
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>3</td>
+      <td>1.0</td>
+      <td>3.0</td>
       <td>4.0</td>
       <td>5.0</td>
     </tr>
@@ -553,6 +698,52 @@ document.write(`
 </table>
 </div></div></div>
 </div>
+<p>This is the same as</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">na_toy_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">,</span><span class="n">subset</span><span class="o">=</span><span class="n">na_toy_df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>by default it drops all of the <em>rows</em> where <strong>any</strong> of the elements are missing (1 or more)
+we can change <code class="docutils literal notranslate"><span class="pre">how</span></code> to its other mode:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">na_toy_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
@@ -578,35 +769,43 @@ document.write(`
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>3</td>
+      <td>1.0</td>
+      <td>3.0</td>
       <td>4.0</td>
       <td>5.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2</td>
-      <td>6</td>
+      <td>2.0</td>
+      <td>6.0</td>
       <td>NaN</td>
       <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+<p>in <code class="docutils literal notranslate"><span class="pre">'all'</span></code> mode it only drops rows where <strong>all</strong> of the values are missing</p>
+<p>we can also change it to work along columns (<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>) instead</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">na_toy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">2</span> <span class="p">,</span><span class="mi">6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span><span class="p">])</span>
-<span class="n">na_toy_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">na_toy_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -629,10 +828,10 @@ document.write(`
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
     </tr>
   </thead>
   <tbody>
@@ -657,95 +856,9 @@ document.write(`
       <td>NaN</td>
       <td>NaN</td>
     </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">na_toy_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
+    <tr>
       <th>3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1.0</td>
-      <td>3.0</td>
-      <td>4.0</td>
-      <td>5.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2.0</td>
-      <td>6.0</td>
       <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">na_toy_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1.0</td>
       <td>3.0</td>
       <td>4.0</td>
       <td>5.0</td>
@@ -754,6 +867,27 @@ document.write(`
 </table>
 </div></div></div>
 </div>
+<p>None of the columns are <em>all</em> missing so nothing is dropped</p>
+<p>Let’s say we had an analysis where we neded at least one of column <code class="docutils literal notranslate"><span class="pre">c</span></code> or <code class="docutils literal notranslate"><span class="pre">d</span></code> or else we could not
+use the row, we can check that this way:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">na_toy_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="n">na_toy_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">]</span>
+                                               <span class="o">^</span>
+<span class="ne">SyntaxError</span>: unexpected EOF while parsing
+</pre></div>
+</div>
+</div>
+</div>
+<section id="filling-missing-values">
+<h3><span class="section-number">8.3.1. </span>Filling missing values<a class="headerlink" href="#filling-missing-values" title="Permalink to this headline">#</a></h3>
+<p>Let’s look at a real dataset now</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
@@ -816,6 +950,8 @@ memory usage: 450.8+ KB
 </div>
 </div>
 </div>
+<p>The ‘Lot.Number’ has a lot of NaN values, how can we explore it?</p>
+<p>We can look at the type:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Lot.Number&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span>
@@ -828,6 +964,7 @@ memory usage: 450.8+ KB
 </div>
 </div>
 </div>
+<p>And we can look at the value counts.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Lot.Number&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -852,6 +989,7 @@ Name: count, Length: 221, dtype: int64
 </div>
 </div>
 </div>
+<p>We see that a lot are ‘1’, maybe we know that when the data was collected, if the Farm only has one lot, some people recorded ‘1’ and others left it as missing. So we could fill in with 1:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Lot.Number&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -886,6 +1024,14 @@ Name: Lot.Number, dtype: object
 </div>
 </div>
 </div>
+<p>Note that even after we called <code class="docutils literal notranslate"><span class="pre">fillna</span></code> we display it again and the original data is unchanged.
+To save the filled in column, <em>technically</em> we have a few choices:</p>
+<ul class="simple">
+<li><p><span class="fa fa-fa-ban"></span> use the <code class="docutils literal notranslate"><span class="pre">inplace</span></code> parameter. This doesn’t offer performance advantages, but does It still copies the object, but then reassigns the pointer. Its under discussion to <a class="reference external" href="https://github.com/pandas-dev/pandas/issues/16529">deprecate</a></p></li>
+<li><p><span class="fa fa-fa-check"></span> write to a new DataFrame</p></li>
+<li><p><span class="fa fa-fa-check"></span> add a column</p></li>
+</ul>
+<p>we will add a column</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;lot_number_clean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Lot.Number&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
@@ -983,6 +1129,17 @@ Name: Lot.Number, dtype: object
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="dropping">
+<h2><span class="section-number">8.4. </span>Dropping<a class="headerlink" href="#dropping" title="Permalink to this headline">#</a></h2>
+<p>Dropping is a good choice when you otherwise have a lot of data and the data is
+missing at random.</p>
+<p>Dropping can be risky if it’s not missing at random. For example, if we saw in
+the coffee data that one of the scores was missing for all of the rows from one
+country, or even just missing more often in one country, that could bias our
+results.</p>
+<p>here will will focus on how this impacts how much data we have:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span>
@@ -995,6 +1152,8 @@ Name: Lot.Number, dtype: object
 </div>
 </div>
 </div>
+<p>we lose a lot this way.</p>
+<p>We could instead tell it to only drop rows with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> in a subset of the columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;altitude_low_meters&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">shape</span>
@@ -1007,6 +1166,8 @@ Name: Lot.Number, dtype: object
 </div>
 </div>
 </div>
+<p>Now, it drops any row with one or more <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values in that column.</p>
+<p>In the <a class="reference external" href="https://openpolicing.stanford.edu/data/">Open Policing Project Data Summary</a> we saw that they made a summary information that showed which variables had at least 70% not missing values.  We can similarly choose to keep only variables that have more than a specific threshold of data, using the <code class="docutils literal notranslate"><span class="pre">thresh</span></code> parameter and <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> to drop along columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_rows</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">shape</span>
@@ -1020,7 +1181,12 @@ Name: Lot.Number, dtype: object
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+</section>
+<section id="inconsistent-values">
+<h2><span class="section-number">8.5. </span>Inconsistent values<a class="headerlink" href="#inconsistent-values" title="Permalink to this headline">#</a></h2>
+<p>This was one of the things that many of you anticipated or had observed.  A useful way to investigate for this, is to use <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> and sort them alphabetically by the values from the original data, so that similar ones will be consecutive in the list. Once we have the <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> Series, the values from the <code class="docutils literal notranslate"><span class="pre">coffee_df</span></code> become the index, so we use <code class="docutils literal notranslate"><span class="pre">sort_index</span></code>.</p>
+<p>Let’s look at the <code class="docutils literal notranslate"><span class="pre">in_country_partner</span></code> column</p>
+<div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;In.Country.Partner&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
 </pre></div>
@@ -1060,7 +1226,8 @@ Name: count, dtype: int64
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<p>We can see there’s only one <code class="docutils literal notranslate"><span class="pre">Blossom</span> <span class="pre">Valley</span> <span class="pre">International\n</span></code> but 58 <code class="docutils literal notranslate"><span class="pre">Blossom</span> <span class="pre">Valley</span> <span class="pre">International</span></code>, the former is likely a typo, especially since <code class="docutils literal notranslate"><span class="pre">\n</span></code> is a special character for a newline. Similarly, with ‘Specialty Coffee Ass’ and ‘Specialty Coffee Association’.</p>
+<div class="cell tag_scroll-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">partner_corrections</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Blossom Valley International</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">:</span><span class="s1">&#39;Blossom Valley International&#39;</span><span class="p">,</span>
   <span class="s1">&#39;Specialty Coffee Ass&#39;</span><span class="p">:</span><span class="s1">&#39;Specialty Coffee Association&#39;</span><span class="p">}</span>
@@ -1102,6 +1269,10 @@ Name: count, dtype: int64
 </div>
 </div>
 </div>
+</section>
+<section id="multiple-values-in-a-single-column">
+<h2><span class="section-number">8.6. </span>Multiple values in a single column<a class="headerlink" href="#multiple-values-in-a-single-column" title="Permalink to this headline">#</a></h2>
+<p>Let’s look at the column about the bag weights</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Bag.Weight&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -1119,9 +1290,105 @@ Name: Bag.Weight, dtype: object
 </div>
 </div>
 </div>
+<p>it has both the <em>value</em> and the <em>units</em> in a single column, which is not what we want.</p>
+<p>This would be better in two separate columns</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;kjksfjds sklfjsdl&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bag_df</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Bag.Weight&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;bag_weight_clean&#39;</span><span class="p">,</span>
+                                                                <span class="mi">1</span><span class="p">:</span><span class="s1">&#39;bag_weight_unit&#39;</span><span class="p">},</span>
+                                                              <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">bag_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>bag_weight_clean</th>
+      <th>bag_weight_unit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>60</td>
+      <td>kg</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>60</td>
+      <td>kg</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>60</td>
+      <td>kg</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>60</td>
+      <td>kg</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This:</p>
+<ul class="simple">
+<li><p>picks the column</p></li>
+<li><p>treats it as a string with the <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.html">pandas Series attribute <code class="docutils literal notranslate"><span class="pre">.str</span></code></a></p></li>
+<li><p>uses <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.split">base python <code class="docutils literal notranslate"><span class="pre">str.split</span></code> </a>to split at <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code> spaces and makes a list</p></li>
+<li><p>casts each list to Series with <code class="docutils literal notranslate"><span class="pre">.apply(pd.Series)</span></code></p></li>
+<li><p>renames the resulting columns from being numbered to usable names <code class="docutils literal notranslate"><span class="pre">rename({0:'bag_weight_clean',</span> <span class="pre">1:'bag_weight_unit'},</span> <span class="pre">axis=1)</span></code></p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.apply(pd.Series)</span></code> works on dictionaries too (anything hte <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html">series constructor</a> can take to its <code class="docutils literal notranslate"><span class="pre">data</span></code> parameter) so this
+is good for json data</p>
+</div>
+<p>The following subsections break down the casting and string methods in more detail</p>
+<section id="string-methods">
+<h3><span class="section-number">8.6.1. </span>String methods<a class="headerlink" href="#string-methods" title="Permalink to this headline">#</a></h3>
+<p>Python has a powerful <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#string-methods">string class</a>. There is also an even more powerful <a class="reference external" href="https://docs.python.org/3/library/string.html"><code class="docutils literal notranslate"><span class="pre">string</span></code> module</a></p>
+<p>we only need the base <code class="docutils literal notranslate"><span class="pre">str</span></code> methods most of the time</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_str</span> <span class="o">=</span> <span class="s1">&#39;kjksfjds sklfjsdl&#39;</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">example_str</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+</pre></div>
+</div>
+</div>
+</div>
+<p>Some helpful ones:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_str</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1131,10 +1398,61 @@ Name: Bag.Weight, dtype: object
 </div>
 </div>
 </div>
+<p>this gives a list</p>
+<p>you can also change the separator</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;phrases-with-hyphens&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;phrases&#39;, &#39;with&#39;, &#39;hyphens&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>there are also mehtods for chaning the case and other similar things. *<em>Use these</em> instead of implementing your own string operations!!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_str</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">example_str</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;KJKSFJDS SKLFJSDL&#39;, &#39;Kjksfjds sklfjsdl&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="casting-review">
+<h3><span class="section-number">8.6.2. </span>Casting Review<a class="headerlink" href="#casting-review" title="Permalink to this headline">#</a></h3>
+<p>If we have a variable that is not the type we want like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="s1">&#39;5&#39;</span>
-<span class="nb">int</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>we can check type</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+</pre></div>
+</div>
+</div>
+</div>
+<p>and we can use the name of the type we want, as a function to <em>cast</em> it to the new type.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1144,15 +1462,23 @@ Name: Bag.Weight, dtype: object
 </div>
 </div>
 </div>
+<p>and check</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bag_df</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Bag.Weight&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;bag_weight_clean&#39;</span><span class="p">,</span>
-                                                                <span class="mi">1</span><span class="p">:</span><span class="s1">&#39;bag_weight_unit&#39;</span><span class="p">},</span>
-                                                              <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="combining-parts-of-dataframes">
+<h2><span class="section-number">8.7. </span>Combining parts of dataframes<a class="headerlink" href="#combining-parts-of-dataframes" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bag_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -1212,6 +1538,7 @@ Name: Bag.Weight, dtype: object
 </table>
 </div></div></div>
 </div>
+<p>pandas ahd</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">coffee_df</span><span class="p">,</span><span class="n">bag_df</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1531,6 +1858,19 @@ Name: Bag.Weight, dtype: object
 </div></div></div>
 </div>
 </section>
+<section id="questions">
+<h2><span class="section-number">8.8. </span>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">#</a></h2>
+<section id="how-can-i-rename-without-a-dicionary">
+<h3><span class="section-number">8.8.1. </span>How can I rename without a dicionary<a class="headerlink" href="#how-can-i-rename-without-a-dicionary" title="Permalink to this headline">#</a></h3>
+<p>Really, best practice is a dictionary or function, that is what<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html"> <code class="docutils literal notranslate"><span class="pre">rename</span></code></a> uses.</p>
+<p>You can assign to the columns attribute, but then you have to provide all of the column names</p>
+</section>
+<section id="why-are-strings-object">
+<h3><span class="section-number">8.8.2. </span>Why are strings <code class="docutils literal notranslate"><span class="pre">object</span></code>?<a class="headerlink" href="#why-are-strings-object" title="Permalink to this headline">#</a></h3>
+<p>it’s largely <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html">for backwards compatibility</a></p>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1590,6 +1930,41 @@ Name: Bag.Weight, dtype: object
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-data-review">8.1. Cleaning Data review</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-cleaning-data-recipe">8.1.1. A Cleaning Data Recipe</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-clean-enough">8.2. What is clean enough?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values">8.3. Missing values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filling-missing-values">8.3.1. Filling missing values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dropping">8.4. Dropping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inconsistent-values">8.5. Inconsistent values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-values-in-a-single-column">8.6. Multiple values in a single column</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string-methods">8.6.1. String methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casting-review">8.6.2. Casting Review</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-parts-of-dataframes">8.7. Combining parts of dataframes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">8.8. Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-can-i-rename-without-a-dicionary">8.8.1. How can I rename without a dicionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-strings-object">8.8.2. Why are strings <code class="docutils literal notranslate"><span class="pre">object</span></code>?</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

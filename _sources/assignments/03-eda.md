@@ -1,12 +1,8 @@
 
 # Assignment 3: Exploratory Data Analysis
 
-**Due:2023-09-26 end of day**
+**Due:2023-10-01 end of day**
 
-```{warning}
-This will be extended to ~48 hours after assignment 2 feedback is done so that you can apply that feedback
-and update your assignment 3
-```
 
 
 <!-- - [accept assignment](https://classroom.github.com/a/BOG3E7Ch) -->
