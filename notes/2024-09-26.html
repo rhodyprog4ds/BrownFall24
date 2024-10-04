@@ -189,6 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../assignments/02-python-access.html">2. Assignment 2: Practicing Python and Accessing Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/03-eda.html">3. Assignment 3: Exploratory Data Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/04-prepare.html">4. Assignment 4: Cleaning Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/05-construct.html">5. Assignment 5: Constructing Datasets and Using Databases</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
 <ul class="nav bd-sidenav">
@@ -445,9 +446,10 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-parts-of-dataframes">8.7. Combining parts of dataframes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">8.8. Questions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-can-i-rename-without-a-dicionary">8.8.1. How can I rename without a dicionary</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-strings-object">8.8.2. Why are strings <code class="docutils literal notranslate"><span class="pre">object</span></code>?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantizing-a-variable">8.8. Quantizing a variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">8.9. Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-can-i-rename-without-a-dicionary">8.9.1. How can I rename without a dicionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-strings-object">8.9.2. Why are strings <code class="docutils literal notranslate"><span class="pre">object</span></code>?</a></li>
 </ul>
 </li>
 </ul>
@@ -1540,7 +1542,7 @@ is good for json data</p>
 </table>
 </div></div></div>
 </div>
-<p>pandas ahd</p>
+<p>we can pass <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code> and iterable of pandas objects (here a <code class="docutils literal notranslate"><span class="pre">list</span></code> of <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code>) and it will, by default stack them vertically, or with <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> stack the horizontally</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">coffee_df</span><span class="p">,</span><span class="n">bag_df</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1860,15 +1862,190 @@ is good for json data</p>
 </div></div></div>
 </div>
 </section>
+<section id="quantizing-a-variable">
+<span id="quantize"></span><h2><span class="section-number">8.8. </span>Quantizing a variable<a class="headerlink" href="#quantizing-a-variable" title="Permalink to this headline">#</a></h2>
+<p>Sometimes a variable is recorded continous, or close (like age in years, technically integers are discrete, but for wide enough range it is not very categorical) but we want to analyze it as if it is categorical.</p>
+<p>We can add a new variable that is <em>calculated</em> from the original one.</p>
+<p>Let’s say we want to categorize coffes as small, medium or large batch size based on
+the quantiles for the <code class="docutils literal notranslate"><span class="pre">'Number.of.Bags'</span></code> column.</p>
+<p>First, we get an idea of the distribution with EDA to make our plan:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">35</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;coffee_df_bags&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">36</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;coffee_df_bags&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that most are small, but there is at least one major outlier, 75% are below 275, but the max is 1062.</p>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">pd.cut</span></code> to make discrete values</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">37</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;coffee_df_bags&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>by default, it makes bins of equal size, meaning the range of values. This is not good based on what we noted above. Most will be in one label</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">38</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;coffee_df_bags&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>TO make it better, we can specify the bin edges instead of only the number</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_bags</span> <span class="o">=</span> <span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">sm_cutoff</span> <span class="o">=</span> <span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.33</span><span class="p">)</span>
+<span class="n">md_cutoff</span> <span class="o">=</span> <span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.66</span><span class="p">)</span>
+<span class="n">max_bags</span> <span class="o">=</span> <span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">],</span>
+        <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">min_bags</span><span class="p">,</span><span class="n">sm_cutoff</span><span class="p">,</span><span class="n">md_cutoff</span><span class="p">,</span><span class="n">max_bags</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">39</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">min_bags</span> <span class="o">=</span> <span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">sm_cutoff</span> <span class="o">=</span> <span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.33</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">md_cutoff</span> <span class="o">=</span> <span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.66</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;coffee_df_bags&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>here, we made cutoffs individually and pass them as a list to <code class="docutils literal notranslate"><span class="pre">pd.cut</span></code></p>
+<p>This is okay for 3 bins, but if we change our mind, it’s a lot of work to make more.
+Better is to make the bins more programmatically:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">pct</span><span class="p">)</span> <span class="k">for</span> <span class="n">pct</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">40</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">[</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">pct</span><span class="p">)</span> <span class="k">for</span> <span class="n">pct</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)]</span>
+
+<span class="nn">Cell In[40], line 1,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">[</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">pct</span><span class="p">)</span> <span class="k">for</span> <span class="n">pct</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)]</span>
+
+<span class="ne">NameError</span>: name &#39;coffee_df_bags&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">np.linspace</span></code> returns a numpyarray of evenly (linearly; there is also logspace) spaced
+numbers. From the start to the end value for the number you specify. Here we said 4 evenly spaced from 0 to 1.</p>
+<p>this is the same as we had before (up to rounding error)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">min_bags</span><span class="p">,</span><span class="n">sm_cutoff</span><span class="p">,</span><span class="n">md_cutoff</span><span class="p">,</span><span class="n">max_bags</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">41</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">[</span><span class="n">min_bags</span><span class="p">,</span><span class="n">sm_cutoff</span><span class="p">,</span><span class="n">md_cutoff</span><span class="p">,</span><span class="n">max_bags</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;min_bags&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can use these and optionally, change to text labels (which then means we have to update that too if we change the number 4 to another number, but still less work than above)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bag_num_bins</span> <span class="o">=</span> <span class="p">[</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">pct</span><span class="p">)</span> <span class="k">for</span> <span class="n">pct</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)]</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">],</span>
+        <span class="n">bins</span><span class="o">=</span><span class="n">bag_num_bins</span><span class="p">,</span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;small&#39;</span><span class="p">,</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span><span class="s1">&#39;large&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">42</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">bag_num_bins</span> <span class="o">=</span> <span class="p">[</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">pct</span><span class="p">)</span> <span class="k">for</span> <span class="n">pct</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)]</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>         <span class="n">bins</span><span class="o">=</span><span class="n">bag_num_bins</span><span class="p">,</span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;small&#39;</span><span class="p">,</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span><span class="s1">&#39;large&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="nn">Cell In[42], line 1,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">bag_num_bins</span> <span class="o">=</span> <span class="p">[</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">pct</span><span class="p">)</span> <span class="k">for</span> <span class="n">pct</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)]</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>         <span class="n">bins</span><span class="o">=</span><span class="n">bag_num_bins</span><span class="p">,</span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;small&#39;</span><span class="p">,</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span><span class="s1">&#39;large&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;coffee_df_bags&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>we could then add this to the dataframe to work with it</p>
+</section>
 <section id="questions">
-<h2><span class="section-number">8.8. </span>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.9. </span>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">#</a></h2>
 <section id="how-can-i-rename-without-a-dicionary">
-<h3><span class="section-number">8.8.1. </span>How can I rename without a dicionary<a class="headerlink" href="#how-can-i-rename-without-a-dicionary" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.9.1. </span>How can I rename without a dicionary<a class="headerlink" href="#how-can-i-rename-without-a-dicionary" title="Permalink to this headline">#</a></h3>
 <p>Really, best practice is a dictionary or function, that is what<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html"> <code class="docutils literal notranslate"><span class="pre">rename</span></code></a> uses.</p>
 <p>You can assign to the columns attribute, but then you have to provide all of the column names</p>
 </section>
 <section id="why-are-strings-object">
-<h3><span class="section-number">8.8.2. </span>Why are strings <code class="docutils literal notranslate"><span class="pre">object</span></code>?<a class="headerlink" href="#why-are-strings-object" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.9.2. </span>Why are strings <code class="docutils literal notranslate"><span class="pre">object</span></code>?<a class="headerlink" href="#why-are-strings-object" title="Permalink to this headline">#</a></h3>
 <p>it’s largely <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html">for backwards compatibility</a></p>
 </section>
 </section>
@@ -1958,9 +2135,10 @@ is good for json data</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-parts-of-dataframes">8.7. Combining parts of dataframes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">8.8. Questions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-can-i-rename-without-a-dicionary">8.8.1. How can I rename without a dicionary</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-strings-object">8.8.2. Why are strings <code class="docutils literal notranslate"><span class="pre">object</span></code>?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantizing-a-variable">8.8. Quantizing a variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">8.9. Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-can-i-rename-without-a-dicionary">8.9.1. How can I rename without a dicionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-strings-object">8.9.2. Why are strings <code class="docutils literal notranslate"><span class="pre">object</span></code>?</a></li>
 </ul>
 </li>
 </ul>
