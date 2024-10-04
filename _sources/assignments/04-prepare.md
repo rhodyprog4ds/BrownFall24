@@ -3,7 +3,6 @@
 __Due: 2023-10-03__
 
 
-
 Eligible skills: 
 - prepare 1
 - access 1
@@ -48,6 +47,10 @@ Some examples:
 See the notebook on your assignment4 branch and complete the instructions there. 
 
 ## Study Cleaned Datasets
+
+```{tip}
+there is a [dedicated section](messy-data) in the [](../resources/datasets.md) page
+```
 
 Read example data cleaning notes or scripts. To do this find at least one dataset for which the messy version, clean version, and a script or notes about how it was cleaned are available, answer the following questions in a markdown file, named `cleaning_notes.md`. (some example datasets are on the datasets page and one is in the notes are added to the course website)
 

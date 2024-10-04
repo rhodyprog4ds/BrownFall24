@@ -1,0 +1,2121 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>10. Merging Data &amp; Databases &#8212; Programming for Data Science at URI Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course-admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2024-10-03';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Assignment 1: Setup, Syllabus, and Review" href="../assignments/01-setup.html" />
+    <link rel="prev" title="9. Webscraping" href="2024-10-01.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/310_2021.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/310_2021.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/tools.html">Tools and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/achievements.html">Data Science Achievements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Grading Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/style.html">Course  Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_resources.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_statements.html">General URI Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/communication.html">Communications &amp; Office Hours</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2024-09-05.html">1. Welcome &amp; What is Data Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-10.html">2. Iterables and Pandas Data Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-12.html">3. Pandas Data Frames and More Iterable Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-17.html">4. Exploratory Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-19.html">5. Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-24.html">6. Cleaning Data - Structure</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="2024-09-26.html">8. Fixing Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-01.html">9. Webscraping</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Merging Data &amp; Databases</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../assignments/01-setup.html">1. Assignment 1: Setup, Syllabus, and Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/02-python-access.html">2. Assignment 2: Practicing Python and Accessing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/03-eda.html">3. Assignment 3: Exploratory Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/04-prepare.html">4. Assignment 4: Cleaning Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/index.html">Earning Level 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/formatting.html">Formatting Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/extensions.html">Generic Extension Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/altforms.html">Alternatives to Extending Assignments for Level 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/process.html">Process Level 3</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/syllabus.html">Syllabus and Grading FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/github.html">Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/debugging.html">Code Errors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/python.html">References on Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/datasets.html">Data Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/tips.html">General Tips and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/learning.html">How to Study in this class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/gettinghelp.html">Getting Help with Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/terminal.html">Terminals and Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/organization.html">Getting Organized for class</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">Advice from FA2020 Students</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">Advice from FA2021 Students</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24/edit/main/notes/2024-10-03.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24/issues/new?title=Issue%20on%20page%20%2Fnotes/2024-10-03.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notes/2024-10-03.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Merging Data & Databases</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-data">10.1. Merging Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-if-we-want-to-analyze-them-together">10.1.1. What if we want to analyze them together?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-can-we-find-which-players-changed-teams">10.1.2. How can we find which players changed teams?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-players-played-in-2018-but-not-2019">10.1.3. Which players played in 2018, but not 2019?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-data-from-databases">10.2. Getting Data from Databases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-database">10.2.1. What is a Database?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-a-database-from-python">10.2.2. Accessing a Database from Python</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-with-pandas">10.3. Querying with pandas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-player-was-traded-the-most-during-the-2018-season-how-many-times">10.3.1. Which player was traded the most during the 2018 season? How many times?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#did-more-players-who-changed-teams-from-the-2018-season-to-the-2019-season-stay-in-the-same-conferences-or-switch-conferences">10.3.2. Did more players who changed teams from the 2018 season to the 2019 season stay in the same conferences or switch conferences?</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="merging-data-databases">
+<h1><span class="section-number">10. </span>Merging Data &amp; Databases<a class="headerlink" href="#merging-data-databases" title="Permalink to this headline">#</a></h1>
+<section id="merging-data">
+<h2><span class="section-number">10.1. </span>Merging Data<a class="headerlink" href="#merging-data" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>we’re going to work with a set of datasets today that are stored in a repo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">course_data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/rhodyprog4ds/rhodyds/main/data/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can load in two data sets of NBA player information.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_18</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">course_data_url</span><span class="o">+</span><span class="s1">&#39;2018-players.csv&#39;</span><span class="p">)</span>
+<span class="n">df_19</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">course_data_url</span><span class="o">+</span><span class="s1">&#39;2019-players.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and take a peek at each</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_18</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TEAM_ID</th>
+      <th>PLAYER_ID</th>
+      <th>SEASON</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1610612761</td>
+      <td>202695</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1610612761</td>
+      <td>1627783</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1610612761</td>
+      <td>201188</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1610612761</td>
+      <td>201980</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1610612761</td>
+      <td>200768</td>
+      <td>2018</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_19</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PLAYER_NAME</th>
+      <th>TEAM_ID</th>
+      <th>PLAYER_ID</th>
+      <th>SEASON</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Royce O'Neale</td>
+      <td>1610612762</td>
+      <td>1626220</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bojan Bogdanovic</td>
+      <td>1610612762</td>
+      <td>202711</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Rudy Gobert</td>
+      <td>1610612762</td>
+      <td>203497</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Donovan Mitchell</td>
+      <td>1610612762</td>
+      <td>1628378</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Mike Conley</td>
+      <td>1610612762</td>
+      <td>201144</td>
+      <td>2019</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Remember <code class="docutils literal notranslate"><span class="pre">shape</span></code> is a property, not a method, so it does not need <code class="docutils literal notranslate"><span class="pre">()</span></code></p>
+</div>
+<p>Let’s make note of the shape of each</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_18</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">df_19</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((748, 3), (626, 4))
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>this created a tuple</strong></p>
+<section id="what-if-we-want-to-analyze-them-together">
+<h3><span class="section-number">10.1.1. </span>What if we want to analyze them together?<a class="headerlink" href="#what-if-we-want-to-analyze-them-together" title="Permalink to this headline">#</a></h3>
+<p>We can stack them, but this does not make it easy to see , for example, who changed teams.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_18</span><span class="p">,</span><span class="n">df_19</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TEAM_ID</th>
+      <th>PLAYER_ID</th>
+      <th>SEASON</th>
+      <th>PLAYER_NAME</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1610612761</td>
+      <td>202695</td>
+      <td>2018</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1610612761</td>
+      <td>1627783</td>
+      <td>2018</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1610612761</td>
+      <td>201188</td>
+      <td>2018</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1610612761</td>
+      <td>201980</td>
+      <td>2018</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1610612761</td>
+      <td>200768</td>
+      <td>2018</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>621</th>
+      <td>1610612745</td>
+      <td>203461</td>
+      <td>2019</td>
+      <td>Anthony Bennett</td>
+    </tr>
+    <tr>
+      <th>622</th>
+      <td>1610612737</td>
+      <td>1629034</td>
+      <td>2019</td>
+      <td>Ray Spalding</td>
+    </tr>
+    <tr>
+      <th>623</th>
+      <td>1610612744</td>
+      <td>203906</td>
+      <td>2019</td>
+      <td>Devyn Marble</td>
+    </tr>
+    <tr>
+      <th>624</th>
+      <td>1610612753</td>
+      <td>1629755</td>
+      <td>2019</td>
+      <td>Hassani Gravett</td>
+    </tr>
+    <tr>
+      <th>625</th>
+      <td>1610612754</td>
+      <td>1629721</td>
+      <td>2019</td>
+      <td>JaKeenan Gant</td>
+    </tr>
+  </tbody>
+</table>
+<p>1374 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_18</span><span class="p">,</span><span class="n">df_19</span><span class="p">])</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1374, 4)
+</pre></div>
+</div>
+</div>
+</div>
+<p>we can see that this is the total number of rows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">748</span><span class="o">+</span><span class="mi">626</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1374
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that this has the maximum number of columns (because both had some overlapping
+columns) and the total number of rows.</p>
+</section>
+<section id="how-can-we-find-which-players-changed-teams">
+<h3><span class="section-number">10.1.2. </span>How can we find which players changed teams?<a class="headerlink" href="#how-can-we-find-which-players-changed-teams" title="Permalink to this headline">#</a></h3>
+<p>To do this we want to have one player column and a column with each year’s team.</p>
+<p>We can use a merge to do that.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_18</span><span class="p">,</span><span class="n">df_19</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TEAM_ID</th>
+      <th>PLAYER_ID</th>
+      <th>SEASON</th>
+      <th>PLAYER_NAME</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>if we merge them without any parameters, it tries to merge on all shared columns.  We want to merge them using the <code class="docutils literal notranslate"><span class="pre">PLAYER_ID</span></code> column though, we would say that we are “merging on player ID” and we use the <code class="docutils literal notranslate"><span class="pre">on</span></code> parameter to do it.  In this case, it looks for the values in the <code class="docutils literal notranslate"><span class="pre">PLAYER_ID</span></code> column that appear in both DataFrames and combines them into a single row.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_18</span><span class="p">,</span><span class="n">df_19</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">,</span><span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_18&#39;</span><span class="p">,</span><span class="s1">&#39;_19&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TEAM_ID_18</th>
+      <th>PLAYER_ID</th>
+      <th>SEASON_18</th>
+      <th>PLAYER_NAME</th>
+      <th>TEAM_ID_19</th>
+      <th>SEASON_19</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1610612761</td>
+      <td>202695</td>
+      <td>2018</td>
+      <td>Kawhi Leonard</td>
+      <td>1610612746</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1610612761</td>
+      <td>1627783</td>
+      <td>2018</td>
+      <td>Pascal Siakam</td>
+      <td>1610612761</td>
+      <td>2019</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Since there are other columns that appear in both DataFrames, they get a suffix, which by default is <code class="docutils literal notranslate"><span class="pre">x</span></code> or <code class="docutils literal notranslate"><span class="pre">y</span></code>, we can specify them though.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_18</span><span class="p">,</span><span class="n">df_19</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">,</span><span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_18&#39;</span><span class="p">,</span><span class="s1">&#39;_19&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(538, 6)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="which-players-played-in-2018-but-not-2019">
+<h3><span class="section-number">10.1.3. </span>Which players played in 2018, but not 2019?<a class="headerlink" href="#which-players-played-in-2018-but-not-2019" title="Permalink to this headline">#</a></h3>
+<p>We have different types of merges, inner is both, out is either.  Left and right keep all the rows of one dataFrame.  We can use left with <code class="docutils literal notranslate"><span class="pre">df_18</span></code> as the left DataFrame to see which players played only in 18.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_18</span><span class="p">,</span><span class="n">df_19</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_18&#39;</span><span class="p">,</span><span class="s1">&#39;_19&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(754, 6)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_18</span><span class="p">,</span><span class="n">df_19</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_18&#39;</span><span class="p">,</span><span class="s1">&#39;_19&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 754 entries, 0 to 753
+Data columns (total 6 columns):
+ #   Column       Non-Null Count  Dtype  
+---  ------       --------------  -----  
+ 0   TEAM_ID_18   754 non-null    int64  
+ 1   PLAYER_ID    754 non-null    int64  
+ 2   SEASON_18    754 non-null    int64  
+ 3   PLAYER_NAME  538 non-null    object 
+ 4   TEAM_ID_19   538 non-null    float64
+ 5   SEASON_19    538 non-null    float64
+dtypes: float64(2), int64(3), object(1)
+memory usage: 35.5+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>IF we save this to a variable, we can answer our question</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_18_only</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_18</span><span class="p">,</span><span class="n">df_19</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">,</span><span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_18&#39;</span><span class="p">,</span><span class="s1">&#39;_19&#39;</span><span class="p">),</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">df_18_only</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TEAM_ID_18</th>
+      <th>PLAYER_ID</th>
+      <th>SEASON_18</th>
+      <th>PLAYER_NAME</th>
+      <th>TEAM_ID_19</th>
+      <th>SEASON_19</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1610612761</td>
+      <td>202695</td>
+      <td>2018</td>
+      <td>Kawhi Leonard</td>
+      <td>1.610613e+09</td>
+      <td>2019.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1610612761</td>
+      <td>1627783</td>
+      <td>2018</td>
+      <td>Pascal Siakam</td>
+      <td>1.610613e+09</td>
+      <td>2019.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df_18_only</span><span class="p">[</span><span class="n">df_18_only</span><span class="p">[</span><span class="s1">&#39;TEAM_ID_19&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()][</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>178
+</pre></div>
+</div>
+</div>
+</div>
+<p>Also, note that this has different types than before.  There are some players who only played one season, so they have a NaN value in some colums. pandas always casts a whole column.</p>
+</section>
+</section>
+<section id="getting-data-from-databases">
+<h2><span class="section-number">10.2. </span>Getting Data from Databases<a class="headerlink" href="#getting-data-from-databases" title="Permalink to this headline">#</a></h2>
+<section id="what-is-a-database">
+<h3><span class="section-number">10.2.1. </span>What is a Database?<a class="headerlink" href="#what-is-a-database" title="Permalink to this headline">#</a></h3>
+<p>A common attitude in Data Science is:</p>
+<blockquote>
+<div><p>If your data fits in memory there is no advantage to putting it in a database: it will only be slower and more frustrating.     —<a class="reference external" href="https://dbplyr.tidyverse.org/articles/dbplyr.html"> Hadley Wickham</a></p>
+</div></blockquote>
+<p>Businesses and research organizations nearly always have too much data to feasibly work without a database.
+Instead, they use different tools which are designed to scale to very large amounts of data. These tools are largely databases like Snowflake or Google’s BigQuery and distributed computing frameworks like Apache Spark.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We are going to focus on the case of getting data out of a Database so that you
+can use it and making sure you know what a Database is.</p>
+<p>You could spend a whole semester on databases:</p>
+<ul class="simple">
+<li><p>CSC436 covers how to implement them in detail (recommended, but requires CSC212)</p></li>
+<li><p>BAI456 only how to use them (counts for DS majors, but if you want to
+understand them deeper, the CSC one is recommended)</p></li>
+</ul>
+</div>
+<p>For the purpose of this class the key attributes of a database are:</p>
+<ul class="simple">
+<li><p>it is a collection of tables</p></li>
+<li><p>the data is accessed live from disk (not RAM)</p></li>
+<li><p>you send a query to the database to get the data (or your answer)</p></li>
+</ul>
+<p>Databases can be designed in many different ways.  For examples two popular ones.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.sqlite.org/index.html">SQLite</a> is optimized for transactional workloads, which means a high volume of requests that involving inserting or reading a couple things. This is good for eg a webserver.</p></li>
+<li><p><a class="reference external" href="https://duckdb.org/">DuckDB</a> is optimized for analytical workloads, which means a small number of requests that each require reading many records in the database. This is better for eg: data science</p></li>
+</ul>
+<p><strong>Experimenting with <a class="reference external" href="https://duckdb.org/docs/guides/python/install">DuckDB</a> is a way to earn construct level 3</strong></p>
+</section>
+<section id="accessing-a-database-from-python">
+<h3><span class="section-number">10.2.2. </span>Accessing a Database from Python<a class="headerlink" href="#accessing-a-database-from-python" title="Permalink to this headline">#</a></h3>
+<p>We will use pandas again, as well as the <code class="docutils literal notranslate"><span class="pre">request</span></code> module from the <code class="docutils literal notranslate"><span class="pre">urllib</span></code>
+package and <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code>.</p>
+<p>Off the shelf, pandas cannot read databased by default. We’ll use the
+<a class="reference external" href="https://docs.python.org/3/library/sqlite3.html"><code class="docutils literal notranslate"><span class="pre">sqlite3</span></code></a> library, but there
+are others, depending on the type of database.</p>
+<p>First we need to download the database to work with it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="s1">&#39;https://github.com/rhodyprog4ds/rhodyds/raw/main/data/nba1819.db&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;nba1819.db&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;nba1819.db&#39;, &lt;http.client.HTTPMessage at 0x7f6e11ae48e0&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we set up a connection, that links the the notebook to the database.
+To use it, we add a cursor.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;nba1819.db&#39;</span><span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use execute to pass SQL queries through the cursor to the database.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT name FROM sqlite_master WHERE type=&#39;table&#39;;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sqlite3.Cursor at 0x7f6e11ad7c70&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we use <code class="docutils literal notranslate"><span class="pre">fetchall</span></code> to get the the results of the query.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;teams&#39;,),
+ (&#39;conferences&#39;,),
+ (&#39;playerGameStats2018&#39;,),
+ (&#39;playerGameStats2019&#39;,),
+ (&#39;teamGameStats2018&#39;,),
+ (&#39;teamGameStats2019&#39;,),
+ (&#39;playerTeams2018&#39;,),
+ (&#39;playerTeams2019&#39;,),
+ (&#39;teamDailyRankings2018&#39;,),
+ (&#39;teamDailyRankings2019&#39;,),
+ (&#39;playerNames&#39;,)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we fetch again, there is nothing to fetch.  Fetch pulls what was queued by
+execute.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT name FROM sqlite_master WHERE type=&#39;table&#39;;&quot;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>teams</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>conferences</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>playerGameStats2018</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>playerGameStats2019</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>teamGameStats2018</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>teamGameStats2019</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>playerTeams2018</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>playerTeams2019</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>teamDailyRankings2018</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>teamDailyRankings2019</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>playerNames</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="querying-with-pandas">
+<h2><span class="section-number">10.3. </span>Querying with pandas<a class="headerlink" href="#querying-with-pandas" title="Permalink to this headline">#</a></h2>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">pd.read_sql</span></code> to send queries, get the result sand transform them
+into a DataFrame all at once</p>
+<p>We can pass the exact same queries if we want.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT name FROM sqlite_master WHERE type=&#39;table&#39;;&quot;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>teams</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>conferences</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>playerGameStats2018</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>playerGameStats2019</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>teamGameStats2018</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>teamGameStats2019</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>playerTeams2018</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>playerTeams2019</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>teamDailyRankings2018</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>teamDailyRankings2019</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>playerNames</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>or we can get all of one of the tables:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM teams&#39;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>LEAGUE_ID</th>
+      <th>TEAM_ID</th>
+      <th>MIN_YEAR</th>
+      <th>MAX_YEAR</th>
+      <th>ABBREVIATION</th>
+      <th>NICKNAME</th>
+      <th>YEARFOUNDED</th>
+      <th>CITY</th>
+      <th>ARENA</th>
+      <th>ARENACAPACITY</th>
+      <th>OWNER</th>
+      <th>GENERALMANAGER</th>
+      <th>HEADCOACH</th>
+      <th>DLEAGUEAFFILIATION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1610612737</td>
+      <td>1949</td>
+      <td>2019</td>
+      <td>ATL</td>
+      <td>Hawks</td>
+      <td>1949</td>
+      <td>Atlanta</td>
+      <td>State Farm Arena</td>
+      <td>18729.0</td>
+      <td>Tony Ressler</td>
+      <td>Travis Schlenk</td>
+      <td>Lloyd Pierce</td>
+      <td>Erie Bayhawks</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="which-player-was-traded-the-most-during-the-2018-season-how-many-times">
+<h3><span class="section-number">10.3.1. </span>Which player was traded the most during the 2018 season? How many times?<a class="headerlink" href="#which-player-was-traded-the-most-during-the-2018-season-how-many-times" title="Permalink to this headline">#</a></h3>
+<p>There is one row in players per team a played for per season, so if a
+player was traded (changed teams), they are in there multiple times.</p>
+<p>First, we’ll check the column names</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM playerTeams2018 LIMIT 1&quot;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>TEAM_ID</th>
+      <th>PLAYER_ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1610612761</td>
+      <td>202695</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>then get the 2018 players, we only need the <code class="docutils literal notranslate"><span class="pre">PLAYER_ID</span></code> column for this question</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p18</span> <span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT PLAYER_ID FROM playerTeams2018 &quot;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we can use value counts</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p18</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PLAYER_ID
+1629150      4
+202325       3
+203092       3
+201160       3
+202328       3
+1626150      3
+1628393      3
+202083       3
+202692       3
+203477       3
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>and we can get the player’s name from the player name <strong>remember our first query told us all the tables</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT PLAYER_NAME FROM playerNames WHERE PLAYER_ID = 1629150&quot;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PLAYER_NAME</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Emanuel Terry</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="did-more-players-who-changed-teams-from-the-2018-season-to-the-2019-season-stay-in-the-same-conferences-or-switch-conferences">
+<h3><span class="section-number">10.3.2. </span>Did more players who changed teams from the 2018 season to the 2019 season stay in the same conferences or switch conferences?<a class="headerlink" href="#did-more-players-who-changed-teams-from-the-2018-season-to-the-2019-season-stay-in-the-same-conferences-or-switch-conferences" title="Permalink to this headline">#</a></h3>
+<p>In the NBA, there are 30 teams organized into two conferences: East and West;
+the <code class="docutils literal notranslate"><span class="pre">conferences</span></code> table has the columns <code class="docutils literal notranslate"><span class="pre">TEAM_ID</span></code> and <code class="docutils literal notranslate"><span class="pre">CONFERENCE</span></code></p>
+<p>Let’s build a Dataframe that could answer the question.</p>
+<p>I first pulled 1 row from each table I needed to see the columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM conferences LIMIT 1&#39;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>TEAM_ID</th>
+      <th>CONFERENCE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1610612744</td>
+      <td>West</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM playerTeams2018 LIMIT 1&#39;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>TEAM_ID</th>
+      <th>PLAYER_ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1610612761</td>
+      <td>202695</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM playerTeams2019 LIMIT 1&#39;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>TEAM_ID</th>
+      <th>PLAYER_ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1610612762</td>
+      <td>1626220</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Then I pulled the columns I needed from each of the 3 tables into a separate DataFrame.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can do the merging in SQL and pull only the merged table technically, but I use pandas more than sql so I did the minimum in SQL and the rest in pandas.</p>
+</div>
+</aside>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conf_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;SELECT TEAM_ID,CONFERENCE FROM conferences&#39;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+<span class="n">df18</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;SELECT TEAM_ID,PLAYER_ID FROM playerTeams2018&#39;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+<span class="n">df19</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;SELECT TEAM_ID,PLAYER_ID FROM playerTeams2019&#39;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+<span class="n">df18_c</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df18</span><span class="p">,</span><span class="n">conf_df</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;TEAM_ID&#39;</span><span class="p">)</span>
+<span class="n">df19_c</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df19</span><span class="p">,</span><span class="n">conf_df</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;TEAM_ID&#39;</span><span class="p">)</span>
+<span class="n">df1819_conf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df18_c</span><span class="p">,</span><span class="n">df19_c</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">,</span><span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_2018&#39;</span><span class="p">,</span><span class="s1">&#39;_2019&#39;</span><span class="p">))</span>
+<span class="n">df1819_conf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TEAM_ID_2018</th>
+      <th>PLAYER_ID</th>
+      <th>CONFERENCE_2018</th>
+      <th>TEAM_ID_2019</th>
+      <th>CONFERENCE_2019</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1610612761</td>
+      <td>202695</td>
+      <td>East</td>
+      <td>1610612746</td>
+      <td>West</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1610612761</td>
+      <td>1627783</td>
+      <td>East</td>
+      <td>1610612761</td>
+      <td>East</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1610612761</td>
+      <td>201188</td>
+      <td>East</td>
+      <td>1610612761</td>
+      <td>East</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1610612763</td>
+      <td>201188</td>
+      <td>West</td>
+      <td>1610612761</td>
+      <td>East</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1610612761</td>
+      <td>201980</td>
+      <td>East</td>
+      <td>1610612747</td>
+      <td>West</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>533</th>
+      <td>1610612739</td>
+      <td>1628021</td>
+      <td>East</td>
+      <td>1610612751</td>
+      <td>East</td>
+    </tr>
+    <tr>
+      <th>534</th>
+      <td>1610612739</td>
+      <td>201567</td>
+      <td>East</td>
+      <td>1610612739</td>
+      <td>East</td>
+    </tr>
+    <tr>
+      <th>535</th>
+      <td>1610612739</td>
+      <td>202684</td>
+      <td>East</td>
+      <td>1610612739</td>
+      <td>East</td>
+    </tr>
+    <tr>
+      <th>536</th>
+      <td>1610612739</td>
+      <td>1628424</td>
+      <td>East</td>
+      <td>1610612766</td>
+      <td>East</td>
+    </tr>
+    <tr>
+      <th>537</th>
+      <td>1610612739</td>
+      <td>1627819</td>
+      <td>East</td>
+      <td>1610612761</td>
+      <td>East</td>
+    </tr>
+  </tbody>
+</table>
+<p>538 rows × 5 columns</p>
+</div></div></div>
+</div>
+<p>Then I merged the conference with each set of player informationon the teams. Then I merged the two expanded single year DataFrames together.</p>
+<p>Now, to answer the question, we have a bit more work to do.  I’m going to use a <code class="docutils literal notranslate"><span class="pre">lambda</span></code> and <code class="docutils literal notranslate"><span class="pre">apply</span></code> to make a column that says same or new for the relative conference of the two seasons.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="p">{</span><span class="kc">False</span><span class="p">:</span><span class="s1">&#39;new&#39;</span><span class="p">,</span><span class="kc">True</span><span class="p">:</span><span class="s1">&#39;same&#39;</span><span class="p">}</span>
+<span class="n">change_conf</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">labels</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;CONFERENCE_2018&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;CONFERENCE_2019&#39;</span><span class="p">]]</span>
+<span class="n">df1819_conf</span><span class="p">[</span><span class="s1">&#39;conference_1819&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">df1819_conf</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">change_conf</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df1819_conf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TEAM_ID_2018</th>
+      <th>PLAYER_ID</th>
+      <th>CONFERENCE_2018</th>
+      <th>TEAM_ID_2019</th>
+      <th>CONFERENCE_2019</th>
+      <th>conference_1819</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1610612761</td>
+      <td>202695</td>
+      <td>East</td>
+      <td>1610612746</td>
+      <td>West</td>
+      <td>new</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1610612761</td>
+      <td>1627783</td>
+      <td>East</td>
+      <td>1610612761</td>
+      <td>East</td>
+      <td>same</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1610612761</td>
+      <td>201188</td>
+      <td>East</td>
+      <td>1610612761</td>
+      <td>East</td>
+      <td>same</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1610612763</td>
+      <td>201188</td>
+      <td>West</td>
+      <td>1610612761</td>
+      <td>East</td>
+      <td>new</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1610612761</td>
+      <td>201980</td>
+      <td>East</td>
+      <td>1610612747</td>
+      <td>West</td>
+      <td>new</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Then I can use this DataFrame grouped by my new column to get the unique players in each situation new or same conference.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1819_conf</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;conference_1819&#39;</span><span class="p">)[</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">unique</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>conference_1819
+new     [202695, 201188, 201980, 203961, 1626153, 1011...
+same    [1627783, 201188, 200768, 1627832, 201586, 162...
+Name: PLAYER_ID, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>And finally, get the length of each of those lists.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1819_conf</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;conference_1819&#39;</span><span class="p">)[</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">unique</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>conference_1819
+new     119
+same    385
+Name: PLAYER_ID, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>This, however, includes players who stayed on the same team, so we also need to split for who changed teams. First we add the team comparison column, then groupby by both and count unique players.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_team</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">labels</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;TEAM_ID_2018&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;TEAM_ID_2019&#39;</span><span class="p">]]</span>
+<span class="n">df1819_conf</span><span class="p">[</span><span class="s1">&#39;team_1819&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">df1819_conf</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">new_team</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df1819_conf</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;conference_1819&#39;</span><span class="p">,</span><span class="s1">&#39;team_1819&#39;</span><span class="p">])[</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">unique</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>conference_1819  team_1819
+new              new          119
+same             new          135
+                 same         263
+Name: PLAYER_ID, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is good, we could read the answer from here.  It’s good practice, though, to be able to pull that value out programmatically.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">player_counts_1819_team</span> <span class="o">=</span>  <span class="n">df1819_conf</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;conference_1819&#39;</span><span class="p">,</span><span class="s1">&#39;team_1819&#39;</span><span class="p">])[</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">unique</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+<span class="n">player_counts_1819_team</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;same&#39;, &#39;same&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This tells us that the largest number of players stayed on the same team (and therefore same conference).  We’re not interested inthis thoug, we’re itnerested in those that changed teams, so we can drop the <code class="docutils literal notranslate"><span class="pre">(same,same)</span></code> value and then do this again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">player_counts_1819_team</span><span class="o">.</span><span class="n">drop</span><span class="p">((</span><span class="s1">&#39;same&#39;</span><span class="p">,</span><span class="s1">&#39;same&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;same&#39;, &#39;new&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This tells us that more players changed teams within the same conference than changed teams and conferences. We can compare the two directly:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">player_counts_1819_team</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">,</span><span class="s1">&#39;new&#39;</span><span class="p">],</span> <span class="n">player_counts_1819_team</span><span class="p">[</span><span class="s1">&#39;same&#39;</span><span class="p">,</span><span class="s1">&#39;new&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(119, 135)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Again 135 is more than 119.</p>
+<p>We can also make this a little neater to print it as a DataFrame.  If we use <code class="docutils literal notranslate"><span class="pre">reset_index</span></code> it will make a DataFrame, but the count column will still be named <code class="docutils literal notranslate"><span class="pre">PLAYER_ID</span></code> so we can rename it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">player_counts_1819_team</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">:</span><span class="s1">&#39;num_players&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>conference_1819</th>
+      <th>team_1819</th>
+      <th>num_players</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>new</td>
+      <td>new</td>
+      <td>119</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>same</td>
+      <td>new</td>
+      <td>135</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>same</td>
+      <td>same</td>
+      <td>263</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>All in all, this gives us a good answer that we can get with data and display answers and this is one way that using multiple data sources can help answer richer questions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2024-10-01.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Webscraping</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../assignments/01-setup.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Assignment 1: Setup, Syllabus, and Review</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-data">10.1. Merging Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-if-we-want-to-analyze-them-together">10.1.1. What if we want to analyze them together?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-can-we-find-which-players-changed-teams">10.1.2. How can we find which players changed teams?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-players-played-in-2018-but-not-2019">10.1.3. Which players played in 2018, but not 2019?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-data-from-databases">10.2. Getting Data from Databases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-database">10.2.1. What is a Database?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-a-database-from-python">10.2.2. Accessing a Database from Python</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-with-pandas">10.3. Querying with pandas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-player-was-traded-the-most-during-the-2018-season-how-many-times">10.3.1. Which player was traded the most during the 2018 season? How many times?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#did-more-players-who-changed-teams-from-the-2018-season-to-the-2019-season-stay-in-the-same-conferences-or-switch-conferences">10.3.2. Did more players who changed teams from the 2018 season to the 2019 season stay in the same conferences or switch conferences?</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Professor Sarah M Brown
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
