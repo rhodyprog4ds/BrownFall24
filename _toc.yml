@@ -22,6 +22,8 @@ parts:
     - file: notes/2024-09-19
     - file: notes/2024-09-24
     - file: notes/2024-09-26
+    - file: notes/2024-10-01
+    - file: notes/2024-10-03
   - caption: Assignments
     numbered: True
     chapters:
