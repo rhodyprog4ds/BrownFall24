@@ -1871,17 +1871,21 @@ the quantiles for the <code class="docutils literal notranslate"><span class="pr
 <p>First, we get an idea of the distribution with EDA to make our plan:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df_bags</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">coffee_df</span><span class="p">,</span><span class="n">bag_df</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">35</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;coffee_df_bags&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    1311.000000
+mean      153.887872
+std       129.733734
+min         0.000000
+25%        14.500000
+50%       175.000000
+75%       275.000000
+max      1062.000000
+Name: Number.of.Bags, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1893,14 +1897,10 @@ the quantiles for the <code class="docutils literal notranslate"><span class="pr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">36</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;coffee_df_bags&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
+<img alt="../_images/d03cdcc3a8ed805c5df7702eff1a0a1332b8b23fbe29e479553fe8dc888615b7.png" src="../_images/d03cdcc3a8ed805c5df7702eff1a0a1332b8b23fbe29e479553fe8dc888615b7.png" />
 </div>
 </div>
 <p>We see that most are small, but there is at least one major outlier, 75% are below 275, but the max is 1062.</p>
@@ -1912,12 +1912,18 @@ the quantiles for the <code class="docutils literal notranslate"><span class="pr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">37</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;coffee_df_bags&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1060    (-1.062, 354.0]
+574     (-1.062, 354.0]
+422     (-1.062, 354.0]
+1244    (-1.062, 354.0]
+34      (-1.062, 354.0]
+377      (354.0, 708.0]
+286     (-1.062, 354.0]
+754     (-1.062, 354.0]
+403     (-1.062, 354.0]
+124     (-1.062, 354.0]
+Name: Number.of.Bags, dtype: category
+Categories (3, interval[float64, right]): [(-1.062, 354.0] &lt; (354.0, 708.0] &lt; (708.0, 1062.0]]
 </pre></div>
 </div>
 </div>
@@ -1931,13 +1937,62 @@ the quantiles for the <code class="docutils literal notranslate"><span class="pr
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">38</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
 
-<span class="ne">NameError</span>: name &#39;coffee_df_bags&#39; is not defined
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/plotting/_core.py:99,</span> in <span class="ni">hist_series</span><span class="nt">(self, by, ax, grid, xlabelsize, xrot, ylabelsize, yrot, figsize, bins, backend, legend, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span><span class="sd"> Draw histogram of the input series using matplotlib.</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span><span class="sd"> matplotlib.axes.Axes.hist : Plot a histogram using matplotlib.</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span> <span class="n">plot_backend</span> <span class="o">=</span> <span class="n">_get_plot_backend</span><span class="p">(</span><span class="n">backend</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">99</span> <span class="k">return</span> <span class="n">plot_backend</span><span class="o">.</span><span class="n">hist_series</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">100</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span>     <span class="n">by</span><span class="o">=</span><span class="n">by</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span>     <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span>     <span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span>     <span class="n">xlabelsize</span><span class="o">=</span><span class="n">xlabelsize</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">105</span>     <span class="n">xrot</span><span class="o">=</span><span class="n">xrot</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span>     <span class="n">ylabelsize</span><span class="o">=</span><span class="n">ylabelsize</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span>     <span class="n">yrot</span><span class="o">=</span><span class="n">yrot</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span>     <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">109</span>     <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span>     <span class="n">legend</span><span class="o">=</span><span class="n">legend</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span> <span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/pandas/plotting/_matplotlib/hist.py:425,</span> in <span class="ni">hist_series</span><span class="nt">(self, by, ax, grid, xlabelsize, xrot, ylabelsize, yrot, figsize, bins, legend, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">423</span> <span class="k">if</span> <span class="n">legend</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">424</span>     <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+<span class="ne">--&gt; </span><span class="mi">425</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">426</span> <span class="k">if</span> <span class="n">legend</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">427</span>     <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/__init__.py:1446,</span> in <span class="ni">_preprocess_data.&lt;locals&gt;.inner</span><span class="nt">(ax, data, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1443</span> <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1444</span> <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1445</span>     <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1446</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="n">sanitize_sequence</span><span class="p">,</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1448</span>     <span class="n">bound</span> <span class="o">=</span> <span class="n">new_sig</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1449</span>     <span class="n">auto_label</span> <span class="o">=</span> <span class="p">(</span><span class="n">bound</span><span class="o">.</span><span class="n">arguments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">label_namer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1450</span>                   <span class="ow">or</span> <span class="n">bound</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">label_namer</span><span class="p">))</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/matplotlib/axes/_axes.py:6763,</span> in <span class="ni">Axes.hist</span><span class="nt">(self, x, bins, range, density, weights, cumulative, bottom, histtype, align, orientation, rwidth, log, color, label, stacked, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6759</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">6760</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">xi</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">6761</span>         <span class="c1"># python&#39;s min/max ignore nan,</span>
+<span class="g g-Whitespace">   </span><span class="mi">6762</span>         <span class="c1"># np.minnan returns nan for all nan input</span>
+<span class="ne">-&gt; </span><span class="mi">6763</span>         <span class="n">xmin</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">xi</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">6764</span>         <span class="n">xmax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">xmax</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">xi</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">6765</span> <span class="k">if</span> <span class="n">xmin</span> <span class="o">&lt;=</span> <span class="n">xmax</span><span class="p">:</span>  <span class="c1"># Only happens if we have seen a finite value.</span>
+
+<span class="ne">TypeError</span>: &#39;&lt;&#39; not supported between instances of &#39;pandas._libs.interval.Interval&#39; and &#39;float&#39;
 </pre></div>
 </div>
+<img alt="../_images/d9e632500cb082ec76530c288af33e97ae3732423cb3d3e37b8c070adb05aa83.png" src="../_images/d9e632500cb082ec76530c288af33e97ae3732423cb3d3e37b8c070adb05aa83.png" />
 </div>
 </div>
 <p>TO make it better, we can specify the bin edges instead of only the number</p>
@@ -1953,14 +2008,13 @@ the quantiles for the <code class="docutils literal notranslate"><span class="pr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">39</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">min_bags</span> <span class="o">=</span> <span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">sm_cutoff</span> <span class="o">=</span> <span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.33</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">md_cutoff</span> <span class="o">=</span> <span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.66</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;coffee_df_bags&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    (250.0, 1062.0]
+1    (250.0, 1062.0]
+2        (0.0, 28.0]
+3    (250.0, 1062.0]
+4    (250.0, 1062.0]
+Name: Number.of.Bags, dtype: category
+Categories (3, interval[float64, right]): [(0.0, 28.0] &lt; (28.0, 250.0] &lt; (250.0, 1062.0]]
 </pre></div>
 </div>
 </div>
@@ -1975,15 +2029,7 @@ Better is to make the bins more programmatically:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">40</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">[</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">pct</span><span class="p">)</span> <span class="k">for</span> <span class="n">pct</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)]</span>
-
-<span class="nn">Cell In[40], line 1,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">[</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">pct</span><span class="p">)</span> <span class="k">for</span> <span class="n">pct</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)]</span>
-
-<span class="ne">NameError</span>: name &#39;coffee_df_bags&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0, 29.0, 250.0, 1062.0]
 </pre></div>
 </div>
 </div>
@@ -1998,12 +2044,7 @@ numbers. From the start to the end value for the number you specify. Here we sai
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">41</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">[</span><span class="n">min_bags</span><span class="p">,</span><span class="n">sm_cutoff</span><span class="p">,</span><span class="n">md_cutoff</span><span class="p">,</span><span class="n">max_bags</span><span class="p">]</span>
-
-<span class="ne">NameError</span>: name &#39;min_bags&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 28.0, 250.0, 1062]
 </pre></div>
 </div>
 </div>
@@ -2018,19 +2059,13 @@ numbers. From the start to the end value for the number you specify. Here we sai
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">42</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">bag_num_bins</span> <span class="o">=</span> <span class="p">[</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">pct</span><span class="p">)</span> <span class="k">for</span> <span class="n">pct</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)]</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>         <span class="n">bins</span><span class="o">=</span><span class="n">bag_num_bins</span><span class="p">,</span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;small&#39;</span><span class="p">,</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span><span class="s1">&#39;large&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-
-<span class="nn">Cell In[42], line 1,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">bag_num_bins</span> <span class="o">=</span> <span class="p">[</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">pct</span><span class="p">)</span> <span class="k">for</span> <span class="n">pct</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)]</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>         <span class="n">bins</span><span class="o">=</span><span class="n">bag_num_bins</span><span class="p">,</span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;small&#39;</span><span class="p">,</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span><span class="s1">&#39;large&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;coffee_df_bags&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    large
+1    large
+2    small
+3    large
+4    large
+Name: Number.of.Bags, dtype: category
+Categories (3, object): [&#39;small&#39; &lt; &#39;medium&#39; &lt; &#39;large&#39;]
 </pre></div>
 </div>
 </div>
