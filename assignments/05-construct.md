@@ -19,8 +19,8 @@ sumbit to the assignment5 branch, but there are no template files
 
 ## Related notes
 
-- [](../notes/2023-10-03)
-- [](../notes/2023-10-05)
+- [Webscraping](https://rhodyprog4ds.github.io/BrownFall24/notes/2024-10-01.html)
+- [Merging Data & Databases](https://rhodyprog4ds.github.io/BrownFall24/notes/2024-10-03.html)
 
 
 ## Constructing Datasets
