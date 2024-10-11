@@ -5,6 +5,10 @@
 
 
 due date : 2023-10-10
+```{note}
+I encourage you to get it done and get rest over the long weekend.  However, the TA and I are also going to get rest this weekend so grading will not begin until Tuesday and we will grade any submissions in at that time
+```
+
 
 Skills:
 - prepare level 1
@@ -14,7 +18,7 @@ Skills:
 
 
 ```{warning}
-sumbit to the assignment5 branch, but there are no template files
+sumbit to the assignment5 branch, but there are no template files. 
 ```
 
 ## Related notes
