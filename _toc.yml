@@ -15,15 +15,16 @@ parts:
   - caption: Notes
     numbered: True
     chapters:
-    - file: notes/2024-09-05
-    - file: notes/2024-09-10
-    - file: notes/2024-09-12
-    - file: notes/2024-09-17
-    - file: notes/2024-09-19
-    - file: notes/2024-09-24
-    - file: notes/2024-09-26
-    - file: notes/2024-10-01
-    - file: notes/2024-10-03
+      - glob: notes/2024-*
+    # - file: notes/2024-09-05
+    # - file: notes/2024-09-10
+    # - file: notes/2024-09-12
+    # - file: notes/2024-09-17
+    # - file: notes/2024-09-19
+    # - file: notes/2024-09-24
+    # - file: notes/2024-09-26
+    # - file: notes/2024-10-01
+    # - file: notes/2024-10-03
   - caption: Assignments
     numbered: True
     chapters:
