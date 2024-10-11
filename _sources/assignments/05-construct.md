@@ -5,6 +5,10 @@
 
 
 due date : 2023-10-10
+```{note}
+I encourage you to get it done and get rest over the long weekend.  However, the TA and I are also going to get rest this weekend so grading will not begin until Tuesday and we will grade any submissions in at that time
+```
+
 
 Skills:
 - prepare level 1
@@ -14,19 +18,25 @@ Skills:
 
 
 ```{warning}
-sumbit to the assignment5 branch, but there are no template files
+sumbit to the assignment5 branch, but there are no template files. 
 ```
 
 ## Related notes
 
-- [Webscraping](https://rhodyprog4ds.github.io/BrownFall24/notes/2024-10-01.html)
-- [Merging Data & Databases](https://rhodyprog4ds.github.io/BrownFall24/notes/2024-10-03.html)
+- [Webscraping](../notes/2024-10-01.md)
+- [Merging Data & Databases](../notes/2024-10-03.md)
 
 
 ## Constructing Datasets
 
 
-Your goal is to programmatically construct a ready to analyze dataset that combines information from multiple sources. This can be in a crawing fashion like we did for the CS people or by combining two tables with a merge. If you use a merge to meet the multiple sources criterion, only one source must be scraped, the second can be provided as tabular data.  
+Your goal is to programmatically construct a ready to analyze dataset that combines information from multiple sources. This can be:
+- crawing fashion like we did for the CS people
+-  combining two tables with a merge. 
+
+If you use a merge to meet the multiple sources criterion, only one source must be scraped, the second can be provided as tabular data.  
+
+If you crawl, all the data could come from tables(files or `read_html`), as long as you pull the urls programmatically. 
 
 
 ````{margin}
@@ -50,6 +60,9 @@ For construct only, this can be very minimal EDA.
 
 To earn additional achievements, you must do more cleaning and/or exploratory data analysis.
 
+```{important}
+Make sure everything is well explained
+```
 
 ### Prepare level 2
 To earn level 2 for prepare, you must manipulate either a component table or the final dataset. Sample manipulations include: 

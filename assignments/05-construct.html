@@ -182,6 +182,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../notes/2024-09-26.html">8. Fixing Values</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notes/2024-10-01.html">9. Webscraping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notes/2024-10-03.html">10. Merging Data &amp; Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/2024-10-08.html">11. Evaluating ML Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/2024-10-10.html">12. ML Models and Auditing with AIF360</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="current nav bd-sidenav">
@@ -452,6 +454,10 @@ document.write(`
 <h1><span class="section-number">5. </span>Assignment 5: Constructing Datasets and Using Databases<a class="headerlink" href="#assignment-5-constructing-datasets-and-using-databases" title="Permalink to this headline">#</a></h1>
 <!-- {{ accept_assignment }} -->
 <p>due date : 2023-10-10</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I encourage you to get it done and get rest over the long weekend.  However, the TA and I are also going to get rest this weekend so grading will not begin until Tuesday and we will grade any submissions in at that time</p>
+</div>
 <p>Skills:</p>
 <ul class="simple">
 <li><p>prepare level 1</p></li>
@@ -461,18 +467,24 @@ document.write(`
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>sumbit to the assignment5 branch, but there are no template files</p>
+<p>sumbit to the assignment5 branch, but there are no template files.</p>
 </div>
 <section id="related-notes">
 <h2><span class="section-number">5.1. </span>Related notes<a class="headerlink" href="#related-notes" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall24/notes/2024-10-01.html">Webscraping</a></p></li>
-<li><p><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall24/notes/2024-10-03.html">Merging Data &amp; Databases</a></p></li>
+<li><p><a class="reference internal" href="../notes/2024-10-01.html"><span class="doc std std-doc">Webscraping</span></a></p></li>
+<li><p><a class="reference internal" href="../notes/2024-10-03.html"><span class="doc std std-doc">Merging Data &amp; Databases</span></a></p></li>
 </ul>
 </section>
 <section id="constructing-datasets">
 <h2><span class="section-number">5.2. </span>Constructing Datasets<a class="headerlink" href="#constructing-datasets" title="Permalink to this headline">#</a></h2>
-<p>Your goal is to programmatically construct a ready to analyze dataset that combines information from multiple sources. This can be in a crawing fashion like we did for the CS people or by combining two tables with a merge. If you use a merge to meet the multiple sources criterion, only one source must be scraped, the second can be provided as tabular data.</p>
+<p>Your goal is to programmatically construct a ready to analyze dataset that combines information from multiple sources. This can be:</p>
+<ul class="simple">
+<li><p>crawing fashion like we did for the CS people</p></li>
+<li><p>combining two tables with a merge.</p></li>
+</ul>
+<p>If you use a merge to meet the multiple sources criterion, only one source must be scraped, the second can be provided as tabular data.</p>
+<p>If you crawl, all the data could come from tables(files or <code class="docutils literal notranslate"><span class="pre">read_html</span></code>), as long as you pull the urls programmatically.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition warning">
@@ -492,6 +504,10 @@ document.write(`
 <section id="additional-achievements">
 <h2><span class="section-number">5.3. </span>Additional achievements<a class="headerlink" href="#additional-achievements" title="Permalink to this headline">#</a></h2>
 <p>To earn additional achievements, you must do more cleaning and/or exploratory data analysis.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Make sure everything is well explained</p>
+</div>
 <section id="prepare-level-2">
 <h3><span class="section-number">5.3.1. </span>Prepare level 2<a class="headerlink" href="#prepare-level-2" title="Permalink to this headline">#</a></h3>
 <p>To earn level 2 for prepare, you must manipulate either a component table or the final dataset. Sample manipulations include:</p>

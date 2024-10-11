@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Evaluating ML Algorithms &#8212; Programming for Data Science at URI Fall 2024</title>
+    <title>11. Evaluating ML Algorithms &#8212; Programming for Data Science at URI Fall 2024</title>
   
   
   
@@ -68,6 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2024-10-08';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="12. ML Models and Auditing with AIF360" href="2024-10-10.html" />
+    <link rel="prev" title="10. Merging Data &amp; Databases" href="2024-10-03.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -171,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../syllabus/communication.html">Communications &amp; Office Hours</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2024-09-05.html">1. Welcome &amp; What is Data Science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-09-10.html">2. Iterables and Pandas Data Frames</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-09-12.html">3. Pandas Data Frames and More Iterable Types</a></li>
@@ -182,6 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2024-09-26.html">8. Fixing Values</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-10-01.html">9. Webscraping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-10-03.html">10. Merging Data &amp; Databases</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Evaluating ML Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-10.html">12. ML Models and Auditing with AIF360</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -429,24 +433,24 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-machine-learning-algorithm">What is a Machine Learning Algorithm?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-can-we-tell-if-ml-is-working">How can we tell if ML is working?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replicating-the-compas-audit">Replicating the COMPAS Audit</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-compas">Why COMPAS?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propublica-compas-data">Propublica COMPAS Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-machine-learning-algorithm">11.1. What is a Machine Learning Algorithm?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-can-we-tell-if-ml-is-working">11.2. How can we tell if ML is working?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replicating-the-compas-audit">11.3. Replicating the COMPAS Audit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-compas">11.3.1. Why COMPAS?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propublica-compas-data">11.3.2. Propublica COMPAS Data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoding">One-hot Encoding</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sklearn-performance-metrics">Sklearn Performance metrics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-and-recall">Precision and Recall</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-group-scores">Per Group Scores</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">Questions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#does-chatgpt-have-a-dataset-similar-to-compas-how-accurate-are-the-ais-that-students-are-using-instead-of-learning">Does ChatGPT have a dataset similar to Compas? How accurate are the AI’s that students are using instead of learning?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#there-was-a-lot-in-this-lecture-today-what-generally-should-be-the-take-away-from-todays-class">There was a lot in this lecture today. What generally should be the take away from today’s class?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-the-difference-between-precision-score-and-recall-score">What’s the difference between precision score and recall score?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-combat-biased-data">how to combat biased data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-guess-when-should-and-shouldnt-you-use-one-hot">I guess when should and shouldn’t you use one-hot?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-some-good-intro-resourses-you-suggest-for-looking-more-into-some-of-the-math-that-make-up-these-machine-learning-models-that-we-will-use-in-this-class">What are some good intro resourses you suggest for looking more into some of the math that make up these machine learning models that we will use in this class?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoding">11.4. One-hot Encoding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sklearn-performance-metrics">11.5. Sklearn Performance metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-and-recall">11.6. Precision and Recall</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-group-scores">11.7. Per Group Scores</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">11.8. Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#does-chatgpt-have-a-dataset-similar-to-compas-how-accurate-are-the-ais-that-students-are-using-instead-of-learning">11.8.1. Does ChatGPT have a dataset similar to Compas? How accurate are the AI’s that students are using instead of learning?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#there-was-a-lot-in-this-lecture-today-what-generally-should-be-the-take-away-from-todays-class">11.8.2. There was a lot in this lecture today. What generally should be the take away from today’s class?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-the-difference-between-precision-score-and-recall-score">11.8.3. What’s the difference between precision score and recall score?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-combat-biased-data">11.8.4. how to combat biased data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-guess-when-should-and-shouldnt-you-use-one-hot">11.8.5. I guess when should and shouldn’t you use one-hot?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-some-good-intro-resourses-you-suggest-for-looking-more-into-some-of-the-math-that-make-up-these-machine-learning-models-that-we-will-use-in-this-class">11.8.6. What are some good intro resourses you suggest for looking more into some of the math that make up these machine learning models that we will use in this class?</a></li>
 </ul>
 </li>
 </ul>
@@ -461,7 +465,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="evaluating-ml-algorithms">
-<h1>Evaluating ML Algorithms<a class="headerlink" href="#evaluating-ml-algorithms" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">11. </span>Evaluating ML Algorithms<a class="headerlink" href="#evaluating-ml-algorithms" title="Permalink to this headline">#</a></h1>
 <p>This week we are going to start learning about machine learning.</p>
 <p>We are going to do this by looking at how to tell if machine learning has worked.</p>
 <p>This is because:</p>
@@ -471,7 +475,7 @@ document.write(`
 <li><p>gives you a chance to learn <em>only</em> evaluation instead of evaluation + an ML task</p></li>
 </ul>
 <section id="what-is-a-machine-learning-algorithm">
-<h2>What is a Machine Learning Algorithm?<a class="headerlink" href="#what-is-a-machine-learning-algorithm" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.1. </span>What is a Machine Learning Algorithm?<a class="headerlink" href="#what-is-a-machine-learning-algorithm" title="Permalink to this headline">#</a></h2>
 <p>First, what is an Algorithm?</p>
 <blockquote>
 <div><p>An algorithm is a set of ordered steps to complete a task.</p>
@@ -491,18 +495,18 @@ use those patterns to make predictions or automate a task.</p>
 sometimes they’re used close to exchangeably.</p>
 </section>
 <section id="how-can-we-tell-if-ml-is-working">
-<h2>How can we tell if ML is working?<a class="headerlink" href="#how-can-we-tell-if-ml-is-working" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.2. </span>How can we tell if ML is working?<a class="headerlink" href="#how-can-we-tell-if-ml-is-working" title="Permalink to this headline">#</a></h2>
 <p>We measure the performance of the prediction algorithm, to determine if the learning algorithm worked.</p>
 </section>
 <section id="replicating-the-compas-audit">
-<h2>Replicating the COMPAS Audit<a class="headerlink" href="#replicating-the-compas-audit" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.3. </span>Replicating the COMPAS Audit<a class="headerlink" href="#replicating-the-compas-audit" title="Permalink to this headline">#</a></h2>
 <p>We are going to replicate the audit from ProPublica <a class="reference external" href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">Machine Bias</a></p>
 <section id="why-compas">
-<h3>Why COMPAS?<a class="headerlink" href="#why-compas" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.3.1. </span>Why COMPAS?<a class="headerlink" href="#why-compas" title="Permalink to this headline">#</a></h3>
 <p>Propublica started the COMPAS Debate with the article <a class="reference external" href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencin">Machine Bias</a>.  With their article, they also released details of their methodology and their <a class="reference external" href="https://github.com/propublica/compas-analysis">data and code</a>.  This presents a real data set that can be used for research on how data is used in a criminal justice setting without researchers having to perform their own requests for information, so it has been used and reused a lot of times.</p>
 </section>
 <section id="propublica-compas-data">
-<h3>Propublica COMPAS Data<a class="headerlink" href="#propublica-compas-data" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.3.2. </span>Propublica COMPAS Data<a class="headerlink" href="#propublica-compas-data" title="Permalink to this headline">#</a></h3>
 <p>The dataset consists of COMPAS scores assigned to defendants over two years 2013-2014 in Broward County, Florida, it was released by Propublica in a <a class="reference external" href="https://github.com/propublica/compas-analysis/">GitHub Repository</a>. These scores are determined by a proprietary algorithm designed to evaluate a persons recidivism risk - the likelihood that they will reoffend. Risk scoring algorithms are widely used by judges to inform their sentencing and bail decisions in the criminal justice system in the United States.</p>
 <p>The journalists collected, for each person arreste din 2013 and 2014:</p>
 <ul class="simple">
@@ -681,7 +685,7 @@ sometimes they’re used close to exchangeably.</p>
 </section>
 </section>
 <section id="one-hot-encoding">
-<h2>One-hot Encoding<a class="headerlink" href="#one-hot-encoding" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.4. </span>One-hot Encoding<a class="headerlink" href="#one-hot-encoding" title="Permalink to this headline">#</a></h2>
 <p>We will audit first to see how good the algorithm is by treating the predictions as either high or not high.  One way we can get to that point is to transform the <code class="docutils literal notranslate"><span class="pre">score_text</span></code> column from one column with three values, to 3 binary columns.</p>
 <p>First lets understand the <code class="docutils literal notranslate"><span class="pre">score_text</span></code></p>
 <div class="cell docutils container">
@@ -871,7 +875,7 @@ sometimes they’re used close to exchangeably.</p>
 </div>
 </section>
 <section id="sklearn-performance-metrics">
-<h2>Sklearn Performance metrics<a class="headerlink" href="#sklearn-performance-metrics" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.5. </span>Sklearn Performance metrics<a class="headerlink" href="#sklearn-performance-metrics" title="Permalink to this headline">#</a></h2>
 <p>The first thing we usually check is the accuracy: the percentage of all samples that are correct.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -992,7 +996,7 @@ sometimes they’re used close to exchangeably.</p>
 <p>and we can define new scores.</p>
 </section>
 <section id="precision-and-recall">
-<h2>Precision and Recall<a class="headerlink" href="#precision-and-recall" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.6. </span>Precision and Recall<a class="headerlink" href="#precision-and-recall" title="Permalink to this headline">#</a></h2>
 <p>Two common ones in CS are recall and precision.</p>
 <p>Recall is:</p>
 <div class="math notranslate nohighlight">
@@ -1040,7 +1044,7 @@ $<span class="math notranslate nohighlight">\( P = \frac{C_{1,1}}{C_{0,1} + C_{1
 </div>
 </section>
 <section id="per-group-scores">
-<h2>Per Group Scores<a class="headerlink" href="#per-group-scores" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.7. </span>Per Group Scores<a class="headerlink" href="#per-group-scores" title="Permalink to this headline">#</a></h2>
 <p>To groupby and then do the score, we can use a lambda, with apply</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1164,9 +1168,9 @@ $<span class="math notranslate nohighlight">\( P = \frac{C_{1,1}}{C_{0,1} + C_{1
 </aside>
 </section>
 <section id="questions">
-<h2>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.8. </span>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">#</a></h2>
 <section id="does-chatgpt-have-a-dataset-similar-to-compas-how-accurate-are-the-ais-that-students-are-using-instead-of-learning">
-<h3>Does ChatGPT have a dataset similar to Compas? How accurate are the AI’s that students are using instead of learning?<a class="headerlink" href="#does-chatgpt-have-a-dataset-similar-to-compas-how-accurate-are-the-ais-that-students-are-using-instead-of-learning" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.8.1. </span>Does ChatGPT have a dataset similar to Compas? How accurate are the AI’s that students are using instead of learning?<a class="headerlink" href="#does-chatgpt-have-a-dataset-similar-to-compas-how-accurate-are-the-ais-that-students-are-using-instead-of-learning" title="Permalink to this headline">#</a></h3>
 <p>We do not know <em>exactly</em> what the training data for ChatGPT i, it uses OpenAI’s modelGPT3.5 and beyond.  I also want to clarify that the dataset we used today was some journalists’ data to <em>audit</em> COMPAS.  It was trained on <em>different</em> data.</p>
 <p>However for GPT3, OpenAI published a <a class="reference external" href="https://papers.nips.cc/paper/2020/hash/1457c0d6bfcb4967418bfb8ac142f64a-Abstract.html">paper</a> in section 2.2 they state that their training data includes (links are mine; they had citations):</p>
 <blockquote>
@@ -1179,27 +1183,27 @@ $<span class="math notranslate nohighlight">\( P = \frac{C_{1,1}}{C_{0,1} + C_{1
 </div></blockquote>
 </section>
 <section id="there-was-a-lot-in-this-lecture-today-what-generally-should-be-the-take-away-from-todays-class">
-<h3>There was a lot in this lecture today. What generally should be the take away from today’s class?<a class="headerlink" href="#there-was-a-lot-in-this-lecture-today-what-generally-should-be-the-take-away-from-todays-class" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.8.2. </span>There was a lot in this lecture today. What generally should be the take away from today’s class?<a class="headerlink" href="#there-was-a-lot-in-this-lecture-today-what-generally-should-be-the-take-away-from-todays-class" title="Permalink to this headline">#</a></h3>
 <p>The performance metrics and what ML <em>is</em> roughly, though we will come back to that.</p>
 </section>
 <section id="whats-the-difference-between-precision-score-and-recall-score">
-<h3>What’s the difference between precision score and recall score?<a class="headerlink" href="#whats-the-difference-between-precision-score-and-recall-score" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.8.3. </span>What’s the difference between precision score and recall score?<a class="headerlink" href="#whats-the-difference-between-precision-score-and-recall-score" title="Permalink to this headline">#</a></h3>
 <p>Mathematically, the denominator.</p>
 <p>Conceptually, the precision is a perfect score (1) if there are no false <em>positives</em> but the precision score is not impacted by there being false negatives.  Precision is a measure of how many of the high scores were actually re-arrested, it only cares about when the algorithm predicts the positive class.</p>
 <p>In contrast, a perfect recall only requires no false <em>negatives</em> and is not impacted by false positives at all.  Recall only cares about the actually positive class, here the people who <em>acutally</em> got re-arrested and how well the model performed on those people.
 Recall is how many of the the thing we want were found in a radar context.</p>
 </section>
 <section id="how-to-combat-biased-data">
-<h3>how to combat biased data<a class="headerlink" href="#how-to-combat-biased-data" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.8.4. </span>how to combat biased data<a class="headerlink" href="#how-to-combat-biased-data" title="Permalink to this headline">#</a></h3>
 <p>This is still a really open area of research and it is context dependent.  The COMPAS audit showed that there are different ways that we can write euqations to try to represent fairness and researchers proved that these cannot all be true at the same time.</p>
 <p>In this case, I would actually not say that the “data is biased” because in statistics, biased data refers to a type of not correct measurement. This data reflects the way the actual <strong>world</strong> is biased.</p>
 </section>
 <section id="i-guess-when-should-and-shouldnt-you-use-one-hot">
-<h3>I guess when should and shouldn’t you use one-hot?<a class="headerlink" href="#i-guess-when-should-and-shouldnt-you-use-one-hot" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.8.5. </span>I guess when should and shouldn’t you use one-hot?<a class="headerlink" href="#i-guess-when-should-and-shouldnt-you-use-one-hot" title="Permalink to this headline">#</a></h3>
 <p>We use one hot encoding when we want to numerically represent categorical data and if we want to do something that is like binary for one of the values for a variable with more than 2 values.</p>
 </section>
 <section id="what-are-some-good-intro-resourses-you-suggest-for-looking-more-into-some-of-the-math-that-make-up-these-machine-learning-models-that-we-will-use-in-this-class">
-<h3>What are some good intro resourses you suggest for looking more into some of the math that make up these machine learning models that we will use in this class?<a class="headerlink" href="#what-are-some-good-intro-resourses-you-suggest-for-looking-more-into-some-of-the-math-that-make-up-these-machine-learning-models-that-we-will-use-in-this-class" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.8.6. </span>What are some good intro resourses you suggest for looking more into some of the math that make up these machine learning models that we will use in this class?<a class="headerlink" href="#what-are-some-good-intro-resourses-you-suggest-for-looking-more-into-some-of-the-math-that-make-up-these-machine-learning-models-that-we-will-use-in-this-class" title="Permalink to this headline">#</a></h3>
 <p>For the purposes of this course, the <a class="reference external" href="https://scikit-learn.org/stable/user_guide.html">sklearn</a> documentation is a good starting point.  It has the specific equations that are implemented in the package, which is relevant for some models that have multiple ways they can be implemented.</p>
 </section>
 </section>
@@ -1236,6 +1240,24 @@ Recall is how many of the the thing we want were found in a radar context.</p>
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="2024-10-03.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Merging Data &amp; Databases</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="2024-10-10.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>ML Models and Auditing with AIF360</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -1254,24 +1276,24 @@ Recall is how many of the the thing we want were found in a radar context.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-machine-learning-algorithm">What is a Machine Learning Algorithm?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-can-we-tell-if-ml-is-working">How can we tell if ML is working?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replicating-the-compas-audit">Replicating the COMPAS Audit</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-compas">Why COMPAS?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propublica-compas-data">Propublica COMPAS Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-machine-learning-algorithm">11.1. What is a Machine Learning Algorithm?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-can-we-tell-if-ml-is-working">11.2. How can we tell if ML is working?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replicating-the-compas-audit">11.3. Replicating the COMPAS Audit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-compas">11.3.1. Why COMPAS?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propublica-compas-data">11.3.2. Propublica COMPAS Data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoding">One-hot Encoding</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sklearn-performance-metrics">Sklearn Performance metrics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-and-recall">Precision and Recall</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-group-scores">Per Group Scores</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">Questions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#does-chatgpt-have-a-dataset-similar-to-compas-how-accurate-are-the-ais-that-students-are-using-instead-of-learning">Does ChatGPT have a dataset similar to Compas? How accurate are the AI’s that students are using instead of learning?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#there-was-a-lot-in-this-lecture-today-what-generally-should-be-the-take-away-from-todays-class">There was a lot in this lecture today. What generally should be the take away from today’s class?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-the-difference-between-precision-score-and-recall-score">What’s the difference between precision score and recall score?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-combat-biased-data">how to combat biased data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-guess-when-should-and-shouldnt-you-use-one-hot">I guess when should and shouldn’t you use one-hot?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-some-good-intro-resourses-you-suggest-for-looking-more-into-some-of-the-math-that-make-up-these-machine-learning-models-that-we-will-use-in-this-class">What are some good intro resourses you suggest for looking more into some of the math that make up these machine learning models that we will use in this class?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoding">11.4. One-hot Encoding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sklearn-performance-metrics">11.5. Sklearn Performance metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-and-recall">11.6. Precision and Recall</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-group-scores">11.7. Per Group Scores</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">11.8. Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#does-chatgpt-have-a-dataset-similar-to-compas-how-accurate-are-the-ais-that-students-are-using-instead-of-learning">11.8.1. Does ChatGPT have a dataset similar to Compas? How accurate are the AI’s that students are using instead of learning?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#there-was-a-lot-in-this-lecture-today-what-generally-should-be-the-take-away-from-todays-class">11.8.2. There was a lot in this lecture today. What generally should be the take away from today’s class?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-the-difference-between-precision-score-and-recall-score">11.8.3. What’s the difference between precision score and recall score?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-combat-biased-data">11.8.4. how to combat biased data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-guess-when-should-and-shouldnt-you-use-one-hot">11.8.5. I guess when should and shouldn’t you use one-hot?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-some-good-intro-resourses-you-suggest-for-looking-more-into-some-of-the-math-that-make-up-these-machine-learning-models-that-we-will-use-in-this-class">11.8.6. What are some good intro resourses you suggest for looking more into some of the math that make up these machine learning models that we will use in this class?</a></li>
 </ul>
 </li>
 </ul>
