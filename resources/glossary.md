@@ -25,8 +25,14 @@ corpus
 [dictionary](https://docs.python.org/3/glossary.html#term-dictionary)
   (data type) a mapping array that matches keys to values. (in NLP) all of the possible tokens a model knows
 
+discriminative 
+  a model that describes the decision rule for labeling a sample as one class or another
+
 document
   unit of text for analysis (one sample). Could be one sentence, one paragraph, or an article, depending on the goal
+
+generative
+  a model that describes the data and therefore can also be used to generate new data that looks like the training data. 
 
 gh 
   GitHub's command line tools
@@ -96,6 +102,9 @@ TraceBack
 
 training accuracy
   percentage of predictions that the model predict correctly, based on the training data
+
+transpose
+  swap the rows and columns of a matrix or dataframe
 
 Web Scraping
   the process of extracting data from a website. In the context of this class, this is usually done using

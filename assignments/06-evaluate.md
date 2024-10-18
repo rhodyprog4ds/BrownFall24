@@ -1,7 +1,7 @@
 # Assignment 6: Auditing Algorithms
 
 
-__Due: 2023-10-18_
+__Due: 2023-10-21_
 
 Eligible skills: 
 - evaluate level 1
