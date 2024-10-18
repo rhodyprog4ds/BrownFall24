@@ -5,7 +5,7 @@ __Due: 2023-10-03__
 
 Eligible skills: 
 - prepare 1
-- access 1
+- access 2
 - python 1,2
 
 

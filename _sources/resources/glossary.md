@@ -13,9 +13,11 @@
 [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
   a python library used to assist in web scraping, it pulls data from html and xml files that can be parsed in a variety of different ways using different methods.
 
+
 conditional 
   a logical control to do something, conditioned on something else, for example the `if`, `elif` `else` 
-  
+
+
 corpus
   (NLP) a set of documents for analysis 
 
@@ -25,8 +27,14 @@ corpus
 [dictionary](https://docs.python.org/3/glossary.html#term-dictionary)
   (data type) a mapping array that matches keys to values. (in NLP) all of the possible tokens a model knows
 
+discriminative 
+  a model that describes the decision rule for labeling a sample as one class or another
+
 document
   unit of text for analysis (one sample). Could be one sentence, one paragraph, or an article, depending on the goal
+
+generative
+  a model that describes the data and therefore can also be used to generate new data that looks like the training data. 
 
 gh 
   GitHub's command line tools
@@ -54,7 +62,7 @@ kernel
   in the jupyter environment, [the kernel](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html#kernel) is a language specific computational engine
 
 [lambda](https://docs.python.org/3.9/reference/expressions.html#lambda)
-  they keyword used to define an anonymous function; lambda functions are defined with a compact syntax `<name> = lambda <parameters>: <body> `
+  they keyword used to define an anonymous function; lambda functions are defined with a compact syntax `<name> = lambda <parameters>: <body>`
 
 numpy array 
   a type provided by [numpy]() to represent matrices, used by `pd.DataFrame.values` [doc](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.values.html) and accessed by `pd.DataFrame.to_numpy` [doc](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_numpy.html#pandas.DataFrame.to_numpy)
@@ -96,6 +104,9 @@ TraceBack
 
 training accuracy
   percentage of predictions that the model predict correctly, based on the training data
+
+transpose
+  swap the rows and columns of a matrix or dataframe
 
 Web Scraping
   the process of extracting data from a website. In the context of this class, this is usually done using

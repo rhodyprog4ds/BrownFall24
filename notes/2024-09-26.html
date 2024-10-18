@@ -184,6 +184,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2024-10-03.html">10. Merging Data &amp; Databases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-10-08.html">11. Evaluating ML Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-10-10.html">12. ML Models and Auditing with AIF360</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-17.html">13. Classification Models</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -192,6 +193,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../assignments/03-eda.html">3. Assignment 3: Exploratory Data Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/04-prepare.html">4. Assignment 4: Cleaning Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/05-construct.html">5. Assignment 5: Constructing Datasets and Using Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/06-evaluate.html">6. Assignment 6: Auditing Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/07-classification.html">7. Assignment 7</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
 <ul class="nav bd-sidenav">
@@ -1914,16 +1917,16 @@ Name: Number.of.Bags, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>600     (-1.062, 354.0]
-24      (-1.062, 354.0]
-743     (-1.062, 354.0]
-354     (-1.062, 354.0]
-957     (-1.062, 354.0]
-909     (-1.062, 354.0]
-266     (-1.062, 354.0]
-1122    (-1.062, 354.0]
-1136    (-1.062, 354.0]
-541     (-1.062, 354.0]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>559     (-1.062, 354.0]
+707     (-1.062, 354.0]
+1279    (-1.062, 354.0]
+1308     (354.0, 708.0]
+642     (-1.062, 354.0]
+1234    (-1.062, 354.0]
+1246    (-1.062, 354.0]
+1307    (-1.062, 354.0]
+863     (-1.062, 354.0]
+20      (-1.062, 354.0]
 Name: Number.of.Bags, dtype: category
 Categories (3, interval[float64, right]): [(-1.062, 354.0] &lt; (354.0, 708.0] &lt; (708.0, 1062.0]]
 </pre></div>
@@ -1931,12 +1934,22 @@ Categories (3, interval[float64, right]): [(-1.062, 354.0] &lt; (354.0, 708.0] &
 </div>
 </div>
 <p>by default, it makes bins of equal size, meaning the range of values. This is not good based on what we noted above. Most will be in one label</p>
-<div class="cell docutils container">
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I would like to show a histogram here, but for somereason it broke. The output is hidden for now.</p>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">coffee_df_bags</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">],</span><span class="n">bins</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
