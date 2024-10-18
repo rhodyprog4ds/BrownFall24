@@ -68,4 +68,4 @@ parts:
       title: Advice from FA2020 Students
     - url: https://rhodyprog4ds.github.io/BrownFall21/letters/
       title: Advice from FA2021 Students
-    - file: letters/index
+    # - file: letters/index

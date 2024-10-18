@@ -13,9 +13,11 @@
 [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
   a python library used to assist in web scraping, it pulls data from html and xml files that can be parsed in a variety of different ways using different methods.
 
+
 conditional 
   a logical control to do something, conditioned on something else, for example the `if`, `elif` `else` 
-  
+
+
 corpus
   (NLP) a set of documents for analysis 
 
@@ -60,7 +62,7 @@ kernel
   in the jupyter environment, [the kernel](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html#kernel) is a language specific computational engine
 
 [lambda](https://docs.python.org/3.9/reference/expressions.html#lambda)
-  they keyword used to define an anonymous function; lambda functions are defined with a compact syntax `<name> = lambda <parameters>: <body> `
+  they keyword used to define an anonymous function; lambda functions are defined with a compact syntax `<name> = lambda <parameters>: <body>`
 
 numpy array 
   a type provided by [numpy]() to represent matrices, used by `pd.DataFrame.values` [doc](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.values.html) and accessed by `pd.DataFrame.to_numpy` [doc](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_numpy.html#pandas.DataFrame.to_numpy)

@@ -12,7 +12,7 @@ Eligible skills:
 
 ## Related notes
 
-- [](../notes/2023-10-12)
+- [](../notes/2024-10-10)
 <!-- - [](../notes/2023-03-02) -->
 
 
