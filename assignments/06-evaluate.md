@@ -29,7 +29,7 @@ Researchers reconstructed the Adult dataset with the actual value of the income.
 
 Both data files have a unique identifier column included.
 
-```{admonition} Think Ahead
+```{hint}
 Why might the dataset have more samples in it than the model predictions one? 
 ```
 
