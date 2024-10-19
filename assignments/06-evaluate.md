@@ -37,7 +37,7 @@ Why might the dataset have more samples in it than the model predictions one?
 
 
 
-Thoroughly audit two rannomdly selected  models.  If you load the `adult_models_only.csv` to `models_df` then the following will give you replicable, but random, two columns
+Thoroughly audit two randomly selected  models.  If you load the `adult_models_only.csv` to `models_df` then the following will give you replicable, but random, two columns
 ```
 import numpy as np
 my_num = # pick a number
