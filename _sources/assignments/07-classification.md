@@ -88,12 +88,24 @@ Do an experiment to compare test set size vs performance:
 2. Use EDA on this data frame to interpret the results of your experiment.  How does training vs test size impact the model's performance? Does it impact training and test accuracy the same way? 
 
 
+```{warning}
+Please make sure you complete the above and get feedback before you go on to
+the following, because if you attempt the following with an error in the above
+you may spend a lot of time on something that might not earn credit
+```
 
+:::::{margin}
+:::{note}
+This also will extend on visualize and summarize. 
+
+See the [seaborn error bars tutorial](https://seaborn.pydata.org/tutorial/error_bars.html)
+:::
+::::
 
 ```{admonition} Thinking Ahead
 _ideas for level 3 evaluate, not required for A7_
 
-Repeat the problem setup experiment with multiple test/train splits at each size and plot with error bars.
+Repeat the problem setup experiment with multiple test/train splits at each size and plot with {term}`error bars`.
 - What is the tradeoff to be made in choosing a test/train size?
 - What is the best test/train size for this dataset?
 

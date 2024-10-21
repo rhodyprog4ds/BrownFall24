@@ -543,23 +543,39 @@ The same skills apply.</p>
 <li><p>Use a loop to train a model  on 10%, 30%, … , 90% of the data. Compute the <a class="reference internal" href="../resources/glossary.html#term-training-accuracy"><span class="xref std std-term">training accuracy</span></a> and test accuracy for each size training data. Create a DataFrame with columns [‘train_pct’,‘n_train_samples’,‘n_test_samples’,‘train_acc’,‘test_acc’]</p></li>
 <li><p>Use EDA on this data frame to interpret the results of your experiment.  How does training vs test size impact the model’s performance? Does it impact training and test accuracy the same way?</p></li>
 </ol>
-<div class="admonition-thinking-ahead admonition">
-<p class="admonition-title">Thinking Ahead</p>
-<p><em>ideas for level 3 evaluate, not required for A7</em></p>
-<p>Repeat the problem setup experiment with multiple test/train splits at each size and plot with error bars.</p>
-<ul class="simple">
-<li><p>What is the tradeoff to be made in choosing a test/train size?</p></li>
-<li><p>What is the best test/train size for this dataset?</p></li>
-</ul>
-<p>or with variations:</p>
-<ul class="simple">
-<li><p>allowing it to figure out the model depth for each training size, and recording the depth in the loop as well.</p></li>
-<li><p>repeating each size 10 items, then using summary statistics on that data</p></li>
-</ul>
-<p>Use the extensions above to experiment further with other model parameters.</p>
-<p><strong>some of this we’ll learn how to automate in a few weeks, but getting the
-ideas by doing it yourself can help build understanding and intution</strong></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please make sure you complete the above and get feedback before you go on to
+the following, because if you attempt the following with an error in the above
+you may spend a lot of time on something that might not earn credit</p>
 </div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This also will extend on visualize and summarize.</p>
+<p>See the <a class="reference external" href="https://seaborn.pydata.org/tutorial/error_bars.html">seaborn error bars tutorial</a></p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+```{admonition} Thinking Ahead
+_ideas for level 3 evaluate, not required for A7_
+
+Repeat the problem setup experiment with multiple test/train splits at each size and plot with {term}`error bars`.
+- What is the tradeoff to be made in choosing a test/train size?
+- What is the best test/train size for this dataset?
+
+or with variations:
+- allowing it to figure out the model depth for each training size, and recording the depth in the loop as well.  
+- repeating each size 10 items, then using summary statistics on that data
+
+Use the extensions above to experiment further with other model parameters.
+
+**some of this we&#39;ll learn how to automate in a few weeks, but getting the
+ideas by doing it yourself can help build understanding and intution**
+```
+</pre></div>
+</div>
+</aside>
 </section>
 </section>
 
