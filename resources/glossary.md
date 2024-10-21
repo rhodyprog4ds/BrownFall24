@@ -33,6 +33,10 @@ discriminative
 document
   unit of text for analysis (one sample). Could be one sentence, one paragraph, or an article, depending on the goal
 
+
+error bars
+  typically vertical, but sometimes also horizontal lines on a point in a line graph or bar in  bar chart that indicate the spread of the samples used to create that point or bar height
+
 generative
   a model that describes the data and therefore can also be used to generate new data that looks like the training data. 
 
