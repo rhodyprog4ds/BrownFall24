@@ -484,6 +484,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
@@ -623,7 +624,7 @@ Bayes = most probable</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f5fccf5d0a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7ff96090b850&gt;
 </pre></div>
 </div>
 <img alt="../_images/06ac9d5a79ccb8fddbceee8abac82997c1eaa5ba2f1f02111769fb1db878af0d.png" src="../_images/06ac9d5a79ccb8fddbceee8abac82997c1eaa5ba2f1f02111769fb1db878af0d.png" />
@@ -1149,10 +1150,10 @@ weighted avg       0.92      0.92      0.92        38
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f5f90775e50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7ff914742100&gt;
 </pre></div>
 </div>
-<img alt="../_images/504699ceb72e794205c7fa27fbd40a27200874d0eab25c11ffc8b09ff6274960.png" src="../_images/504699ceb72e794205c7fa27fbd40a27200874d0eab25c11ffc8b09ff6274960.png" />
+<img alt="../_images/e8de98502bfd3eeb0ad0628021761c0ed9b5fbf8edcebd6c51f94c05d44c1a08.png" src="../_images/e8de98502bfd3eeb0ad0628021761c0ed9b5fbf8edcebd6c51f94c05d44c1a08.png" />
 </div>
 </div>
 <p>To break this code down:</p>
@@ -1354,7 +1355,7 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f5f958d8e50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7ff90dc51fa0&gt;
 </pre></div>
 </div>
 <img alt="../_images/577bba368e0b273b6e8a0c62e6586ec72b4a8c84afff863b70415202769f4582.png" src="../_images/577bba368e0b273b6e8a0c62e6586ec72b4a8c84afff863b70415202769f4582.png" />
@@ -1373,7 +1374,7 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f5f8770fc10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7ff90ac86910&gt;
 </pre></div>
 </div>
 <img alt="../_images/f873423b5a1eae89748911b893ba6b7b9f19f75c052aa2fc00a4b598783728c3.png" src="../_images/f873423b5a1eae89748911b893ba6b7b9f19f75c052aa2fc00a4b598783728c3.png" />
@@ -1418,10 +1419,10 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f5f84cf7c40&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7ff90df73a30&gt;
 </pre></div>
 </div>
-<img alt="../_images/c2dd534946749731254338f847bece5dd5b37e2d136b9a15c74f789f268fb747.png" src="../_images/c2dd534946749731254338f847bece5dd5b37e2d136b9a15c74f789f268fb747.png" />
+<img alt="../_images/deab48a6a104fda3d039745fab4802b4977bb114347cfdbe04a5a00d739bf65b.png" src="../_images/deab48a6a104fda3d039745fab4802b4977bb114347cfdbe04a5a00d739bf65b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1439,7 +1440,7 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f5f84b00ee0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7ff907d5f2e0&gt;
 </pre></div>
 </div>
 <img alt="../_images/5f1a84ec55676e8362b3c9cfe6d203099c8ca065ba193dc99fc22f4c3fe15375.png" src="../_images/5f1a84ec55676e8362b3c9cfe6d203099c8ca065ba193dc99fc22f4c3fe15375.png" />
@@ -1470,14 +1471,7 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">36</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">dt</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">dt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">dt</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;tree&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
 </pre></div>
 </div>
 </div>
@@ -1520,14 +1514,7 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">38</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">dt2</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">dt2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">dt2</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;tree&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.74
 </pre></div>
 </div>
 </div>
@@ -1628,7 +1615,7 @@ Above I included the Decision Tree example, so you can see a classifer that does
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2080/1082399451.py:1: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2148/1082399451.py:1: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
   y_pred == y_test
 </pre></div>
 </div>
@@ -1681,7 +1668,7 @@ Above I included the Decision Tree example, so you can see a classifer that does
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2080/369106620.py:1: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2148/369106620.py:1: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
   sum(y_pred == y_test)/len(y_test)
 </pre></div>
 </div>
