@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2024-10-17';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Assignment 1: Setup, Syllabus, and Review" href="../assignments/01-setup.html" />
+    <link rel="next" title="14. Clustering" href="2024-10-22.html" />
     <link rel="prev" title="12. ML Models and Auditing with AIF360" href="2024-10-10.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -187,6 +187,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2024-10-08.html">11. Evaluating ML Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-10-10.html">12. ML Models and Auditing with AIF360</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">13. Classification Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-22.html">14. Clustering</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -624,7 +625,7 @@ Bayes = most probable</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7ff96090b850&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f6c08bf9af0&gt;
 </pre></div>
 </div>
 <img alt="../_images/06ac9d5a79ccb8fddbceee8abac82997c1eaa5ba2f1f02111769fb1db878af0d.png" src="../_images/06ac9d5a79ccb8fddbceee8abac82997c1eaa5ba2f1f02111769fb1db878af0d.png" />
@@ -1150,10 +1151,10 @@ weighted avg       0.92      0.92      0.92        38
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7ff914742100&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f6bccae7be0&gt;
 </pre></div>
 </div>
-<img alt="../_images/e8de98502bfd3eeb0ad0628021761c0ed9b5fbf8edcebd6c51f94c05d44c1a08.png" src="../_images/e8de98502bfd3eeb0ad0628021761c0ed9b5fbf8edcebd6c51f94c05d44c1a08.png" />
+<img alt="../_images/6dcc9482568b8cc782b9fa1dbe8f591735804d4560fea14ece5028ecdfd91d14.png" src="../_images/6dcc9482568b8cc782b9fa1dbe8f591735804d4560fea14ece5028ecdfd91d14.png" />
 </div>
 </div>
 <p>To break this code down:</p>
@@ -1355,7 +1356,7 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7ff90dc51fa0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f6bc8f4ef70&gt;
 </pre></div>
 </div>
 <img alt="../_images/577bba368e0b273b6e8a0c62e6586ec72b4a8c84afff863b70415202769f4582.png" src="../_images/577bba368e0b273b6e8a0c62e6586ec72b4a8c84afff863b70415202769f4582.png" />
@@ -1374,7 +1375,7 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7ff90ac86910&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f6c08bf3130&gt;
 </pre></div>
 </div>
 <img alt="../_images/f873423b5a1eae89748911b893ba6b7b9f19f75c052aa2fc00a4b598783728c3.png" src="../_images/f873423b5a1eae89748911b893ba6b7b9f19f75c052aa2fc00a4b598783728c3.png" />
@@ -1419,10 +1420,10 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7ff90df73a30&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f6bbf34dca0&gt;
 </pre></div>
 </div>
-<img alt="../_images/deab48a6a104fda3d039745fab4802b4977bb114347cfdbe04a5a00d739bf65b.png" src="../_images/deab48a6a104fda3d039745fab4802b4977bb114347cfdbe04a5a00d739bf65b.png" />
+<img alt="../_images/ce140c33237be0c973cb2e7a814f32eb550abae0d0b4d3ae562d36dbcc5cd878.png" src="../_images/ce140c33237be0c973cb2e7a814f32eb550abae0d0b4d3ae562d36dbcc5cd878.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1440,7 +1441,7 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7ff907d5f2e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f6bbf0a80d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/5f1a84ec55676e8362b3c9cfe6d203099c8ca065ba193dc99fc22f4c3fe15375.png" src="../_images/5f1a84ec55676e8362b3c9cfe6d203099c8ca065ba193dc99fc22f4c3fe15375.png" />
@@ -1615,7 +1616,7 @@ Above I included the Decision Tree example, so you can see a classifer that does
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2148/1082399451.py:1: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2159/1082399451.py:1: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
   y_pred == y_test
 </pre></div>
 </div>
@@ -1668,7 +1669,7 @@ Above I included the Decision Tree example, so you can see a classifer that does
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2148/369106620.py:1: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2159/369106620.py:1: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
   sum(y_pred == y_test)/len(y_test)
 </pre></div>
 </div>
@@ -1843,11 +1844,11 @@ Above I included the Decision Tree example, so you can see a classifer that does
       </div>
     </a>
     <a class="right-next"
-       href="../assignments/01-setup.html"
+       href="2024-10-22.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Assignment 1: Setup, Syllabus, and Review</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>Clustering</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
