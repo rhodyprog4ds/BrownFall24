@@ -491,7 +491,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> 
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span> 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">classification_report</span><span class="p">,</span> <span class="n">roc_auc_score</span>
 <span class="n">iris_df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;iris&#39;</span><span class="p">)</span>
@@ -499,10 +499,15 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
-    <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span>
-                                <span class="o">^</span>
-<span class="ne">SyntaxError</span>: trailing comma not allowed without surrounding parentheses
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">roc_auc_score</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">iris_df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;iris&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;classification_report&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -585,7 +590,7 @@ Bayes = most probable</p>
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">iris_df</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="n">target_var</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
+<span class="ne">NameError</span>: name &#39;iris_df&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -622,7 +627,7 @@ Bayes = most probable</p>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>                                                     <span class="n">iris_df</span><span class="p">[</span><span class="n">target_var</span><span class="p">],</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>                                                     <span class="n">random_state</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;train_test_split&#39; is not defined
+<span class="ne">NameError</span>: name &#39;iris_df&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -721,16 +726,6 @@ compatible.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">gnb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;GaussianNB&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <p>At this point the object is not very interesting</p>
 <div class="cell docutils container">
@@ -740,12 +735,7 @@ compatible.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">gnb</span><span class="o">.</span><span class="vm">__dict__</span>
-
-<span class="ne">NameError</span>: name &#39;gnb&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;priors&#39;: None, &#39;var_smoothing&#39;: 1e-09}
 </pre></div>
 </div>
 </div>
@@ -763,7 +753,7 @@ compatible.</p>
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">gnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;gnb&#39; is not defined
+<span class="ne">NameError</span>: name &#39;X_train&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -778,12 +768,7 @@ distributions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">gnb</span><span class="o">.</span><span class="vm">__dict__</span>
-
-<span class="ne">NameError</span>: name &#39;gnb&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;priors&#39;: None, &#39;var_smoothing&#39;: 1e-09}
 </pre></div>
 </div>
 </div>
@@ -803,7 +788,7 @@ distributions.</p>
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">gnb</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;gnb&#39; is not defined
+<span class="ne">NameError</span>: name &#39;X_test&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -825,7 +810,7 @@ distributions.</p>
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;gnb&#39; is not defined
+<span class="ne">NameError</span>: name &#39;X_test&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -866,7 +851,7 @@ integer index even if that is not the actual index of the DataFrame</p>
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">gnb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="ne">NameError</span>: name &#39;gnb&#39; is not defined
+<span class="ne">NameError</span>: name &#39;X_test&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -902,7 +887,7 @@ integer index even if that is not the actual index of the DataFrame</p>
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">gnb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">])</span>
 
-<span class="ne">NameError</span>: name &#39;gnb&#39; is not defined
+<span class="ne">NameError</span>: name &#39;X_test&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -920,7 +905,7 @@ integer index even if that is not the actual index of the DataFrame</p>
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">gnb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;gnb&#39; is not defined
+<span class="ne">NameError</span>: name &#39;X_test&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -934,11 +919,28 @@ integer index even if that is not the actual index of the DataFrame</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="ne">NotFittedError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">gnb</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mf">5.1</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">]])</span>
 
-<span class="ne">NameError</span>: name &#39;gnb&#39; is not defined
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/sklearn/naive_bayes.py:100,</span> in <span class="ni">_BaseNB.predict</span><span class="nt">(self, X)</span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span> <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">87</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">88</span><span class="sd">     Perform classification on an array of test vectors X.</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span><span class="sd">         Predicted target values for X.</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">100</span>     <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span>     <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_X</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span>     <span class="n">jll</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_joint_log_likelihood</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/sklearn/utils/validation.py:1461,</span> in <span class="ni">check_is_fitted</span><span class="nt">(estimator, attributes, msg, all_or_any)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1458</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> is not an estimator instance.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">estimator</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1460</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_is_fitted</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">all_or_any</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1461</span>     <span class="k">raise</span> <span class="n">NotFittedError</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="nb">type</span><span class="p">(</span><span class="n">estimator</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">})</span>
+
+<span class="ne">NotFittedError</span>: This GaussianNB instance is not fitted yet. Call &#39;fit&#39; with appropriate arguments before using this estimator.
 </pre></div>
 </div>
 </div>
@@ -958,7 +960,7 @@ integer index even if that is not the actual index of the DataFrame</p>
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;confusion_matrix&#39; is not defined
+<span class="ne">NameError</span>: name &#39;y_test&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -976,13 +978,13 @@ integer index even if that is not the actual index of the DataFrame</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">n_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">gnb</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">prediction_labels</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;predicted class&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">n_classes</span><span class="p">,</span> <span class="n">gnb</span><span class="o">.</span><span class="n">classes_</span><span class="p">]</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">actual_labels</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;true class&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">n_classes</span><span class="p">,</span> <span class="n">gnb</span><span class="o">.</span><span class="n">classes_</span><span class="p">]</span>
 
-<span class="ne">NameError</span>: name &#39;gnb&#39; is not defined
+<span class="ne">AttributeError</span>: &#39;GaussianNB&#39; object has no attribute &#39;classes_&#39;
 </pre></div>
 </div>
 </div>
@@ -1006,14 +1008,14 @@ integer index even if that is not the actual index of the DataFrame</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">conf12</span> <span class="o">=</span> <span class="n">conf_mat</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
 
-<span class="ne">NameError</span>: name &#39;gnb&#39; is not defined
+<span class="ne">AttributeError</span>: &#39;GaussianNB&#39; object has no attribute &#39;classes_&#39;
 </pre></div>
 </div>
 </div>
@@ -1063,16 +1065,16 @@ integer index even if that is not the actual index of the DataFrame</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">gnb_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">th</span><span class="p">,</span> <span class="n">sig</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="n">N</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>                  <span class="k">for</span> <span class="n">th</span><span class="p">,</span> <span class="n">sig</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">gnb</span><span class="o">.</span><span class="n">theta_</span><span class="p">,</span><span class="n">gnb</span><span class="o">.</span><span class="n">var_</span><span class="p">)]),</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">gnb_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">th</span><span class="p">,</span> <span class="n">sig</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="n">N</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>                  <span class="k">for</span> <span class="n">th</span><span class="p">,</span> <span class="n">sig</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">gnb</span><span class="o">.</span><span class="n">theta_</span><span class="p">,</span><span class="n">gnb</span><span class="o">.</span><span class="n">var_</span><span class="p">)]),</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span>                  <span class="n">columns</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">feature_names_in_</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">gnb_df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">ci</span> <span class="k">for</span> <span class="n">cl</span> <span class="ow">in</span> <span class="p">[[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="n">N</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">gnb</span><span class="o">.</span><span class="n">classes_</span><span class="p">]</span> <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">cl</span><span class="p">]</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">gnb_df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;species&#39;</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
+<span class="ne">AttributeError</span>: &#39;GaussianNB&#39; object has no attribute &#39;theta_&#39;
 </pre></div>
 </div>
 </div>
@@ -1111,7 +1113,7 @@ as list of lists.</p>
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">27</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">gnb</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;gnb&#39; is not defined
+<span class="ne">NameError</span>: name &#39;X_test&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1147,7 +1149,7 @@ as list of lists.</p>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># add the predictions</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">prob_df</span><span class="p">[</span><span class="s1">&#39;predicted_species&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_pred</span>
 
-<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
+<span class="ne">NameError</span>: name &#39;X_test&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1176,7 +1178,7 @@ as list of lists.</p>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">prob_df_melted</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;species&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;probability&#39;</span> <span class="p">,</span><span class="n">col</span> <span class="o">=</span><span class="s1">&#39;i,true&#39;</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>             <span class="n">col_wrap</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;species&#39;</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
+<span class="ne">NameError</span>: name &#39;prob_df_melted&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1194,16 +1196,10 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">30</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">corner_data</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/rhodyprog4ds/06-naive-bayes/f425ba121cc0c4dd8bcaa7ebb2ff0b40b0b03bff/data/dataset6.csv&#39;</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df6</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">corner_data</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df6</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;char&#39;</span><span class="p">,</span><span class="n">hue_order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">])</span>
-
-<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fd5d27a4f10&gt;
 </pre></div>
 </div>
+<img alt="../_images/f873423b5a1eae89748911b893ba6b7b9f19f75c052aa2fc00a4b598783728c3.png" src="../_images/f873423b5a1eae89748911b893ba6b7b9f19f75c052aa2fc00a4b598783728c3.png" />
 </div>
 </div>
 <p>As we can see in this dataset, these classes are quite separated.</p>
@@ -1212,18 +1208,6 @@ as list of lists.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df6</span><span class="p">[[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">]],</span>
                           <span class="n">df6</span><span class="p">[</span><span class="s1">&#39;char&#39;</span><span class="p">],</span>
                           <span class="n">random_state</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">31</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df6</span><span class="p">[[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">]],</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>                           <span class="n">df6</span><span class="p">[</span><span class="s1">&#39;char&#39;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>                           <span class="n">random_state</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;train_test_split&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1237,14 +1221,7 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">32</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">gnb_corners</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">gnb_corners</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">gnb_corners</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;GaussianNB&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.72
 </pre></div>
 </div>
 </div>
@@ -1264,36 +1241,16 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">33</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">gnb_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">th</span><span class="p">,</span> <span class="n">sig</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">N</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>          <span class="k">for</span> <span class="n">th</span><span class="p">,</span> <span class="n">sig</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">gnb_corners</span><span class="o">.</span><span class="n">theta_</span><span class="p">,</span><span class="n">gnb_corners</span><span class="o">.</span><span class="n">var_</span><span class="p">)]),</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>          <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">gnb_df</span><span class="p">[</span><span class="s1">&#39;char&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">ci</span> <span class="k">for</span> <span class="n">cl</span> <span class="ow">in</span> <span class="p">[[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="n">N</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">gnb_corners</span><span class="o">.</span><span class="n">classes_</span><span class="p">]</span> <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">cl</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">gnb_df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;char&#39;</span><span class="p">,</span><span class="n">hue_order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">])</span>
-
-<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fd5d25076d0&gt;
 </pre></div>
 </div>
+<img alt="../_images/263aa46fca72c4d3f0178d86de904c581d67f3083360cd8225b62ef376c29f37.png" src="../_images/263aa46fca72c4d3f0178d86de904c581d67f3083360cd8225b62ef376c29f37.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df6_pred</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">df6_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gnb_corners</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">34</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df6_pred</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">df6_pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gnb_corners</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;X_test&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1305,14 +1262,10 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">35</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">df6_pred</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span><span class="s1">&#39;pred&#39;</span><span class="p">,</span> <span class="n">hue_order</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">])</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fd5c6f00dc0&gt;
 </pre></div>
 </div>
+<img alt="../_images/5f1a84ec55676e8362b3c9cfe6d203099c8ca065ba193dc99fc22f4c3fe15375.png" src="../_images/5f1a84ec55676e8362b3c9cfe6d203099c8ca065ba193dc99fc22f4c3fe15375.png" />
 </div>
 </div>
 <p>This does not look much like the data and it’s hard to tell which is higher at any given point in the 2D space.  We know though, that it has missed the mark. We can also look at the actual predictions.</p>
@@ -1340,14 +1293,7 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">36</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">dt</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">dt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">dt</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;tree&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
 </pre></div>
 </div>
 </div>
@@ -1363,16 +1309,7 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">37</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">tree</span><span class="o">.</span><span class="n">plot_tree</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">rounded</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>       <span class="n">proportion</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filled</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">impurity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
-
-<span class="ne">NameError</span>: name &#39;plt&#39; is not defined
-</pre></div>
-</div>
+<img alt="../_images/43d65706ae214cd60b8bcf3e0c428f35aaf0315e70b17ad404df8c79234adba1.png" src="../_images/43d65706ae214cd60b8bcf3e0c428f35aaf0315e70b17ad404df8c79234adba1.png" />
 </div>
 </div>
 <p>On the iris dataset, the <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/tree/plot_iris_dtc.html">sklearn docs include a diagram showing the decision boundary</a> You should be able to modify this for another classifier.</p>
@@ -1390,14 +1327,7 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">38</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">dt2</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">dt2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">dt2</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;tree&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.74
 </pre></div>
 </div>
 </div>
@@ -1411,16 +1341,7 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">39</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">tree</span><span class="o">.</span><span class="n">plot_tree</span><span class="p">(</span><span class="n">dt2</span><span class="p">,</span> <span class="n">rounded</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>       <span class="n">proportion</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filled</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">impurity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
-
-<span class="ne">NameError</span>: name &#39;plt&#39; is not defined
-</pre></div>
-</div>
+<img alt="../_images/48b38080d6227675f9e3c425d2c0921af0c2b788330fe717ac5b9ab1fedbc33c.png" src="../_images/48b38080d6227675f9e3c425d2c0921af0c2b788330fe717ac5b9ab1fedbc33c.png" />
 </div>
 </div>
 </section>
@@ -1464,13 +1385,7 @@ mostly now just get bigger and bigger datasets.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">40</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">gnb_ex</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">type</span><span class="p">(</span><span class="n">gnb_ex</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;GaussianNB&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sklearn.naive_bayes.GaussianNB
 </pre></div>
 </div>
 </div>
@@ -1539,11 +1454,38 @@ Above I included the Decision Tree example, so you can see a classifer that does
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="ne">NotFittedError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">43</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">gnb</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;gnb&#39; is not defined
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/sklearn/base.py:706,</span> in <span class="ni">ClassifierMixin.score</span><span class="nt">(self, X, y, sample_weight)</span>
+<span class="g g-Whitespace">    </span><span class="mi">681</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">682</span><span class="sd"> Return the mean accuracy on the given test data and labels.</span>
+<span class="g g-Whitespace">    </span><span class="mi">683</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span><span class="sd">     Mean accuracy of ``self.predict(X)`` w.r.t. `y`.</span>
+<span class="g g-Whitespace">    </span><span class="mi">703</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span> <span class="kn">from</span> <span class="nn">.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="ne">--&gt; </span><span class="mi">706</span> <span class="k">return</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">sample_weight</span><span class="o">=</span><span class="n">sample_weight</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/sklearn/naive_bayes.py:100,</span> in <span class="ni">_BaseNB.predict</span><span class="nt">(self, X)</span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span> <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">87</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">88</span><span class="sd">     Perform classification on an array of test vectors X.</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span><span class="sd">         Predicted target values for X.</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">100</span>     <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span>     <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_X</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span>     <span class="n">jll</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_joint_log_likelihood</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/sklearn/utils/validation.py:1461,</span> in <span class="ni">check_is_fitted</span><span class="nt">(estimator, attributes, msg, all_or_any)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1458</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> is not an estimator instance.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">estimator</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1460</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_is_fitted</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">all_or_any</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1461</span>     <span class="k">raise</span> <span class="n">NotFittedError</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="nb">type</span><span class="p">(</span><span class="n">estimator</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">})</span>
+
+<span class="ne">NotFittedError</span>: This GaussianNB instance is not fitted yet. Call &#39;fit&#39; with appropriate arguments before using this estimator.
 </pre></div>
 </div>
 </div>
