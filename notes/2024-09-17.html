@@ -186,6 +186,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2024-10-10.html">12. ML Models and Auditing with AIF360</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-10-17.html">13. Classification Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-10-22.html">14. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-24.html">15. Kmeans algorithm</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -196,6 +197,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../assignments/05-construct.html">5. Assignment 5: Constructing Datasets and Using Databases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/06-evaluate.html">6. Assignment 6: Auditing Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/07-classification.html">7. Assignment 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/08-clustering.html">8. Assignment 8: Clustering</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
 <ul class="nav bd-sidenav">
@@ -654,54 +656,54 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th>11815</th>
-      <td>1988</td>
-      <td>Vistra</td>
+      <th>10220</th>
+      <td>1986</td>
+      <td>Shell</td>
       <td>Investor-owned Company</td>
-      <td>Lignite Coal</td>
-      <td>26.399347</td>
-      <td>Million tonnes/yr</td>
-      <td>35.354272</td>
+      <td>Natural Gas</td>
+      <td>2635.749200</td>
+      <td>Bcf/yr</td>
+      <td>192.120788</td>
     </tr>
     <tr>
-      <th>7291</th>
-      <td>1958</td>
-      <td>ONGC India</td>
-      <td>State-owned Entity</td>
+      <th>12094</th>
+      <td>1935</td>
+      <td>Westmoreland Mining</td>
+      <td>Investor-owned Company</td>
+      <td>Sub-Bituminous Coal</td>
+      <td>2.183116</td>
+      <td>Million tonnes/yr</td>
+      <td>4.407908</td>
+    </tr>
+    <tr>
+      <th>1115</th>
+      <td>1997</td>
+      <td>BHP</td>
+      <td>Investor-owned Company</td>
       <td>Oil &amp; NGL</td>
-      <td>3.258000</td>
+      <td>81.962500</td>
       <td>Million bbl/yr</td>
-      <td>1.299218</td>
+      <td>32.684833</td>
     </tr>
     <tr>
-      <th>7458</th>
-      <td>2016</td>
-      <td>Orlen</td>
+      <th>4032</th>
+      <td>2009</td>
+      <td>EOG Resources</td>
       <td>Investor-owned Company</td>
       <td>Natural Gas</td>
-      <td>175.407320</td>
+      <td>600.425000</td>
       <td>Bcf/yr</td>
-      <td>12.785508</td>
+      <td>43.765213</td>
     </tr>
     <tr>
-      <th>1485</th>
-      <td>1980</td>
-      <td>British Coal Corporation</td>
-      <td>State-owned Entity</td>
-      <td>Bituminous Coal</td>
-      <td>126.600000</td>
+      <th>351</th>
+      <td>1933</td>
+      <td>Anglo American</td>
+      <td>Investor-owned Company</td>
+      <td>Thermal Coal</td>
+      <td>3.803760</td>
       <td>Million tonnes/yr</td>
-      <td>343.610001</td>
-    </tr>
-    <tr>
-      <th>9187</th>
-      <td>2001</td>
-      <td>QatarEnergy</td>
-      <td>State-owned Entity</td>
-      <td>Natural Gas</td>
-      <td>751.503200</td>
-      <td>Bcf/yr</td>
-      <td>54.777362</td>
+      <td>9.012737</td>
     </tr>
   </tbody>
 </table>
@@ -1098,59 +1100,59 @@ Name: count, dtype: int64
   </thead>
   <tbody>
     <tr>
-      <th>5580</th>
-      <td>2014</td>
-      <td>Kazakhstan</td>
+      <th>7813</th>
+      <td>2001</td>
+      <td>Pemex</td>
+      <td>State-owned Entity</td>
+      <td>Oil &amp; NGL</td>
+      <td>1299.400000</td>
+      <td>Million bbl/yr</td>
+      <td>518.171999</td>
+      <td>Oil &amp; NGL</td>
+    </tr>
+    <tr>
+      <th>11245</th>
+      <td>2003</td>
+      <td>Syrian Petroleum</td>
+      <td>State-owned Entity</td>
+      <td>Oil &amp; NGL</td>
+      <td>112.561800</td>
+      <td>Million bbl/yr</td>
+      <td>44.887158</td>
+      <td>Oil &amp; NGL</td>
+    </tr>
+    <tr>
+      <th>4479</th>
+      <td>1993</td>
+      <td>ExxonMobil</td>
+      <td>Investor-owned Company</td>
+      <td>Natural Gas</td>
+      <td>3808.775000</td>
+      <td>Bcf/yr</td>
+      <td>277.623097</td>
+      <td>Natural Gas</td>
+    </tr>
+    <tr>
+      <th>4594</th>
+      <td>1911</td>
+      <td>Former Soviet Union</td>
       <td>Nation State</td>
-      <td>Sub-Bituminous Coal</td>
-      <td>7.059359</td>
+      <td>Anthracite Coal</td>
+      <td>0.905044</td>
       <td>Million tonnes/yr</td>
-      <td>14.253485</td>
+      <td>2.640635</td>
       <td>Coal</td>
     </tr>
     <tr>
-      <th>11002</th>
-      <td>1992</td>
-      <td>Southwestern Energy</td>
-      <td>Investor-owned Company</td>
-      <td>Natural Gas</td>
-      <td>25.800000</td>
-      <td>Bcf/yr</td>
-      <td>1.880572</td>
-      <td>Natural Gas</td>
-    </tr>
-    <tr>
-      <th>5793</th>
-      <td>1965</td>
-      <td>Kuwait Petroleum Corp.</td>
-      <td>State-owned Entity</td>
-      <td>Oil &amp; NGL</td>
-      <td>86.140000</td>
-      <td>Million bbl/yr</td>
-      <td>34.350728</td>
-      <td>Oil &amp; NGL</td>
-    </tr>
-    <tr>
-      <th>6662</th>
-      <td>2022</td>
-      <td>Nigerian National Petroleum Corp.</td>
-      <td>State-owned Entity</td>
-      <td>Natural Gas</td>
-      <td>1565.000000</td>
-      <td>Bcf/yr</td>
-      <td>114.073461</td>
-      <td>Natural Gas</td>
-    </tr>
-    <tr>
-      <th>8336</th>
-      <td>2009</td>
-      <td>Petroleos de Venezuela</td>
-      <td>State-owned Entity</td>
-      <td>Natural Gas</td>
-      <td>830.000000</td>
-      <td>Bcf/yr</td>
-      <td>60.499024</td>
-      <td>Natural Gas</td>
+      <th>9550</th>
+      <td>1994</td>
+      <td>Russian Federation</td>
+      <td>Nation State</td>
+      <td>Lignite Coal</td>
+      <td>59.067002</td>
+      <td>Million tonnes/yr</td>
+      <td>79.103127</td>
+      <td>Coal</td>
     </tr>
   </tbody>
 </table>

@@ -1,0 +1,1586 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>15. Kmeans algorithm &#8212; Programming for Data Science at URI Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course-admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2024-10-24';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Assignment 1: Setup, Syllabus, and Review" href="../assignments/01-setup.html" />
+    <link rel="prev" title="14. Clustering" href="2024-10-22.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/310_2021.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/310_2021.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/tools.html">Tools and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/achievements.html">Data Science Achievements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Grading Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/style.html">Course  Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_resources.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_statements.html">General URI Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/communication.html">Communications &amp; Office Hours</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2024-09-05.html">1. Welcome &amp; What is Data Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-10.html">2. Iterables and Pandas Data Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-12.html">3. Pandas Data Frames and More Iterable Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-17.html">4. Exploratory Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-19.html">5. Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-24.html">6. Cleaning Data - Structure</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="2024-09-26.html">8. Fixing Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-01.html">9. Webscraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-03.html">10. Merging Data &amp; Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-08.html">11. Evaluating ML Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-10.html">12. ML Models and Auditing with AIF360</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-17.html">13. Classification Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-22.html">14. Clustering</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">15. Kmeans algorithm</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../assignments/01-setup.html">1. Assignment 1: Setup, Syllabus, and Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/02-python-access.html">2. Assignment 2: Practicing Python and Accessing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/03-eda.html">3. Assignment 3: Exploratory Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/04-prepare.html">4. Assignment 4: Cleaning Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/05-construct.html">5. Assignment 5: Constructing Datasets and Using Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/06-evaluate.html">6. Assignment 6: Auditing Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/07-classification.html">7. Assignment 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/08-clustering.html">8. Assignment 8: Clustering</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/index.html">Deepening your knowledge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/formatting.html">Formatting Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/extensions.html">Generic Extension Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/altforms.html">Alternatives to Extending Assignments for Level 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/process.html">Process Level 3</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/syllabus.html">Syllabus and Grading FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/github.html">Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/debugging.html">Code Errors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/python.html">References on Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/datasets.html">Data Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/tips.html">General Tips and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/learning.html">How to Study in this class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/gettinghelp.html">Getting Help with Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/terminal.html">Terminals and Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/organization.html">Getting Organized for class</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">Advice from FA2020 Students</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">Advice from FA2021 Students</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24/edit/main/notes/2024-10-24.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24/issues/new?title=Issue%20on%20page%20%2Fnotes/2024-10-24.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notes/2024-10-24.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Kmeans algorithm</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-kmeans-work">15.1. How does Kmeans work?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">15.2. Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-the-algorithm">15.3. Initializing the algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-step">15.4. Assignment step</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-the-means">15.5. Updating the means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterating-to-completion">15.6. Iterating to completion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-metrics">15.7. More metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">15.8. Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-if-we-do-not-know-how-many-clusters-there-are">15.8.1. what happens if we do not know how many clusters there are?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-the-difference-between-synthetic-data-and-data-from-the-gaussian-machine-learning-model">15.8.2. what’s the difference between synthetic data and data from the gaussian machine learning model.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-clustering-algorithms-relate-the-data-to-the-desired-output-is-it-pureley-for-humans-to-be-able-to-understand-what-the-data-is-or-is-there-some-deeper-systems-going-on">15.8.3. How do clustering algorithms relate the data to the desired output. is it pureley for humans to be able to understand what the data is or is there some deeper systems going on.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-real-world-example-of-this-algorithm">15.8.4. What is a real world example of this algorithm?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-there-ever-a-case-where-the-elbow-of-the-score-and-cluster-graph-is-not-the-best-number-of-clusters-for-a-dataset">15.8.5. is there ever a case where the elbow of the score and cluster graph is not the best number of clusters for a dataset</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="kmeans-algorithm">
+<h1><span class="section-number">15. </span>Kmeans algorithm<a class="headerlink" href="#kmeans-algorithm" title="Permalink to this headline">#</a></h1>
+<p>Computationally, this is a harder problem.  Mathematically, we can
+typically solve problems when we have a number of equations equal to or greater
+than the number of unknowns.  For <span class="math notranslate nohighlight">\(N\)</span> data points ind <span class="math notranslate nohighlight">\(d\)</span> dimensions and <span class="math notranslate nohighlight">\(K\)</span> clusters, we have <span class="math notranslate nohighlight">\(N\)</span>
+equations and <span class="math notranslate nohighlight">\(N + K*d\)</span> unknowns. This means we have a harder problem to solve.</p>
+<p>Clustering is a stochastic (random) algorithm, so it can be a little harder to debug the models and measure performance.  For this reason, we are going to look a little more closely at what it actually <em>does</em> than we did with classification.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">itertools</span> <span class="k">as</span> <span class="nn">it</span>
+<span class="kn">import</span> <span class="nn">imageio.v3</span> <span class="k">as</span> <span class="nn">iio</span>
+
+<span class="c1"># set global random seed so that the notes are the same each time the site builds</span>
+<span class="n">rand_seed</span> <span class="o">=</span><span class="mi">103</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">rand_seed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="how-does-kmeans-work">
+<h2><span class="section-number">15.1. </span>How does Kmeans work?<a class="headerlink" href="#how-does-kmeans-work" title="Permalink to this headline">#</a></h2>
+<p>We will start with some synthetics data and then see how the clustering works.</p>
+<p>This code should be fairly readable, but is not strictly required.
+One tricky part is <a class="reference external" href="https://docs.python.org/3.9/library/functions.html#zip"><code class="docutils literal notranslate"><span class="pre">zip</span></code></a> which is a builtin fuction for iteratinv over groups of things together.</p>
+<p>And <a class="reference external" href="https://docs.python.org/3/library/itertools.html"><code class="docutils literal notranslate"><span class="pre">itertools</span></code></a> is a core library for related more iterating.</p>
+<p>One way to understand this block of code is to try changing the parameters (the top section) and see how they effect the plots.  The <code class="docutils literal notranslate"><span class="pre">var</span></code> and <code class="docutils literal notranslate"><span class="pre">spacing</span></code> will have the most impact on the clustering performance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ------ Set paramters, change these to adjust the sample</span>
+<span class="c1"># number of classes (groups)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="c1"># number of dimensions of the features</span>
+<span class="n">D</span><span class="o">=</span><span class="mi">2</span>
+<span class="c1"># number of samples</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="c1"># minimum of the means</span>
+<span class="n">offset</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="c1"># distance between means</span>
+<span class="n">spacing</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="c1"># set the variance of the blobs</span>
+<span class="n">var</span> <span class="o">=</span> <span class="mf">.25</span>
+
+<span class="c1"># ------ Get the class labels</span>
+<span class="c1"># choose the first C uppcase letters using the builtin string class</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span><span class="p">[:</span><span class="n">C</span><span class="p">])</span>
+
+<span class="c1"># ----- Pick some means</span>
+<span class="c1"># get the number of grid locations needed</span>
+<span class="n">G</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">C</span><span class="p">)))</span>
+
+<span class="c1"># get the locations for each axis</span>
+<span class="n">grid_locs</span> <span class="o">=</span> <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span><span class="n">offset</span><span class="o">+</span><span class="n">G</span><span class="o">*</span><span class="n">spacing</span><span class="p">,</span><span class="n">G</span><span class="p">)</span>
+
+<span class="c1"># compute grid (i,j) for each combination of values above &amp; keep C values</span>
+<span class="n">means</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">it</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">grid_locs</span><span class="p">,</span><span class="n">grid_locs</span><span class="p">)][:</span><span class="n">C</span><span class="p">]</span>
+
+<span class="c1"># store in dictionary with class labels</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span><span class="n">means</span><span class="p">)}</span>
+
+
+<span class="c1"># ----- Sample the data</span>
+<span class="c1">#randomly choose a class for each point, with equal probability</span>
+<span class="n">clusters_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="c1"># draw a random point according to the means from above for each point</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mu</span><span class="p">[</span><span class="n">c</span><span class="p">],</span> <span class="n">var</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">D</span><span class="p">))</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">clusters_true</span><span class="p">]</span>
+
+<span class="c1"># ----- Store in a dataframe</span>
+<span class="c1"># rounding to make display neater later</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">D</span><span class="p">)])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># add true cluster</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;true_cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clusters_true</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This gives us a small dataframe with 2 features (<code class="docutils literal notranslate"><span class="pre">D=2</span></code>) and four clusters (<code class="docutils literal notranslate"><span class="pre">C=4</span></code>).</p>
+<p>We can see the data with the labels</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;true_cluster&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f876f358730&gt;
+</pre></div>
+</div>
+<img alt="../_images/a6f6be7ca00d51d8db89655a3234c5b85f62565b7fc8c9d52e41aec61524cd4d.png" src="../_images/a6f6be7ca00d51d8db89655a3234c5b85f62565b7fc8c9d52e41aec61524cd4d.png" />
+</div>
+</div>
+<p>this is what the clustering algorithm wil see:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f87945c2c70&gt;
+</pre></div>
+</div>
+<img alt="../_images/5ca4863b28837562656f140ecae99344cb37dd19c97ae51f3326371f071e423c.png" src="../_images/5ca4863b28837562656f140ecae99344cb37dd19c97ae51f3326371f071e423c.png" />
+</div>
+</div>
+</section>
+<section id="setup">
+<h2><span class="section-number">15.2. </span>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
+<p>First we will make a variable that we can use to pick out the feature columns</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and we will set a constant as our itertion number</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, we’ll set up some helper code.</p>
+<p>For more on <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.color_palette.html">color palettes</a> see the seaborn docs</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mu_to_df</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="n">mu_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">])</span>
+    <span class="n">mu_df</span><span class="p">[</span><span class="s1">&#39;iteration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">mu_df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">)]</span>
+    <span class="n">mu_df</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;mu&#39;</span>
+    <span class="k">return</span> <span class="n">mu_df</span>
+
+<span class="n">cmap_pt</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">&#39;tab20&#39;</span><span class="p">,</span><span class="mi">8</span><span class="p">)[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">cmap_mu</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">&#39;tab20&#39;</span><span class="p">,</span><span class="mi">8</span><span class="p">)[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can see that this whole color pallete is paired colors, and what the <code class="docutils literal notranslate"><span class="pre">cmap_pt</span></code> and <code class="docutils literal notranslate"><span class="pre">cmap_mu</span></code> do is take odd and even subsets of the palette into two separate palettes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">&#39;tab20&#39;</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><svg  width="440" height="55"><rect x="0" y="0" width="55" height="55" style="fill:#1f77b4;stroke-width:2;stroke:rgb(255,255,255)"/><rect x="55" y="0" width="55" height="55" style="fill:#aec7e8;stroke-width:2;stroke:rgb(255,255,255)"/><rect x="110" y="0" width="55" height="55" style="fill:#ff7f0e;stroke-width:2;stroke:rgb(255,255,255)"/><rect x="165" y="0" width="55" height="55" style="fill:#ffbb78;stroke-width:2;stroke:rgb(255,255,255)"/><rect x="220" y="0" width="55" height="55" style="fill:#2ca02c;stroke-width:2;stroke:rgb(255,255,255)"/><rect x="275" y="0" width="55" height="55" style="fill:#98df8a;stroke-width:2;stroke:rgb(255,255,255)"/><rect x="330" y="0" width="55" height="55" style="fill:#d62728;stroke-width:2;stroke:rgb(255,255,255)"/><rect x="385" y="0" width="55" height="55" style="fill:#ff9896;stroke-width:2;stroke:rgb(255,255,255)"/></svg></div></div>
+</div>
+</section>
+<section id="initializing-the-algorithm">
+<h2><span class="section-number">15.3. </span>Initializing the algorithm<a class="headerlink" href="#initializing-the-algorithm" title="Permalink to this headline">#</a></h2>
+<p>Kmeans starts by setting <code class="docutils literal notranslate"><span class="pre">K</span></code>, we will use 4, annd selecting hat number of random points to be the starting points as the means.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span><span class="mi">4</span>
+<span class="n">mu_0</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">K</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="n">mu_0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2.26, 2.17],
+       [6.81, 6.1 ],
+       [5.02, 5.52],
+       [5.27, 1.89]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>then we will use our helper function to  make this work</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_df</span> <span class="o">=</span> <span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu_0</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+<span class="n">mu_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x0</th>
+      <th>x1</th>
+      <th>iteration</th>
+      <th>class</th>
+      <th>type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.26</td>
+      <td>2.17</td>
+      <td>0</td>
+      <td>M0</td>
+      <td>mu</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>6.81</td>
+      <td>6.10</td>
+      <td>0</td>
+      <td>M1</td>
+      <td>mu</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5.02</td>
+      <td>5.52</td>
+      <td>0</td>
+      <td>M2</td>
+      <td>mu</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5.27</td>
+      <td>1.89</td>
+      <td>0</td>
+      <td>M3</td>
+      <td>mu</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can see what our algorithm knows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sfig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># plt.plot(mu[:,0],mu[:,1],marker=&#39;s&#39;,linewidth=0)</span>
+<span class="n">mu_df</span> <span class="o">=</span> <span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu_0</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">mu_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="n">cmap_mu</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">sfig</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># save the figure for later use:</span>
+<span class="n">sfig</span><span class="o">.</span><span class="n">get_figure</span><span class="p">()</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;kmeans00.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c99ebcd7552a10cbbb36c794a785468e201f75ebe156dda909115c792c5cf00b.png" src="../_images/c99ebcd7552a10cbbb36c794a785468e201f75ebe156dda909115c792c5cf00b.png" />
+</div>
+</div>
+<p>we have all the points, but no labels for them, and we have these 4 points as our means.</p>
+</section>
+<section id="assignment-step">
+<h2><span class="section-number">15.4. </span>Assignment step<a class="headerlink" href="#assignment-step" title="Permalink to this headline">#</a></h2>
+<p>Now, we will compute, for each sample which of those four points it is closest to
+first by taking the difference, squaring it, then summing along each row.</p>
+<p>To compute the distance we will first subtract from the mean:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span> <span class="n">mu_0</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x0    3.28
+x1    3.81
+Name: 0, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>then square each</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span> <span class="n">mu_0</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x0    10.7584
+x1    14.5161
+Name: 0, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>and sum</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span> <span class="n">mu_0</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.274500000000003
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we needed the right units on these distances, we would also <code class="docutils literal notranslate"><span class="pre">sqrt</span></code> but, we actually will just use the distances to figure out which mean is closes to the each point.  If <span class="math notranslate nohighlight">\(a &gt; b &gt; c\)</span> then <span class="math notranslate nohighlight">\(\sqrt{a} &gt; \sqrt{b} &gt; \sqrt{c}\)</span> so we do not need the sqrt to get the right end answer so we can save that step, which saves computation.</p>
+<p>we can do this fo all of the rows</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">-</span> <span class="n">mu_0</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      25.2745
+1      18.9709
+2      24.0228
+3      25.6577
+4      14.9060
+        ...   
+195     0.0320
+196    30.3400
+197     0.5657
+198     0.0968
+199    23.4785
+Length: 200, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>then we can do this for all four means:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[((</span><span class="n">df</span><span class="p">[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">-</span> <span class="n">mu_i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">mu_i</span> <span class="ow">in</span> <span class="n">mu_0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0      25.2745
+ 1      18.9709
+ 2      24.0228
+ 3      25.6577
+ 4      14.9060
+         ...   
+ 195     0.0320
+ 196    30.3400
+ 197     0.5657
+ 198     0.0968
+ 199    23.4785
+ Length: 200, dtype: float64,
+ 0       1.6273
+ 1      22.9293
+ 2       2.0674
+ 3       2.8085
+ 4      21.4418
+         ...   
+ 195    34.1938
+ 196     0.2610
+ 197    37.5037
+ 198    39.9754
+ 199     3.3553
+ Length: 200, dtype: float64,
+ 0       0.4820
+ 1       9.8804
+ 2       0.3145
+ 3       0.6730
+ 4       8.3257
+         ...   
+ 195    17.3585
+ 196     2.1677
+ 197    21.0640
+ 198    21.6253
+ 199     0.4372
+ Length: 200, dtype: float64,
+ 0      16.8010
+ 1      31.8698
+ 2      16.4957
+ 3      19.7280
+ 4      26.6877
+         ...   
+ 195     8.7785
+ 196    16.0565
+ 197     6.7138
+ 198    10.4365
+ 199    18.4882
+ Length: 200, dtype: float64]
+</pre></div>
+</div>
+</div>
+</div>
+<p>This gives us a list of 4 data DataFrames, one for each mean (mu), with one row
+for each point in the dataset with the distance from that point to the
+corresponding mean. We can concatenate these horizontally (<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>) these into one DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([((</span><span class="n">df</span><span class="p">[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">-</span> <span class="n">mu_i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">mu_i</span> <span class="ow">in</span> <span class="n">mu_0</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>25.2745</td>
+      <td>1.6273</td>
+      <td>0.4820</td>
+      <td>16.8010</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>18.9709</td>
+      <td>22.9293</td>
+      <td>9.8804</td>
+      <td>31.8698</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>24.0228</td>
+      <td>2.0674</td>
+      <td>0.3145</td>
+      <td>16.4957</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>25.6577</td>
+      <td>2.8085</td>
+      <td>0.6730</td>
+      <td>19.7280</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>14.9060</td>
+      <td>21.4418</td>
+      <td>8.3257</td>
+      <td>26.6877</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now we have one row per sample and one column per mean, with with the distance from that point to the mean. What we want is to calculate the assignment, which
+mean is closest, for each point.  Using <code class="docutils literal notranslate"><span class="pre">idxmin</span></code> with <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> we take the
+minimum across each row and returns the index (location) of that minimum.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([((</span><span class="n">df</span><span class="p">[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">-</span> <span class="n">mu_i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">mu_i</span> <span class="ow">in</span> <span class="n">mu_0</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      2
+1      2
+2      2
+3      2
+4      2
+      ..
+195    0
+196    1
+197    0
+198    0
+199    2
+Length: 200, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll save all of this in a column named <code class="docutils literal notranslate"><span class="pre">'0'</span></code>. Since it is our 0th iteration.</p>
+<p>This is called the <strong>assignment</strong> step.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([((</span><span class="n">df</span><span class="p">[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">-</span> <span class="n">mu_i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">mu_i</span> <span class="ow">in</span> <span class="n">mu_0</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>to see what we have:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x0</th>
+      <th>x1</th>
+      <th>true_cluster</th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.54</td>
+      <td>5.98</td>
+      <td>D</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.04</td>
+      <td>6.52</td>
+      <td>B</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5.38</td>
+      <td>5.95</td>
+      <td>D</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5.15</td>
+      <td>6.33</td>
+      <td>D</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.18</td>
+      <td>6.03</td>
+      <td>B</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>andd now we can re-plot, we still have the same means, but now we use the <code class="docutils literal notranslate"><span class="pre">'0'</span></code> column to give the points each a color.</p>
+<p>Now we can plot the data, save the axis, and plot the means on top of that.
+Seaborn plotting functions return an axis, by saving that to a variable, we
+can pass it to the <code class="docutils literal notranslate"><span class="pre">ax</span></code> parameter of another plotting function so that both
+plotting functions go on the same figure.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>this strategy of saving the plot axes to add an additional plot
+is a common way to make more complicated plots, something you might use for visualization level 3</p>
+</div>
+</aside>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sfig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="n">cmap_pt</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># plt.plot(mu[:,0],mu[:,1],marker=&#39;s&#39;,linewidth=0)</span>
+<span class="n">mu_df</span> <span class="o">=</span> <span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu_0</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">mu_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="n">cmap_mu</span><span class="p">,</span>
+                <span class="n">ax</span><span class="o">=</span><span class="n">sfig</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">sfig</span><span class="o">.</span><span class="n">get_figure</span><span class="p">()</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;kmeans01.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5e7cf7e7e624701c7ca30040452ec68955bf37bea01e937891d205b39fcf2f83.png" src="../_images/5e7cf7e7e624701c7ca30040452ec68955bf37bea01e937891d205b39fcf2f83.png" />
+</div>
+</div>
+<p>We see that each point is assigned to the lighter shade of its matching mean.
+These points are the one that is closest to each point, but they’re not the
+centers of the point clouds.
+Now, we can compute new means of the points assigned to each cluster, using
+groupby.</p>
+</section>
+<section id="updating-the-means">
+<h2><span class="section-number">15.5. </span>Updating the means<a class="headerlink" href="#updating-the-means" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can plot these again, the same data, but with the new means.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">mu_df</span> <span class="o">=</span> <span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu_1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sfig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="n">cmap_pt</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">mu_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="n">cmap_mu</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">sfig</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">sfig</span><span class="o">.</span><span class="n">get_figure</span><span class="p">()</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;kmeans02.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/127e5a3ba4a8b9506f5473ad56249cd912af8cd75ad24c0135d1db8680f31048.png" src="../_images/127e5a3ba4a8b9506f5473ad56249cd912af8cd75ad24c0135d1db8680f31048.png" />
+</div>
+</div>
+<p>We see that now the means are in the center of each cluster, but that there are
+now points in one color that are assigned to other clusters.</p>
+<p>So, again we can update the assignments.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span><span class="o">=</span><span class="mi">1</span> <span class="c1">#increment </span>
+<span class="n">df</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([((</span><span class="n">df</span><span class="p">[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">-</span><span class="n">mu_i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">mu_i</span> <span class="ow">in</span> <span class="n">mu_1</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x0</th>
+      <th>x1</th>
+      <th>true_cluster</th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.54</td>
+      <td>5.98</td>
+      <td>D</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.04</td>
+      <td>6.52</td>
+      <td>B</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5.38</td>
+      <td>5.95</td>
+      <td>D</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5.15</td>
+      <td>6.33</td>
+      <td>D</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.18</td>
+      <td>6.03</td>
+      <td>B</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>And plot again:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sfig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">palette</span><span class="o">=</span><span class="n">cmap_pt</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># plt.plot(mu[:,0],mu[:,1],marker=&#39;s&#39;,linewidth=0)</span>
+<span class="n">mu_df</span> <span class="o">=</span> <span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu_1</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">mu_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="n">cmap_mu</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">sfig</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sfig</span><span class="o">.</span><span class="n">get_figure</span><span class="p">()</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;kmeans03.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b3bdda43c8bda7f763937c2b641e4e6ff08421f9ed85ad031b46487bc577a1ca.png" src="../_images/b3bdda43c8bda7f763937c2b641e4e6ff08421f9ed85ad031b46487bc577a1ca.png" />
+</div>
+</div>
+<p>we see it improves by the means moved to the center of each color.</p>
+</section>
+<section id="iterating-to-completion">
+<h2><span class="section-number">15.6. </span>Iterating to completion<a class="headerlink" href="#iterating-to-completion" title="Permalink to this headline">#</a></h2>
+<p>If we keep going back and forth like this, eventually, the assignment step will
+not change any assignments. We call this condition convergence. We can
+implement the algorithm with a while loop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu_0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu_1</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span>
+<span class="n">cur_old</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cur_new</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">mu_1</span>
+<span class="n">number_changed_assignments</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">cur_old</span><span class="p">]</span> <span class="o">!=</span><span class="n">df</span><span class="p">[</span><span class="n">cur_new</span><span class="p">])</span>
+<span class="k">while</span> <span class="n">number_changed_assignments</span> <span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+    <span class="n">cur_old</span> <span class="o">=</span> <span class="n">cur_new</span>
+    <span class="n">i</span> <span class="o">+=</span><span class="mi">1</span>
+    <span class="n">cur_new</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="c1">#     update the means and plot with current generating assignments</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">cur_old</span><span class="p">)[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">mu_df</span> <span class="o">=</span> <span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">mu_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mu_df</span><span class="p">)</span>
+
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="c1"># plot with old assignments</span>
+    <span class="n">sfig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="n">cur_old</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="n">cmap_pt</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">mu_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="n">cmap_mu</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">sfig</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1">#  save image to combine into a gif for the notes (do not need to do this)</span>
+    <span class="n">file_num</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mi">2</span> <span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">sfig</span><span class="o">.</span><span class="n">get_figure</span><span class="p">()</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;kmeans&#39;</span> <span class="o">+</span><span class="n">file_num</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span><span class="p">)</span>
+    
+    
+    <span class="c1">#     update the assigments and plot with the associated means</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">cur_new</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([((</span><span class="n">df</span><span class="p">[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">-</span><span class="n">mu_i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">mu_i</span> <span class="ow">in</span> <span class="n">mu</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">sfig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="n">cur_new</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="n">cmap_pt</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">mu_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="n">cmap_mu</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">sfig</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1">#  save image to combine into a gif for the notes (do not need to do this)</span>
+    <span class="c1"># we are making 2 images per iteration</span>
+    <span class="n">file_num</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">sfig</span><span class="o">.</span><span class="n">get_figure</span><span class="p">()</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;kmeans&#39;</span> <span class="o">+</span><span class="n">file_num</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span><span class="p">)</span>
+    <span class="n">number_changed_assignments</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">cur_old</span><span class="p">]</span> <span class="o">!=</span><span class="n">df</span><span class="p">[</span><span class="n">cur_new</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;iteration &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iteration 2
+iteration 3
+</pre></div>
+</div>
+<img alt="../_images/0c3ac7921f40804d654f5bf0766fbcf27ee5490d45dd3f8c17b1917c1ce6b301.png" src="../_images/0c3ac7921f40804d654f5bf0766fbcf27ee5490d45dd3f8c17b1917c1ce6b301.png" />
+<img alt="../_images/f21d4f5fd49d3797c9a1697e267256cc40f30cb17981d7d4f5289396408f7d38.png" src="../_images/f21d4f5fd49d3797c9a1697e267256cc40f30cb17981d7d4f5289396408f7d38.png" />
+<img alt="../_images/a4e83e791c96fef9b753a793a5875ffa82caa65ded57813b73712b0b8249156f.png" src="../_images/a4e83e791c96fef9b753a793a5875ffa82caa65ded57813b73712b0b8249156f.png" />
+<img alt="../_images/a4e83e791c96fef9b753a793a5875ffa82caa65ded57813b73712b0b8249156f.png" src="../_images/a4e83e791c96fef9b753a793a5875ffa82caa65ded57813b73712b0b8249156f.png" />
+</div>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make a gif to load</span>
+<span class="c1"># write the file names</span>
+<span class="n">img_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;kmeans&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span><span class="s1">&#39;.png&#39;</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+<span class="c1">#  load the imges back</span>
+<span class="n">images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">iio</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_file</span><span class="p">)</span> <span class="k">for</span> <span class="n">img_file</span> <span class="ow">in</span> <span class="n">img_files</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># write as  gif</span>
+<span class="n">iio</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s1">&#39;kmeans&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">rand_seed</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.gif&#39;</span><span class="p">,</span> <span class="n">images</span><span class="p">,</span><span class="n">loop</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">duration</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="n">plugin</span><span class="o">=</span><span class="s1">&#39;pillow&#39;</span><span class="p">)</span>  <span class="c1"># Adjust duration as needed</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><img alt="animation from cells above" src="notes/kmeans398.gif" /></p>
+<p>Here are some other runs that I saved. I updated this notebook so that it saved the final gif as a different name based on the random seed, ran it a few times with different seeds then kept one I thought was a good visualization above.</p>
+<p><img alt="animation from cells above" src="../_images/kmeans103.gif" /></p>
+<p><img alt="animation from cells above" src="notes/kmeans1107.gif" /></p>
+<p><img alt="animation from cells above" src="notes/kmeans238.gif" /></p>
+<p>Including this on were it got stuck:</p>
+<p><img alt="animation from cells above" src="notes/kmeans1089.gif" /></p>
+<p>We can also make them a grid:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_vis</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">],</span> <span class="n">var_name</span> <span class="o">=</span><span class="s1">&#39;iteration&#39;</span><span class="p">,</span><span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">)</span>
+<span class="n">df_vis</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;class&#39;</span><span class="p">:{</span><span class="n">i</span><span class="p">:</span><span class="n">c</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span><span class="p">[:</span><span class="n">C</span><span class="p">])}},</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">df_vis</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;pt&#39;</span>
+<span class="n">df_mu_vis</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">mu_list</span><span class="p">),</span><span class="n">df_vis</span><span class="p">])</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">&#39;tab20&#39;</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">n_iter</span> <span class="o">=</span> <span class="n">i</span>
+
+<span class="n">sfig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_mu_vis</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;iteration&#39;</span><span class="p">,</span>
+            <span class="n">col_wrap</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">hue_order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;M0&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;M1&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;M2&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="s1">&#39;M3&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">],</span>
+           <span class="n">palette</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="s1">&#39;type&#39;</span><span class="p">,</span><span class="n">col_order</span><span class="o">=</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iter</span><span class="o">+</span><span class="mi">1</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/400cf7f473bc7f8c0c532b69483f1155f5bc028b09409eaf4c9311760c29a483.png" src="../_images/400cf7f473bc7f8c0c532b69483f1155f5bc028b09409eaf4c9311760c29a483.png" />
+</div>
+</div>
+</section>
+<section id="more-metrics">
+<h2><span class="section-number">15.7. </span>More metrics<a class="headerlink" href="#more-metrics" title="Permalink to this headline">#</a></h2>
+<p>We’ll go back to the iris data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_df</span> <span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;iris&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">iris_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f87682e7f10&gt;
+</pre></div>
+</div>
+<img alt="../_images/8afa4425bfbf8c2b9d2b3be1005eeb596910f6f214bcd815a5ecec87c4dd9861.png" src="../_images/8afa4425bfbf8c2b9d2b3be1005eeb596910f6f214bcd815a5ecec87c4dd9861.png" />
+</div>
+</div>
+<p>first let’s cluster it again:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">measurement_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sepal_length&#39;</span><span class="p">,</span><span class="s1">&#39;petal_length&#39;</span><span class="p">,</span><span class="s1">&#39;sepal_width&#39;</span><span class="p">,</span><span class="s1">&#39;petal_width&#39;</span><span class="p">]</span>
+<span class="n">iris_X</span> <span class="o">=</span> <span class="n">iris_df</span><span class="p">[</span><span class="n">measurement_cols</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>we’ll create our object</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">km3</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and save the predictions</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">km3</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">iris_X</span><span class="p">)</span>
+<span class="n">y_pred</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 0, 0], dtype=int32)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>In class, we ran the algorithm a few times and saw that the number changed</p>
+</div>
+<p>We saw the silhouette score last class, which is a true clustering method, so we can use that to see if a clustring algorithm has succeeded on in a real use case where we actually do not have the labels.
+However if we were checkinng if our implementation of a clustering algorithm worked or if our new clustering algorithm worked, we would test with the actual labels that we do have to know if the algorithm found the same groups we had.  We might also want to in a real clustering context see if two different runs of a clustering algorithm were the same, or if two different algorithms on the same data found the same solution.  In this case we can use other metrics, like mutual information.</p>
+<p>Mutual information measures how much knowing one variable tells about another. It can be interpretted like a correlation for categorical variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">iris_df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">],</span><span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7551191675800484
+</pre></div>
+</div>
+</div>
+</div>
+<p>This score is pretty good, but not perfect, but the classification with the labels was not either so that makes sense</p>
+<p>A variable has 1 AMI with itself:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">iris_df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">],</span><span class="n">iris_df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>and uncorrelated thing have AMI near 0</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+                                   <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04521517073638737
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="questions">
+<h2><span class="section-number">15.8. </span>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">#</a></h2>
+<section id="what-happens-if-we-do-not-know-how-many-clusters-there-are">
+<h3><span class="section-number">15.8.1. </span>what happens if we do not know how many clusters there are?<a class="headerlink" href="#what-happens-if-we-do-not-know-how-many-clusters-there-are" title="Permalink to this headline">#</a></h3>
+<p>There are some clustering algorithms that can also learn the number of clusters, for example the <a class="reference external" href="https://scikit-learn.org/0.15/modules/generated/sklearn.mixture.DPGMM.html">Dirichlet Process Gaussian Mixture Model</a>.</p>
+<p>Alternatively, you can try the algorithm with different numbers of clusters and evaluate to determine which one is the best fit.</p>
+</section>
+<section id="whats-the-difference-between-synthetic-data-and-data-from-the-gaussian-machine-learning-model">
+<h3><span class="section-number">15.8.2. </span>what’s the difference between synthetic data and data from the gaussian machine learning model.<a class="headerlink" href="#whats-the-difference-between-synthetic-data-and-data-from-the-gaussian-machine-learning-model" title="Permalink to this headline">#</a></h3>
+<p>They’re both Gaussian data.  This data is actually a little bit simpler than the GNB data, because all of the variances are the same.</p>
+</section>
+<section id="how-do-clustering-algorithms-relate-the-data-to-the-desired-output-is-it-pureley-for-humans-to-be-able-to-understand-what-the-data-is-or-is-there-some-deeper-systems-going-on">
+<h3><span class="section-number">15.8.3. </span>How do clustering algorithms relate the data to the desired output. is it pureley for humans to be able to understand what the data is or is there some deeper systems going on.<a class="headerlink" href="#how-do-clustering-algorithms-relate-the-data-to-the-desired-output-is-it-pureley-for-humans-to-be-able-to-understand-what-the-data-is-or-is-there-some-deeper-systems-going-on" title="Permalink to this headline">#</a></h3>
+<p>Clustering can help you discover groups in the data even if they are not available in the real data.  It is a way to discover something else that is going on that was not known in advance.</p>
+</section>
+<section id="what-is-a-real-world-example-of-this-algorithm">
+<h3><span class="section-number">15.8.4. </span>What is a real world example of this algorithm?<a class="headerlink" href="#what-is-a-real-world-example-of-this-algorithm" title="Permalink to this headline">#</a></h3>
+<p>This one is a bit simpler, but slightly more complicated ones (basically changing the distance calculated for the assignment step)
+are used for real things in production and in research</p>
+<p>Some example applications:</p>
+<ul class="simple">
+<li><p>one of my lab mates in grad school, used unsupervised learning in collaboration with medical doctors to discover subtypes of COPD (Chronic Obstructive Pluminary Disorder).</p></li>
+<li><p>Etsy Data Scientists used clustering to discover “styles” of products like geometric, farmhouse, goth, etc.</p></li>
+<li><p>My Dissertation research was a different type of unsupervised learning but similar, to use brain imagaing data and discover what images different people in a study viewed which images as similar.</p></li>
+<li><p>a data scientist at ESPN might think there are “types” of players in a sport, they could use data on the players to discover it</p></li>
+<li><p>a data scientist at a retail company like Walmart or Target might think there are “types” of customers and what to discover them from the data on what people have purchased.</p></li>
+</ul>
+</section>
+<section id="is-there-ever-a-case-where-the-elbow-of-the-score-and-cluster-graph-is-not-the-best-number-of-clusters-for-a-dataset">
+<h3><span class="section-number">15.8.5. </span>is there ever a case where the elbow of the score and cluster graph is not the best number of clusters for a dataset<a class="headerlink" href="#is-there-ever-a-case-where-the-elbow-of-the-score-and-cluster-graph-is-not-the-best-number-of-clusters-for-a-dataset" title="Permalink to this headline">#</a></h3>
+<p>The elbo of the graph is one <em>definition</em> of best.  Of course you could have a different definition of best and they may not be the same number.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2024-10-22.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>Clustering</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../assignments/01-setup.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Assignment 1: Setup, Syllabus, and Review</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-kmeans-work">15.1. How does Kmeans work?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">15.2. Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-the-algorithm">15.3. Initializing the algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-step">15.4. Assignment step</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-the-means">15.5. Updating the means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterating-to-completion">15.6. Iterating to completion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-metrics">15.7. More metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">15.8. Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-if-we-do-not-know-how-many-clusters-there-are">15.8.1. what happens if we do not know how many clusters there are?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-the-difference-between-synthetic-data-and-data-from-the-gaussian-machine-learning-model">15.8.2. what’s the difference between synthetic data and data from the gaussian machine learning model.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-clustering-algorithms-relate-the-data-to-the-desired-output-is-it-pureley-for-humans-to-be-able-to-understand-what-the-data-is-or-is-there-some-deeper-systems-going-on">15.8.3. How do clustering algorithms relate the data to the desired output. is it pureley for humans to be able to understand what the data is or is there some deeper systems going on.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-real-world-example-of-this-algorithm">15.8.4. What is a real world example of this algorithm?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-there-ever-a-case-where-the-elbow-of-the-score-and-cluster-graph-is-not-the-best-number-of-clusters-for-a-dataset">15.8.5. is there ever a case where the elbow of the score and cluster graph is not the best number of clusters for a dataset</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Professor Sarah M Brown
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
