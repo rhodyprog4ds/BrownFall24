@@ -2,3 +2,5 @@ _build/
 *.ipynb_checkpoints/
 notes/__pycache__/
 announce
+notes/kmeans*.png
+notes/kmeans*.gif
