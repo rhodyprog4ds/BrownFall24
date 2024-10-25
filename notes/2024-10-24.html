@@ -444,7 +444,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-the-algorithm">15.3. Initializing the algorithm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-step">15.4. Assignment step</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-the-means">15.5. Updating the means</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterating-to-completion">15.6. Iterating to completion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterating-to-completion">15.6. Iterating to completion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animated">15.6.1. animated</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#storyboard">15.6.2. storyboard</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-metrics">15.7. More metrics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">15.8. Questions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-if-we-do-not-know-how-many-clusters-there-are">15.8.1. what happens if we do not know how many clusters there are?</a></li>
@@ -487,7 +491,7 @@ equations and <span class="math notranslate nohighlight">\(N + K*d\)</span> unkn
 <span class="kn">import</span> <span class="nn">imageio.v3</span> <span class="k">as</span> <span class="nn">iio</span>
 
 <span class="c1"># set global random seed so that the notes are the same each time the site builds</span>
-<span class="n">rand_seed</span> <span class="o">=</span><span class="mi">103</span>
+<span class="n">rand_seed</span> <span class="o">=</span><span class="mi">398</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">rand_seed</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -559,10 +563,10 @@ One tricky part is <a class="reference external" href="https://docs.python.org/3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f4882467490&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f3a9c6289a0&gt;
 </pre></div>
 </div>
-<img alt="../_images/a6f6be7ca00d51d8db89655a3234c5b85f62565b7fc8c9d52e41aec61524cd4d.png" src="../_images/a6f6be7ca00d51d8db89655a3234c5b85f62565b7fc8c9d52e41aec61524cd4d.png" />
+<img alt="../_images/f6bd051475a1deae29f7987139056d3d41bb833adce4090d9d4a09e9672b2d36.png" src="../_images/f6bd051475a1deae29f7987139056d3d41bb833adce4090d9d4a09e9672b2d36.png" />
 </div>
 </div>
 <p>this is what the clustering algorithm wil see:</p>
@@ -573,10 +577,10 @@ One tricky part is <a class="reference external" href="https://docs.python.org/3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f48b07c1ac0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f3a98089a00&gt;
 </pre></div>
 </div>
-<img alt="../_images/5ca4863b28837562656f140ecae99344cb37dd19c97ae51f3326371f071e423c.png" src="../_images/5ca4863b28837562656f140ecae99344cb37dd19c97ae51f3326371f071e423c.png" />
+<img alt="../_images/07487625b8a542f205c6a6045f85579b1c7177f8380c66ed684c0432f4a45c8a.png" src="../_images/07487625b8a542f205c6a6045f85579b1c7177f8380c66ed684c0432f4a45c8a.png" />
 </div>
 </div>
 </section>
@@ -638,10 +642,10 @@ One tricky part is <a class="reference external" href="https://docs.python.org/3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2.26, 2.17],
-       [6.81, 6.1 ],
-       [5.02, 5.52],
-       [5.27, 1.89]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5.56, 5.79],
+       [5.3 , 5.64],
+       [2.26, 1.42],
+       [6.35, 5.63]])
 </pre></div>
 </div>
 </div>
@@ -683,32 +687,32 @@ One tricky part is <a class="reference external" href="https://docs.python.org/3
   <tbody>
     <tr>
       <th>0</th>
-      <td>2.26</td>
-      <td>2.17</td>
+      <td>5.56</td>
+      <td>5.79</td>
       <td>0</td>
       <td>M0</td>
       <td>mu</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>6.81</td>
-      <td>6.10</td>
+      <td>5.30</td>
+      <td>5.64</td>
       <td>0</td>
       <td>M1</td>
       <td>mu</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>5.02</td>
-      <td>5.52</td>
+      <td>2.26</td>
+      <td>1.42</td>
       <td>0</td>
       <td>M2</td>
       <td>mu</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>5.27</td>
-      <td>1.89</td>
+      <td>6.35</td>
+      <td>5.63</td>
       <td>0</td>
       <td>M3</td>
       <td>mu</td>
@@ -730,7 +734,7 @@ One tricky part is <a class="reference external" href="https://docs.python.org/3
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c99ebcd7552a10cbbb36c794a785468e201f75ebe156dda909115c792c5cf00b.png" src="../_images/c99ebcd7552a10cbbb36c794a785468e201f75ebe156dda909115c792c5cf00b.png" />
+<img alt="../_images/88ad7f450e40f2b164e91aec212abc5d955347ded43fd602c0e5b4fd615bfbab.png" src="../_images/88ad7f450e40f2b164e91aec212abc5d955347ded43fd602c0e5b4fd615bfbab.png" />
 </div>
 </div>
 <p>we have all the points, but no labels for them, and we have these 4 points as our means.</p>
@@ -747,8 +751,8 @@ first by taking the difference, squaring it, then summing along each row.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x0    3.28
-x1    3.81
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x0    0.27
+x1   -3.78
 Name: 0, dtype: float64
 </pre></div>
 </div>
@@ -762,8 +766,8 @@ Name: 0, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x0    10.7584
-x1    14.5161
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x0     0.0729
+x1    14.2884
 Name: 0, dtype: float64
 </pre></div>
 </div>
@@ -777,7 +781,7 @@ Name: 0, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.274500000000003
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.361300000000002
 </pre></div>
 </div>
 </div>
@@ -791,17 +795,17 @@ Name: 0, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      25.2745
-1      18.9709
-2      24.0228
-3      25.6577
-4      14.9060
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      14.3613
+1      20.3125
+2      19.9274
+3       9.0682
+4      15.9188
         ...   
-195     0.0320
-196    30.3400
-197     0.5657
-198     0.0968
-199    23.4785
+195    32.1458
+196     8.7125
+197    21.2141
+198     0.3200
+199    31.0472
 Length: 200, dtype: float64
 </pre></div>
 </div>
@@ -815,53 +819,53 @@ Length: 200, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0      25.2745
- 1      18.9709
- 2      24.0228
- 3      25.6577
- 4      14.9060
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0      14.3613
+ 1      20.3125
+ 2      19.9274
+ 3       9.0682
+ 4      15.9188
          ...   
- 195     0.0320
- 196    30.3400
- 197     0.5657
- 198     0.0968
- 199    23.4785
+ 195    32.1458
+ 196     8.7125
+ 197    21.2141
+ 198     0.3200
+ 199    31.0472
  Length: 200, dtype: float64,
- 0       1.6273
- 1      22.9293
- 2       2.0674
- 3       2.8085
- 4      21.4418
+ 0      13.4578
+ 1      17.9876
+ 2      18.9745
+ 3       7.5661
+ 4      13.8553
          ...   
- 195    34.1938
- 196     0.2610
- 197    37.5037
- 198    39.9754
- 199     3.3553
+ 195    28.8965
+ 196     7.5344
+ 197    20.5642
+ 198     0.2837
+ 199    27.8161
  Length: 200, dtype: float64,
- 0       0.4820
- 1       9.8804
- 2       0.3145
- 3       0.6730
- 4       8.3257
+ 0      13.0930
+ 1      18.4144
+ 2      14.8261
+ 3      18.4025
+ 4      17.1905
          ...   
- 195    17.3585
- 196     2.1677
- 197    21.0640
- 198    21.6253
- 199     0.4372
+ 195     1.3505
+ 196    26.2036
+ 197    19.8106
+ 198    25.9405
+ 199     2.4065
  Length: 200, dtype: float64,
- 0      16.8010
- 1      31.8698
- 2      16.4957
- 3      19.7280
- 4      26.6877
+ 0      13.3748
+ 1      27.9922
+ 2      18.2905
+ 3      14.4449
+ 4      22.7673
          ...   
- 195     8.7785
- 196    16.0565
- 197     6.7138
- 198    10.4365
- 199    18.4882
+ 195    38.3485
+ 196    14.1146
+ 197    18.6196
+ 198     0.6641
+ 199    37.6749
  Length: 200, dtype: float64]
 </pre></div>
 </div>
@@ -904,38 +908,38 @@ corresponding mean. We can concatenate these horizontally (<code class="docutils
   <tbody>
     <tr>
       <th>0</th>
-      <td>25.2745</td>
-      <td>1.6273</td>
-      <td>0.4820</td>
-      <td>16.8010</td>
+      <td>14.3613</td>
+      <td>13.4578</td>
+      <td>13.0930</td>
+      <td>13.3748</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>18.9709</td>
-      <td>22.9293</td>
-      <td>9.8804</td>
-      <td>31.8698</td>
+      <td>20.3125</td>
+      <td>17.9876</td>
+      <td>18.4144</td>
+      <td>27.9922</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>24.0228</td>
-      <td>2.0674</td>
-      <td>0.3145</td>
-      <td>16.4957</td>
+      <td>19.9274</td>
+      <td>18.9745</td>
+      <td>14.8261</td>
+      <td>18.2905</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>25.6577</td>
-      <td>2.8085</td>
-      <td>0.6730</td>
-      <td>19.7280</td>
+      <td>9.0682</td>
+      <td>7.5661</td>
+      <td>18.4025</td>
+      <td>14.4449</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>14.9060</td>
-      <td>21.4418</td>
-      <td>8.3257</td>
-      <td>26.6877</td>
+      <td>15.9188</td>
+      <td>13.8553</td>
+      <td>17.1905</td>
+      <td>22.7673</td>
     </tr>
   </tbody>
 </table>
@@ -952,15 +956,15 @@ minimum across each row and returns the index (location) of that minimum.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      2
-1      2
+1      1
 2      2
-3      2
-4      2
+3      1
+4      1
       ..
-195    0
+195    2
 196    1
-197    0
-198    0
+197    3
+198    1
 199    2
 Length: 200, dtype: int64
 </pre></div>
@@ -1011,38 +1015,38 @@ Length: 200, dtype: int64
   <tbody>
     <tr>
       <th>0</th>
-      <td>5.54</td>
-      <td>5.98</td>
-      <td>D</td>
+      <td>5.83</td>
+      <td>2.01</td>
+      <td>C</td>
       <td>2</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2.04</td>
-      <td>6.52</td>
+      <td>1.06</td>
+      <td>5.54</td>
       <td>B</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>5.38</td>
-      <td>5.95</td>
-      <td>D</td>
+      <td>6.11</td>
+      <td>1.36</td>
+      <td>C</td>
       <td>2</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>5.15</td>
-      <td>6.33</td>
-      <td>D</td>
-      <td>2</td>
+      <td>2.55</td>
+      <td>5.70</td>
+      <td>B</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2.18</td>
-      <td>6.03</td>
+      <td>1.58</td>
+      <td>5.51</td>
       <td>B</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
@@ -1074,7 +1078,7 @@ is a common way to make more complicated plots, something you might use for visu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5e7cf7e7e624701c7ca30040452ec68955bf37bea01e937891d205b39fcf2f83.png" src="../_images/5e7cf7e7e624701c7ca30040452ec68955bf37bea01e937891d205b39fcf2f83.png" />
+<img alt="../_images/faa74c488db00f32fcdeef5737406e1d3ec2854b19837bd26340d69957c7f7dc.png" src="../_images/faa74c488db00f32fcdeef5737406e1d3ec2854b19837bd26340d69957c7f7dc.png" />
 </div>
 </div>
 <p>We see that each point is assigned to the lighter shade of its matching mean.
@@ -1105,7 +1109,7 @@ groupby.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/127e5a3ba4a8b9506f5473ad56249cd912af8cd75ad24c0135d1db8680f31048.png" src="../_images/127e5a3ba4a8b9506f5473ad56249cd912af8cd75ad24c0135d1db8680f31048.png" />
+<img alt="../_images/cf7025f54ed945e73d56afc06d7c715a583d5269ae8c09363c747f3fada58b2a.png" src="../_images/cf7025f54ed945e73d56afc06d7c715a583d5269ae8c09363c747f3fada58b2a.png" />
 </div>
 </div>
 <p>We see that now the means are in the center of each cluster, but that there are
@@ -1148,43 +1152,43 @@ now points in one color that are assigned to other clusters.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>5.54</td>
-      <td>5.98</td>
-      <td>D</td>
+      <td>5.83</td>
+      <td>2.01</td>
+      <td>C</td>
       <td>2</td>
-      <td>1</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2.04</td>
-      <td>6.52</td>
+      <td>1.06</td>
+      <td>5.54</td>
       <td>B</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>5.38</td>
-      <td>5.95</td>
-      <td>D</td>
-      <td>2</td>
+      <td>1</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>5.15</td>
-      <td>6.33</td>
-      <td>D</td>
+      <th>2</th>
+      <td>6.11</td>
+      <td>1.36</td>
+      <td>C</td>
       <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.55</td>
+      <td>5.70</td>
+      <td>B</td>
+      <td>1</td>
       <td>1</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2.18</td>
-      <td>6.03</td>
+      <td>1.58</td>
+      <td>5.51</td>
       <td>B</td>
-      <td>2</td>
-      <td>2</td>
+      <td>1</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
@@ -1202,7 +1206,7 @@ now points in one color that are assigned to other clusters.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b3bdda43c8bda7f763937c2b641e4e6ff08421f9ed85ad031b46487bc577a1ca.png" src="../_images/b3bdda43c8bda7f763937c2b641e4e6ff08421f9ed85ad031b46487bc577a1ca.png" />
+<img alt="../_images/834e9a0edd5164d6ace1b06887549274ebe704213d65bf10ac8e91304c366a78.png" src="../_images/834e9a0edd5164d6ace1b06887549274ebe704213d65bf10ac8e91304c366a78.png" />
 </div>
 </div>
 <p>we see it improves by the means moved to the center of each color.</p>
@@ -1259,12 +1263,14 @@ implement the algorithm with a while loop.</p>
 iteration 3
 </pre></div>
 </div>
-<img alt="../_images/0c3ac7921f40804d654f5bf0766fbcf27ee5490d45dd3f8c17b1917c1ce6b301.png" src="../_images/0c3ac7921f40804d654f5bf0766fbcf27ee5490d45dd3f8c17b1917c1ce6b301.png" />
-<img alt="../_images/f21d4f5fd49d3797c9a1697e267256cc40f30cb17981d7d4f5289396408f7d38.png" src="../_images/f21d4f5fd49d3797c9a1697e267256cc40f30cb17981d7d4f5289396408f7d38.png" />
-<img alt="../_images/a4e83e791c96fef9b753a793a5875ffa82caa65ded57813b73712b0b8249156f.png" src="../_images/a4e83e791c96fef9b753a793a5875ffa82caa65ded57813b73712b0b8249156f.png" />
-<img alt="../_images/a4e83e791c96fef9b753a793a5875ffa82caa65ded57813b73712b0b8249156f.png" src="../_images/a4e83e791c96fef9b753a793a5875ffa82caa65ded57813b73712b0b8249156f.png" />
+<img alt="../_images/530c1a5a090a39b3abf7b09909908cd6e009dba3328485c2502d75a7ce8a8807.png" src="../_images/530c1a5a090a39b3abf7b09909908cd6e009dba3328485c2502d75a7ce8a8807.png" />
+<img alt="../_images/ff6801cceeac5ee7ff4f8008d3be9da2b9ebd04f6de25d714144a345a8a157b2.png" src="../_images/ff6801cceeac5ee7ff4f8008d3be9da2b9ebd04f6de25d714144a345a8a157b2.png" />
+<img alt="../_images/64144af93fd61c878c749620029114589f80917572746d76e0d5f3a87b6416a4.png" src="../_images/64144af93fd61c878c749620029114589f80917572746d76e0d5f3a87b6416a4.png" />
+<img alt="../_images/64144af93fd61c878c749620029114589f80917572746d76e0d5f3a87b6416a4.png" src="../_images/64144af93fd61c878c749620029114589f80917572746d76e0d5f3a87b6416a4.png" />
 </div>
 </div>
+<section id="animated">
+<h3><span class="section-number">15.6.1. </span>animated<a class="headerlink" href="#animated" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1286,11 +1292,14 @@ iteration 3
 </div>
 <p><img alt="animation from cells above" src="../_images/kmeans398.gif" /></p>
 <p>Here are some other runs that I saved. I updated this notebook so that it saved the final gif as a different name based on the random seed, ran it a few times with different seeds then kept one I thought was a good visualization above.</p>
-<p><img alt="animation from cells above" src="../_images/kmeans103.gif" /></p>
-<p><img alt="animation from cells above" src="../_images/kmeans1107.gif" /></p>
+<p><img alt="animation from cells above, with random seed 103 instead" src="../_images/kmeans103.gif" /></p>
+<p><img alt="animation from cells above, with random seed 1107 instead" src="../_images/kmeans1107.gif" /></p>
 <p><img alt="animation from cells above" src="../_images/kmeans238.gif" /></p>
 <p>Including this on were it got stuck:</p>
 <p><img alt="animation from cells above" src="../_images/kmeans1089.gif" /></p>
+</section>
+<section id="storyboard">
+<h3><span class="section-number">15.6.2. </span>storyboard<a class="headerlink" href="#storyboard" title="Permalink to this headline">#</a></h3>
 <p>We can also make them a grid:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1309,9 +1318,10 @@ iteration 3
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/400cf7f473bc7f8c0c532b69483f1155f5bc028b09409eaf4c9311760c29a483.png" src="../_images/400cf7f473bc7f8c0c532b69483f1155f5bc028b09409eaf4c9311760c29a483.png" />
+<img alt="../_images/68ff1ab70cd6b4cab3b47254975fde0450c6862fe5db69d12b9c17315bf332ed.png" src="../_images/68ff1ab70cd6b4cab3b47254975fde0450c6862fe5db69d12b9c17315bf332ed.png" />
 </div>
 </div>
+</section>
 </section>
 <section id="more-metrics">
 <h2><span class="section-number">15.7. </span>More metrics<a class="headerlink" href="#more-metrics" title="Permalink to this headline">#</a></h2>
@@ -1324,7 +1334,7 @@ iteration 3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f487c23a520&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f3a94500ca0&gt;
 </pre></div>
 </div>
 <img alt="../_images/8afa4425bfbf8c2b9d2b3be1005eeb596910f6f214bcd815a5ecec87c4dd9861.png" src="../_images/8afa4425bfbf8c2b9d2b3be1005eeb596910f6f214bcd815a5ecec87c4dd9861.png" />
@@ -1407,7 +1417,7 @@ However if we were checkinng if our implementation of a clustering algorithm wor
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04521517073638737
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.012048070770028944
 </pre></div>
 </div>
 </div>
@@ -1520,7 +1530,11 @@ are used for real things in production and in research</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-the-algorithm">15.3. Initializing the algorithm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-step">15.4. Assignment step</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-the-means">15.5. Updating the means</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterating-to-completion">15.6. Iterating to completion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterating-to-completion">15.6. Iterating to completion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animated">15.6.1. animated</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#storyboard">15.6.2. storyboard</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-metrics">15.7. More metrics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">15.8. Questions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-if-we-do-not-know-how-many-clusters-there-are">15.8.1. what happens if we do not know how many clusters there are?</a></li>
