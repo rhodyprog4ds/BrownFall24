@@ -10,4 +10,4 @@ pandas
 seaborn
 scikit-learn
 aif360
-imagio
+imageio
