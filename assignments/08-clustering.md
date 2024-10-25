@@ -1,13 +1,7 @@
----
-substitutions:
-  accept_assignment: |
-    [accept the assignment](https://classroom.github.com/a/rzuWo1_-)
-  date : 
----
+
 # Assignment 8: Clustering
 
- [accept the assignment](https://classroom.github.com/a/NUKuma7J)
-__Due: 2023-11-01__
+__Due: 2024-11-04__
 
 ## Evaluation
 
