@@ -3,4 +3,3 @@ _build/
 notes/__pycache__/
 announce
 notes/kmeans*.png
-notes/kmeans*.gif
