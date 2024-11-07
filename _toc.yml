@@ -36,7 +36,7 @@ parts:
     - file: assignments/06-evaluate
     - file: assignments/07-classification
     - file: assignments/08-clustering
-    # - file: assignments/09-regression
+    - file: assignments/09-regression-optimization
     # - file: assignments/10-optimize
     # - file: assignments/11-compare
     # - file: assignments/12-fake-news
