@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2024-10-31';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Assignment 1: Setup, Syllabus, and Review" href="../assignments/01-setup.html" />
+    <link rel="next" title="18. Task Review and Cross Validation" href="2024-11-06.html" />
     <link rel="prev" title="16. Regression" href="2024-10-29.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -191,6 +191,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2024-10-24.html">15. Kmeans algorithm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-10-29.html">16. Regression</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">17. More regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-06.html">18. Task Review and Cross Validation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -441,7 +442,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multivariate-regression">17.1. Multivariate Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mutlivariate-regression">17.1. Mutlivariate Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lasso">17.2. LASSO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polynomial-regression">17.3. Polynomial Regression</a></li>
 </ul>
             </nav>
         </div>
@@ -461,6 +464,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">linear_model</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
@@ -470,8 +474,19 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="multivariate-regression">
-<h2><span class="section-number">17.1. </span>Multivariate Regression<a class="headerlink" href="#multivariate-regression" title="Permalink to this headline">#</a></h2>
+<section id="mutlivariate-regression">
+<h2><span class="section-number">17.1. </span>Mutlivariate Regression<a class="headerlink" href="#mutlivariate-regression" title="Permalink to this headline">#</a></h2>
+<p>Recall the equation for a line:</p>
+<div class="math notranslate nohighlight">
+\[ \hat{y} = mx+b\]</div>
+<p>When we have multiple variables instead of a scalar <span class="math notranslate nohighlight">\(x\)</span> we can have a vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and instead of a single slope, we have a vector of coefficients <span class="math notranslate nohighlight">\(\beta\)</span></p>
+<div class="math notranslate nohighlight">
+\[ \hat{y} = \beta^T\mathbf{x} + \beta_0 \]</div>
+<p>where <span class="math notranslate nohighlight">\(\beta\)</span> is the <code class="docutils literal notranslate"><span class="pre">regr_db.coef_</span></code> and <span class="math notranslate nohighlight">\(\beta_0\)</span> is <code class="docutils literal notranslate"><span class="pre">regr_db.intercept_</span></code> and that’s a vector multiplication and <span class="math notranslate nohighlight">\(\hat{y}\)</span> is <code class="docutils literal notranslate"><span class="pre">y_pred</span></code> and <span class="math notranslate nohighlight">\(y\)</span> is <code class="docutils literal notranslate"><span class="pre">y_test</span></code>.</p>
+<p>In scalar form, a vector multiplication can be written like</p>
+<div class="math notranslate nohighlight">
+\[ \hat{y} = \sum_{k=0}^d(x_k*\beta_k) + \beta_0\]</div>
+<p>where there are <span class="math notranslate nohighlight">\(d\)</span> features, that is <span class="math notranslate nohighlight">\(d\)</span>= <code class="docutils literal notranslate"><span class="pre">len(X_test[k])</span></code> and <span class="math notranslate nohighlight">\(k\)</span> indexed into it.</p>
 <p>We can also load data from Scikit learn.</p>
 <p>This dataset includes 10 features measured on a given date and an measure of
 diabetes disease progression measured one year later. The predictor we can train
@@ -642,6 +657,10 @@ understands the score would have to help interpret the core.</p>
 </div>
 </div>
 </div>
+</section>
+<section id="lasso">
+<h2><span class="section-number">17.2. </span>LASSO<a class="headerlink" href="#lasso" title="Permalink to this headline">#</a></h2>
+<p>lasso allows us to pick a subset of the features at the same time we learn the weights</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lasso</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">Lasso</span><span class="p">()</span>
@@ -656,6 +675,7 @@ understands the score would have to help interpret the core.</p>
 </div>
 </div>
 </div>
+<p>We see it learns a model with most of the coefficients set to 0.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lasso</span><span class="o">.</span><span class="n">coef_</span>
@@ -698,13 +718,21 @@ understands the score would have to help interpret the core.</p>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
-</pre></div>
-</div>
-</div>
-</div>
+</section>
+<section id="polynomial-regression">
+<h2><span class="section-number">17.3. </span>Polynomial Regression<a class="headerlink" href="#polynomial-regression" title="Permalink to this headline">#</a></h2>
+<p>Polynomial regression is still a linear problem.  Linear regression solves for
+the <span class="math notranslate nohighlight">\(\beta_i\)</span> for a <span class="math notranslate nohighlight">\(d\)</span> dimensional problem.</p>
+<div class="math notranslate nohighlight">
+\[ y = \beta_0 + \beta_1 x_1 + \ldots + \beta_d x_d = \sum_i^d \beta_i x_i\]</div>
+<p>Quadratic regression solves for</p>
+<div class="math notranslate nohighlight">
+\[ y = \beta_0 + \sum_i^d \beta_i x_i$ + \sum_j^d \sum_i^d \beta_{d+i} x_i x_j + \sum_i^d x_i^2$ \]</div>
+<p>This is still a linear problem, we can create a new <span class="math notranslate nohighlight">\(X\)</span> matrix that has the
+polynomial values of each feature  and solve for more <span class="math notranslate nohighlight">\(\beta\)</span> values.</p>
+<p>We use a transformer object, which works similarly to the estimators, but does
+not use targets.
+First, we instantiate.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pol</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">()</span>
@@ -720,6 +748,7 @@ understands the score would have to help interpret the core.</p>
 </div>
 </div>
 </div>
+<p>This changes the shape a lot, now we have a lot more features</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train2</span><span class="o">.</span><span class="n">shape</span>
@@ -732,9 +761,14 @@ understands the score would have to help interpret the core.</p>
 </div>
 </div>
 </div>
+<p>We can break down this total into different types, the original ones (<span class="math notranslate nohighlight">\(x_0, x_1, \ldots, x_9\)</span>), those squared, (<span class="math notranslate nohighlight">\(x_0^2, x_1^2, \ldots, x_9^2\)</span>), every pair (<span class="math notranslate nohighlight">\(x_0x_1, x_0x_1, \ldots, x_7x_8, x_8x_9\)</span>) and a constant (so we do not need the intercept separately)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span><span class="o">+</span> <span class="mi">10</span><span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="o">+</span><span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">original_feats</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">sq_feats</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">pair_prod_feats</span> <span class="o">=</span>  <span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> 
+<span class="n">const_feats</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">original_feats</span> <span class="o">+</span> <span class="n">sq_feats</span> <span class="o">+</span> <span class="n">pair_prod_feats</span> <span class="o">+</span> <span class="n">const_feats</span>
 </pre></div>
 </div>
 </div>
@@ -744,6 +778,7 @@ understands the score would have to help interpret the core.</p>
 </div>
 </div>
 </div>
+<p>Now we can try lasso again (and different <code class="docutils literal notranslate"><span class="pre">alpha</span></code> values, but we changed it in place and I am leaing a good one)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lasso2</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">Lasso</span><span class="p">(</span><span class="mf">.27</span><span class="p">)</span>
@@ -758,6 +793,7 @@ understands the score would have to help interpret the core.</p>
 </div>
 </div>
 </div>
+<p>and see this can improve some by using a subset of the new features and the old features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lasso2</span><span class="o">.</span><span class="n">coef_</span>
@@ -830,11 +866,11 @@ understands the score would have to help interpret the core.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../assignments/01-setup.html"
+       href="2024-11-06.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Assignment 1: Setup, Syllabus, and Review</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>Task Review and Cross Validation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -856,7 +892,9 @@ understands the score would have to help interpret the core.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multivariate-regression">17.1. Multivariate Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mutlivariate-regression">17.1. Mutlivariate Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lasso">17.2. LASSO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polynomial-regression">17.3. Polynomial Regression</a></li>
 </ul>
   </nav></div>
 

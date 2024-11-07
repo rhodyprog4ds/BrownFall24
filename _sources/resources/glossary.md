@@ -49,6 +49,9 @@ git
 GitHub
   a hosting service for git repositories
 
+hyperparameter
+  parameters of the learning *algorithm* that are set by the user and possibly optimized over in an outer loop; in `sklearn` these are set when instantiating the estimator object
+
 index
   (verb) to index into a data structure means to pick out specified items, for example index into a list or a index into a data frame. Indexing usually invovlees square brackets `[]`
   (noun) the index of a dataframe is like a column, but it can be used to refer to the rows. It's the list of names for the rows.

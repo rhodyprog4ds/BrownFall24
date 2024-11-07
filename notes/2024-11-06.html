@@ -1,0 +1,1275 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>18. Task Review and Cross Validation &#8212; Programming for Data Science at URI Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course-admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2024-11-06';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Assignment 1: Setup, Syllabus, and Review" href="../assignments/01-setup.html" />
+    <link rel="prev" title="17. More regression" href="2024-10-31.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/310_2021.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/310_2021.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/tools.html">Tools and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/achievements.html">Data Science Achievements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Grading Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/style.html">Course  Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_resources.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_statements.html">General URI Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/communication.html">Communications &amp; Office Hours</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2024-09-05.html">1. Welcome &amp; What is Data Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-10.html">2. Iterables and Pandas Data Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-12.html">3. Pandas Data Frames and More Iterable Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-17.html">4. Exploratory Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-19.html">5. Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-24.html">6. Cleaning Data - Structure</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="2024-09-26.html">8. Fixing Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-01.html">9. Webscraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-03.html">10. Merging Data &amp; Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-08.html">11. Evaluating ML Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-10.html">12. ML Models and Auditing with AIF360</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-17.html">13. Classification Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-22.html">14. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-24.html">15. Kmeans algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-29.html">16. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-31.html">17. More regression</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">18. Task Review and Cross Validation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../assignments/01-setup.html">1. Assignment 1: Setup, Syllabus, and Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/02-python-access.html">2. Assignment 2: Practicing Python and Accessing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/03-eda.html">3. Assignment 3: Exploratory Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/04-prepare.html">4. Assignment 4: Cleaning Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/05-construct.html">5. Assignment 5: Constructing Datasets and Using Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/06-evaluate.html">6. Assignment 6: Auditing Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/07-classification.html">7. Assignment 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/08-clustering.html">8. Assignment 8: Clustering</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/index.html">Deepening your knowledge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/formatting.html">Formatting Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/extensions.html">Generic Extension Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/altforms.html">Alternatives to Extending Assignments for Level 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/process.html">Process Level 3</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/syllabus.html">Syllabus and Grading FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/github.html">Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/debugging.html">Code Errors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/python.html">References on Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/datasets.html">Data Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/tips.html">General Tips and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/learning.html">How to Study in this class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/gettinghelp.html">Getting Help with Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/terminal.html">Terminals and Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/organization.html">Getting Organized for class</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">Advice from FA2020 Students</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">Advice from FA2021 Students</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24/edit/main/notes/2024-11-06.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24/issues/new?title=Issue%20on%20page%20%2Fnotes/2024-11-06.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notes/2024-11-06.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Task Review and Cross Validation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-tasks">18.1. ML Tasks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">18.2. Cross Validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-with-sklearn">18.2.1. Loading Data with sklearn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-fold-cross-validation">18.2.2. K-fold Cross Validation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation-is-model-agnostic">18.3. Cross validation is model-agnostic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#details-and-types-of-cross-validation">18.4. Details and types of Cross validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-class">18.5. Questions after class</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-should-you-change-test-and-train-sizes-rather-than-just-using-the-default">18.5.1. When should you change test and train sizes rather than just using the default?</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="task-review-and-cross-validation">
+<h1><span class="section-number">18. </span>Task Review and Cross Validation<a class="headerlink" href="#task-review-and-cross-validation" title="Permalink to this headline">#</a></h1>
+<section id="ml-tasks">
+<h2><span class="section-number">18.1. </span>ML Tasks<a class="headerlink" href="#ml-tasks" title="Permalink to this headline">#</a></h2>
+<p>We learned classification first, because it shares similarities with each
+regression and clustering, while regression and clustering have less in common.</p>
+<ul class="simple">
+<li><p>Classification is supervised learning for a categorical target.</p></li>
+<li><p>Regression is supervised learning for a continuous target.</p></li>
+<li><p>Clustering is unsupervised learning for a categorical target.</p></li>
+</ul>
+<p>We have used a small flowchart for the tasks:</p>
+<div class="mermaid">
+            flowchart TD
+    labels{Do you have labels &lt;br&gt;in the dataset? }
+    labels --&gt; |yes| sup[Supervised Learning]
+    labels --&gt; |no| unsup[Unsupervised Learning]
+    sup --&gt; ltype{What type of variable &lt;br&gt; are the labels?}
+    ltype --&gt; |continuous| reg[Regression]
+    ltype --&gt; |discrete| clas[Classification]
+    unsup --&gt; groups{Do you think there are &lt;br&gt; groups within the data?}
+    groups --&gt; |yes | clus[Clutering]
+        </div><p>Sklearn provides a nice <a class="reference external" href="https://scikit-learn.org/stable/machine_learning_map.html">flow chart</a> for thinking through both tasks (big blocks) and models (the small green boxes)</p>
+<p><img alt="estimator flow chart" src="../_images/ml_map.svg" /></p>
+<p>Predicting a category is another way of saying categorical target. Predicting a
+quantitiy is another way of saying continuous target. Having lables or not is
+the difference between</p>
+<p>The flowchart assumes you know what you want to do with data and that is the
+ideal scenario. You have a dataset and you have a goal.
+For the purpose of getting to practice with a variety of things, in this course
+we ask you to start with a task and then find a dataset. Assignment 9 is the
+last time that’s true however. Starting with Assignment 10, you can choose and focus on a specific application domain and then
+choose the right task from there.</p>
+<p>Thinking about this, however, you use this information to move between the tasks
+within a given type of data.
+For example, you can use the same data for clustering as you did for classification.
+Switching the task changes the questions though: classification evaluation tells
+us how separable the classes are given that classifiers decision rule. Clustering
+can find other subgroups or the same ones, so the evaluation we choose allows us
+to explore this in more ways.</p>
+<p>Regression requires a continuous target, so we need a dataset to be suitable for
+that, we can’t transform from the classification dataset to a regression one.<br />
+However, we can go the other way and that’s how some classification datasets are
+created.</p>
+<p>The UCI <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/adult">adult</a> Dataset is a popular ML dataset that was dervied from census
+data. The goal is to use a variety of features to predict if a person makes
+more than <span class="math notranslate nohighlight">\(50k per year or not. While income is a continuous value, they applied
+a threshold (\)</span>50k) to it to make a binary variable. The dataset does not include
+income in dollars, only the binary indicator.</p>
+<p>Recent work reconstructed the dataset with the continuous valued income.
+Their <a class="reference external" href="https://github.com/zykls/folktables">repository</a> contains the data as well
+as links to their paper and a video of their talk on it.</p>
+</section>
+<section id="cross-validation">
+<h2><span class="section-number">18.2. </span>Cross Validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">#</a></h2>
+<p>This week our goal is to learn how to optmize models. The first step in that is
+to get a good estimate of its performance.</p>
+<p>We have seen that the test train splits, which are random, influence the
+performance.</p>
+<p>In order to find the best <a class="reference internal" href="../resources/glossary.html#term-hyperparameter"><span class="xref std std-term">hyperparameter</span></a>s for the model on a given dataset, we need some better evaluation techniques.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic libraries</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># models classes</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cluster</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="c1"># datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="c1"># model selection tools</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span><span class="p">,</span> <span class="n">ShuffleSplit</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This week and next week together are about model selection or choosing what model we might want to actually <em>use</em></p>
+<section id="loading-data-with-sklearn">
+<h3><span class="section-number">18.2.1. </span>Loading Data with sklearn<a class="headerlink" href="#loading-data-with-sklearn" title="Permalink to this headline">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>in  class we tried to use <code class="docutils literal notranslate"><span class="pre">as_frame=True</span></code> alone, but I had misread.
+To figure it out, I looked at the <a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blame/6e9039160f0dfc3153643143af4cfdca941d2045/sklearn/datasets/_base.py#L726-L729">source code</a> to see what it does, I saw that it does not return the structure for that case, but it does call it.  This is also in the git blame view where I could see it had not changed recently.
+What it does is change the <em>type</em> of those attributes in the bunch or the two items returned if in the <code class="docutils literal notranslate"><span class="pre">return_X_y</span></code>, so here.</p>
+<p>It does say that but is an easy thing to misinterpret.  This is the advantage of open source code though, worst case, even if the documentation confuses you, you can see the actual code and see it.</p>
+</div>
+<p>This way we can get dataFrames:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_X</span><span class="p">,</span> <span class="n">iris_y</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">iris_X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.frame.DataFrame
+</pre></div>
+</div>
+</div>
+</div>
+<p>or in the bunch</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_bunch_frame</span><span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">iris_bunch</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">iris_bunch_frame</span><span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="nb">type</span><span class="p">(</span><span class="n">iris_bunch</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;iris_bunch&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>otherwise the bunch contains numpy arrays.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_bunch</span><span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">iris_bunch</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.ndarray
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="k-fold-cross-validation">
+<h3><span class="section-number">18.2.2. </span>K-fold Cross Validation<a class="headerlink" href="#k-fold-cross-validation" title="Permalink to this headline">#</a></h3>
+<p>We’ll use the Iris data with a decision tree.</p>
+<p>We are going to use it this way for claass:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_X</span><span class="p">,</span> <span class="n">iris_y</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and instantiate a Decision tree <span class="xref myst">see classificaiton notes about dt</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can split the data, fit the model, then compute a score, but since the
+splitting is a randomized step, the score is a random variable.</p>
+<p>For example, if we have a coin that we want to see if it’s fair or not. We would
+flip it to test.  One flip doesn’t tell us, but if we flip it a few times, we
+can estimate the probability it is heads by counting how many of the flips are
+heads and dividing by how many flips.</p>
+<p>We can do something similar with our model performance. We can split the data
+a bunch of times and compute the score each time.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cross_val_score</span></code> does this all for us.</p>
+<p>It takes an estimator object and the data.</p>
+<p>By default it uses 5-fold cross validation. It splits the data into 5 sections,
+then uses 4 of them to train and one to test. It then iterates through so that
+each section gets used for testing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">iris_X</span><span class="p">,</span> <span class="n">iris_y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.96666667, 0.96666667, 0.9       , 1.        , 1.        ])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We get back a score for each section or “fold” of the data. We can average those
+to get a single estimate.</p>
+<p>To actually report, we would take the mean</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this is not the mean of the numbers from the cell above, because when
+we call the function again, it does another round of random splits</p>
+</div>
+</aside>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">iris_X</span><span class="p">,</span> <span class="n">iris_y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9666666666666668
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can change from 5-fold to 10-fold by setting the <code class="docutils literal notranslate"><span class="pre">cv</span></code> parameter</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">iris_X</span><span class="p">,</span> <span class="n">iris_y</span><span class="p">,</span><span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.        , 0.93333333, 1.        , 0.93333333, 0.93333333,
+       0.86666667, 0.93333333, 1.        , 1.        , 1.        ])
+</pre></div>
+</div>
+</div>
+</div>
+<p>In K-fold cross validation, we split the data in <code class="docutils literal notranslate"><span class="pre">K</span></code> sections and train on <code class="docutils literal notranslate"><span class="pre">K-1</span></code> and test one 1 section. So the percentages are like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># K is the cv</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">train_pct</span> <span class="o">=</span><span class="p">(</span><span class="n">K</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">K</span>
+<span class="n">test_pct</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">K</span>
+<span class="n">train_pct</span><span class="p">,</span> <span class="n">test_pct</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9, 0.1)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="cross-validation-is-model-agnostic">
+<h2><span class="section-number">18.3. </span>Cross validation is model-agnostic<a class="headerlink" href="#cross-validation-is-model-agnostic" title="Permalink to this headline">#</a></h2>
+<p>We can use <em>any</em> estimator object here.</p>
+<p>For example, we can apply it to clustering too:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">km</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">km</span><span class="p">,</span> <span class="n">iris_X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ -9.062     , -14.93195873, -18.93234207, -23.70894258,
+       -19.55457726])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="details-and-types-of-cross-validation">
+<h2><span class="section-number">18.4. </span>Details and types of Cross validation<a class="headerlink" href="#details-and-types-of-cross-validation" title="Permalink to this headline">#</a></h2>
+<p>First, lets look at the Kfold cross validation object. Under the hood, this is the default thing that <code class="docutils literal notranslate"><span class="pre">cross_val_score</span></code> uses <a class="footnote-reference brackets" href="#cvsstrat" id="id1">1</a></p>
+<p>Cross validation objects are all examples of the <a class="reference external" href="https://scikit-learn.org/dev/glossary.html#term-CV-splitter"><code class="docutils literal notranslate"><span class="pre">splitter</span></code></a> type in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code></p>
+<p>we can instantiate one of these too:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>it returns the splits as a generator</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Generators return an item each time you call it in a list, instead of
+building the whole list up front, which makes it more memory efficient.</p>
+<p>the Python wiki has a good <a class="reference external" href="https://wiki.python.org/moin/Generators">generator example</a> and the official docs have a more technical <a class="reference external" href="https://docs.python.org/3/reference/expressions.html#generator-iterator-methods">description</a></p>
+</div>
+</aside>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">splits</span> <span class="o">=</span> <span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">iris_X</span><span class="p">,</span> <span class="n">iris_y</span><span class="p">)</span>
+<span class="n">splits</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;generator object _BaseKFold.split at 0x7f299b2fd510&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>jupyter does not know how to display it, so it jsut says the type.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">splits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>range
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use this in a loop to get the list of indices that will be used to get the test and train data for each fold.  To visualize what this is  doing, see below.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>I changed this to create an empty list and append a dataframe to it each time through the list then create a combined dataframe after to remove the</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">iris_y</span><span class="p">)</span>
+<span class="n">kf_tt_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">train_idx</span><span class="p">,</span> <span class="n">test_idx</span> <span class="ow">in</span> <span class="n">splits</span><span class="p">:</span>
+    
+    <span class="c1"># make a list of &quot;unused&quot;</span>
+    <span class="n">col_data</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="s1">&#39;unused&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">N_samples</span><span class="p">)</span>
+    <span class="c1"># fill in train and test by the indices</span>
+    <span class="n">col_data</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Train&#39;</span>
+    <span class="n">col_data</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Test&#39;</span>
+    <span class="n">kf_tt_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">col_data</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">N_samples</span><span class="p">)),</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;split &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]))</span>
+    <span class="n">i</span> <span class="o">+=</span><span class="mi">1</span>
+
+<span class="n">kf_tt_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">kf_tt_list</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that unlike <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html"><code class="docutils literal notranslate"><span class="pre">test_train_split</span></code></a> this does not always randomize and shuffle the data before splitting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kf_tt_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>split 1</th>
+      <th>split 2</th>
+      <th>split 3</th>
+      <th>split 4</th>
+      <th>split 5</th>
+      <th>split 6</th>
+      <th>split 7</th>
+      <th>split 8</th>
+      <th>split 9</th>
+      <th>split 10</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Test</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Test</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Test</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Test</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Test</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Test</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Test</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Test</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Test</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Train</td>
+      <td>Test</td>
+    </tr>
+  </tbody>
+</table>
+<p>150 rows × 10 columns</p>
+</div></div></div>
+</div>
+<p>We can also visualize:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;tab10&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">kf_tt_df</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Test&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Train&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}),</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">],</span><span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ticks&#39;</span><span class="p">:[</span><span class="mf">.25</span><span class="p">,</span><span class="mf">.75</span><span class="p">]},</span><span class="n">linewidths</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">linecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">colorbar</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">colorbar</span>
+<span class="n">colorbar</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([</span><span class="s1">&#39;Train&#39;</span><span class="p">,</span><span class="s1">&#39;Test&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d83e0a75365172424b5b111d92e13d1141c375ecdd7523b7b212f913ed60516f.png" src="../_images/d83e0a75365172424b5b111d92e13d1141c375ecdd7523b7b212f913ed60516f.png" />
+</div>
+</div>
+<p>We can also see another splitter(this is what <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> uses)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">skf</span> <span class="o">=</span> <span class="n">ShuffleSplit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">N_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">iris_y</span><span class="p">)</span>
+<span class="n">ss_tt_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">train_idx</span><span class="p">,</span> <span class="n">test_idx</span> <span class="ow">in</span> <span class="n">skf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">iris_X</span><span class="p">,</span> <span class="n">iris_y</span><span class="p">):</span>
+    <span class="n">col_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="s1">&#39;unused&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">N_samples</span><span class="p">)</span>
+    <span class="n">col_data</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Train&#39;</span>
+    <span class="n">col_data</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Test&#39;</span>
+    <span class="n">ss_tt_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">col_data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">N_samples</span><span class="p">))),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;split&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+    <span class="n">i</span> <span class="o">+=</span><span class="mi">1</span>
+
+<span class="n">ss_tt_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">ss_tt_list</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ss_tt_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">col_data</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Train&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">col_data</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Test&#39;</span>
+<span class="ne">----&gt; </span><span class="mi">9</span>     <span class="n">ss_tt_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">col_data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">N_samples</span><span class="p">))),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;split&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">i</span> <span class="o">+=</span><span class="mi">1</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">ss_tt_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">ss_tt_list</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: append() takes no keyword arguments
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;tab10&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">ss_tt_df</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Test&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Train&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}),</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">],</span><span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ticks&#39;</span><span class="p">:[</span><span class="mf">.25</span><span class="p">,</span><span class="mf">.75</span><span class="p">]},</span><span class="n">linewidths</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">linecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">colorbar</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">colorbar</span>
+<span class="n">colorbar</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([</span><span class="s1">&#39;Train&#39;</span><span class="p">,</span><span class="s1">&#39;Test&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;tab10&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">ss_tt_df</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Test&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Train&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}),</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">],</span><span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ticks&#39;</span><span class="p">:[</span><span class="mf">.25</span><span class="p">,</span><span class="mf">.75</span><span class="p">]},</span><span class="n">linewidths</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">linecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">colorbar</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">colorbar</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">colorbar</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([</span><span class="s1">&#39;Train&#39;</span><span class="p">,</span><span class="s1">&#39;Test&#39;</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;ss_tt_df&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>we can see this is different and more random.</p>
+<p>We can also use it in <code class="docutils literal notranslate"><span class="pre">cross_val_score</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span><span class="n">iris_X</span><span class="p">,</span><span class="n">iris_y</span><span class="p">,</span><span class="n">cv</span><span class="o">=</span><span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">.2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.9       , 0.93333333, 1.        , 0.93333333, 1.        ,
+       0.96666667, 0.9       , 0.96666667, 0.96666667, 0.93333333,
+       0.93333333, 0.93333333, 0.93333333, 0.93333333, 0.86666667,
+       0.9       , 0.96666667, 0.93333333, 0.96666667, 1.        ,
+       0.96666667, 0.83333333, 0.93333333, 0.96666667, 0.93333333,
+       0.96666667, 0.96666667, 0.9       , 0.9       , 0.86666667,
+       0.96666667, 0.96666667, 0.96666667, 0.96666667, 0.96666667,
+       0.93333333, 1.        , 0.96666667, 0.93333333, 0.96666667,
+       0.93333333, 0.93333333, 0.96666667, 0.9       , 0.9       ,
+       0.9       , 0.96666667, 1.        , 0.93333333, 0.93333333,
+       1.        , 0.96666667, 0.96666667, 0.96666667, 1.        ,
+       0.9       , 1.        , 1.        , 0.96666667, 0.96666667,
+       0.93333333, 0.96666667, 0.96666667, 0.86666667, 0.86666667,
+       0.93333333, 0.9       , 0.96666667, 1.        , 0.93333333,
+       0.86666667, 0.96666667, 1.        , 0.96666667, 0.96666667,
+       0.9       , 0.93333333, 0.93333333, 0.96666667, 0.93333333,
+       0.96666667, 0.93333333, 0.96666667, 0.93333333, 0.9       ,
+       0.96666667, 0.9       , 0.86666667, 0.96666667, 0.96666667,
+       1.        , 0.93333333, 0.93333333, 0.96666667, 1.        ,
+       0.9       , 0.96666667, 0.9       , 0.93333333, 0.96666667])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="questions-after-class">
+<h2><span class="section-number">18.5. </span>Questions after class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<section id="when-should-you-change-test-and-train-sizes-rather-than-just-using-the-default">
+<h3><span class="section-number">18.5.1. </span>When should you change test and train sizes rather than just using the default?<a class="headerlink" href="#when-should-you-change-test-and-train-sizes-rather-than-just-using-the-default" title="Permalink to this headline">#</a></h3>
+<p>Having more training data often gets you a better model, having more test samples gives you a better idea of how well the model will work on new data.  You have to make that choice.</p>
+<p>I think sometimes trying a few and seeing if the performance changes much or not, can also help you decide, if it doesn’t matter much, then use the default. If it changes a lot, then maybe use as much data as possible for training and you can go as far as KFold cross validation with <code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">=</span> <span class="pre">len(X)</span></code> which is called leave-one-out cross validation.</p>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="cvsstrat"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>actually above, since we used a classifier it actually used stratified cross validaiton whichh solves the problem we discussed in class where the data as sorted and that could be misleading.  <a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.model_selection.StratifiedKFold.html#sklearn.model_selection.StratifiedKFold">StratifiedKfold</a> makes each fold (section) have the same percentage of each class for the classifier.  It only does this if the estimator is a classifier, for clustering and regression it always does regular Kfold.</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2024-10-31.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">17. </span>More regression</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../assignments/01-setup.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Assignment 1: Setup, Syllabus, and Review</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-tasks">18.1. ML Tasks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">18.2. Cross Validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-with-sklearn">18.2.1. Loading Data with sklearn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-fold-cross-validation">18.2.2. K-fold Cross Validation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation-is-model-agnostic">18.3. Cross validation is model-agnostic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#details-and-types-of-cross-validation">18.4. Details and types of Cross validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-class">18.5. Questions after class</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-should-you-change-test-and-train-sizes-rather-than-just-using-the-default">18.5.1. When should you change test and train sizes rather than just using the default?</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Professor Sarah M Brown
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

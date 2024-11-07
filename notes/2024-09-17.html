@@ -189,6 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2024-10-24.html">15. Kmeans algorithm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-10-29.html">16. Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-10-31.html">17. More regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-06.html">18. Task Review and Cross Validation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -658,54 +659,54 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th>299</th>
-      <td>1995</td>
-      <td>American Consolidated Natural Resources</td>
-      <td>Investor-owned Company</td>
-      <td>Bituminous Coal</td>
-      <td>8.898062</td>
+      <th>10340</th>
+      <td>1955</td>
+      <td>Singareni Collieries</td>
+      <td>State-owned Entity</td>
+      <td>Sub-Bituminous Coal</td>
+      <td>2.718110</td>
       <td>Million tonnes/yr</td>
-      <td>24.150576</td>
+      <td>5.488111</td>
     </tr>
     <tr>
-      <th>4266</th>
-      <td>1897</td>
-      <td>ExxonMobil</td>
+      <th>6787</th>
+      <td>1977</td>
+      <td>North Korea</td>
+      <td>Nation State</td>
+      <td>Sub-Bituminous Coal</td>
+      <td>3.253551</td>
+      <td>Million tonnes/yr</td>
+      <td>6.569213</td>
+    </tr>
+    <tr>
+      <th>2091</th>
+      <td>2010</td>
+      <td>China (Cement)</td>
+      <td>Nation State</td>
+      <td>Cement</td>
+      <td>1882.000000</td>
+      <td>Million Tonnes CO2</td>
+      <td>941.000000</td>
+    </tr>
+    <tr>
+      <th>6149</th>
+      <td>1979</td>
+      <td>Marathon Oil</td>
       <td>Investor-owned Company</td>
-      <td>Oil &amp; NGL</td>
-      <td>3.499382</td>
-      <td>Million bbl/yr</td>
-      <td>1.395476</td>
+      <td>Natural Gas</td>
+      <td>140.537775</td>
+      <td>Bcf/yr</td>
+      <td>10.243853</td>
     </tr>
     <tr>
-      <th>11048</th>
+      <th>12375</th>
       <td>2015</td>
-      <td>Southwestern Energy</td>
+      <td>Whitehaven Coal</td>
       <td>Investor-owned Company</td>
-      <td>Natural Gas</td>
-      <td>899.000000</td>
-      <td>Bcf/yr</td>
-      <td>65.528461</td>
-    </tr>
-    <tr>
-      <th>6566</th>
-      <td>1974</td>
-      <td>Nigerian National Petroleum Corp.</td>
-      <td>State-owned Entity</td>
-      <td>Natural Gas</td>
-      <td>3.304570</td>
-      <td>Bcf/yr</td>
-      <td>0.240871</td>
-    </tr>
-    <tr>
-      <th>10639</th>
-      <td>2012</td>
-      <td>Sinopec</td>
-      <td>State-owned Entity</td>
-      <td>Oil &amp; NGL</td>
-      <td>513.461610</td>
-      <td>Million bbl/yr</td>
-      <td>204.757141</td>
+      <td>Thermal Coal</td>
+      <td>9.153750</td>
+      <td>Million tonnes/yr</td>
+      <td>21.689153</td>
     </tr>
   </tbody>
 </table>
@@ -1102,59 +1103,59 @@ Name: count, dtype: int64
   </thead>
   <tbody>
     <tr>
-      <th>9313</th>
-      <td>2017</td>
-      <td>Repsol</td>
+      <th>10974</th>
+      <td>2013</td>
+      <td>Sonatrach</td>
+      <td>State-owned Entity</td>
+      <td>Natural Gas</td>
+      <td>2760.000000</td>
+      <td>Bcf/yr</td>
+      <td>201.177477</td>
+      <td>Natural Gas</td>
+    </tr>
+    <tr>
+      <th>12513</th>
+      <td>1991</td>
+      <td>YPF</td>
+      <td>State-owned Entity</td>
+      <td>Oil &amp; NGL</td>
+      <td>178.900000</td>
+      <td>Million bbl/yr</td>
+      <td>71.341366</td>
+      <td>Oil &amp; NGL</td>
+    </tr>
+    <tr>
+      <th>4237</th>
+      <td>2015</td>
+      <td>Exxaro Resources Ltd</td>
       <td>Investor-owned Company</td>
-      <td>Oil &amp; NGL</td>
-      <td>93.075000</td>
-      <td>Million bbl/yr</td>
-      <td>37.116253</td>
-      <td>Oil &amp; NGL</td>
+      <td>Thermal Coal</td>
+      <td>39.228283</td>
+      <td>Million tonnes/yr</td>
+      <td>92.948601</td>
+      <td>Coal</td>
     </tr>
     <tr>
-      <th>6524</th>
-      <td>2021</td>
-      <td>National Iranian Oil Co.</td>
-      <td>State-owned Entity</td>
-      <td>Oil &amp; NGL</td>
-      <td>1278.880000</td>
-      <td>Million bbl/yr</td>
-      <td>509.989077</td>
-      <td>Oil &amp; NGL</td>
-    </tr>
-    <tr>
-      <th>10531</th>
-      <td>2003</td>
-      <td>Singareni Collieries</td>
-      <td>State-owned Entity</td>
+      <th>5679</th>
+      <td>1976</td>
+      <td>Kiewit Mining Group</td>
+      <td>Investor-owned Company</td>
       <td>Lignite Coal</td>
-      <td>2.489253</td>
+      <td>0.687367</td>
       <td>Million tonnes/yr</td>
-      <td>3.333633</td>
+      <td>0.920529</td>
       <td>Coal</td>
     </tr>
     <tr>
-      <th>4713</th>
-      <td>1941</td>
-      <td>Former Soviet Union</td>
+      <th>2087</th>
+      <td>2006</td>
+      <td>China (Cement)</td>
       <td>Nation State</td>
-      <td>Bituminous Coal</td>
-      <td>137.142326</td>
-      <td>Million tonnes/yr</td>
-      <td>372.223338</td>
-      <td>Coal</td>
-    </tr>
-    <tr>
-      <th>6847</th>
-      <td>2005</td>
-      <td>North Korea</td>
-      <td>Nation State</td>
-      <td>Anthracite Coal</td>
-      <td>16.225901</td>
-      <td>Million tonnes/yr</td>
-      <td>47.342104</td>
-      <td>Coal</td>
+      <td>Cement</td>
+      <td>1233.485213</td>
+      <td>Million Tonnes CO2</td>
+      <td>616.742606</td>
+      <td>Cement</td>
     </tr>
   </tbody>
 </table>
