@@ -203,6 +203,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../assignments/06-evaluate.html">6. Assignment 6: Auditing Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/07-classification.html">7. Assignment 7</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/08-clustering.html">8. Assignment 8: Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/09-regression-optimization.html">9. Assignment 9: Linear Regression</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
 <ul class="nav bd-sidenav">
@@ -683,7 +684,7 @@ we call the function again, it does another round of random splits</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.        , 0.93333333, 1.        , 0.93333333, 0.93333333,
-       0.86666667, 0.93333333, 1.        , 1.        , 1.        ])
+       0.86666667, 0.93333333, 0.93333333, 1.        , 1.        ])
 </pre></div>
 </div>
 </div>
@@ -774,7 +775,7 @@ building the whole list up front, which makes it more memory efficient.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;generator object _BaseKFold.split at 0x7f299b2fd510&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;generator object _BaseKFold.split at 0x7f70fd363510&gt;
 </pre></div>
 </div>
 </div>
@@ -1099,26 +1100,26 @@ building the whole list up front, which makes it more memory efficient.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.9       , 0.93333333, 1.        , 0.93333333, 1.        ,
-       0.96666667, 0.9       , 0.96666667, 0.96666667, 0.93333333,
-       0.93333333, 0.93333333, 0.93333333, 0.93333333, 0.86666667,
-       0.9       , 0.96666667, 0.93333333, 0.96666667, 1.        ,
-       0.96666667, 0.83333333, 0.93333333, 0.96666667, 0.93333333,
-       0.96666667, 0.96666667, 0.9       , 0.9       , 0.86666667,
-       0.96666667, 0.96666667, 0.96666667, 0.96666667, 0.96666667,
-       0.93333333, 1.        , 0.96666667, 0.93333333, 0.96666667,
-       0.93333333, 0.93333333, 0.96666667, 0.9       , 0.9       ,
-       0.9       , 0.96666667, 1.        , 0.93333333, 0.93333333,
-       1.        , 0.96666667, 0.96666667, 0.96666667, 1.        ,
-       0.9       , 1.        , 1.        , 0.96666667, 0.96666667,
-       0.93333333, 0.96666667, 0.96666667, 0.86666667, 0.86666667,
-       0.93333333, 0.9       , 0.96666667, 1.        , 0.93333333,
-       0.86666667, 0.96666667, 1.        , 0.96666667, 0.96666667,
-       0.9       , 0.93333333, 0.93333333, 0.96666667, 0.93333333,
-       0.96666667, 0.93333333, 0.96666667, 0.93333333, 0.9       ,
-       0.96666667, 0.9       , 0.86666667, 0.96666667, 0.96666667,
-       1.        , 0.93333333, 0.93333333, 0.96666667, 1.        ,
-       0.9       , 0.96666667, 0.9       , 0.93333333, 0.96666667])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.96666667, 0.86666667, 0.9       , 0.96666667, 1.        ,
+       0.96666667, 0.86666667, 0.96666667, 1.        , 0.93333333,
+       0.93333333, 1.        , 1.        , 1.        , 0.93333333,
+       0.96666667, 0.93333333, 0.93333333, 1.        , 0.96666667,
+       0.96666667, 0.96666667, 0.93333333, 0.93333333, 0.9       ,
+       0.96666667, 0.96666667, 0.93333333, 0.96666667, 0.96666667,
+       1.        , 0.93333333, 1.        , 0.96666667, 0.93333333,
+       0.96666667, 0.96666667, 0.9       , 0.93333333, 0.96666667,
+       1.        , 0.93333333, 1.        , 0.96666667, 0.9       ,
+       0.86666667, 0.9       , 1.        , 0.93333333, 1.        ,
+       0.9       , 0.93333333, 1.        , 0.86666667, 0.96666667,
+       0.96666667, 0.93333333, 0.96666667, 0.96666667, 0.93333333,
+       0.86666667, 0.96666667, 0.96666667, 0.93333333, 0.86666667,
+       0.93333333, 0.96666667, 0.96666667, 1.        , 0.9       ,
+       0.96666667, 1.        , 0.93333333, 0.9       , 0.93333333,
+       0.93333333, 1.        , 0.96666667, 0.96666667, 0.9       ,
+       0.93333333, 0.96666667, 1.        , 0.96666667, 0.93333333,
+       0.93333333, 1.        , 0.96666667, 1.        , 0.96666667,
+       0.9       , 0.96666667, 0.96666667, 0.96666667, 0.9       ,
+       0.9       , 0.93333333, 0.96666667, 1.        , 0.86666667])
 </pre></div>
 </div>
 </div>
