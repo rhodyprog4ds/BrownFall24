@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2024-11-06';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Assignment 1: Setup, Syllabus, and Review" href="../assignments/01-setup.html" />
+    <link rel="next" title="19. Model Optimization" href="2024-11-07.html" />
     <link rel="prev" title="17. More regression" href="2024-10-31.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -192,6 +192,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2024-10-29.html">16. Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-10-31.html">17. More regression</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">18. Task Review and Cross Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-07.html">19. Model Optimization</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -647,7 +648,7 @@ each section gets used for testing.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.96666667, 0.96666667, 0.9       , 1.        , 1.        ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.96666667, 0.96666667, 0.9       , 0.93333333, 1.        ])
 </pre></div>
 </div>
 </div>
@@ -670,7 +671,7 @@ we call the function again, it does another round of random splits</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9666666666666668
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9533333333333334
 </pre></div>
 </div>
 </div>
@@ -775,7 +776,7 @@ building the whole list up front, which makes it more memory efficient.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;generator object _BaseKFold.split at 0x7f70fd363510&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;generator object _BaseKFold.split at 0x7eff2d847900&gt;
 </pre></div>
 </div>
 </div>
@@ -1100,26 +1101,26 @@ building the whole list up front, which makes it more memory efficient.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.96666667, 0.86666667, 0.9       , 0.96666667, 1.        ,
-       0.96666667, 0.86666667, 0.96666667, 1.        , 0.93333333,
-       0.93333333, 1.        , 1.        , 1.        , 0.93333333,
-       0.96666667, 0.93333333, 0.93333333, 1.        , 0.96666667,
-       0.96666667, 0.96666667, 0.93333333, 0.93333333, 0.9       ,
-       0.96666667, 0.96666667, 0.93333333, 0.96666667, 0.96666667,
-       1.        , 0.93333333, 1.        , 0.96666667, 0.93333333,
-       0.96666667, 0.96666667, 0.9       , 0.93333333, 0.96666667,
-       1.        , 0.93333333, 1.        , 0.96666667, 0.9       ,
-       0.86666667, 0.9       , 1.        , 0.93333333, 1.        ,
-       0.9       , 0.93333333, 1.        , 0.86666667, 0.96666667,
-       0.96666667, 0.93333333, 0.96666667, 0.96666667, 0.93333333,
-       0.86666667, 0.96666667, 0.96666667, 0.93333333, 0.86666667,
-       0.93333333, 0.96666667, 0.96666667, 1.        , 0.9       ,
-       0.96666667, 1.        , 0.93333333, 0.9       , 0.93333333,
-       0.93333333, 1.        , 0.96666667, 0.96666667, 0.9       ,
-       0.93333333, 0.96666667, 1.        , 0.96666667, 0.93333333,
-       0.93333333, 1.        , 0.96666667, 1.        , 0.96666667,
-       0.9       , 0.96666667, 0.96666667, 0.96666667, 0.9       ,
-       0.9       , 0.93333333, 0.96666667, 1.        , 0.86666667])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.93333333, 1.        , 0.93333333, 0.96666667, 0.93333333,
+       0.93333333, 0.9       , 0.9       , 0.96666667, 0.93333333,
+       0.96666667, 0.9       , 0.93333333, 0.93333333, 1.        ,
+       0.96666667, 0.9       , 0.93333333, 0.96666667, 1.        ,
+       0.96666667, 1.        , 0.96666667, 0.86666667, 1.        ,
+       0.93333333, 0.96666667, 0.9       , 0.9       , 0.96666667,
+       0.9       , 1.        , 0.9       , 0.96666667, 0.93333333,
+       1.        , 0.96666667, 1.        , 0.86666667, 0.9       ,
+       0.9       , 1.        , 0.96666667, 0.93333333, 0.96666667,
+       0.93333333, 1.        , 0.9       , 0.86666667, 0.96666667,
+       0.93333333, 0.96666667, 0.96666667, 0.96666667, 0.96666667,
+       0.8       , 0.96666667, 1.        , 0.96666667, 1.        ,
+       0.86666667, 0.93333333, 0.93333333, 0.93333333, 0.93333333,
+       0.86666667, 0.96666667, 1.        , 0.93333333, 0.96666667,
+       0.96666667, 0.96666667, 0.96666667, 0.93333333, 0.93333333,
+       0.93333333, 0.96666667, 0.9       , 0.93333333, 0.86666667,
+       0.9       , 0.96666667, 1.        , 0.96666667, 0.9       ,
+       0.93333333, 0.96666667, 0.93333333, 1.        , 0.93333333,
+       1.        , 0.93333333, 0.93333333, 0.9       , 0.9       ,
+       0.93333333, 1.        , 0.96666667, 0.93333333, 1.        ])
 </pre></div>
 </div>
 </div>
@@ -1182,11 +1183,11 @@ building the whole list up front, which makes it more memory efficient.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../assignments/01-setup.html"
+       href="2024-11-07.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Assignment 1: Setup, Syllabus, and Review</p>
+        <p class="prev-next-title"><span class="section-number">19. </span>Model Optimization</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
