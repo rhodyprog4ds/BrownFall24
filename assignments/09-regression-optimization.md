@@ -1,7 +1,7 @@
 # Assignment 9:  Regression and Optimization
 
 
-__Due: 2023-11-15__
+__Due: 2024-11-15__
 
 ```{important}
 Since this is posted late you can do regression and optimize together
