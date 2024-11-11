@@ -1,4 +1,4 @@
-# Assignment 9: Linear Regression
+# Assignment 9:  Regression and Optimization
 
 
 __Due: 2023-11-15__
