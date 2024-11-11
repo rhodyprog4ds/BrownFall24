@@ -1,11 +1,11 @@
 # Assignment 9: Linear Regression
 
 
-__Due: 2023-11-13__
+__Due: 2023-11-15__
 
 ```{important}
 Since this is posted late you can do regression and optimize together
-*or* you can do only the regression on this assigment and focus on optimizing for classification or clustering in A10 while also doing model comparison. 
+*or* you can do only the regression part of this assigment and focus on optimization for classification or clustering in A10 while **also** doing model comparison. 
 
 If you optimize a regression model other than LASSO, we will evaluate it for regresion level 3. 
 ```
