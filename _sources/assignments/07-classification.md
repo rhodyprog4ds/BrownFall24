@@ -1,4 +1,4 @@
-# Assignment 7
+# Assignment 7: Classification
 
 [accept the assigment](https://classroom.github.com/a/q-cpZN-M)
 
