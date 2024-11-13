@@ -24,6 +24,9 @@ corpus
 [DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html)
   a data structure provided by pandas for tabular data in python.
 
+data leakage
+  data from the test set is used in training and then falsely improves the test performance
+
 [dictionary](https://docs.python.org/3/glossary.html#term-dictionary)
   (data type) a mapping array that matches keys to values. (in NLP) all of the possible tokens a model knows
 
