@@ -1,0 +1,1139 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>20. Model Comparison &#8212; Programming for Data Science at URI Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course-admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2024-11-12';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Assignment 1: Setup, Syllabus, and Review" href="../assignments/01-setup.html" />
+    <link rel="prev" title="19. Model Optimization" href="2024-11-07.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/310_2021.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/310_2021.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/tools.html">Tools and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/achievements.html">Data Science Achievements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Grading Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/style.html">Course  Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_resources.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_statements.html">General URI Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/communication.html">Communications &amp; Office Hours</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2024-09-05.html">1. Welcome &amp; What is Data Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-10.html">2. Iterables and Pandas Data Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-12.html">3. Pandas Data Frames and More Iterable Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-17.html">4. Exploratory Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-19.html">5. Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-24.html">6. Cleaning Data - Structure</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="2024-09-26.html">8. Fixing Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-01.html">9. Webscraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-03.html">10. Merging Data &amp; Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-08.html">11. Evaluating ML Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-10.html">12. ML Models and Auditing with AIF360</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-17.html">13. Classification Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-22.html">14. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-24.html">15. Kmeans algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-29.html">16. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-31.html">17. More regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-06.html">18. Task Review and Cross Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-07.html">19. Model Optimization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">20. Model Comparison</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../assignments/01-setup.html">1. Assignment 1: Setup, Syllabus, and Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/02-python-access.html">2. Assignment 2: Practicing Python and Accessing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/03-eda.html">3. Assignment 3: Exploratory Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/04-prepare.html">4. Assignment 4: Cleaning Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/05-construct.html">5. Assignment 5: Constructing Datasets and Using Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/06-evaluate.html">6. Assignment 6: Auditing Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/07-classification.html">7. Assignment 7: Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/08-clustering.html">8. Assignment 8: Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/09-regression-optimization.html">9. Assignment 9:  Regression and Optimization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/index.html">Deepening your knowledge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/formatting.html">Formatting Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/extensions.html">Generic Extension Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/altforms.html">Alternatives to Extending Assignments for Level 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/process.html">Process Level 3</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/syllabus.html">Syllabus and Grading FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/github.html">Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/debugging.html">Code Errors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/python.html">References on Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/datasets.html">Data Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/tips.html">General Tips and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/learning.html">How to Study in this class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/gettinghelp.html">Getting Help with Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/terminal.html">Terminals and Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/organization.html">Getting Organized for class</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">Advice from FA2020 Students</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">Advice from FA2021 Students</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24/edit/main/notes/2024-11-12.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24/issues/new?title=Issue%20on%20page%20%2Fnotes/2024-11-12.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notes/2024-11-12.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Model Comparison</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">20. Model Comparison</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-the-grid-search-do">20.1. What does the grid search do?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-performance">21. Comparing performance</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-the-best-model-do">21.1. How does the best model do?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-training-time">21.2. What about training time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-sensitive-to-the-parameter-values-is-each-model">21.3. How sensitive to the parameter values is each model?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-complete-comparison">21.4. More Complete comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretability">21.5. Interpretability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-type">21.6. Model type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">21.7. Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-there-a-sample-size-restriction-to-compare-models">21.7.1. Is there a sample size restriction to compare models?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#does-gnb-also-have-these-mean-score-mean-time-parameters-that-dt-and-svc">21.7.2. Does GNB also have these mean_score, mean_time parameters that DT and SVC?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-the-size-of-the-parameter-grid-impact-the-requirements-of-the-grid-search">21.7.3. how does the size of the parameter grid impact the requirements of the grid search?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#are-they-still-using-the-ai-to-see-paitent-priority-in-hospitals">21.7.4. are they still using the ai to see paitent priority in hospitals?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-does-it-matter-how-long-it-takes-to-fit-data-when-the-time-is-almost-instantaneous">21.7.5. Why does it matter how long it takes to fit data when the time is almost instantaneous?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-models-are-trained-at-an-enterprise-level-for-an-enterprise-applications-is-pandas-scikit-learn-still-used-or-is-a-lower-level-language-package-used-like-for-netflix">21.7.6. when models are trained at an enterprise level / for an enterprise applications is pandas &amp; scikit-learn still used or is a lower-level language/package used (like for netflix)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="model-comparison">
+<h1><span class="section-number">20. </span>Model Comparison<a class="headerlink" href="#model-comparison" title="Permalink to this headline">#</a></h1>
+<p>To compare models, we will first optimize the parameters of two diffrent models and look at how the different parameters settings impact the model comparison.  Later, we’ll see how to compare across models of different classes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cluster</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+<span class="c1"># import the whole model selection module</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">model_selection</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll use the iris data again.</p>
+<p>Remember, we need to split the data into training and test.  The cross validation step will hep us optimize the parameters, but we don’t want <a class="reference internal" href="../resources/glossary.html#term-data-leakage"><span class="xref std std-term">data leakage</span></a> where the model has seen the test data multiple times. So, we split the data here for train and test nnd the cross validation splits the training data into train and “test” again, but that “test” is better termed <span class="xref std std-term">validation</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load and split the data</span>
+<span class="n">iris_X</span><span class="p">,</span> <span class="n">iris_y</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">iris_X_train</span><span class="p">,</span> <span class="n">iris_X_test</span><span class="p">,</span> <span class="n">iris_y_train</span><span class="p">,</span> <span class="n">iris_y_test</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">train_test_split</span><span class="p">(</span>
+  <span class="n">iris_X</span><span class="p">,</span><span class="n">iris_y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span><span class="mf">.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we can make the object, the parameter grid dictionary and the Grid Search object.  We split these into separate cells, so that we can use the built in help to see more detail.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create dt,</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+
+<span class="c1"># set param grid </span>
+<span class="n">params_dt</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;criterion&#39;</span><span class="p">:[</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span><span class="s1">&#39;entropy&#39;</span><span class="p">],</span>
+       <span class="s1">&#39;max_depth&#39;</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+    <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">2</span><span class="p">))}</span>
+<span class="c1"># create optimizer</span>
+<span class="n">dt_opt</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">GridSearchCV</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span><span class="n">params_dt</span><span class="p">,</span><span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+<span class="c1"># optimize the dt parameters</span>
+<span class="n">dt_opt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris_X_train</span><span class="p">,</span><span class="n">iris_y_train</span><span class="p">)</span>
+
+<span class="c1"># store the results in a dataframe</span>
+<span class="n">dt_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dt_opt</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span>
+
+
+<span class="c1"># create svm, its parameter grid and optimizer</span>
+<span class="n">svm_clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">()</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;kernel&#39;</span><span class="p">:[</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="s1">&#39;rbf&#39;</span><span class="p">],</span> <span class="s1">&#39;C&#39;</span><span class="p">:[</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">]}</span>
+<span class="n">svm_opt</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">GridSearchCV</span><span class="p">(</span><span class="n">svm_clf</span><span class="p">,</span><span class="n">param_grid</span><span class="p">,</span><span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># optmize the svm put the CV results in a dataframe</span>
+<span class="n">svm_opt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris_X_train</span><span class="p">,</span><span class="n">iris_y_train</span><span class="p">)</span>
+<span class="n">sv_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">svm_opt</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we fit the Grid search using the training data, and remember this actually resets the parameters and then cross validates multiple times.</p>
+<p>We fit both a decision tree and an SVM for this case.</p>
+<section id="what-does-the-grid-search-do">
+<h2><span class="section-number">20.1. </span>What does the grid search do?<a class="headerlink" href="#what-does-the-grid-search-do" title="Permalink to this headline">#</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The notes from the last class include more detail than was covered in
+class time on November 7, o make it up. Please see that, it includes that there are <em>other</em> types of searches that might be better in some applications</p>
+</div>
+<p>It fits and scores the model with each set of parameters on each fold of the data.</p>
+<p>It saves results for each set of parameters and each fold of cross validaiton.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(90, 21)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can confirm this matches what our parameter grid said, here we pick out the values from the parameter dictionary then store those in a list (via list comprehension) then we multiply all of those together:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">product</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">param_list</span><span class="p">)</span> <span class="k">for</span> <span class="n">param_list</span> <span class="ow">in</span> <span class="n">params_dt</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90
+</pre></div>
+</div>
+</div>
+</div>
+<p>this matches the number of rows above</p>
+<p>we can see how much it stores for each of these parameter settings</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean_fit_time</th>
+      <th>std_fit_time</th>
+      <th>mean_score_time</th>
+      <th>std_score_time</th>
+      <th>param_criterion</th>
+      <th>param_max_depth</th>
+      <th>param_min_samples_leaf</th>
+      <th>params</th>
+      <th>split0_test_score</th>
+      <th>split1_test_score</th>
+      <th>...</th>
+      <th>split3_test_score</th>
+      <th>split4_test_score</th>
+      <th>split5_test_score</th>
+      <th>split6_test_score</th>
+      <th>split7_test_score</th>
+      <th>split8_test_score</th>
+      <th>split9_test_score</th>
+      <th>mean_test_score</th>
+      <th>std_test_score</th>
+      <th>rank_test_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.000536</td>
+      <td>0.000102</td>
+      <td>0.000435</td>
+      <td>0.000035</td>
+      <td>gini</td>
+      <td>2</td>
+      <td>2</td>
+      <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
+      <td>0.833333</td>
+      <td>0.916667</td>
+      <td>...</td>
+      <td>0.916667</td>
+      <td>0.916667</td>
+      <td>0.75</td>
+      <td>0.916667</td>
+      <td>0.916667</td>
+      <td>0.916667</td>
+      <td>0.833333</td>
+      <td>0.891667</td>
+      <td>0.065085</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.000496</td>
+      <td>0.000016</td>
+      <td>0.000421</td>
+      <td>0.000017</td>
+      <td>gini</td>
+      <td>2</td>
+      <td>4</td>
+      <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
+      <td>0.833333</td>
+      <td>0.916667</td>
+      <td>...</td>
+      <td>0.916667</td>
+      <td>0.916667</td>
+      <td>0.75</td>
+      <td>0.916667</td>
+      <td>0.916667</td>
+      <td>0.916667</td>
+      <td>0.833333</td>
+      <td>0.891667</td>
+      <td>0.065085</td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
+<p>2 rows × 21 columns</p>
+</div></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> object also reveals the model with the best test score to be used with <code class="docutils literal notranslate"><span class="pre">score</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">,</span><span class="n">iris_y_test</span><span class="p">),</span> <span class="n">svm_opt</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">,</span><span class="n">iris_y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.0, 0.9666666666666667)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="comparing-performance">
+<h1><span class="section-number">21. </span>Comparing performance<a class="headerlink" href="#comparing-performance" title="Permalink to this headline">#</a></h1>
+<p>We can compare how much time each model takes to score (make predictions) for each model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_df</span><span class="p">[</span><span class="s1">&#39;mean_score_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    90.000000
+mean      0.000415
+std       0.000005
+min       0.000407
+25%       0.000412
+50%       0.000413
+75%       0.000417
+max       0.000446
+Name: mean_score_time, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sv_df</span><span class="p">[</span><span class="s1">&#39;mean_score_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    14.000000
+mean      0.000446
+std       0.000011
+min       0.000431
+25%       0.000438
+50%       0.000443
+75%       0.000456
+max       0.000462
+Name: mean_score_time, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>In these, we can look at the means but also the standard deviation, it is important to understand how sensitive each classifier is to the parameters.  If a model is really sensitive to the parameters, that can mean it might not transfer as well, or at leasst warrant further optimization.</p>
+<p>Which model’s performance is more sensitive to the parameters?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_df</span><span class="p">[</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    90.000000
+mean      0.897500
+std       0.014699
+min       0.891667
+25%       0.891667
+50%       0.891667
+75%       0.891667
+max       0.950000
+Name: mean_test_score, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sv_df</span><span class="p">[</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    14.000000
+mean      0.969048
+std       0.014032
+min       0.933333
+25%       0.960417
+50%       0.970833
+75%       0.981250
+max       0.983333
+Name: mean_test_score, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Again here, the better fit model was similar, but this is somethign that we can look at the borader statistics</p>
+<section id="how-does-the-best-model-do">
+<h2><span class="section-number">21.1. </span>How does the best model do?<a class="headerlink" href="#how-does-the-best-model-do" title="Permalink to this headline">#</a></h2>
+<p>We can get the best ranked model</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_df</span><span class="p">[</span><span class="s1">&#39;rank_test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>73
+</pre></div>
+</div>
+</div>
+</div>
+<p>and look at its perforamnce to compare the best parameter values of each model</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dt_df</span><span class="p">[</span><span class="s1">&#39;rank_test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean_fit_time                                                      0.000512
+std_fit_time                                                       0.000009
+mean_score_time                                                    0.000407
+std_score_time                                                     0.000006
+param_criterion                                                     entropy
+param_max_depth                                                           5
+param_min_samples_leaf                                                    4
+params                    {&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 5, &#39;min_...
+split0_test_score                                                  0.916667
+split1_test_score                                                       1.0
+split2_test_score                                                       1.0
+split3_test_score                                                       1.0
+split4_test_score                                                       1.0
+split5_test_score                                                  0.833333
+split6_test_score                                                  0.916667
+split7_test_score                                                  0.916667
+split8_test_score                                                  0.916667
+split9_test_score                                                       1.0
+mean_test_score                                                        0.95
+std_test_score                                                     0.055277
+rank_test_score                                                           1
+Name: 73, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sv_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sv_df</span><span class="p">[</span><span class="s1">&#39;rank_test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean_fit_time                              0.000688
+std_fit_time                               0.000049
+mean_score_time                            0.000446
+std_score_time                             0.000012
+param_C                                         0.5
+param_kernel                                 linear
+params               {&#39;C&#39;: 0.5, &#39;kernel&#39;: &#39;linear&#39;}
+split0_test_score                               1.0
+split1_test_score                               1.0
+split2_test_score                               1.0
+split3_test_score                               1.0
+split4_test_score                               1.0
+split5_test_score                               1.0
+split6_test_score                               1.0
+split7_test_score                          0.916667
+split8_test_score                          0.916667
+split9_test_score                               1.0
+mean_test_score                            0.983333
+std_test_score                             0.033333
+rank_test_score                                   1
+Name: 0, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-about-training-time">
+<h2><span class="section-number">21.2. </span>What about training time<a class="headerlink" href="#what-about-training-time" title="Permalink to this headline">#</a></h2>
+<p>In some contexts it might be important to also check how long it takes to train, for example if you wil train and retrain a lot on changing data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_df</span><span class="p">[</span><span class="s1">&#39;mean_fit_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    90.000000
+mean      0.000502
+std       0.000010
+min       0.000480
+25%       0.000497
+50%       0.000502
+75%       0.000509
+max       0.000536
+Name: mean_fit_time, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sv_df</span><span class="p">[</span><span class="s1">&#39;mean_fit_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    14.000000
+mean      0.000684
+std       0.000032
+min       0.000652
+25%       0.000659
+50%       0.000677
+75%       0.000696
+max       0.000751
+Name: mean_fit_time, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="how-sensitive-to-the-parameter-values-is-each-model">
+<h2><span class="section-number">21.3. </span>How sensitive to the parameter values is each model?<a class="headerlink" href="#how-sensitive-to-the-parameter-values-is-each-model" title="Permalink to this headline">#</a></h2>
+<p>We can look at a lot of different things to check this.  First, we can look back above at the <code class="docutils literal notranslate"><span class="pre">std</span></code> in the describe tables above.  That is how much the parameter values changed the different measurements we took.</p>
+<p>Another thing we can look at is the ranks. If most of the models are ranked the same, that means they all got the same score, so the parameter values did not change the accuracy. That is not sensitive. This helps us see a bit more detail in how sensitive when the std are small already.</p>
+<p>If there are no ties, that shows some sensitivity, and then it would be important to look at the std to see if it is small or not.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>the below may be different due to random splits</p>
+</div>
+</section>
+<section id="more-complete-comparison">
+<h2><span class="section-number">21.4. </span>More Complete comparison<a class="headerlink" href="#more-complete-comparison" title="Permalink to this headline">#</a></h2>
+<p>A coomplete comparison will compare across multiple metrics and consider the relative important of those metrics on the particular context.</p>
+<p>We can look at the performance, here the score is the accuracy and we could also look at other performance metrics.</p>
+<p>We can compare them on time: the training time or the test time (more important).</p>
+</section>
+<section id="interpretability">
+<h2><span class="section-number">21.5. </span>Interpretability<a class="headerlink" href="#interpretability" title="Permalink to this headline">#</a></h2>
+<p>We can also compare models on their interpretability: a decision tree is easy to explain how it makes a decision.</p>
+<p>An SVM is somewhat harder and a neural network that we will see after Thanksgiving is even more complex.</p>
+<p>If the model is going in a webapp, it may not matter if it is interpretable, but if it is being used with experts of some sort, they will likely care about its interpretability.</p>
+<p>For example, in healthcare, interpretability is often valued.  I shared a <a class="reference external" href="https://www.google.com/search?q=rich+caruana+interpretabl+ml&amp;rlz=1C5CHFA_enUS916US917&amp;oq=rich+caruana+interpretabl+ml&amp;gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIKCAIQIRigARiLAzIKCAMQIRigARiLAzIKCAQQIRigARiLA9IBCDkzOTBqMWo0qAIAsAIA&amp;sourceid=chrome&amp;ie=UTF-8#fpstate=ive&amp;vld=cid:59d14c67,vid:cDAXiq-at5M,st:531">story</a> about a model that performed well on one metric, but looking at how it worked raised concerns.  That link leads to the person who trained that model telling the story.</p>
+</section>
+<section id="model-type">
+<h2><span class="section-number">21.6. </span>Model type<a class="headerlink" href="#model-type" title="Permalink to this headline">#</a></h2>
+<p>For classifiers, we can compare the type of classifier, or what it learns.
+We can compare if it is generative (describes the data, could generate synthetic data) or discriminative (describes the decision rule). A generative model might be preferred even with lower accuracy by a scientist who wants to understand the data.  It can also help to give ideas about what you might do to improve the model.  If you just need the most accuracy, like if you are placing ads, you would typically use a discriminative model because it is complex, and you just want accuracy you don’t need to understand.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">,</span><span class="n">iris_y_test</span><span class="p">),</span> <span class="n">svm_opt</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">,</span><span class="n">iris_y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.0, 0.9666666666666667)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">iris_y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="questions">
+<h2><span class="section-number">21.7. </span>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">#</a></h2>
+<section id="is-there-a-sample-size-restriction-to-compare-models">
+<h3><span class="section-number">21.7.1. </span>Is there a sample size restriction to compare models?<a class="headerlink" href="#is-there-a-sample-size-restriction-to-compare-models" title="Permalink to this headline">#</a></h3>
+<p>No, but you should compare them on the <em>same</em> data (for training and testing)</p>
+</section>
+<section id="does-gnb-also-have-these-mean-score-mean-time-parameters-that-dt-and-svc">
+<h3><span class="section-number">21.7.2. </span>Does GNB also have these mean_score, mean_time parameters that DT and SVC?<a class="headerlink" href="#does-gnb-also-have-these-mean-score-mean-time-parameters-that-dt-and-svc" title="Permalink to this headline">#</a></h3>
+<p>These parameters are of the <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> object, not the <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code> or the <code class="docutils literal notranslate"><span class="pre">SVC</span></code>.  Therefore, they exist for any <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> no matter what estimator object is used to instantiate it.  So, yes, for a <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> over a <code class="docutils literal notranslate"><span class="pre">GaussianNB</span></code> these values would exist.</p>
+</section>
+<section id="how-does-the-size-of-the-parameter-grid-impact-the-requirements-of-the-grid-search">
+<h3><span class="section-number">21.7.3. </span>how does the size of the parameter grid impact the requirements of the grid search?<a class="headerlink" href="#how-does-the-size-of-the-parameter-grid-impact-the-requirements-of-the-grid-search" title="Permalink to this headline">#</a></h3>
+<p>It impacts how long it will take to run.</p>
+<p>If this answer is not enough for you, please write to clarify your question and I will expand.</p>
+</section>
+<section id="are-they-still-using-the-ai-to-see-paitent-priority-in-hospitals">
+<h3><span class="section-number">21.7.4. </span>are they still using the ai to see paitent priority in hospitals?<a class="headerlink" href="#are-they-still-using-the-ai-to-see-paitent-priority-in-hospitals" title="Permalink to this headline">#</a></h3>
+<p>The model I told the <a class="reference external" href="https://www.google.com/search?q=rich+caruana+interpretabl+ml&amp;rlz=1C5CHFA_enUS916US917&amp;oq=rich+caruana+interpretabl+ml&amp;gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIKCAIQIRigARiLAzIKCAMQIRigARiLAzIKCAQQIRigARiLA9IBCDkzOTBqMWo0qAIAsAIA&amp;sourceid=chrome&amp;ie=UTF-8#fpstate=ive&amp;vld=cid:59d14c67,vid:cDAXiq-at5M,st:531">story</a> about never got deployed.  ML is used to varying degrees in hosptials.  There is a lot of research on <a class="reference external" href="https://www.mlforhc.org/">machine learning for healthcare</a> see for example the list of <a class="reference external" href="https://www.mlforhc.org/2023-accepted-papers">2023 papers</a></p>
+<p><a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/3351095.3372827">this is an example of a well designed successfully deployed model</a>. You can read it through URI, let me know if you do not know how to use the library to get access.</p>
+</section>
+<section id="why-does-it-matter-how-long-it-takes-to-fit-data-when-the-time-is-almost-instantaneous">
+<h3><span class="section-number">21.7.5. </span>Why does it matter how long it takes to fit data when the time is almost instantaneous?<a class="headerlink" href="#why-does-it-matter-how-long-it-takes-to-fit-data-when-the-time-is-almost-instantaneous" title="Permalink to this headline">#</a></h3>
+<p>When it is this low, we likely would not care.  The minor difference in score time could add up because even if it is .0001s but it is called 3 million times per day, then the time(and associated compute time, and energy costs, etc) adds up.</p>
+</section>
+<section id="when-models-are-trained-at-an-enterprise-level-for-an-enterprise-applications-is-pandas-scikit-learn-still-used-or-is-a-lower-level-language-package-used-like-for-netflix">
+<h3><span class="section-number">21.7.6. </span>when models are trained at an enterprise level / for an enterprise applications is pandas &amp; scikit-learn still used or is a lower-level language/package used (like for netflix)<a class="headerlink" href="#when-models-are-trained-at-an-enterprise-level-for-an-enterprise-applications-is-pandas-scikit-learn-still-used-or-is-a-lower-level-language-package-used-like-for-netflix" title="Permalink to this headline">#</a></h3>
+<p>What data scientists do is typically still using pandas and scikit-learn. For time-critical or low memory location deployed model, the fit model may be re-implemented in a faster language.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2024-11-07.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">19. </span>Model Optimization</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../assignments/01-setup.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Assignment 1: Setup, Syllabus, and Review</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">20. Model Comparison</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-the-grid-search-do">20.1. What does the grid search do?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-performance">21. Comparing performance</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-the-best-model-do">21.1. How does the best model do?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-training-time">21.2. What about training time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-sensitive-to-the-parameter-values-is-each-model">21.3. How sensitive to the parameter values is each model?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-complete-comparison">21.4. More Complete comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretability">21.5. Interpretability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-type">21.6. Model type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">21.7. Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-there-a-sample-size-restriction-to-compare-models">21.7.1. Is there a sample size restriction to compare models?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#does-gnb-also-have-these-mean-score-mean-time-parameters-that-dt-and-svc">21.7.2. Does GNB also have these mean_score, mean_time parameters that DT and SVC?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-the-size-of-the-parameter-grid-impact-the-requirements-of-the-grid-search">21.7.3. how does the size of the parameter grid impact the requirements of the grid search?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#are-they-still-using-the-ai-to-see-paitent-priority-in-hospitals">21.7.4. are they still using the ai to see paitent priority in hospitals?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-does-it-matter-how-long-it-takes-to-fit-data-when-the-time-is-almost-instantaneous">21.7.5. Why does it matter how long it takes to fit data when the time is almost instantaneous?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-models-are-trained-at-an-enterprise-level-for-an-enterprise-applications-is-pandas-scikit-learn-still-used-or-is-a-lower-level-language-package-used-like-for-netflix">21.7.6. when models are trained at an enterprise level / for an enterprise applications is pandas &amp; scikit-learn still used or is a lower-level language/package used (like for netflix)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Professor Sarah M Brown
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2024-11-07';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Assignment 1: Setup, Syllabus, and Review" href="../assignments/01-setup.html" />
+    <link rel="next" title="20. Model Comparison" href="2024-11-12.html" />
     <link rel="prev" title="18. Task Review and Cross Validation" href="2024-11-06.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -191,6 +191,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2024-10-31.html">17. More regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-11-06.html">18. Task Review and Cross Validation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">19. Model Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-12.html">20. Model Comparison</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -630,10 +632,10 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.001603</td>
-      <td>0.000164</td>
-      <td>0.001277</td>
-      <td>0.000048</td>
+      <td>0.001663</td>
+      <td>0.000264</td>
+      <td>0.001299</td>
+      <td>0.000092</td>
       <td>gini</td>
       <td>2</td>
       <td>2</td>
@@ -649,9 +651,9 @@ document.write(`
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001510</td>
-      <td>0.000023</td>
-      <td>0.001239</td>
+      <td>0.001485</td>
+      <td>0.000008</td>
+      <td>0.001249</td>
       <td>0.000013</td>
       <td>gini</td>
       <td>2</td>
@@ -668,10 +670,10 @@ document.write(`
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001513</td>
-      <td>0.000019</td>
-      <td>0.001227</td>
-      <td>0.000013</td>
+      <td>0.001484</td>
+      <td>0.000017</td>
+      <td>0.001234</td>
+      <td>0.000016</td>
       <td>gini</td>
       <td>2</td>
       <td>6</td>
@@ -687,10 +689,10 @@ document.write(`
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001486</td>
-      <td>0.000016</td>
-      <td>0.001237</td>
-      <td>0.000019</td>
+      <td>0.001497</td>
+      <td>0.000027</td>
+      <td>0.001233</td>
+      <td>0.000015</td>
       <td>gini</td>
       <td>2</td>
       <td>8</td>
@@ -706,10 +708,10 @@ document.write(`
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001507</td>
-      <td>0.000022</td>
-      <td>0.001234</td>
-      <td>0.000033</td>
+      <td>0.001485</td>
+      <td>0.000018</td>
+      <td>0.001238</td>
+      <td>0.000020</td>
       <td>gini</td>
       <td>2</td>
       <td>10</td>
@@ -763,7 +765,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f69b3e16c70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2ce3767fa0&gt;
 </pre></div>
 </div>
 <img alt="../_images/99c8713e7e47cf7cbb79b22df9c55322aed4b22b040fe1643528c0274c1475c9.png" src="../_images/99c8713e7e47cf7cbb79b22df9c55322aed4b22b040fe1643528c0274c1475c9.png" />
@@ -896,10 +898,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f69b39ac850&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2ce0bc6610&gt;
 </pre></div>
 </div>
-<img alt="../_images/6844ec2c39eeea98dad4bbc9e561c63c298d25895ff7ee34bf7ede8ea15972c1.png" src="../_images/6844ec2c39eeea98dad4bbc9e561c63c298d25895ff7ee34bf7ede8ea15972c1.png" />
+<img alt="../_images/bf028423b8a138df084f38173f9d65de89cd98c709349870316d1bcce5d427b7.png" src="../_images/bf028423b8a138df084f38173f9d65de89cd98c709349870316d1bcce5d427b7.png" />
 </div>
 </div>
 <p>we see that the mean scores are not very different, but that 10 is a little higher in some cases.  This makes sense, it has more data to learn from, so it found something that applied better, on average, to the test set.</p>
@@ -912,10 +914,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f69b13b9730&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2ce0bba3a0&gt;
 </pre></div>
 </div>
-<img alt="../_images/c29ac4377451b5cd650314d7e58d2bdbc95933fef4cbb042bdb8caa1fc831e87.png" src="../_images/c29ac4377451b5cd650314d7e58d2bdbc95933fef4cbb042bdb8caa1fc831e87.png" />
+<img alt="../_images/860b90f20f4177920a81bde46f6c3eefe6174111e4593524f3b17c60727df454.png" src="../_images/860b90f20f4177920a81bde46f6c3eefe6174111e4593524f3b17c60727df454.png" />
 </div>
 </div>
 <p>However here we see that the variabilty in those scores is much higher, so maybe the 5 is better.</p>
@@ -1013,7 +1015,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 8, &#39;max_depth&#39;: 4, &#39;criterion&#39;: &#39;entropy&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 16, &#39;max_depth&#39;: 3, &#39;criterion&#39;: &#39;gini&#39;}
 </pre></div>
 </div>
 </div>
@@ -1063,11 +1065,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../assignments/01-setup.html"
+       href="2024-11-12.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Assignment 1: Setup, Syllabus, and Review</p>
+        <p class="prev-next-title"><span class="section-number">20. </span>Model Comparison</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
