@@ -11,3 +11,4 @@ seaborn
 scikit-learn
 aif360
 imageio
+ucimlrepo

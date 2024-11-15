@@ -38,7 +38,7 @@ parts:
     - file: assignments/08-clustering
     - file: assignments/09-regression-optimization
     # - file: assignments/10-optimize
-    # - file: assignments/11-compare
+    - file: assignments/10-compare
     # - file: assignments/12-fake-news
   - caption: Portfolio
     chapters:
