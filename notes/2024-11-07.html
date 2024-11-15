@@ -193,6 +193,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">19. Model Optimization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-11-12.html">20. Model Comparison</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="2024-11-14.html">22. Which model should we deploy?</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -632,10 +633,10 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.001663</td>
-      <td>0.000264</td>
-      <td>0.001299</td>
-      <td>0.000092</td>
+      <td>0.001700</td>
+      <td>0.000337</td>
+      <td>0.001279</td>
+      <td>0.000057</td>
       <td>gini</td>
       <td>2</td>
       <td>2</td>
@@ -651,10 +652,10 @@ document.write(`
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001485</td>
-      <td>0.000008</td>
+      <td>0.001522</td>
+      <td>0.000019</td>
       <td>0.001249</td>
-      <td>0.000013</td>
+      <td>0.000026</td>
       <td>gini</td>
       <td>2</td>
       <td>4</td>
@@ -670,10 +671,10 @@ document.write(`
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001484</td>
+      <td>0.001512</td>
+      <td>0.000018</td>
+      <td>0.001258</td>
       <td>0.000017</td>
-      <td>0.001234</td>
-      <td>0.000016</td>
       <td>gini</td>
       <td>2</td>
       <td>6</td>
@@ -689,10 +690,10 @@ document.write(`
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001497</td>
-      <td>0.000027</td>
-      <td>0.001233</td>
-      <td>0.000015</td>
+      <td>0.001495</td>
+      <td>0.000011</td>
+      <td>0.001252</td>
+      <td>0.000028</td>
       <td>gini</td>
       <td>2</td>
       <td>8</td>
@@ -708,10 +709,10 @@ document.write(`
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001485</td>
-      <td>0.000018</td>
-      <td>0.001238</td>
+      <td>0.001497</td>
       <td>0.000020</td>
+      <td>0.001261</td>
+      <td>0.000009</td>
       <td>gini</td>
       <td>2</td>
       <td>10</td>
@@ -765,10 +766,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2ce3767fa0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe1adc16970&gt;
 </pre></div>
 </div>
-<img alt="../_images/99c8713e7e47cf7cbb79b22df9c55322aed4b22b040fe1643528c0274c1475c9.png" src="../_images/99c8713e7e47cf7cbb79b22df9c55322aed4b22b040fe1643528c0274c1475c9.png" />
+<img alt="../_images/a809749a35079a2dfcb8e90deab72ec5c24838069138f5b965c2cb6962f7354c.png" src="../_images/a809749a35079a2dfcb8e90deab72ec5c24838069138f5b965c2cb6962f7354c.png" />
 </div>
 </div>
 <p>this makes it clear that none of these stick out much in terms of performance.</p>
@@ -898,10 +899,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2ce0bc6610&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe1ad7aea00&gt;
 </pre></div>
 </div>
-<img alt="../_images/bf028423b8a138df084f38173f9d65de89cd98c709349870316d1bcce5d427b7.png" src="../_images/bf028423b8a138df084f38173f9d65de89cd98c709349870316d1bcce5d427b7.png" />
+<img alt="../_images/090b3651e1b05c1ee2b7e35ead15843b615afabaa2aee7e4706886dcebdb5da9.png" src="../_images/090b3651e1b05c1ee2b7e35ead15843b615afabaa2aee7e4706886dcebdb5da9.png" />
 </div>
 </div>
 <p>we see that the mean scores are not very different, but that 10 is a little higher in some cases.  This makes sense, it has more data to learn from, so it found something that applied better, on average, to the test set.</p>
@@ -914,10 +915,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2ce0bba3a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe1ab1cb730&gt;
 </pre></div>
 </div>
-<img alt="../_images/860b90f20f4177920a81bde46f6c3eefe6174111e4593524f3b17c60727df454.png" src="../_images/860b90f20f4177920a81bde46f6c3eefe6174111e4593524f3b17c60727df454.png" />
+<img alt="../_images/d569d7e90a4ccaa698216336ad2b07d059f12e8d46ba64c94c1a8b3cdd0adaf7.png" src="../_images/d569d7e90a4ccaa698216336ad2b07d059f12e8d46ba64c94c1a8b3cdd0adaf7.png" />
 </div>
 </div>
 <p>However here we see that the variabilty in those scores is much higher, so maybe the 5 is better.</p>
@@ -1003,7 +1004,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8947368421052632
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9736842105263158
 </pre></div>
 </div>
 </div>
@@ -1015,7 +1016,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 16, &#39;max_depth&#39;: 3, &#39;criterion&#39;: &#39;gini&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 2, &#39;max_depth&#39;: 3, &#39;criterion&#39;: &#39;entropy&#39;}
 </pre></div>
 </div>
 </div>

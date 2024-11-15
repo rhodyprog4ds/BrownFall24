@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2024-11-12';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Assignment 1: Setup, Syllabus, and Review" href="../assignments/01-setup.html" />
+    <link rel="next" title="22. Which model should we deploy?" href="2024-11-14.html" />
     <link rel="prev" title="19. Model Optimization" href="2024-11-07.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -193,6 +193,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2024-11-07.html">19. Model Optimization</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">20. Model Comparison</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="2024-11-14.html">22. Which model should we deploy?</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -632,51 +633,51 @@ class time on November 7, o make it up. Please see that, it includes that there 
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.000536</td>
-      <td>0.000102</td>
-      <td>0.000435</td>
-      <td>0.000035</td>
+      <td>0.000546</td>
+      <td>0.000076</td>
+      <td>0.000459</td>
+      <td>0.000045</td>
       <td>gini</td>
       <td>2</td>
       <td>2</td>
       <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
-      <td>0.833333</td>
       <td>0.916667</td>
+      <td>1.0</td>
       <td>...</td>
-      <td>0.916667</td>
-      <td>0.916667</td>
-      <td>0.75</td>
-      <td>0.916667</td>
-      <td>0.916667</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>0.916667</td>
       <td>0.833333</td>
-      <td>0.891667</td>
-      <td>0.065085</td>
-      <td>16</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.966667</td>
+      <td>0.055277</td>
+      <td>9</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.000496</td>
-      <td>0.000016</td>
-      <td>0.000421</td>
+      <td>0.000510</td>
       <td>0.000017</td>
+      <td>0.000423</td>
+      <td>0.000005</td>
       <td>gini</td>
       <td>2</td>
       <td>4</td>
       <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
-      <td>0.833333</td>
       <td>0.916667</td>
+      <td>1.0</td>
       <td>...</td>
-      <td>0.916667</td>
-      <td>0.916667</td>
-      <td>0.75</td>
-      <td>0.916667</td>
-      <td>0.916667</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>0.916667</td>
       <td>0.833333</td>
-      <td>0.891667</td>
-      <td>0.065085</td>
-      <td>16</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.966667</td>
+      <td>0.055277</td>
+      <td>9</td>
     </tr>
   </tbody>
 </table>
@@ -691,7 +692,7 @@ class time on November 7, o make it up. Please see that, it includes that there 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.0, 0.9666666666666667)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.8666666666666667, 0.9666666666666667)
 </pre></div>
 </div>
 </div>
@@ -709,13 +710,13 @@ class time on November 7, o make it up. Please see that, it includes that there 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    90.000000
-mean      0.000415
-std       0.000005
-min       0.000407
-25%       0.000412
-50%       0.000413
-75%       0.000417
-max       0.000446
+mean      0.000425
+std       0.000023
+min       0.000414
+25%       0.000420
+50%       0.000422
+75%       0.000424
+max       0.000575
 Name: mean_score_time, dtype: float64
 </pre></div>
 </div>
@@ -729,13 +730,13 @@ Name: mean_score_time, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    14.000000
-mean      0.000446
-std       0.000011
-min       0.000431
-25%       0.000438
-50%       0.000443
-75%       0.000456
-max       0.000462
+mean      0.000454
+std       0.000010
+min       0.000441
+25%       0.000445
+50%       0.000453
+75%       0.000461
+max       0.000475
 Name: mean_score_time, dtype: float64
 </pre></div>
 </div>
@@ -751,13 +752,13 @@ Name: mean_score_time, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    90.000000
-mean      0.897500
-std       0.014699
-min       0.891667
-25%       0.891667
-50%       0.891667
-75%       0.891667
-max       0.950000
+mean      0.967407
+std       0.002385
+min       0.966667
+25%       0.966667
+50%       0.966667
+75%       0.966667
+max       0.975000
 Name: mean_test_score, dtype: float64
 </pre></div>
 </div>
@@ -771,12 +772,12 @@ Name: mean_test_score, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    14.000000
-mean      0.969048
-std       0.014032
-min       0.933333
-25%       0.960417
-50%       0.970833
-75%       0.981250
+mean      0.966667
+std       0.010841
+min       0.950000
+25%       0.958333
+50%       0.966667
+75%       0.972917
 max       0.983333
 Name: mean_test_score, dtype: float64
 </pre></div>
@@ -794,7 +795,7 @@ Name: mean_test_score, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>73
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
 </pre></div>
 </div>
 </div>
@@ -807,28 +808,28 @@ Name: mean_test_score, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean_fit_time                                                      0.000512
-std_fit_time                                                       0.000009
-mean_score_time                                                    0.000407
-std_score_time                                                     0.000006
-param_criterion                                                     entropy
-param_max_depth                                                           5
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean_fit_time                                                      0.000504
+std_fit_time                                                       0.000012
+mean_score_time                                                    0.000427
+std_score_time                                                     0.000015
+param_criterion                                                        gini
+param_max_depth                                                           3
 param_min_samples_leaf                                                    4
-params                    {&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 5, &#39;min_...
+params                    {&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 3, &#39;min_sam...
 split0_test_score                                                  0.916667
 split1_test_score                                                       1.0
 split2_test_score                                                       1.0
 split3_test_score                                                       1.0
 split4_test_score                                                       1.0
-split5_test_score                                                  0.833333
+split5_test_score                                                  0.916667
 split6_test_score                                                  0.916667
-split7_test_score                                                  0.916667
-split8_test_score                                                  0.916667
+split7_test_score                                                       1.0
+split8_test_score                                                       1.0
 split9_test_score                                                       1.0
-mean_test_score                                                        0.95
-std_test_score                                                     0.055277
+mean_test_score                                                       0.975
+std_test_score                                                     0.038188
 rank_test_score                                                           1
-Name: 73, dtype: object
+Name: 10, dtype: object
 </pre></div>
 </div>
 </div>
@@ -840,21 +841,21 @@ Name: 73, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean_fit_time                              0.000688
-std_fit_time                               0.000049
-mean_score_time                            0.000446
-std_score_time                             0.000012
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean_fit_time                              0.000687
+std_fit_time                               0.000048
+mean_score_time                            0.000461
+std_score_time                             0.000014
 param_C                                         0.5
 param_kernel                                 linear
 params               {&#39;C&#39;: 0.5, &#39;kernel&#39;: &#39;linear&#39;}
-split0_test_score                               1.0
+split0_test_score                          0.916667
 split1_test_score                               1.0
 split2_test_score                               1.0
 split3_test_score                               1.0
 split4_test_score                               1.0
 split5_test_score                               1.0
 split6_test_score                               1.0
-split7_test_score                          0.916667
+split7_test_score                               1.0
 split8_test_score                          0.916667
 split9_test_score                               1.0
 mean_test_score                            0.983333
@@ -877,13 +878,13 @@ Name: 0, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    90.000000
-mean      0.000502
-std       0.000010
-min       0.000480
-25%       0.000497
+mean      0.000505
+std       0.000017
+min       0.000488
+25%       0.000498
 50%       0.000502
-75%       0.000509
-max       0.000536
+75%       0.000507
+max       0.000616
 Name: mean_fit_time, dtype: float64
 </pre></div>
 </div>
@@ -897,13 +898,13 @@ Name: mean_fit_time, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    14.000000
-mean      0.000684
-std       0.000032
-min       0.000652
-25%       0.000659
-50%       0.000677
-75%       0.000696
-max       0.000751
+mean      0.000688
+std       0.000036
+min       0.000649
+25%       0.000660
+50%       0.000680
+75%       0.000709
+max       0.000762
 Name: mean_fit_time, dtype: float64
 </pre></div>
 </div>
@@ -944,7 +945,7 @@ We can compare if it is generative (describes the data, could generate synthetic
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.0, 0.9666666666666667)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.8666666666666667, 0.9666666666666667)
 </pre></div>
 </div>
 </div>
@@ -1034,11 +1035,11 @@ We can compare if it is generative (describes the data, could generate synthetic
       </div>
     </a>
     <a class="right-next"
-       href="../assignments/01-setup.html"
+       href="2024-11-14.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Assignment 1: Setup, Syllabus, and Review</p>
+        <p class="prev-next-title"><span class="section-number">22. </span>Which model should we deploy?</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
