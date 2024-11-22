@@ -39,7 +39,7 @@ parts:
     - file: assignments/09-regression-optimization
     # - file: assignments/10-optimize
     - file: assignments/10-compare
-    # - file: assignments/12-fake-news
+    - file: assignments/11-fake-news
   - caption: Portfolio
     chapters:
       - file: portfolio/index
