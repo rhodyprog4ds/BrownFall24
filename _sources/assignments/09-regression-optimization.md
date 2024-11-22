@@ -35,7 +35,7 @@ Find a dataset suitable for regression. We recommend a dataset from the UCI repo
 TLDR: Fit a linear regression model, measure the fit with two metrics, and make a plot that helps visualize the result.
 
 1. Include a basic description of the data(what the features are, units, size of dataset, etc)
-2. Write  your own description of what the prediction task it, why regression is appropriate.
+2. Write  your own description of what the prediction task is, why regression is appropriate.
 3. Fit a linear model on all numerical features with 75% training data.
 4. Test it on 25% held out test data and measure the fit with two metrics and one plot
 5. Inspect the model to answer:

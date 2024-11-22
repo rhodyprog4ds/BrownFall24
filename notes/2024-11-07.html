@@ -584,7 +584,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
 </pre></div>
 </div>
 </div>
@@ -637,10 +637,10 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.001701</td>
-      <td>0.000338</td>
-      <td>0.001312</td>
-      <td>0.000118</td>
+      <td>0.001673</td>
+      <td>0.000238</td>
+      <td>0.001360</td>
+      <td>0.000174</td>
       <td>gini</td>
       <td>2</td>
       <td>2</td>
@@ -656,10 +656,10 @@ document.write(`
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001491</td>
-      <td>0.000020</td>
-      <td>0.001231</td>
-      <td>0.000014</td>
+      <td>0.001500</td>
+      <td>0.000019</td>
+      <td>0.001246</td>
+      <td>0.000029</td>
       <td>gini</td>
       <td>2</td>
       <td>4</td>
@@ -675,9 +675,9 @@ document.write(`
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001519</td>
-      <td>0.000043</td>
-      <td>0.001235</td>
+      <td>0.001489</td>
+      <td>0.000017</td>
+      <td>0.001248</td>
       <td>0.000022</td>
       <td>gini</td>
       <td>2</td>
@@ -694,10 +694,10 @@ document.write(`
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001495</td>
-      <td>0.000016</td>
-      <td>0.001233</td>
-      <td>0.000016</td>
+      <td>0.001485</td>
+      <td>0.000014</td>
+      <td>0.001251</td>
+      <td>0.000032</td>
       <td>gini</td>
       <td>2</td>
       <td>8</td>
@@ -713,10 +713,10 @@ document.write(`
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001487</td>
-      <td>0.000008</td>
-      <td>0.001238</td>
-      <td>0.000010</td>
+      <td>0.001496</td>
+      <td>0.000013</td>
+      <td>0.001234</td>
+      <td>0.000013</td>
       <td>gini</td>
       <td>2</td>
       <td>10</td>
@@ -770,10 +770,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f931ee34e80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7efe5e1a6f40&gt;
 </pre></div>
 </div>
-<img alt="../_images/e33f3e5ff0189ad9e72665981caf1703f5561f302489fa96a8e37ff156518e2c.png" src="../_images/e33f3e5ff0189ad9e72665981caf1703f5561f302489fa96a8e37ff156518e2c.png" />
+<img alt="../_images/a809749a35079a2dfcb8e90deab72ec5c24838069138f5b965c2cb6962f7354c.png" src="../_images/a809749a35079a2dfcb8e90deab72ec5c24838069138f5b965c2cb6962f7354c.png" />
 </div>
 </div>
 <p>this makes it clear that none of these stick out much in terms of performance.</p>
@@ -903,10 +903,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f931e9ebaf0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7efe5e252130&gt;
 </pre></div>
 </div>
-<img alt="../_images/9cce6b9c423888a64b94f337cd2d75aa971a59ce5f7f64a61cb0ce74a57b4627.png" src="../_images/9cce6b9c423888a64b94f337cd2d75aa971a59ce5f7f64a61cb0ce74a57b4627.png" />
+<img alt="../_images/34b2be1c64001254d7f102682af57eb692ddffc7978a4d96f1e59ab42ef60778.png" src="../_images/34b2be1c64001254d7f102682af57eb692ddffc7978a4d96f1e59ab42ef60778.png" />
 </div>
 </div>
 <p>we see that the mean scores are not very different, but that 10 is a little higher in some cases.  This makes sense, it has more data to learn from, so it found something that applied better, on average, to the test set.</p>
@@ -919,10 +919,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f931c26a370&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7efe5b591d30&gt;
 </pre></div>
 </div>
-<img alt="../_images/772e4252950e7426209dfe5971fc5455855a5627377b1b8cd9a1d099bfb68a3b.png" src="../_images/772e4252950e7426209dfe5971fc5455855a5627377b1b8cd9a1d099bfb68a3b.png" />
+<img alt="../_images/1ede6e0f0e442f4f8474e1ed5d1966fd485a6793014b7fe22de8442b63991b37.png" src="../_images/1ede6e0f0e442f4f8474e1ed5d1966fd485a6793014b7fe22de8442b63991b37.png" />
 </div>
 </div>
 <p>However here we see that the variabilty in those scores is much higher, so maybe the 5 is better.</p>
@@ -934,7 +934,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
 </pre></div>
 </div>
 </div>
@@ -946,7 +946,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 3, &#39;min_samples_leaf&#39;: 2}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 3, &#39;min_samples_leaf&#39;: 2}
 </pre></div>
 </div>
 </div>
@@ -1008,7 +1008,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9736842105263158
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9473684210526315
 </pre></div>
 </div>
 </div>
@@ -1020,7 +1020,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 2, &#39;max_depth&#39;: 3, &#39;criterion&#39;: &#39;gini&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 2, &#39;max_depth&#39;: 4, &#39;criterion&#39;: &#39;gini&#39;}
 </pre></div>
 </div>
 </div>
