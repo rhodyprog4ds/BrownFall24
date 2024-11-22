@@ -194,6 +194,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2024-11-12.html">20. Model Comparison</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="2024-11-14.html">22. Which model should we deploy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-19.html">23. Intro to NLP- representing text data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-21.html">24. Classifying Text</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -207,6 +209,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../assignments/08-clustering.html">8. Assignment 8: Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/09-regression-optimization.html">9. Assignment 9:  Regression and Optimization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/10-compare.html">10. Assignment 11: Model Comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/11-fake-news.html">11. Assignment 11: Fake News</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
 <ul class="nav bd-sidenav">
@@ -706,10 +709,10 @@ the above figure come from <a class="reference external" href="https://matplotli
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2568ccef70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2fff0c6e20&gt;
 </pre></div>
 </div>
-<img alt="../_images/9b0f0709520a1728b891a0ac5327d4d625831f8bd245d98e90524c20359308ac.png" src="../_images/9b0f0709520a1728b891a0ac5327d4d625831f8bd245d98e90524c20359308ac.png" />
+<img alt="../_images/482091baa9192755376abbb34b48f48f79cb250649c152fdc7e4c5c999de1f9f.png" src="../_images/482091baa9192755376abbb34b48f48f79cb250649c152fdc7e4c5c999de1f9f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -719,10 +722,10 @@ the above figure come from <a class="reference external" href="https://matplotli
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2534b99070&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2ffcad6520&gt;
 </pre></div>
 </div>
-<img alt="../_images/0e82e09a7f04a967c978ef57cd26983d77caa508552866ffedf7cd3b491a4f48.png" src="../_images/0e82e09a7f04a967c978ef57cd26983d77caa508552866ffedf7cd3b491a4f48.png" />
+<img alt="../_images/93860ad370e23bc9e2a76d30f77b1b23ed417b046447f8f221f43e31d4a91384.png" src="../_images/93860ad370e23bc9e2a76d30f77b1b23ed417b046447f8f221f43e31d4a91384.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -733,10 +736,10 @@ the above figure come from <a class="reference external" href="https://matplotli
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2568cfc850&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2ffcaf0130&gt;
 </pre></div>
 </div>
-<img alt="../_images/7715d5ba605e96c4929567504365a1dbd9276cf697ab5b5834203b5597b4dbe7.png" src="../_images/7715d5ba605e96c4929567504365a1dbd9276cf697ab5b5834203b5597b4dbe7.png" />
+<img alt="../_images/d1ea37175daf6551297cf692ecc5271d6174d6cd49ab91c7e56c5e6bf0352e93.png" src="../_images/d1ea37175daf6551297cf692ecc5271d6174d6cd49ab91c7e56c5e6bf0352e93.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -747,10 +750,10 @@ the above figure come from <a class="reference external" href="https://matplotli
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f25327893a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2ffca06250&gt;
 </pre></div>
 </div>
-<img alt="../_images/1c0d884777ee5ff556214e73c73b37f115887faac56e741605597c720463090b.png" src="../_images/1c0d884777ee5ff556214e73c73b37f115887faac56e741605597c720463090b.png" />
+<img alt="../_images/9654b1280c6b1d788419518fc9154fa8643a6802a424662b6067ddabe99761e8.png" src="../_images/9654b1280c6b1d788419518fc9154fa8643a6802a424662b6067ddabe99761e8.png" />
 </div>
 </div>
 <p>Example okay questions:</p>
@@ -773,7 +776,7 @@ the above figure come from <a class="reference external" href="https://matplotli
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2532256a00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2ffc477940&gt;
 </pre></div>
 </div>
 <img alt="../_images/ec4bdfdbb84e45f3ba73c0394aa651e29c627e83aa50e02df833dab1767490c9.png" src="../_images/ec4bdfdbb84e45f3ba73c0394aa651e29c627e83aa50e02df833dab1767490c9.png" />

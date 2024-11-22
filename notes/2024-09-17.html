@@ -194,6 +194,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2024-11-12.html">20. Model Comparison</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="2024-11-14.html">22. Which model should we deploy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-19.html">23. Intro to NLP- representing text data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-21.html">24. Classifying Text</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -207,6 +209,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../assignments/08-clustering.html">8. Assignment 8: Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/09-regression-optimization.html">9. Assignment 9:  Regression and Optimization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/10-compare.html">10. Assignment 11: Model Comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/11-fake-news.html">11. Assignment 11: Fake News</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
 <ul class="nav bd-sidenav">
@@ -665,54 +668,54 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th>6767</th>
-      <td>1970</td>
-      <td>North Korea</td>
-      <td>Nation State</td>
-      <td>Bituminous Coal</td>
-      <td>5.658986</td>
+      <th>6532</th>
+      <td>2019</td>
+      <td>Navajo Transitional Energy Company</td>
+      <td>Investor-owned Company</td>
+      <td>Sub-Bituminous Coal</td>
+      <td>42.709786</td>
       <td>Million tonnes/yr</td>
-      <td>15.359275</td>
+      <td>86.234921</td>
     </tr>
     <tr>
-      <th>6091</th>
-      <td>1950</td>
+      <th>6151</th>
+      <td>1980</td>
       <td>Marathon Oil</td>
       <td>Investor-owned Company</td>
       <td>Natural Gas</td>
-      <td>41.052645</td>
+      <td>155.670220</td>
       <td>Bcf/yr</td>
-      <td>2.992343</td>
+      <td>11.346863</td>
     </tr>
     <tr>
-      <th>62</th>
-      <td>1993</td>
-      <td>Abu Dhabi National Oil Company</td>
-      <td>State-owned Entity</td>
-      <td>Oil &amp; NGL</td>
-      <td>654.100000</td>
-      <td>Million bbl/yr</td>
-      <td>260.840622</td>
-    </tr>
-    <tr>
-      <th>4784</th>
-      <td>1956</td>
+      <th>4865</th>
+      <td>1970</td>
       <td>Former Soviet Union</td>
       <td>Nation State</td>
-      <td>Metallurgical Coal</td>
-      <td>46.519245</td>
+      <td>Lignite Coal</td>
+      <td>115.664938</td>
       <td>Million tonnes/yr</td>
-      <td>138.004785</td>
+      <td>154.899655</td>
     </tr>
     <tr>
-      <th>47</th>
-      <td>1985</td>
-      <td>Abu Dhabi National Oil Company</td>
+      <th>3614</th>
+      <td>2000</td>
+      <td>Devon Energy</td>
+      <td>Investor-owned Company</td>
+      <td>Oil &amp; NGL</td>
+      <td>109.710000</td>
+      <td>Million bbl/yr</td>
+      <td>43.749923</td>
+    </tr>
+    <tr>
+      <th>792</th>
+      <td>1995</td>
+      <td>Bapco Energies</td>
       <td>State-owned Entity</td>
-      <td>Natural Gas</td>
-      <td>385.586000</td>
-      <td>Bcf/yr</td>
-      <td>28.105514</td>
+      <td>Oil &amp; NGL</td>
+      <td>14.500000</td>
+      <td>Million bbl/yr</td>
+      <td>5.782280</td>
     </tr>
   </tbody>
 </table>
@@ -1109,59 +1112,59 @@ Name: count, dtype: int64
   </thead>
   <tbody>
     <tr>
-      <th>7856</th>
-      <td>2022</td>
-      <td>Pemex</td>
-      <td>State-owned Entity</td>
-      <td>Natural Gas</td>
-      <td>854.000000</td>
-      <td>Bcf/yr</td>
-      <td>62.248393</td>
-      <td>Natural Gas</td>
-    </tr>
-    <tr>
-      <th>9945</th>
-      <td>1967</td>
-      <td>Saudi Aramco</td>
-      <td>State-owned Entity</td>
-      <td>Oil &amp; NGL</td>
-      <td>105.675501</td>
-      <td>Million bbl/yr</td>
-      <td>42.141054</td>
-      <td>Oil &amp; NGL</td>
-    </tr>
-    <tr>
-      <th>5167</th>
-      <td>1959</td>
-      <td>Hess Corporation</td>
+      <th>715</th>
+      <td>2008</td>
+      <td>Banpu</td>
       <td>Investor-owned Company</td>
-      <td>Natural Gas</td>
-      <td>102.565000</td>
-      <td>Bcf/yr</td>
-      <td>7.476003</td>
-      <td>Natural Gas</td>
-    </tr>
-    <tr>
-      <th>11966</th>
-      <td>1892</td>
-      <td>Westmoreland Mining</td>
-      <td>Investor-owned Company</td>
-      <td>Bituminous Coal</td>
-      <td>0.260034</td>
+      <td>Thermal Coal</td>
+      <td>35.341000</td>
       <td>Million tonnes/yr</td>
-      <td>0.705768</td>
+      <td>83.737962</td>
       <td>Coal</td>
     </tr>
     <tr>
-      <th>7378</th>
-      <td>2001</td>
-      <td>ONGC India</td>
+      <th>2741</th>
+      <td>2013</td>
+      <td>Coal India</td>
       <td>State-owned Entity</td>
-      <td>Natural Gas</td>
-      <td>895.600000</td>
-      <td>Bcf/yr</td>
-      <td>65.280634</td>
-      <td>Natural Gas</td>
+      <td>Lignite Coal</td>
+      <td>34.001317</td>
+      <td>Million tonnes/yr</td>
+      <td>45.534907</td>
+      <td>Coal</td>
+    </tr>
+    <tr>
+      <th>1926</th>
+      <td>1992</td>
+      <td>Chevron</td>
+      <td>Investor-owned Company</td>
+      <td>Oil &amp; NGL</td>
+      <td>665.922593</td>
+      <td>Million bbl/yr</td>
+      <td>265.555211</td>
+      <td>Oil &amp; NGL</td>
+    </tr>
+    <tr>
+      <th>7267</th>
+      <td>2013</td>
+      <td>OMV Group</td>
+      <td>Investor-owned Company</td>
+      <td>Oil &amp; NGL</td>
+      <td>54.900000</td>
+      <td>Million bbl/yr</td>
+      <td>21.892907</td>
+      <td>Oil &amp; NGL</td>
+    </tr>
+    <tr>
+      <th>11700</th>
+      <td>2002</td>
+      <td>Ukraine</td>
+      <td>Nation State</td>
+      <td>Bituminous Coal</td>
+      <td>27.631797</td>
+      <td>Million tonnes/yr</td>
+      <td>74.996537</td>
+      <td>Coal</td>
     </tr>
   </tbody>
 </table>

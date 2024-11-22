@@ -196,6 +196,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2024-11-12.html">20. Model Comparison</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="2024-11-14.html">22. Which model should we deploy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-19.html">23. Intro to NLP- representing text data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-21.html">24. Classifying Text</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -209,6 +211,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../assignments/08-clustering.html">8. Assignment 8: Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/09-regression-optimization.html">9. Assignment 9:  Regression and Optimization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assignments/10-compare.html">10. Assignment 11: Model Comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/11-fake-news.html">11. Assignment 11: Fake News</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
 <ul class="nav bd-sidenav">
@@ -675,7 +678,7 @@ we call the function again, it does another round of random splits</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9600000000000002
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9666666666666668
 </pre></div>
 </div>
 </div>
@@ -689,7 +692,7 @@ we call the function again, it does another round of random splits</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.        , 0.93333333, 1.        , 0.93333333, 0.93333333,
-       0.86666667, 0.93333333, 1.        , 1.        , 1.        ])
+       0.86666667, 0.93333333, 0.93333333, 1.        , 1.        ])
 </pre></div>
 </div>
 </div>
@@ -780,7 +783,7 @@ building the whole list up front, which makes it more memory efficient.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;generator object _BaseKFold.split at 0x7f628a8f09e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;generator object _BaseKFold.split at 0x7f39408246d0&gt;
 </pre></div>
 </div>
 </div>
@@ -1105,26 +1108,26 @@ building the whole list up front, which makes it more memory efficient.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.        , 0.86666667, 0.9       , 0.9       , 0.93333333,
-       0.86666667, 0.96666667, 1.        , 0.96666667, 0.96666667,
-       0.96666667, 1.        , 0.93333333, 0.9       , 0.86666667,
-       0.93333333, 1.        , 0.93333333, 0.9       , 0.93333333,
-       0.96666667, 0.96666667, 0.96666667, 0.96666667, 0.96666667,
-       0.83333333, 0.93333333, 1.        , 0.96666667, 1.        ,
-       0.96666667, 0.93333333, 0.93333333, 0.9       , 0.93333333,
-       0.86666667, 0.93333333, 0.93333333, 0.93333333, 0.93333333,
-       0.8       , 0.93333333, 0.86666667, 1.        , 1.        ,
-       0.96666667, 1.        , 0.9       , 0.93333333, 0.96666667,
-       1.        , 0.86666667, 1.        , 0.9       , 1.        ,
-       0.93333333, 0.93333333, 0.93333333, 1.        , 0.93333333,
-       0.96666667, 0.9       , 1.        , 0.93333333, 0.96666667,
-       0.93333333, 0.96666667, 0.96666667, 0.93333333, 0.96666667,
-       1.        , 0.96666667, 1.        , 0.96666667, 0.93333333,
-       0.96666667, 0.93333333, 0.93333333, 0.96666667, 0.96666667,
-       0.93333333, 0.96666667, 0.93333333, 0.93333333, 0.93333333,
-       0.93333333, 0.93333333, 0.93333333, 0.93333333, 0.96666667,
-       0.93333333, 0.93333333, 1.        , 0.96666667, 0.93333333,
-       0.9       , 0.93333333, 0.93333333, 0.96666667, 0.96666667])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.        , 0.96666667, 0.96666667, 0.93333333, 1.        ,
+       0.96666667, 0.96666667, 0.9       , 0.96666667, 1.        ,
+       0.93333333, 0.96666667, 1.        , 0.9       , 0.93333333,
+       0.93333333, 1.        , 0.86666667, 0.93333333, 0.93333333,
+       0.96666667, 0.96666667, 0.9       , 1.        , 0.96666667,
+       0.96666667, 0.93333333, 0.96666667, 0.9       , 0.96666667,
+       0.96666667, 0.96666667, 0.9       , 0.93333333, 0.93333333,
+       1.        , 1.        , 0.93333333, 1.        , 0.96666667,
+       0.96666667, 0.93333333, 0.96666667, 0.93333333, 0.96666667,
+       0.93333333, 1.        , 0.93333333, 1.        , 1.        ,
+       0.86666667, 1.        , 0.93333333, 0.96666667, 0.96666667,
+       0.93333333, 0.93333333, 0.96666667, 0.96666667, 1.        ,
+       0.96666667, 0.96666667, 1.        , 0.93333333, 0.9       ,
+       0.96666667, 0.93333333, 0.93333333, 0.96666667, 0.93333333,
+       0.9       , 0.93333333, 0.9       , 0.93333333, 0.96666667,
+       0.93333333, 0.9       , 0.93333333, 0.96666667, 0.93333333,
+       0.96666667, 0.96666667, 0.86666667, 0.86666667, 0.9       ,
+       0.86666667, 1.        , 0.93333333, 0.96666667, 0.93333333,
+       1.        , 0.96666667, 0.93333333, 0.96666667, 1.        ,
+       0.9       , 0.86666667, 0.9       , 0.9       , 0.9       ])
 </pre></div>
 </div>
 </div>
