@@ -196,6 +196,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2024-11-14.html">22. Which model should we deploy?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-11-19.html">23. Intro to NLP- representing text data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-11-21.html">24. Classifying Text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-26.html">25. Breaking Down a problem</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -637,33 +638,33 @@ class time on November 7, o make it up. Please see that, it includes that there 
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.000562</td>
-      <td>0.000164</td>
-      <td>0.000432</td>
-      <td>0.000035</td>
+      <td>0.000528</td>
+      <td>0.000069</td>
+      <td>0.000436</td>
+      <td>0.000036</td>
       <td>gini</td>
       <td>2</td>
       <td>2</td>
       <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
       <td>0.916667</td>
-      <td>1.000000</td>
+      <td>0.916667</td>
       <td>...</td>
       <td>0.916667</td>
-      <td>1.0</td>
-      <td>1.0</td>
+      <td>0.916667</td>
+      <td>0.916667</td>
       <td>0.916667</td>
       <td>0.916667</td>
       <td>1.0</td>
       <td>0.916667</td>
-      <td>0.958333</td>
-      <td>0.041667</td>
-      <td>1</td>
+      <td>0.925</td>
+      <td>0.025</td>
+      <td>19</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.000486</td>
-      <td>0.000008</td>
-      <td>0.000418</td>
+      <td>0.000490</td>
+      <td>0.000009</td>
+      <td>0.000417</td>
       <td>0.000013</td>
       <td>gini</td>
       <td>2</td>
@@ -673,15 +674,15 @@ class time on November 7, o make it up. Please see that, it includes that there 
       <td>0.916667</td>
       <td>...</td>
       <td>0.916667</td>
-      <td>1.0</td>
-      <td>1.0</td>
+      <td>0.916667</td>
+      <td>0.916667</td>
       <td>0.916667</td>
       <td>0.916667</td>
       <td>1.0</td>
       <td>0.916667</td>
-      <td>0.950000</td>
-      <td>0.040825</td>
-      <td>56</td>
+      <td>0.925</td>
+      <td>0.025</td>
+      <td>19</td>
     </tr>
   </tbody>
 </table>
@@ -696,7 +697,7 @@ class time on November 7, o make it up. Please see that, it includes that there 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9, 1.0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9333333333333333, 1.0)
 </pre></div>
 </div>
 </div>
@@ -714,13 +715,13 @@ class time on November 7, o make it up. Please see that, it includes that there 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    90.000000
-mean      0.000412
-std       0.000014
+mean      0.000416
+std       0.000022
 min       0.000402
-25%       0.000405
-50%       0.000408
-75%       0.000414
-max       0.000501
+25%       0.000408
+50%       0.000411
+75%       0.000417
+max       0.000570
 Name: mean_score_time, dtype: float64
 </pre></div>
 </div>
@@ -734,13 +735,13 @@ Name: mean_score_time, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    14.000000
-mean      0.000442
-std       0.000009
+mean      0.000448
+std       0.000012
 min       0.000430
-25%       0.000434
-50%       0.000441
-75%       0.000448
-max       0.000456
+25%       0.000438
+50%       0.000446
+75%       0.000458
+max       0.000469
 Name: mean_score_time, dtype: float64
 </pre></div>
 </div>
@@ -756,13 +757,13 @@ Name: mean_score_time, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    90.000000
-mean      0.954352
-std       0.004712
-min       0.941667
-25%       0.950000
-50%       0.958333
-75%       0.958333
-max       0.958333
+mean      0.926204
+std       0.005934
+min       0.908333
+25%       0.925000
+50%       0.925000
+75%       0.925000
+max       0.950000
 Name: mean_test_score, dtype: float64
 </pre></div>
 </div>
@@ -776,13 +777,13 @@ Name: mean_test_score, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    14.000000
-mean      0.973810
-std       0.005525
-min       0.966667
-25%       0.968750
-50%       0.975000
-75%       0.975000
-max       0.983333
+mean      0.966071
+std       0.005131
+min       0.958333
+25%       0.966667
+50%       0.966667
+75%       0.966667
+max       0.975000
 Name: mean_test_score, dtype: float64
 </pre></div>
 </div>
@@ -799,7 +800,7 @@ Name: mean_test_score, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>72
 </pre></div>
 </div>
 </div>
@@ -812,28 +813,28 @@ Name: mean_test_score, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean_fit_time                                                      0.000562
-std_fit_time                                                       0.000164
-mean_score_time                                                    0.000432
-std_score_time                                                     0.000035
-param_criterion                                                        gini
-param_max_depth                                                           2
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean_fit_time                                                      0.000518
+std_fit_time                                                       0.000013
+mean_score_time                                                    0.000407
+std_score_time                                                      0.00001
+param_criterion                                                     entropy
+param_max_depth                                                           5
 param_min_samples_leaf                                                    2
-params                    {&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 2, &#39;min_sam...
-split0_test_score                                                  0.916667
-split1_test_score                                                       1.0
+params                    {&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 5, &#39;min_...
+split0_test_score                                                       1.0
+split1_test_score                                                  0.916667
 split2_test_score                                                       1.0
-split3_test_score                                                  0.916667
-split4_test_score                                                       1.0
-split5_test_score                                                       1.0
-split6_test_score                                                  0.916667
+split3_test_score                                                       1.0
+split4_test_score                                                  0.916667
+split5_test_score                                                  0.916667
+split6_test_score                                                       1.0
 split7_test_score                                                  0.916667
 split8_test_score                                                       1.0
-split9_test_score                                                  0.916667
-mean_test_score                                                    0.958333
-std_test_score                                                     0.041667
+split9_test_score                                                  0.833333
+mean_test_score                                                        0.95
+std_test_score                                                     0.055277
 rank_test_score                                                           1
-Name: 0, dtype: object
+Name: 72, dtype: object
 </pre></div>
 </div>
 </div>
@@ -845,27 +846,27 @@ Name: 0, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean_fit_time                              0.000665
-std_fit_time                               0.000037
-mean_score_time                            0.000445
-std_score_time                             0.000015
-param_C                                         0.5
-param_kernel                                 linear
-params               {&#39;C&#39;: 0.5, &#39;kernel&#39;: &#39;linear&#39;}
-split0_test_score                               1.0
-split1_test_score                               1.0
-split2_test_score                               1.0
-split3_test_score                               1.0
-split4_test_score                               1.0
-split5_test_score                               1.0
-split6_test_score                               1.0
-split7_test_score                               1.0
-split8_test_score                               1.0
-split9_test_score                          0.833333
-mean_test_score                            0.983333
-std_test_score                                 0.05
-rank_test_score                                   1
-Name: 0, dtype: object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean_fit_time                            0.000686
+std_fit_time                              0.00006
+mean_score_time                          0.000459
+std_score_time                           0.000034
+param_C                                         1
+param_kernel                               linear
+params               {&#39;C&#39;: 1, &#39;kernel&#39;: &#39;linear&#39;}
+split0_test_score                             1.0
+split1_test_score                        0.916667
+split2_test_score                             1.0
+split3_test_score                             1.0
+split4_test_score                             1.0
+split5_test_score                             1.0
+split6_test_score                             1.0
+split7_test_score                             1.0
+split8_test_score                             1.0
+split9_test_score                        0.833333
+mean_test_score                             0.975
+std_test_score                           0.053359
+rank_test_score                                 1
+Name: 4, dtype: object
 </pre></div>
 </div>
 </div>
@@ -882,13 +883,13 @@ Name: 0, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    90.000000
-mean      0.000496
-std       0.000015
-min       0.000475
-25%       0.000488
-50%       0.000495
-75%       0.000502
-max       0.000562
+mean      0.000501
+std       0.000016
+min       0.000480
+25%       0.000492
+50%       0.000499
+75%       0.000506
+max       0.000596
 Name: mean_fit_time, dtype: float64
 </pre></div>
 </div>
@@ -902,13 +903,13 @@ Name: mean_fit_time, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    14.000000
-mean      0.000671
-std       0.000033
-min       0.000634
-25%       0.000646
-50%       0.000663
-75%       0.000692
-max       0.000740
+mean      0.000684
+std       0.000034
+min       0.000646
+25%       0.000654
+50%       0.000678
+75%       0.000698
+max       0.000758
 Name: mean_fit_time, dtype: float64
 </pre></div>
 </div>
@@ -949,7 +950,7 @@ We can compare if it is generative (describes the data, could generate synthetic
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9, 1.0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9333333333333333, 1.0)
 </pre></div>
 </div>
 </div>

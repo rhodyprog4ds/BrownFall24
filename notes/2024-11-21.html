@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2024-11-21';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Assignment 1: Setup, Syllabus, and Review" href="../assignments/01-setup.html" />
+    <link rel="next" title="25. Breaking Down a problem" href="2024-11-26.html" />
     <link rel="prev" title="23. Intro to NLP- representing text data" href="2024-11-19.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -198,6 +198,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2024-11-14.html">22. Which model should we deploy?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-11-19.html">23. Intro to NLP- representing text data</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">24. Classifying Text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-26.html">25. Breaking Down a problem</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -807,7 +808,7 @@ robert@acsc.com
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9864406779661017
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9728813559322034
 </pre></div>
 </div>
 </div>
@@ -825,14 +826,14 @@ robert@acsc.com
  &#39;force_alpha&#39;: &#39;warn&#39;,
  &#39;n_features_in_&#39;: 24257,
  &#39;classes_&#39;: array([0, 1]),
- &#39;class_count_&#39;: array([433., 451.]),
- &#39;feature_count_&#39;: array([[27., 13.,  0., ...,  0.,  0.,  0.],
-        [25., 16.,  2., ...,  1.,  1.,  1.]]),
- &#39;feature_log_prob_&#39;: array([[ -8.46512516,  -9.15827234, -11.79732967, ..., -11.79732967,
-         -11.79732967, -11.79732967],
-        [ -8.94298869,  -9.36787188, -11.10247294, ..., -11.50793805,
-         -11.50793805, -11.50793805]]),
- &#39;class_log_prior_&#39;: array([-0.71371933, -0.67298972])}
+ &#39;class_count_&#39;: array([440., 444.]),
+ &#39;feature_count_&#39;: array([[28., 15.,  0., ...,  0.,  0.,  0.],
+        [27., 15.,  0., ...,  1.,  1.,  1.]]),
+ &#39;feature_log_prob_&#39;: array([[ -8.37298032,  -8.96768743, -11.74027615, ..., -11.74027615,
+         -11.74027615, -11.74027615],
+        [ -8.80532695,  -9.36494274, -12.13753146, ..., -11.44438428,
+         -11.44438428, -11.44438428]]),
+ &#39;class_log_prior_&#39;: array([-0.69768234, -0.6886325 ])}
 </pre></div>
 </div>
 </div>
@@ -859,7 +860,7 @@ robert@acsc.com
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.00476293, 0.99523707]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.00482363, 0.99517637]])
 </pre></div>
 </div>
 </div>
@@ -887,7 +888,7 @@ robert@acsc.com
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.58919069, 0.41080931]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.57042359, 0.42957641]])
 </pre></div>
 </div>
 </div>
@@ -946,7 +947,7 @@ v{_2}^2 + \dots + v{_n}^2}}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9966101694915255
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9898305084745763
 </pre></div>
 </div>
 </div>
@@ -958,7 +959,7 @@ v{_2}^2 + \dots + v{_n}^2}}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9627118644067797
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9186440677966101
 </pre></div>
 </div>
 </div>
@@ -1041,7 +1042,7 @@ v{_2}^2 + \dots + v{_n}^2}}\]</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/db71958aaf6890f7a531484f9b9c028895062f4b958775fb808e6b388122ef85.png" src="../_images/db71958aaf6890f7a531484f9b9c028895062f4b958775fb808e6b388122ef85.png" />
+<img alt="../_images/fd0a48dcf7271391eabae1c8f284dfb1e5c150c43e6ec699a3ee6af426ab454e.png" src="../_images/fd0a48dcf7271391eabae1c8f284dfb1e5c150c43e6ec699a3ee6af426ab454e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1090,13 +1091,13 @@ v{_2}^2 + \dots + v{_n}^2}}\]</div>
     <tr>
       <th rowspan="2" valign="top">predicted class</th>
       <th>comp.graphics</th>
-      <td>134</td>
-      <td>0</td>
+      <td>133</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>sci.crypt</th>
-      <td>11</td>
-      <td>150</td>
+      <td>22</td>
+      <td>138</td>
     </tr>
   </tbody>
 </table>
@@ -1147,11 +1148,11 @@ v{_2}^2 + \dots + v{_n}^2}}\]</div>
       </div>
     </a>
     <a class="right-next"
-       href="../assignments/01-setup.html"
+       href="2024-11-26.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Assignment 1: Setup, Syllabus, and Review</p>
+        <p class="prev-next-title"><span class="section-number">25. </span>Breaking Down a problem</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

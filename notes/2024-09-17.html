@@ -196,6 +196,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2024-11-14.html">22. Which model should we deploy?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-11-19.html">23. Intro to NLP- representing text data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-11-21.html">24. Classifying Text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-26.html">25. Breaking Down a problem</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -668,54 +669,54 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th>1288</th>
-      <td>1957</td>
-      <td>BP</td>
-      <td>Investor-owned Company</td>
-      <td>Oil &amp; NGL</td>
-      <td>578.978258</td>
-      <td>Million bbl/yr</td>
-      <td>230.883732</td>
-    </tr>
-    <tr>
-      <th>2716</th>
-      <td>2006</td>
-      <td>Coal India</td>
+      <th>5402</th>
+      <td>1978</td>
+      <td>Iraq National Oil Company</td>
       <td>State-owned Entity</td>
-      <td>Metallurgical Coal</td>
-      <td>4.472197</td>
-      <td>Million tonnes/yr</td>
-      <td>13.267297</td>
+      <td>Natural Gas</td>
+      <td>48.161200</td>
+      <td>Bcf/yr</td>
+      <td>3.510489</td>
     </tr>
     <tr>
-      <th>1369</th>
-      <td>1985</td>
-      <td>BP</td>
+      <th>6717</th>
+      <td>2004</td>
+      <td>North American Coal</td>
       <td>Investor-owned Company</td>
-      <td>Oil &amp; NGL</td>
-      <td>1256.552000</td>
-      <td>Million bbl/yr</td>
-      <td>501.085164</td>
-    </tr>
-    <tr>
-      <th>2645</th>
-      <td>1989</td>
-      <td>Coal India</td>
-      <td>State-owned Entity</td>
       <td>Lignite Coal</td>
-      <td>12.975720</td>
+      <td>31.207475</td>
       <td>Million tonnes/yr</td>
-      <td>17.377215</td>
+      <td>41.793367</td>
     </tr>
     <tr>
-      <th>10390</th>
-      <td>1967</td>
-      <td>Singareni Collieries</td>
+      <th>493</th>
+      <td>2013</td>
+      <td>Antero</td>
+      <td>Investor-owned Company</td>
+      <td>Natural Gas</td>
+      <td>177.000000</td>
+      <td>Bcf/yr</td>
+      <td>12.901599</td>
+    </tr>
+    <tr>
+      <th>10039</th>
+      <td>2014</td>
+      <td>Saudi Aramco</td>
       <td>State-owned Entity</td>
-      <td>Metallurgical Coal</td>
-      <td>0.070481</td>
-      <td>Million tonnes/yr</td>
-      <td>0.209090</td>
+      <td>Oil &amp; NGL</td>
+      <td>3661.000000</td>
+      <td>Million bbl/yr</td>
+      <td>1459.925880</td>
+    </tr>
+    <tr>
+      <th>7510</th>
+      <td>2006</td>
+      <td>Ovintiv</td>
+      <td>Investor-owned Company</td>
+      <td>Natural Gas</td>
+      <td>1427.700000</td>
+      <td>Bcf/yr</td>
+      <td>104.065610</td>
     </tr>
   </tbody>
 </table>
@@ -1112,58 +1113,58 @@ Name: count, dtype: int64
   </thead>
   <tbody>
     <tr>
-      <th>4348</th>
-      <td>1939</td>
-      <td>ExxonMobil</td>
-      <td>Investor-owned Company</td>
-      <td>Natural Gas</td>
-      <td>214.950528</td>
-      <td>Bcf/yr</td>
-      <td>15.667828</td>
-      <td>Natural Gas</td>
-    </tr>
-    <tr>
-      <th>4032</th>
-      <td>2009</td>
-      <td>EOG Resources</td>
-      <td>Investor-owned Company</td>
-      <td>Natural Gas</td>
-      <td>600.425000</td>
-      <td>Bcf/yr</td>
-      <td>43.765213</td>
-      <td>Natural Gas</td>
-    </tr>
-    <tr>
-      <th>369</th>
-      <td>1951</td>
-      <td>Anglo American</td>
-      <td>Investor-owned Company</td>
-      <td>Thermal Coal</td>
-      <td>10.788154</td>
+      <th>9693</th>
+      <td>2022</td>
+      <td>Russian Federation</td>
+      <td>Nation State</td>
+      <td>Anthracite Coal</td>
+      <td>25.687279</td>
       <td>Million tonnes/yr</td>
-      <td>25.561756</td>
+      <td>74.947446</td>
       <td>Coal</td>
     </tr>
     <tr>
-      <th>2469</th>
-      <td>2008</td>
-      <td>CNOOC</td>
-      <td>State-owned Entity</td>
-      <td>Oil &amp; NGL</td>
-      <td>231.580820</td>
-      <td>Million bbl/yr</td>
-      <td>92.349312</td>
-      <td>Oil &amp; NGL</td>
+      <th>208</th>
+      <td>1982</td>
+      <td>Alpha Metallurgical Resources</td>
+      <td>Investor-owned Company</td>
+      <td>Bituminous Coal</td>
+      <td>12.262433</td>
+      <td>Million tonnes/yr</td>
+      <td>33.281947</td>
+      <td>Coal</td>
     </tr>
     <tr>
-      <th>1885</th>
-      <td>1978</td>
-      <td>Chevron</td>
+      <th>4400</th>
+      <td>1965</td>
+      <td>ExxonMobil</td>
       <td>Investor-owned Company</td>
       <td>Natural Gas</td>
-      <td>3912.862780</td>
+      <td>1993.995000</td>
       <td>Bcf/yr</td>
-      <td>285.210095</td>
+      <td>145.343074</td>
+      <td>Natural Gas</td>
+    </tr>
+    <tr>
+      <th>9092</th>
+      <td>2015</td>
+      <td>PTTEP</td>
+      <td>State-owned Entity</td>
+      <td>Natural Gas</td>
+      <td>618.000000</td>
+      <td>Bcf/yr</td>
+      <td>45.046261</td>
+      <td>Natural Gas</td>
+    </tr>
+    <tr>
+      <th>2932</th>
+      <td>2000</td>
+      <td>ConocoPhillips</td>
+      <td>Investor-owned Company</td>
+      <td>Natural Gas</td>
+      <td>1939.210000</td>
+      <td>Bcf/yr</td>
+      <td>141.349774</td>
       <td>Natural Gas</td>
     </tr>
   </tbody>
