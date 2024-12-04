@@ -17,8 +17,9 @@ __Final due date: {{ date }}__ -->
 
 ## Related notes
 
-- [](../notes/2024-11-19)
-- [ ](../notes/2024-11-21)
+- [Intro to NLP](https://rhodyprog4ds.github.io/BrownFall24/notes/2024-11-19.html)
+- [Classifying Text](https://rhodyprog4ds.github.io/BrownFall24/notes/2024-11-21.html)
+- [Breaking Down a problem](https://rhodyprog4ds.github.io/BrownFall24/notes/2024-11-26.html)
 <!-- - [more text representations](../notes/2023-11-28) -->
 
 ## Assessment
