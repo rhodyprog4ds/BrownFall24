@@ -1,0 +1,1729 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>26. NN &#8212; Programming for Data Science at URI Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course-admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2024-12-02';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Assignment 1: Setup, Syllabus, and Review" href="../assignments/01-setup.html" />
+    <link rel="prev" title="25. Breaking Down a problem" href="2024-11-26.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/310_2021.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/310_2021.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/tools.html">Tools and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/achievements.html">Data Science Achievements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Grading Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/style.html">Course  Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_resources.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_statements.html">General URI Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/communication.html">Communications &amp; Office Hours</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2024-09-05.html">1. Welcome &amp; What is Data Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-10.html">2. Iterables and Pandas Data Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-12.html">3. Pandas Data Frames and More Iterable Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-17.html">4. Exploratory Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-19.html">5. Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-09-24.html">6. Cleaning Data - Structure</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="2024-09-26.html">8. Fixing Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-01.html">9. Webscraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-03.html">10. Merging Data &amp; Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-08.html">11. Evaluating ML Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-10.html">12. ML Models and Auditing with AIF360</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-17.html">13. Classification Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-22.html">14. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-24.html">15. Kmeans algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-29.html">16. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-10-31.html">17. More regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-06.html">18. Task Review and Cross Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-07.html">19. Model Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-12.html">20. Model Comparison</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="2024-11-14.html">22. Which model should we deploy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-19.html">23. Intro to NLP- representing text data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-21.html">24. Classifying Text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-11-26.html">25. Breaking Down a problem</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">26. NN</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../assignments/01-setup.html">1. Assignment 1: Setup, Syllabus, and Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/02-python-access.html">2. Assignment 2: Practicing Python and Accessing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/03-eda.html">3. Assignment 3: Exploratory Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/04-prepare.html">4. Assignment 4: Cleaning Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/05-construct.html">5. Assignment 5: Constructing Datasets and Using Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/06-evaluate.html">6. Assignment 6: Auditing Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/07-classification.html">7. Assignment 7: Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/08-clustering.html">8. Assignment 8: Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/09-regression-optimization.html">9. Assignment 9:  Regression and Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/10-compare.html">10. Assignment 11: Model Comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/11-fake-news.html">11. Assignment 11: Fake News</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Portfolio</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/index.html">Deepening your knowledge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/formatting.html">Formatting Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/extensions.html">Generic Extension Ideas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/altforms.html">Alternatives to Extending Assignments for Level 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../portfolio/process.html">Process Level 3</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/syllabus.html">Syllabus and Grading FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/github.html">Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/debugging.html">Code Errors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/python.html">References on Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/cheatsheet.html">Cheatsheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/datasets.html">Data Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/tips.html">General Tips and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/learning.html">How to Study in this class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/gettinghelp.html">Getting Help with Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/terminal.html">Terminals and Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/organization.html">Getting Organized for class</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">Advice from FA2020 Students</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">Advice from FA2021 Students</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24/edit/main/notes/2024-12-02.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rhodyprog4ds/BrownFall24/issues/new?title=Issue%20on%20page%20%2Fnotes/2024-12-02.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notes/2024-12-02.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>NN</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="nn">
+<h1><span class="section-number">26. </span>NN<a class="headerlink" href="#nn" title="Permalink to this headline">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Will fill in explanation later</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">expit</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+<span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">model_selection</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">digits</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_digits</span><span class="p">()</span>
+<span class="n">digits_X</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">data</span>
+<span class="n">digits_y</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">digits_X</span><span class="p">,</span><span class="n">digits_y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.,  0.,  5., 13.,  9.,  1.,  0.,  0.],
+       [ 0.,  0., 13., 15., 10., 15.,  5.,  0.],
+       [ 0.,  3., 15.,  2.,  0., 11.,  8.,  0.],
+       [ 0.,  4., 12.,  0.,  0.,  8.,  8.,  0.],
+       [ 0.,  5.,  8.,  0.,  0.,  9.,  8.,  0.],
+       [ 0.,  4., 11.,  0.,  1., 12.,  7.,  0.],
+       [ 0.,  2., 14.,  5., 10., 12.,  0.,  0.],
+       [ 0.,  0.,  6., 13., 10.,  0.,  0.,  0.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlp</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span>
+  <span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span>
+  <span class="n">max_iter</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+  <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;lbfgs&quot;</span><span class="p">,</span>
+  <span class="n">verbose</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+  <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+  <span class="n">learning_rate_init</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> This problem is unconstrained.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =         1210     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  9.37500D+00    |proj g|=  7.07421D+00
+
+At iterate    1    f=  8.02459D+00    |proj g|=  6.83466D+00
+
+At iterate    2    f=  3.18240D+00    |proj g|=  1.82461D+00
+
+At iterate    3    f=  2.41007D+00    |proj g|=  3.98019D-01
+
+At iterate    4    f=  2.29031D+00    |proj g|=  2.29243D-01
+
+At iterate    5    f=  2.15047D+00    |proj g|=  2.56270D-01
+
+At iterate    6    f=  1.99823D+00    |proj g|=  3.63100D-01
+
+At iterate    7    f=  1.73961D+00    |proj g|=  4.37304D-01
+
+At iterate    8    f=  1.60423D+00    |proj g|=  3.18972D-01
+
+At iterate    9    f=  1.52327D+00    |proj g|=  2.76688D-01
+
+At iterate   10    f=  1.41676D+00    |proj g|=  6.66680D-01
+
+At iterate   11    f=  1.25692D+00    |proj g|=  4.39525D-01
+
+At iterate   12    f=  1.17445D+00    |proj g|=  3.22658D-01
+
+At iterate   13    f=  1.12441D+00    |proj g|=  3.15359D-01
+
+At iterate   14    f=  1.06531D+00    |proj g|=  2.29505D-01
+
+At iterate   15    f=  1.01492D+00    |proj g|=  3.19736D-01
+
+At iterate   16    f=  9.74128D-01    |proj g|=  2.16153D-01
+
+At iterate   17    f=  9.16447D-01    |proj g|=  1.65519D-01
+
+At iterate   18    f=  8.71469D-01    |proj g|=  6.57699D-01
+
+At iterate   19    f=  8.03802D-01    |proj g|=  2.34280D-01
+
+At iterate   20    f=  7.69832D-01    |proj g|=  2.10162D-01
+
+At iterate   21    f=  7.11832D-01    |proj g|=  2.51556D-01
+
+At iterate   22    f=  6.73565D-01    |proj g|=  3.55941D-01
+
+At iterate   23    f=  6.54592D-01    |proj g|=  3.62511D-01
+
+At iterate   24    f=  6.41547D-01    |proj g|=  2.93633D-01
+
+At iterate   25    f=  6.26229D-01    |proj g|=  1.49031D-01
+
+At iterate   26    f=  6.08544D-01    |proj g|=  2.07000D-01
+
+At iterate   27    f=  5.89822D-01    |proj g|=  2.55788D-01
+
+At iterate   28    f=  5.60798D-01    |proj g|=  5.06571D-01
+
+At iterate   29    f=  5.22235D-01    |proj g|=  1.78080D-01
+
+At iterate   30    f=  5.09578D-01    |proj g|=  1.55676D-01
+
+At iterate   31    f=  4.97205D-01    |proj g|=  2.65656D-01
+
+At iterate   32    f=  4.89045D-01    |proj g|=  6.27593D-01
+
+At iterate   33    f=  4.50315D-01    |proj g|=  3.19387D-01
+
+At iterate   34    f=  4.38890D-01    |proj g|=  2.94659D-01
+
+At iterate   35    f=  4.27496D-01    |proj g|=  8.98403D-02
+
+At iterate   36    f=  4.18854D-01    |proj g|=  6.99998D-02
+
+At iterate   37    f=  4.04987D-01    |proj g|=  2.16950D-01
+
+At iterate   38    f=  3.87003D-01    |proj g|=  2.37692D-01
+
+At iterate   39    f=  3.83453D-01    |proj g|=  4.74891D-01
+
+At iterate   40    f=  3.73633D-01    |proj g|=  1.76420D-01
+
+At iterate   41    f=  3.68370D-01    |proj g|=  7.70146D-02
+
+At iterate   42    f=  3.59384D-01    |proj g|=  2.75932D-01
+
+At iterate   43    f=  3.45885D-01    |proj g|=  3.62598D-01
+
+At iterate   44    f=  3.33604D-01    |proj g|=  3.94734D-01
+
+At iterate   45    f=  3.27141D-01    |proj g|=  3.91217D-01
+
+At iterate   46    f=  3.15051D-01    |proj g|=  1.01729D-01
+
+At iterate   47    f=  3.09778D-01    |proj g|=  1.44497D-01
+
+At iterate   48    f=  3.04466D-01    |proj g|=  1.75200D-01
+
+At iterate   49    f=  2.94752D-01    |proj g|=  2.15162D-01
+
+At iterate   50    f=  2.86590D-01    |proj g|=  2.46646D-01
+
+At iterate   51    f=  2.79256D-01    |proj g|=  1.31812D-01
+
+At iterate   52    f=  2.70019D-01    |proj g|=  7.96770D-02
+
+At iterate   53    f=  2.59007D-01    |proj g|=  1.52663D-01
+
+At iterate   54    f=  2.55560D-01    |proj g|=  1.44560D-01
+
+At iterate   55    f=  2.52278D-01    |proj g|=  1.14374D-01
+
+At iterate   56    f=  2.47209D-01    |proj g|=  9.39139D-02
+
+At iterate   57    f=  2.43089D-01    |proj g|=  8.35379D-02
+
+At iterate   58    f=  2.36417D-01    |proj g|=  6.41094D-02
+
+At iterate   59    f=  2.32337D-01    |proj g|=  1.45710D-01
+
+At iterate   60    f=  2.27252D-01    |proj g|=  6.58498D-02
+
+At iterate   61    f=  2.23294D-01    |proj g|=  5.25213D-02
+
+At iterate   62    f=  2.18746D-01    |proj g|=  9.92943D-02
+
+At iterate   63    f=  2.15062D-01    |proj g|=  1.17510D-01
+
+At iterate   64    f=  2.12248D-01    |proj g|=  7.56452D-02
+
+At iterate   65    f=  2.07643D-01    |proj g|=  3.25950D-02
+
+At iterate   66    f=  2.02410D-01    |proj g|=  7.15087D-02
+
+At iterate   67    f=  1.99590D-01    |proj g|=  1.17731D-01
+
+At iterate   68    f=  1.95943D-01    |proj g|=  3.55496D-02
+
+At iterate   69    f=  1.94667D-01    |proj g|=  3.75730D-02
+
+At iterate   70    f=  1.91712D-01    |proj g|=  6.41301D-02
+
+At iterate   71    f=  1.87904D-01    |proj g|=  4.77267D-02
+
+At iterate   72    f=  1.84361D-01    |proj g|=  3.21569D-02
+
+At iterate   73    f=  1.82905D-01    |proj g|=  8.14872D-02
+
+At iterate   74    f=  1.79895D-01    |proj g|=  5.93548D-02
+
+At iterate   75    f=  1.78551D-01    |proj g|=  3.32320D-02
+
+At iterate   76    f=  1.76843D-01    |proj g|=  4.59193D-02
+
+At iterate   77    f=  1.74849D-01    |proj g|=  6.14248D-02
+
+At iterate   78    f=  1.72782D-01    |proj g|=  5.50343D-02
+
+At iterate   79    f=  1.71729D-01    |proj g|=  3.12913D-02
+
+At iterate   80    f=  1.70483D-01    |proj g|=  2.96099D-02
+
+At iterate   81    f=  1.68392D-01    |proj g|=  4.22960D-02
+
+At iterate   82    f=  1.64677D-01    |proj g|=  5.46748D-02
+
+At iterate   83    f=  1.62254D-01    |proj g|=  5.54073D-02
+
+At iterate   84    f=  1.60553D-01    |proj g|=  5.11748D-02
+
+At iterate   85    f=  1.59308D-01    |proj g|=  5.13372D-02
+
+At iterate   86    f=  1.58049D-01    |proj g|=  4.94762D-02
+
+At iterate   87    f=  1.56507D-01    |proj g|=  4.47631D-02
+
+At iterate   88    f=  1.54276D-01    |proj g|=  4.60086D-02
+
+At iterate   89    f=  1.50986D-01    |proj g|=  3.34410D-02
+
+At iterate   90    f=  1.48189D-01    |proj g|=  5.02333D-02
+
+At iterate   91    f=  1.47683D-01    |proj g|=  1.34603D-01
+
+At iterate   92    f=  1.46374D-01    |proj g|=  4.81879D-02
+
+At iterate   93    f=  1.45311D-01    |proj g|=  3.47109D-02
+
+At iterate   94    f=  1.44174D-01    |proj g|=  5.82605D-02
+
+At iterate   95    f=  1.42813D-01    |proj g|=  6.67188D-02
+
+At iterate   96    f=  1.41087D-01    |proj g|=  6.97615D-02
+
+At iterate   97    f=  1.39951D-01    |proj g|=  5.34238D-02
+
+At iterate   98    f=  1.39344D-01    |proj g|=  4.61364D-02
+
+At iterate   99    f=  1.38512D-01    |proj g|=  4.29609D-02
+
+At iterate  100    f=  1.37632D-01    |proj g|=  6.09713D-02
+
+At iterate  101    f=  1.35859D-01    |proj g|=  3.24675D-02
+
+At iterate  102    f=  1.34492D-01    |proj g|=  6.15266D-02
+
+At iterate  103    f=  1.32575D-01    |proj g|=  2.55988D-02
+
+At iterate  104    f=  1.31244D-01    |proj g|=  2.90329D-02
+
+At iterate  105    f=  1.28450D-01    |proj g|=  4.87733D-02
+
+At iterate  106    f=  1.26991D-01    |proj g|=  1.02152D-01
+
+At iterate  107    f=  1.25525D-01    |proj g|=  3.40760D-02
+
+At iterate  108    f=  1.24914D-01    |proj g|=  2.07204D-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At iterate  109    f=  1.24419D-01    |proj g|=  3.40299D-02
+
+At iterate  110    f=  1.23557D-01    |proj g|=  3.62418D-02
+
+At iterate  111    f=  1.22631D-01    |proj g|=  3.34209D-02
+
+At iterate  112    f=  1.21688D-01    |proj g|=  2.28919D-02
+
+At iterate  113    f=  1.20796D-01    |proj g|=  2.61104D-02
+
+At iterate  114    f=  1.20055D-01    |proj g|=  3.56061D-02
+
+At iterate  115    f=  1.18923D-01    |proj g|=  3.39008D-02
+
+At iterate  116    f=  1.17242D-01    |proj g|=  7.17081D-02
+
+At iterate  117    f=  1.16114D-01    |proj g|=  4.98343D-02
+
+At iterate  118    f=  1.15303D-01    |proj g|=  5.59342D-02
+
+At iterate  119    f=  1.14676D-01    |proj g|=  3.10023D-02
+
+At iterate  120    f=  1.13989D-01    |proj g|=  1.84625D-02
+
+At iterate  121    f=  1.13167D-01    |proj g|=  2.50589D-02
+
+At iterate  122    f=  1.12127D-01    |proj g|=  2.62088D-02
+
+At iterate  123    f=  1.10992D-01    |proj g|=  3.11675D-02
+
+At iterate  124    f=  1.10314D-01    |proj g|=  4.32524D-02
+
+At iterate  125    f=  1.09650D-01    |proj g|=  1.47989D-02
+
+At iterate  126    f=  1.08903D-01    |proj g|=  1.98822D-02
+
+At iterate  127    f=  1.07759D-01    |proj g|=  3.74160D-02
+
+At iterate  128    f=  1.06905D-01    |proj g|=  3.92202D-02
+
+At iterate  129    f=  1.06216D-01    |proj g|=  2.92258D-02
+
+At iterate  130    f=  1.05691D-01    |proj g|=  4.27838D-02
+
+At iterate  131    f=  1.05014D-01    |proj g|=  5.44443D-02
+
+At iterate  132    f=  1.04509D-01    |proj g|=  3.63158D-02
+
+At iterate  133    f=  1.03900D-01    |proj g|=  1.98252D-02
+
+At iterate  134    f=  1.03440D-01    |proj g|=  2.40783D-02
+
+At iterate  135    f=  1.03163D-01    |proj g|=  1.28849D-02
+
+At iterate  136    f=  1.02507D-01    |proj g|=  2.51499D-02
+
+At iterate  137    f=  1.01965D-01    |proj g|=  2.67038D-02
+
+At iterate  138    f=  1.01394D-01    |proj g|=  1.94427D-02
+
+At iterate  139    f=  1.00557D-01    |proj g|=  2.34909D-02
+
+At iterate  140    f=  9.98722D-02    |proj g|=  2.63449D-02
+
+At iterate  141    f=  9.86270D-02    |proj g|=  2.46591D-02
+
+At iterate  142    f=  9.76782D-02    |proj g|=  3.61534D-02
+
+At iterate  143    f=  9.70462D-02    |proj g|=  6.43850D-02
+
+At iterate  144    f=  9.63371D-02    |proj g|=  3.10890D-02
+
+At iterate  145    f=  9.58735D-02    |proj g|=  1.73097D-02
+
+At iterate  146    f=  9.54020D-02    |proj g|=  3.79595D-02
+
+At iterate  147    f=  9.50467D-02    |proj g|=  2.70193D-02
+
+At iterate  148    f=  9.45087D-02    |proj g|=  1.38712D-02
+
+At iterate  149    f=  9.41013D-02    |proj g|=  1.25869D-02
+
+At iterate  150    f=  9.38520D-02    |proj g|=  1.69865D-02
+
+At iterate  151    f=  9.34062D-02    |proj g|=  2.41650D-02
+
+At iterate  152    f=  9.25228D-02    |proj g|=  2.34431D-02
+
+At iterate  153    f=  9.19809D-02    |proj g|=  3.05021D-02
+
+At iterate  154    f=  9.14104D-02    |proj g|=  1.83376D-02
+
+At iterate  155    f=  9.11035D-02    |proj g|=  1.97169D-02
+
+At iterate  156    f=  9.07141D-02    |proj g|=  2.69441D-02
+
+At iterate  157    f=  9.06286D-02    |proj g|=  3.05044D-02
+
+At iterate  158    f=  9.01732D-02    |proj g|=  1.06507D-02
+
+At iterate  159    f=  8.97847D-02    |proj g|=  1.81055D-02
+
+At iterate  160    f=  8.91862D-02    |proj g|=  2.52174D-02
+
+At iterate  161    f=  8.88221D-02    |proj g|=  3.93213D-02
+
+At iterate  162    f=  8.84265D-02    |proj g|=  1.09143D-02
+
+At iterate  163    f=  8.81392D-02    |proj g|=  2.44443D-02
+
+At iterate  164    f=  8.77955D-02    |proj g|=  2.12095D-02
+
+At iterate  165    f=  8.72857D-02    |proj g|=  2.36591D-02
+
+At iterate  166    f=  8.69188D-02    |proj g|=  2.12679D-02
+
+At iterate  167    f=  8.66697D-02    |proj g|=  1.57581D-02
+
+At iterate  168    f=  8.62788D-02    |proj g|=  1.27571D-02
+
+At iterate  169    f=  8.60745D-02    |proj g|=  2.10572D-02
+
+At iterate  170    f=  8.57677D-02    |proj g|=  2.35602D-02
+
+At iterate  171    f=  8.53454D-02    |proj g|=  2.94154D-02
+
+At iterate  172    f=  8.50329D-02    |proj g|=  2.53883D-02
+
+At iterate  173    f=  8.48580D-02    |proj g|=  1.60960D-02
+
+At iterate  174    f=  8.47281D-02    |proj g|=  2.32642D-02
+
+At iterate  175    f=  8.42630D-02    |proj g|=  6.77717D-02
+
+At iterate  176    f=  8.36386D-02    |proj g|=  2.38726D-02
+
+At iterate  177    f=  8.31537D-02    |proj g|=  2.05486D-02
+
+At iterate  178    f=  8.28081D-02    |proj g|=  1.89107D-02
+
+At iterate  179    f=  8.23936D-02    |proj g|=  4.78082D-02
+
+At iterate  180    f=  8.19369D-02    |proj g|=  1.34942D-02
+
+At iterate  181    f=  8.17208D-02    |proj g|=  1.83601D-02
+
+At iterate  182    f=  8.14286D-02    |proj g|=  2.72925D-02
+
+At iterate  183    f=  8.11747D-02    |proj g|=  2.01695D-02
+
+At iterate  184    f=  8.09812D-02    |proj g|=  2.72229D-02
+
+At iterate  185    f=  8.06312D-02    |proj g|=  2.37848D-02
+
+At iterate  186    f=  8.04510D-02    |proj g|=  2.22705D-02
+
+At iterate  187    f=  8.02194D-02    |proj g|=  1.55668D-02
+
+At iterate  188    f=  7.98727D-02    |proj g|=  3.21380D-02
+
+At iterate  189    f=  7.96883D-02    |proj g|=  2.01577D-02
+
+At iterate  190    f=  7.91666D-02    |proj g|=  1.55251D-02
+
+At iterate  191    f=  7.89495D-02    |proj g|=  3.18326D-02
+
+At iterate  192    f=  7.84676D-02    |proj g|=  2.52790D-02
+
+At iterate  193    f=  7.82202D-02    |proj g|=  1.01886D-02
+
+At iterate  194    f=  7.80717D-02    |proj g|=  9.07435D-03
+
+At iterate  195    f=  7.79145D-02    |proj g|=  1.07889D-02
+
+At iterate  196    f=  7.77193D-02    |proj g|=  1.10421D-02
+
+At iterate  197    f=  7.74933D-02    |proj g|=  1.53242D-02
+
+At iterate  198    f=  7.72673D-02    |proj g|=  1.41402D-02
+
+At iterate  199    f=  7.71656D-02    |proj g|=  2.26050D-02
+
+At iterate  200    f=  7.69048D-02    |proj g|=  1.45390D-02
+
+At iterate  201    f=  7.66865D-02    |proj g|=  1.94612D-02
+
+At iterate  202    f=  7.65346D-02    |proj g|=  1.65925D-02
+
+At iterate  203    f=  7.64259D-02    |proj g|=  8.11067D-03
+
+At iterate  204    f=  7.63176D-02    |proj g|=  2.12438D-02
+
+At iterate  205    f=  7.59487D-02    |proj g|=  2.87555D-02
+
+At iterate  206    f=  7.55410D-02    |proj g|=  4.46427D-02
+
+At iterate  207    f=  7.52054D-02    |proj g|=  1.28358D-02
+
+At iterate  208    f=  7.50167D-02    |proj g|=  1.21775D-02
+
+At iterate  209    f=  7.48557D-02    |proj g|=  2.21522D-02
+
+At iterate  210    f=  7.45571D-02    |proj g|=  2.40799D-02
+
+At iterate  211    f=  7.40903D-02    |proj g|=  1.83622D-02
+
+At iterate  212    f=  7.36292D-02    |proj g|=  2.60609D-02
+
+At iterate  213    f=  7.33927D-02    |proj g|=  9.24698D-03
+
+At iterate  214    f=  7.32380D-02    |proj g|=  1.28307D-02
+
+At iterate  215    f=  7.29977D-02    |proj g|=  1.31537D-02
+
+At iterate  216    f=  7.25588D-02    |proj g|=  1.12766D-02
+
+At iterate  217    f=  7.25417D-02    |proj g|=  3.38971D-02
+
+At iterate  218    f=  7.20708D-02    |proj g|=  2.14345D-02
+
+At iterate  219    f=  7.18878D-02    |proj g|=  1.45869D-02
+
+At iterate  220    f=  7.15908D-02    |proj g|=  1.05040D-02
+
+At iterate  221    f=  7.14827D-02    |proj g|=  5.02743D-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At iterate  222    f=  7.07857D-02    |proj g|=  3.53567D-02
+
+At iterate  223    f=  7.05825D-02    |proj g|=  1.04886D-02
+
+At iterate  224    f=  7.03392D-02    |proj g|=  1.04074D-02
+
+At iterate  225    f=  7.00161D-02    |proj g|=  1.68276D-02
+
+At iterate  226    f=  6.98672D-02    |proj g|=  2.39887D-02
+
+At iterate  227    f=  6.98412D-02    |proj g|=  2.35783D-02
+
+At iterate  228    f=  6.96403D-02    |proj g|=  1.15578D-02
+
+At iterate  229    f=  6.94438D-02    |proj g|=  8.91252D-03
+
+At iterate  230    f=  6.91366D-02    |proj g|=  1.06333D-02
+
+At iterate  231    f=  6.90876D-02    |proj g|=  4.68214D-02
+
+At iterate  232    f=  6.87068D-02    |proj g|=  9.36531D-03
+
+At iterate  233    f=  6.85179D-02    |proj g|=  1.37165D-02
+
+At iterate  234    f=  6.83805D-02    |proj g|=  2.43275D-02
+
+At iterate  235    f=  6.81826D-02    |proj g|=  1.94002D-02
+
+At iterate  236    f=  6.78480D-02    |proj g|=  1.08002D-02
+
+At iterate  237    f=  6.77486D-02    |proj g|=  1.23353D-02
+
+At iterate  238    f=  6.76761D-02    |proj g|=  1.88300D-02
+
+At iterate  239    f=  6.74885D-02    |proj g|=  1.53847D-02
+
+At iterate  240    f=  6.73685D-02    |proj g|=  1.57455D-02
+
+At iterate  241    f=  6.73235D-02    |proj g|=  9.82676D-03
+
+At iterate  242    f=  6.72061D-02    |proj g|=  1.18324D-02
+
+At iterate  243    f=  6.67936D-02    |proj g|=  2.37107D-02
+
+At iterate  244    f=  6.66596D-02    |proj g|=  2.28300D-02
+
+At iterate  245    f=  6.65202D-02    |proj g|=  5.64455D-02
+
+At iterate  246    f=  6.62835D-02    |proj g|=  1.05269D-02
+
+At iterate  247    f=  6.62155D-02    |proj g|=  9.91044D-03
+
+At iterate  248    f=  6.60914D-02    |proj g|=  1.52671D-02
+
+At iterate  249    f=  6.59328D-02    |proj g|=  1.19234D-02
+
+At iterate  250    f=  6.56704D-02    |proj g|=  2.64657D-02
+
+At iterate  251    f=  6.54311D-02    |proj g|=  9.45042D-03
+
+At iterate  252    f=  6.53003D-02    |proj g|=  8.82215D-03
+
+At iterate  253    f=  6.50427D-02    |proj g|=  1.72453D-02
+
+At iterate  254    f=  6.48287D-02    |proj g|=  2.29173D-02
+
+At iterate  255    f=  6.46225D-02    |proj g|=  1.39375D-02
+
+At iterate  256    f=  6.45377D-02    |proj g|=  2.85481D-02
+
+At iterate  257    f=  6.43892D-02    |proj g|=  1.28147D-02
+
+At iterate  258    f=  6.43493D-02    |proj g|=  2.11618D-02
+
+At iterate  259    f=  6.42388D-02    |proj g|=  2.61400D-02
+
+At iterate  260    f=  6.42132D-02    |proj g|=  1.48145D-02
+
+At iterate  261    f=  6.41905D-02    |proj g|=  1.33978D-02
+
+At iterate  262    f=  6.39809D-02    |proj g|=  2.41259D-02
+
+At iterate  263    f=  6.38708D-02    |proj g|=  2.42812D-02
+
+At iterate  264    f=  6.38320D-02    |proj g|=  4.51286D-02
+
+At iterate  265    f=  6.36812D-02    |proj g|=  3.34676D-02
+
+At iterate  266    f=  6.34374D-02    |proj g|=  2.66132D-02
+
+At iterate  267    f=  6.33384D-02    |proj g|=  2.02821D-02
+
+At iterate  268    f=  6.31832D-02    |proj g|=  9.73368D-03
+
+At iterate  269    f=  6.29987D-02    |proj g|=  1.10753D-02
+
+At iterate  270    f=  6.27363D-02    |proj g|=  1.87213D-02
+
+At iterate  271    f=  6.25419D-02    |proj g|=  1.83108D-02
+
+At iterate  272    f=  6.23311D-02    |proj g|=  2.62384D-02
+
+At iterate  273    f=  6.22287D-02    |proj g|=  2.87676D-02
+
+At iterate  274    f=  6.20514D-02    |proj g|=  9.52328D-03
+
+At iterate  275    f=  6.19823D-02    |proj g|=  7.69467D-03
+
+At iterate  276    f=  6.18263D-02    |proj g|=  1.34035D-02
+
+At iterate  277    f=  6.17075D-02    |proj g|=  1.13919D-02
+
+At iterate  278    f=  6.15372D-02    |proj g|=  1.25740D-02
+
+At iterate  279    f=  6.14996D-02    |proj g|=  2.22381D-02
+
+At iterate  280    f=  6.12725D-02    |proj g|=  2.41729D-02
+
+At iterate  281    f=  6.12518D-02    |proj g|=  2.49804D-02
+
+At iterate  282    f=  6.10974D-02    |proj g|=  1.37317D-02
+
+At iterate  283    f=  6.09104D-02    |proj g|=  1.22561D-02
+
+At iterate  284    f=  6.07724D-02    |proj g|=  1.80947D-02
+
+At iterate  285    f=  6.04987D-02    |proj g|=  2.93434D-02
+
+At iterate  286    f=  6.03405D-02    |proj g|=  1.63936D-02
+
+At iterate  287    f=  6.01958D-02    |proj g|=  1.10217D-02
+
+At iterate  288    f=  6.00442D-02    |proj g|=  6.17492D-03
+
+At iterate  289    f=  5.98327D-02    |proj g|=  1.06180D-02
+
+At iterate  290    f=  5.97262D-02    |proj g|=  2.17063D-02
+
+At iterate  291    f=  5.95349D-02    |proj g|=  1.10267D-02
+
+At iterate  292    f=  5.94023D-02    |proj g|=  1.49308D-02
+
+At iterate  293    f=  5.93502D-02    |proj g|=  2.92620D-02
+
+At iterate  294    f=  5.91207D-02    |proj g|=  2.74628D-02
+
+At iterate  295    f=  5.90919D-02    |proj g|=  2.38506D-02
+
+At iterate  296    f=  5.89071D-02    |proj g|=  1.21526D-02
+
+At iterate  297    f=  5.88475D-02    |proj g|=  1.08738D-02
+
+At iterate  298    f=  5.88317D-02    |proj g|=  2.14862D-02
+
+At iterate  299    f=  5.88185D-02    |proj g|=  8.87691D-03
+
+At iterate  300    f=  5.87971D-02    |proj g|=  8.67192D-03
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+ 1210    300    315      1     0     0   8.672D-03   5.880D-02
+  F =   5.8797083656746428E-002
+
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT                 
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/sklearn/neural_network/_multilayer_perceptron.py:546: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+  self.n_iter_ = _check_optimize_result(&quot;lbfgs&quot;, opt_res, self.max_iter)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9133333333333333
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm_clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+<span class="n">svm_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">svm_clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9933333333333333
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm_clf</span><span class="o">.</span><span class="n">support_vectors_</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(684, 64)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">svm_clf</span><span class="o">.</span><span class="n">support_vectors_</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>43776
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">mlp</span><span class="o">.</span><span class="n">coefs_</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1184
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">mlp</span><span class="o">.</span><span class="n">coefs_</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[64, 16], [16, 10]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+             <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">y</span><span class="o">=</span><span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">hue</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../_images/6f34c0f504b5a332e2b40fa6ae94c47626c56731e62b2569378404225de3e737.png" src="../_images/6f34c0f504b5a332e2b40fa6ae94c47626c56731e62b2569378404225de3e737.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span>
+ <span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="c1"># 1 hidden layer, 1 aritficial neuron</span>
+ <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="c1"># maximum 100 interations in optimization</span>
+ <span class="n">alpha</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="c1"># regularization</span>
+ <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;lbfgs&quot;</span><span class="p">,</span> <span class="c1">#optimization algorithm  </span>
+ <span class="n">verbose</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="c1"># how much detail to print</span>
+ <span class="n">activation</span><span class="o">=</span> <span class="s1">&#39;identity&#39;</span> <span class="c1"># how to transform the hidden layer beofore passing it to the next layer</span>
+<span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =            5     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  1.12774D+00    |proj g|=  9.21482D-01
+
+At iterate    1    f=  4.60956D-01    |proj g|=  3.93374D-01
+
+At iterate    2    f=  1.84982D-01    |proj g|=  1.39975D-01
+
+At iterate    3    f=  1.01424D-01    |proj g|=  4.31820D-02
+
+At iterate    4    f=  7.54029D-02    |proj g|=  2.41489D-02
+
+At iterate    5    f=  6.20317D-02    |proj g|=  1.39663D-02
+
+At iterate    6    f=  5.56603D-02    |proj g|=  1.14298D-02
+
+At iterate    7    f=  5.11438D-02    |proj g|=  5.02143D-03
+
+At iterate    8    f=  4.88347D-02    |proj g|=  3.40354D-03
+
+At iterate    9    f=  4.80291D-02    |proj g|=  1.48236D-03
+
+At iterate   10    f=  4.79519D-02    |proj g|=  3.03833D-03
+
+At iterate   11    f=  4.79046D-02    |proj g|=  4.59288D-04
+
+At iterate   12    f=  4.79043D-02    |proj g|=  3.48149D-05
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+    5     12     13      1     0     0   3.481D-05   4.790D-02
+  F =   4.7904275745227251E-002
+
+CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL            
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> This problem is unconstrained.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">activation</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;identity&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">out_activation_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;logistic&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_logistic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y_logistic</span> <span class="o">=</span> <span class="n">expit</span><span class="p">(</span><span class="n">x_logistic</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_logistic</span><span class="p">,</span><span class="n">y_logistic</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f8c200dcd30&gt;]
+</pre></div>
+</div>
+<img alt="../_images/2ed38b0e877e76ddccd806ea0f74b68fd59651ca5609044257c5deeaddc618ab.png" src="../_images/2ed38b0e877e76ddccd806ea0f74b68fd59651ca5609044257c5deeaddc618ab.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">coefs_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[ 4.2572048 ],
+        [-0.12252191]]),
+ array([[3.08764072]])]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">intercepts_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([1.31894694]), array([1.62545549])]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="n">clf</span><span class="o">.</span><span class="n">coefs_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">clf</span><span class="o">.</span><span class="n">intercepts_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-3.18330167])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">expit</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="n">clf</span><span class="o">.</span><span class="n">coefs_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">clf</span><span class="o">.</span><span class="n">intercepts_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="n">clf</span><span class="o">.</span><span class="n">coefs_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">clf</span><span class="o">.</span><span class="n">intercepts_</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.00027364]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">([</span><span class="n">pt</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[9.99726364e-01, 2.73636482e-04]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">aritificial_neuron_template</span><span class="p">(</span><span class="n">activation</span><span class="p">,</span><span class="n">weights</span><span class="p">,</span><span class="n">bias</span><span class="p">,</span><span class="n">inputs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    simple artificial neuron</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    activation : function</span>
+<span class="sd">    activation function of the neuron</span>
+<span class="sd">    weights : numpy aray</span>
+<span class="sd">    wights for summing inputs one per input</span>
+<span class="sd">    bias: numpy array</span>
+<span class="sd">    bias term added to the weighted sum</span>
+<span class="sd">    inputs : numpy array</span>
+<span class="sd">    input to the neuron, must be same size as weights</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">activation</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span><span class="n">weights</span><span class="p">)</span> <span class="o">+</span><span class="n">bias</span><span class="p">)</span>
+
+<span class="c1"># two common activation functions</span>
+<span class="n">identity_activation</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span>
+<span class="n">logistic_activation</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">expit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hidden_neuron</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">aritificial_neuron_template</span><span class="p">(</span><span class="n">identity_activation</span><span class="p">,</span><span class="n">clf</span><span class="o">.</span><span class="n">coefs_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                                      <span class="n">clf</span><span class="o">.</span><span class="n">intercepts_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">x</span><span class="p">)</span>
+<span class="n">output_neuron</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">h</span><span class="p">:</span> <span class="n">aritificial_neuron_template</span><span class="p">(</span><span class="n">expit</span><span class="p">,</span><span class="n">clf</span><span class="o">.</span><span class="n">coefs_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">clf</span><span class="o">.</span><span class="n">intercepts_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">h</span><span class="p">)</span>
+
+<span class="n">output_neuron</span><span class="p">(</span><span class="n">hidden_neuron</span><span class="p">(</span><span class="n">pt</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.00027364])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n_features</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">n_informative</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+                          <span class="n">random_state</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">pt_4d</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mf">1.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.5</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">clf_4d</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span>
+  <span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+  <span class="n">max_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+  <span class="n">alpha</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span>
+  <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;lbfgs&quot;</span><span class="p">,</span>
+  <span class="n">verbose</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+  <span class="n">activation</span><span class="o">=</span> <span class="s1">&#39;identity&#39;</span>
+<span class="p">)</span>
+
+<span class="n">clf_4d</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">clf_4d</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =            7     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  1.56548D+00    |proj g|=  1.67239D+00
+
+At iterate    1    f=  5.79662D-01    |proj g|=  1.65926D-01
+
+At iterate    2    f=  5.61841D-01    |proj g|=  7.26481D-02
+
+At iterate    3    f=  5.26413D-01    |proj g|=  8.09547D-02
+
+At iterate    4    f=  4.77944D-01    |proj g|=  8.69274D-02
+
+At iterate    5    f=  4.50071D-01    |proj g|=  6.66721D-02
+
+At iterate    6    f=  4.36589D-01    |proj g|=  1.73055D-02
+
+At iterate    7    f=  4.34961D-01    |proj g|=  1.31274D-02
+
+At iterate    8    f=  4.34751D-01    |proj g|=  5.98828D-03
+
+At iterate    9    f=  4.34669D-01    |proj g|=  1.97281D-03
+
+At iterate   10    f=  4.34664D-01    |proj g|=  1.44679D-03
+
+At iterate   11    f=  4.34656D-01    |proj g|=  2.38351D-04
+
+At iterate   12    f=  4.34656D-01    |proj g|=  5.08782D-05
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+    7     12     15      1     0     0   5.088D-05   4.347D-01
+  F =  0.43465603243430712     
+
+CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL            
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> This problem is unconstrained.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.84
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hidden_neuron_4d</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">aritificial_neuron_template</span><span class="p">(</span><span class="n">identity_activation</span><span class="p">,</span>
+                             <span class="n">clf_4d</span><span class="o">.</span><span class="n">coefs_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">clf_4d</span><span class="o">.</span><span class="n">intercepts_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">x</span><span class="p">)</span>
+<span class="n">output_neuron_4d</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">aritificial_neuron_template</span><span class="p">(</span><span class="n">logistic_activation</span><span class="p">,</span>
+                             <span class="n">clf_4d</span><span class="o">.</span><span class="n">coefs_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">clf_4d</span><span class="o">.</span><span class="n">intercepts_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">x</span><span class="p">)</span>
+
+
+<span class="n">output_neuron_4d</span><span class="p">(</span><span class="n">hidden_neuron_4d</span><span class="p">(</span><span class="n">pt_4d</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.95355966],
+       [0.85330745]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf_4d</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">pt_4d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.04644034, 0.95355966],
+       [0.14669255, 0.85330745]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f8c200b7790&gt;
+</pre></div>
+</div>
+<img alt="../_images/ec1aefc1a6921883d0564bd9de6c8912b660d60b74a4c4ce5679852e93c30cb3.png" src="../_images/ec1aefc1a6921883d0564bd9de6c8912b660d60b74a4c4ce5679852e93c30cb3.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2024-11-26.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">25. </span>Breaking Down a problem</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../assignments/01-setup.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Assignment 1: Setup, Syllabus, and Review</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Professor Sarah M Brown
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

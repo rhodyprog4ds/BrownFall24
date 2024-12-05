@@ -199,6 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2024-11-19.html">23. Intro to NLP- representing text data</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">24. Classifying Text</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2024-11-26.html">25. Breaking Down a problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024-12-02.html">26. NN</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -808,7 +809,7 @@ robert@acsc.com
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9728813559322034
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9796610169491525
 </pre></div>
 </div>
 </div>
@@ -826,14 +827,14 @@ robert@acsc.com
  &#39;force_alpha&#39;: &#39;warn&#39;,
  &#39;n_features_in_&#39;: 24257,
  &#39;classes_&#39;: array([0, 1]),
- &#39;class_count_&#39;: array([440., 444.]),
- &#39;feature_count_&#39;: array([[28., 15.,  0., ...,  0.,  0.,  0.],
-        [27., 15.,  0., ...,  1.,  1.,  1.]]),
- &#39;feature_log_prob_&#39;: array([[ -8.37298032,  -8.96768743, -11.74027615, ..., -11.74027615,
-         -11.74027615, -11.74027615],
-        [ -8.80532695,  -9.36494274, -12.13753146, ..., -11.44438428,
-         -11.44438428, -11.44438428]]),
- &#39;class_log_prior_&#39;: array([-0.69768234, -0.6886325 ])}
+ &#39;class_count_&#39;: array([435., 449.]),
+ &#39;feature_count_&#39;: array([[29., 14.,  0., ...,  0.,  0.,  0.],
+        [32., 16.,  0., ...,  1.,  1.,  1.]]),
+ &#39;feature_log_prob_&#39;: array([[ -8.39461116,  -9.08775834, -11.79580854, ..., -11.79580854,
+         -11.79580854, -11.79580854],
+        [ -8.60737731,  -9.27067153, -12.10388487, ..., -11.41073769,
+         -11.41073769, -11.41073769]]),
+ &#39;class_log_prior_&#39;: array([-0.70911103, -0.67743417])}
 </pre></div>
 </div>
 </div>
@@ -860,7 +861,7 @@ robert@acsc.com
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.00482363, 0.99517637]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.00479462, 0.99520538]])
 </pre></div>
 </div>
 </div>
@@ -888,7 +889,7 @@ robert@acsc.com
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.57042359, 0.42957641]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.66932277, 0.33067723]])
 </pre></div>
 </div>
 </div>
@@ -947,7 +948,7 @@ v{_2}^2 + \dots + v{_n}^2}}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9898305084745763
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9830508474576272
 </pre></div>
 </div>
 </div>
@@ -959,7 +960,7 @@ v{_2}^2 + \dots + v{_n}^2}}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9186440677966101
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9423728813559322
 </pre></div>
 </div>
 </div>
@@ -1042,7 +1043,7 @@ v{_2}^2 + \dots + v{_n}^2}}\]</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/fd0a48dcf7271391eabae1c8f284dfb1e5c150c43e6ec699a3ee6af426ab454e.png" src="../_images/fd0a48dcf7271391eabae1c8f284dfb1e5c150c43e6ec699a3ee6af426ab454e.png" />
+<img alt="../_images/2a23cb4da22185ab1be5e2abe0747645f7e82e04a222b9c78abbf68e63b4aa8b.png" src="../_images/2a23cb4da22185ab1be5e2abe0747645f7e82e04a222b9c78abbf68e63b4aa8b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1091,13 +1092,13 @@ v{_2}^2 + \dots + v{_n}^2}}\]</div>
     <tr>
       <th rowspan="2" valign="top">predicted class</th>
       <th>comp.graphics</th>
-      <td>133</td>
+      <td>127</td>
       <td>2</td>
     </tr>
     <tr>
       <th>sci.crypt</th>
-      <td>22</td>
-      <td>138</td>
+      <td>15</td>
+      <td>151</td>
     </tr>
   </tbody>
 </table>
