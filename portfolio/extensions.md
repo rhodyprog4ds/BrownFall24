@@ -24,4 +24,8 @@ If you are short on time these achievements are easiest to combine with the opti
 
 Repeat what you did in 7, 8, or 9, with a different model.
 
+## Interview Style Critique
 
+Book a 1:1 appointment with Dr. Brown (link on course organizaiton page and prismia) and critique/improve your own code + excerpts she provides.  
+
+This will allow you to demonstrate a deeper understanding than work you have previously submitted. 

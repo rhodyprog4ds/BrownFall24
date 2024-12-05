@@ -49,10 +49,10 @@ Your grade will be based on earning 45 achievements that are organized into 15 s
 These map onto letter grades roughly as follows:
   - If you achieve level 1 in all of the skills, you will earn at least a C in the course.
   - To earn a B, you must earn all of the level 1 and level 2 achievements.
-  - To earn an A, you must earn all of the achievements.
+  - To earn an A, you must earn all of the  level 1 and level 2 achievements and at least 10 level 3 or other demonstrations of independent extensions beyond what was covered in class time.
 
 ```{margin}
-This is a hard cutoff, but I have never had a student who consistently submitted work end up below a C. I have never had a student earn level 3s and end up below a B who submitted any work in the second half of the semester.  
+This is a hard cutoff, but I have never had a student who consistently submitted work end up below a C. I have never had a student earn level 3s and end up below a B who submitted **any** work in the second half of the semester.  
 
 ```
 You will have at least three opportunities to earn every level 2 achievement.
