@@ -657,7 +657,7 @@ each section gets used for testing.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.96666667, 0.96666667, 0.9       , 0.96666667, 1.        ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.96666667, 0.96666667, 0.9       , 1.        , 1.        ])
 </pre></div>
 </div>
 </div>
@@ -680,7 +680,7 @@ we call the function again, it does another round of random splits</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9533333333333334
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9600000000000002
 </pre></div>
 </div>
 </div>
@@ -694,7 +694,7 @@ we call the function again, it does another round of random splits</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.        , 0.93333333, 1.        , 0.93333333, 0.93333333,
-       0.86666667, 0.93333333, 1.        , 1.        , 1.        ])
+       0.86666667, 0.93333333, 0.93333333, 1.        , 1.        ])
 </pre></div>
 </div>
 </div>
@@ -785,7 +785,7 @@ building the whole list up front, which makes it more memory efficient.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;generator object _BaseKFold.split at 0x7f29bc38dc10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;generator object _BaseKFold.split at 0x7f95237ddc80&gt;
 </pre></div>
 </div>
 </div>
@@ -1110,26 +1110,26 @@ building the whole list up front, which makes it more memory efficient.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.93333333, 1.        , 0.9       , 0.93333333, 0.93333333,
-       0.93333333, 0.86666667, 1.        , 0.96666667, 0.93333333,
-       0.93333333, 1.        , 1.        , 0.96666667, 0.93333333,
-       1.        , 1.        , 1.        , 1.        , 0.93333333,
-       0.93333333, 0.86666667, 1.        , 0.96666667, 0.93333333,
-       0.96666667, 0.93333333, 0.9       , 0.93333333, 0.96666667,
-       0.9       , 0.96666667, 0.93333333, 0.9       , 0.96666667,
-       0.93333333, 0.96666667, 1.        , 0.93333333, 0.96666667,
-       0.96666667, 0.9       , 1.        , 0.93333333, 1.        ,
-       0.96666667, 0.96666667, 0.96666667, 1.        , 0.9       ,
-       0.93333333, 0.96666667, 0.93333333, 0.96666667, 1.        ,
-       1.        , 0.96666667, 0.86666667, 0.86666667, 0.96666667,
-       1.        , 0.93333333, 0.96666667, 0.96666667, 0.96666667,
-       1.        , 0.96666667, 0.96666667, 0.9       , 0.96666667,
-       0.83333333, 0.93333333, 0.93333333, 1.        , 0.93333333,
-       0.86666667, 0.9       , 0.96666667, 0.9       , 0.96666667,
-       1.        , 1.        , 0.96666667, 1.        , 0.93333333,
-       0.96666667, 0.96666667, 0.96666667, 0.93333333, 1.        ,
-       0.93333333, 0.93333333, 0.96666667, 0.93333333, 1.        ,
-       0.86666667, 0.93333333, 0.9       , 0.96666667, 0.96666667])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.93333333, 0.96666667, 0.9       , 1.        , 0.93333333,
+       0.93333333, 0.96666667, 0.93333333, 0.93333333, 0.96666667,
+       1.        , 0.96666667, 0.9       , 0.96666667, 0.96666667,
+       1.        , 1.        , 0.93333333, 1.        , 0.96666667,
+       0.96666667, 1.        , 0.93333333, 1.        , 0.93333333,
+       0.96666667, 0.96666667, 0.93333333, 0.9       , 0.96666667,
+       0.96666667, 0.93333333, 0.86666667, 1.        , 0.9       ,
+       1.        , 0.9       , 0.93333333, 0.96666667, 0.96666667,
+       0.96666667, 0.96666667, 0.93333333, 0.93333333, 0.93333333,
+       0.96666667, 1.        , 0.93333333, 0.9       , 0.96666667,
+       1.        , 0.96666667, 0.9       , 0.96666667, 0.86666667,
+       0.96666667, 0.96666667, 0.96666667, 0.96666667, 0.93333333,
+       0.93333333, 0.9       , 0.96666667, 0.96666667, 0.96666667,
+       1.        , 0.96666667, 0.86666667, 0.9       , 0.96666667,
+       0.86666667, 0.9       , 0.9       , 0.93333333, 0.86666667,
+       0.96666667, 0.93333333, 0.96666667, 0.93333333, 0.86666667,
+       0.93333333, 0.9       , 0.96666667, 0.93333333, 0.96666667,
+       0.96666667, 0.9       , 0.96666667, 0.96666667, 0.96666667,
+       0.9       , 0.9       , 0.96666667, 0.93333333, 0.96666667,
+       1.        , 0.93333333, 0.93333333, 0.93333333, 0.93333333])
 </pre></div>
 </div>
 </div>
