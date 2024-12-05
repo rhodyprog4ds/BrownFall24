@@ -84,13 +84,11 @@ Some ideas:
 - extend A5 to add in a database source or combine the data in new ways, plus do extended EDA to earn level 3 for: access, construct, prepare, visualize and summarize
 - extend one of A7-9 to have experiments that more carefully analyze and compare different models at a task for one of the ml tasks (classification, regression, clustering) and visualize and summarize
 
+(deploy)=
 ## Deployment and Distribution
 
-```{warning}
-this is currently a draft, will be updated by 10/24
-```
 
-Instead of earning all 15 level 3s you can earn any 10 plus the following: 
+Instead of earning all 15 level 3s you can earn any 10 plus one of the following: 
 - transform your portfolio to a publish-able portfolio by making it a jupyter book (mostly set up already, just need to clean up)
 - share a model and use a classmate's model with [huggingface](https://huggingface.co/CSC310-fall24) (making the model card would count for process and fitting it could count for one of the 3 tasks)
 
