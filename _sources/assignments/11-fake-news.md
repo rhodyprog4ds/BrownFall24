@@ -69,15 +69,23 @@ The data set contains a large number of articles (takes a long time to train), y
 
 ## Extension ideas
 
+:::{important}
+This has been expanded to include more ideas about how to earn other acheivements. Please use these ideas! 
+:::
+
 :::{note}
 For each of these you need to show, in your report, *why* this works with evidence based on your data analysis. If you do steps outside the notebook (eg prompting an llm) you need to include, in a markdown cell, a detailed explanation of what you did, for example:
-> I used LLMX to generate Y new articles, using the PROMPT and ...
+> I used LLMX to generate Y new articles, using the promt <PROMPT> and ...
 :::
+
+
 
 - stress test your model by generating additional fake news using an LLM and scraping additional, newer, high quality news articles(if possible, some news agencies are mad at LLM training procedures and have locked their content down) or using the ones in the 20 news groups dataset
 - based on your analysis how could you help teach a person to spot fake news? (hint: model inspection)
 - How could you get an llm to generate news articles that your classifier thinks are real? (hint: model inspection)
 - how does it work if you use both the text and the title? Could you give people a simple flowchart that guides them to scan the title for things and then the article? How reliable can that be? 
+- apply clustering to the data and interpret what the results would mean? Do the clusters relate to the articles being real or fake or something else?
+- add quantitative outcome computed from the text and see if that value can be predicted from the titles
 
 
 ```{tip}
