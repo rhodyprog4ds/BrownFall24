@@ -78,14 +78,17 @@ For each of these you need to show, in your report, *why* this works with eviden
 > I used LLMX to generate Y new articles, using the promt <PROMPT> and ...
 :::
 
-
-
+- deepen the analysis (esp for summarize, visualize, compare, and optimize) by breaking down the two questions above to make the more specific and detailed. For example, how much more predictive, how reliably more predictie, how sensitive to train/test split is your answer, is the more predictive model slower? if so what would be the tradeoff point? 
 - stress test your model by generating additional fake news using an LLM and scraping additional, newer, high quality news articles(if possible, some news agencies are mad at LLM training procedures and have locked their content down) or using the ones in the 20 news groups dataset
 - based on your analysis how could you help teach a person to spot fake news? (hint: model inspection)
 - How could you get an llm to generate news articles that your classifier thinks are real? (hint: model inspection)
 - how does it work if you use both the text and the title? Could you give people a simple flowchart that guides them to scan the title for things and then the article? How reliable can that be? 
 - apply clustering to the data and interpret what the results would mean? Do the clusters relate to the articles being real or fake or something else?
-- add quantitative outcome computed from the text and see if that value can be predicted from the titles
+- add quantitative outcomes computed from the text and see if that value can be predicted from the titles (even as simple as article length)
+
+:::{note}
+It is okay to use an AI to help get ideas, but **you** have to make sure your work is completely correct, AI **will** give you incorrect, at least outdated, information and code patterns, your job is to make sure that you submit something really **good*.
+:::
 
 
 ```{tip}
